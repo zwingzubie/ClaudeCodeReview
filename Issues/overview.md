@@ -130,8 +130,6 @@ The danger on a small CTO-led team is that no one is structurally positioned to 
 
 ---
 
-## Cited Sources
-
 [^1]: daily.dev — "Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code  
 [^2]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6  
 [^3]: DevOps.com — "Code Quality and Security Risks of AI-Generated Code," December 2025. https://devops.com/code-quality-and-security-risks-of-ai-generated-code/  
