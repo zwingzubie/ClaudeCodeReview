@@ -1,0 +1,99 @@
+{
+  // ============================================================
+  // TEAM MCP SERVER CONFIGURATION
+  // Checked into git — all engineers inherit this automatically.
+  // CODEOWNERS: architect review required for all changes.
+  //
+  // Credentials: stored in environment variables, never inline.
+  // Add to your shell profile or use a secrets manager:
+  //   export GITHUB_PAT=...
+  //   export SLACK_BOT_TOKEN=...
+  //   export GOOGLE_SERVICE_ACCOUNT_KEY_PATH=...
+  //   export LINEAR_API_KEY=...
+  // ============================================================
+
+  "mcpServers": {
+
+    // ----------------------------------------------------------
+    // GITHUB
+    // Scopes granted: repo (read), read:org, read:user
+    // Write access: NOT granted — attended write ops use GitHub UI
+    // Added: [DATE] | Owner: backend-lead | Last reviewed: [DATE]
+    // ----------------------------------------------------------
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PAT}"
+      }
+    },
+
+    // ----------------------------------------------------------
+    // SLACK
+    // Scopes granted: channels:read, channels:history, search:read
+    //                  users:read (for context attribution)
+    // Channels accessible: #engineering, #backend, #frontend,
+    //                      #incidents, #deployments
+    // Write access: NOT granted — no automated Slack posting
+    // Added: [DATE] | Owner: architect | Last reviewed: [DATE]
+    // ----------------------------------------------------------
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
+        "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
+      }
+    },
+
+    // ----------------------------------------------------------
+    // GOOGLE DRIVE
+    // Scopes granted: drive.readonly
+    // Accessible folders: /Architecture, /ADRs, /Runbooks, /PRDs
+    // Personal Drive: NOT accessible — shared folders only
+    // Added: [DATE] | Owner: architect | Last reviewed: [DATE]
+    // ----------------------------------------------------------
+    "google-drive": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GOOGLE_SERVICE_ACCOUNT_KEY": "${GOOGLE_SERVICE_ACCOUNT_KEY_PATH}"
+      }
+    },
+
+    // ----------------------------------------------------------
+    // LINEAR
+    // Scopes granted: issues:read, comments:read, projects:read
+    // Write access: NOT granted here — QA bot write uses separate config
+    // Teams accessible: Engineering, QA
+    // Added: [DATE] | Owner: backend-lead | Last reviewed: [DATE]
+    // ----------------------------------------------------------
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "@linear/mcp-server"],
+      "env": {
+        "LINEAR_API_KEY": "${LINEAR_API_KEY}"
+      }
+    }
+
+  }
+}
+
+// ============================================================
+// READ-ONLY CI VARIANT (.mcp.ci.json)
+// Use this config for automated/headless sessions (CI pipelines,
+// scheduled jobs). Includes only read-only servers.
+// Reference explicitly in CI config: --mcp-config .mcp.ci.json
+// ============================================================
+//
+// {
+//   "mcpServers": {
+//     "github": {
+//       "command": "npx",
+//       "args": ["-y", "@modelcontextprotocol/server-github"],
+//       "env": {
+//         "GITHUB_PERSONAL_ACCESS_TOKEN": "${CI_GITHUB_PAT}"
+//       }
+//     }
+//   }
+// }

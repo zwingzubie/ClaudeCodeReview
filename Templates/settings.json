@@ -1,0 +1,127 @@
+{
+  // .claude/settings.json — Claude Code session configuration
+  //
+  // Place this file at ./.claude/settings.json in your project root.
+  // It is safe to commit — it contains no secrets, only behavior configuration.
+  // Docs: https://docs.anthropic.com/en/docs/claude-code/settings
+
+  // ---------------------------------------------------------------------------
+  // HOOKS
+  // Hooks run shell commands at specific points in Claude's tool-use lifecycle.
+  // They run as your local user, inherit your shell env, and their stdout/stderr
+  // is shown to Claude. Exit code 0 = success. Non-zero = Claude sees the error.
+  // ---------------------------------------------------------------------------
+  "hooks": {
+
+    // Runs immediately after Claude writes or edits a file.
+    // Use this to keep code clean without requiring Claude to remember to lint.
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            // Run ESLint on the file that was just written.
+            // --fix auto-corrects style issues; remaining errors are shown to Claude.
+            // Adjust the config path if your eslint config lives elsewhere.
+            "command": "eslint --fix --max-warnings=0 --config ./eslint.config.js \"$CLAUDE_TOOL_OUTPUT_FILE\" 2>&1 || true"
+          },
+          {
+            "type": "command",
+            // Run the TypeScript compiler in no-emit mode on the changed file.
+            // This catches type errors immediately rather than at the end of a session.
+            "command": "npx tsc --noEmit --skipLibCheck 2>&1 | head -30 || true"
+          }
+        ]
+      }
+    ],
+
+    // Runs when Claude finishes a session (the Stop event).
+    // Use this for end-of-session checks — SAST scans, test runs, notifications.
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            // Run a lightweight SAST scan (semgrep) on changed files.
+            // If semgrep isn't installed, swap for `npm audit --audit-level=high`.
+            "command": "if command -v semgrep &>/dev/null; then semgrep scan --config=auto --severity=ERROR --quiet 2>&1 | tail -20; else npm audit --audit-level=high 2>&1 | tail -10; fi"
+          },
+          {
+            "type": "command",
+            // Desktop notification so the engineer knows Claude is done.
+            // macOS: uses osascript. Linux: swap for notify-send.
+            "command": "osascript -e 'display notification \"Claude Code session complete\" with title \"[YOUR_PROJECT_NAME]\"' 2>/dev/null || notify-send '[YOUR_PROJECT_NAME]' 'Claude Code session complete' 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+
+    // Runs before Claude processes each user message.
+    // Use this to inject dynamic context (current date, sprint info, branch name).
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            // Inject current date, git branch, and active sprint info.
+            // Claude sees this output prepended to your prompt as context.
+            "command": "echo \"=== Session Context ===\"; echo \"Date: $(date '+%Y-%m-%d %H:%M %Z')\"; echo \"Branch: $(git branch --show-current 2>/dev/null || echo 'not a git repo')\"; echo \"Last commit: $(git log -1 --format='%h %s' 2>/dev/null || echo 'none')\"; echo \"Sprint: [CURRENT_SPRINT_NAME — update this or pull from Linear API]\"; echo \"========================\""
+          }
+        ]
+      }
+    ]
+
+  },
+
+  // ---------------------------------------------------------------------------
+  // PERMISSIONS
+  // Controls which tools require explicit approval and which run automatically.
+  // Start restrictive and loosen as you build trust with your workflows.
+  // ---------------------------------------------------------------------------
+  "permissions": {
+
+    // Tools that always require a human to click "Allow" before running.
+    // Bash is here because arbitrary shell commands are high-risk.
+    "requireApproval": ["Bash"],
+
+    // Tools Claude may use freely without per-call approval.
+    // Remove any tool you want to require approval for.
+    "allowedTools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "LS",
+      "mcp__github__get_file_contents",
+      "mcp__github__search_code",
+      "mcp__github__list_issues",
+      "mcp__github__get_issue",
+      "mcp__linear__get_issue",
+      "mcp__linear__list_issues",
+      "mcp__slack__search_messages",
+      "mcp__gdrive__read_file"
+    ],
+
+    // Tools that are completely disabled for this project.
+    // Uncomment to enforce.
+    // "deniedTools": [
+    //   "mcp__slack__post_message"   // No automated Slack posting in this project
+    // ]
+
+  },
+
+  // ---------------------------------------------------------------------------
+  // ENVIRONMENT
+  // Extra environment variables injected into every hook command and tool call.
+  // Do NOT put secrets here — use your shell profile or a secrets manager.
+  // ---------------------------------------------------------------------------
+  "env": {
+    "NODE_ENV": "development",
+    "PROJECT_NAME": "[YOUR_PROJECT_NAME]",
+    // Path hints so hooks can find your tools without full PATH resolution issues
+    "PATH": "/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
+  }
+
+}
