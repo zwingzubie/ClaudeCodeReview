@@ -1,6 +1,6 @@
 ## Prompt Architecture: Structuring Requests for Reliable Output
 
-**Related to:** [Prompting Overview](00-overview.md) — Pattern 1 · [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md)[^a] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^b] · [Prompting: Prompt Library Management](06-prompt-library.md)[^c] · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)[^d]
+**Related to:** [Prompting Overview](00-overview.md) — Pattern 1 · [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md)[^a] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^b] · [Prompting: Prompt Library Management](06-prompt-library.md)[^c] · [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)[^d]
 
 ---
 
@@ -84,7 +84,7 @@ Verification components vary in strength. The weakest is a description ("make su
 **Recommended Practice:**
 - Always write the verification component as a runnable command with a binary outcome: pass or fail. "Run `pytest tests/auth/ -v` and fix all failures before reporting completion" is a strong verification component. "Make sure authentication works" is not.[^5]
 - For UI changes, specify screenshot-based verification: "After implementation, take a screenshot of the component in the browser and compare it to the design mockup at `docs/designs/auth-modal.png`. Report any visual differences." This creates a verifiable visual standard within the session.[^2]
-- Pair the verification component with a hook (see Tooling — Hooks and Automation) that runs the test command automatically at session completion. The combination of a prompt-level verification instruction and a hook-level automated check creates redundant verification that catches failures before they reach engineer review.[^10]
+- Pair the verification component with a hook (see Tooling & Configuration — Hooks and Automation) that runs the test command automatically at session completion. The combination of a prompt-level verification instruction and a hook-level automated check creates redundant verification that catches failures before they reach engineer review.[^10]
 - After any session that required multiple correction cycles on verification failures, diagnose the verification component design: was the failing test actually testing what was implemented? Was the verification scope too broad (catching pre-existing failures) or too narrow (missing the defect that was introduced)? Improve the verification design before the next similar session.[^4]
 
 ---
@@ -162,4 +162,4 @@ Calibrating for length requires distinguishing between structural components (al
 [^a]: [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md) — prompt architecture is the discipline that prevents fragmentation; structured, reusable prompt patterns are the countermeasure to the ad-hoc variation described there.
 [^b]: [Workflows: Context Engineering](../Workflows/03-context-engineering.md) — prompt architecture operates within the context engineering framework; the two disciplines are nested — context engineering sets the session foundation, prompt architecture governs individual requests.
 [^c]: [Prompting: Prompt Library Management](06-prompt-library.md) — the prompt library stores the output of good prompt architecture work; the architecture principles determine what goes into the library.
-[^d]: [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md) — CLAUDE.md provides the baseline context that all prompts execute within; prompt architecture must account for what CLAUDE.md already defines.
+[^d]: [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md) — CLAUDE.md provides the baseline context that all prompts execute within; prompt architecture must account for what CLAUDE.md already defines.

@@ -1,6 +1,6 @@
 ## Recovering from Bad Sessions
 
-**Related to:** [Debugging & Troubleshooting Overview](00-overview.md) — Debugging Area 4 · [Debugging: Recognizing Session Failure Patterns](01-recognizing-session-failure-patterns.md) · [Debugging: Context Degradation](03-context-degradation.md) · [Workflows: Session Hygiene](../Workflows/04-session-hygiene.md) · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)
+**Related to:** [Debugging & Troubleshooting Overview](00-overview.md) — Debugging Area 4 · [Debugging: Recognizing Session Failure Patterns](01-recognizing-session-failure-patterns.md) · [Debugging: Context Degradation](03-context-degradation.md) · [Workflows: Session Hygiene](../Workflows/04-session-hygiene.md) · [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)
 
 ---
 

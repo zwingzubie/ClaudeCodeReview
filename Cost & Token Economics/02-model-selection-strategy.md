@@ -1,6 +1,6 @@
 ## Model Selection Strategy
 
-**Related to:** [Cost & Token Economics Overview](00-overview.md) — Cost Area 2 · [Workflows: Task Decomposition](../Workflows/02-task-decomposition.md) · [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md) · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)
+**Related to:** [Cost & Token Economics Overview](00-overview.md) — Cost Area 2 · [Workflows: Task Decomposition](../Workflows/02-task-decomposition.md) · [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md) · [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)
 
 ---
 

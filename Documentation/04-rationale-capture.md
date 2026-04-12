@@ -1,6 +1,6 @@
 ## Rationale Capture for AI-Generated Decisions
 
-**Related to:** [Documentation Overview](00-overview.md) — Area 4: Rationale Capture for AI-Generated Decisions · [Documentation: Architecture Decision Records](01-architecture-decision-records.md)[^a] · [Issues: Comprehension Debt](../Issues/01-comprehension-debt.md)[^b] · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)[^c] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^d]
+**Related to:** [Documentation Overview](00-overview.md) — Area 4: Rationale Capture for AI-Generated Decisions · [Documentation: Architecture Decision Records](01-architecture-decision-records.md)[^a] · [Issues: Comprehension Debt](../Issues/01-comprehension-debt.md)[^b] · [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)[^c] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^d]
 
 ---
 
@@ -125,5 +125,5 @@ CLAUDE.md with rationale is substantially more useful for both humans and AI ses
 
 [^a]: [Documentation: Architecture Decision Records](01-architecture-decision-records.md) — ADRs capture formal architectural decisions; rationale capture extends this to informal AI-generated decisions below the ADR threshold; the two practices together close the full documentation gap.
 [^b]: [Issues: Comprehension Debt](../Issues/01-comprehension-debt.md) — comprehension debt is the direct consequence of failed rationale capture; undocumented AI decisions are the primary source of debt accumulation.
-[^c]: [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md) — CLAUDE.md entries often originate from rationale capture; the decision to constrain a behavior is itself an AI-generated decision that requires documentation.
+[^c]: [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md) — CLAUDE.md entries often originate from rationale capture; the decision to constrain a behavior is itself an AI-generated decision that requires documentation.
 [^d]: [Workflows: Context Engineering](../Workflows/03-context-engineering.md) — rationale capture feeds back into context engineering; documented decisions become the session context that prevents the same ground from being rediscovered.

@@ -14,7 +14,7 @@ If you are new to this repository, start here:
 
 1. **[Issues/](Issues/)** — Understand the failure modes before adopting AI-assisted development at scale
 2. **[Workflows/](Workflows/)** — Learn the session patterns that produce reliable output
-3. **[Tooling/](Tooling/)** — Configure CLAUDE.md, hooks, and permissions for your team
+3. **[Tooling & Configuration/](Tooling%20%26%20Configuration/)** — Configure all Claude Code configuration surfaces: CLAUDE.md, settings, hooks, MCP, skills, agents, rules, and memory
 4. **[Templates/](Templates/)** — Copy the actual configuration artifacts into your project
 
 ---
@@ -27,7 +27,7 @@ If you are new to this repository, start here:
 |---|---|
 | [Workflows/](Workflows/) | Session patterns: Explore-Plan-Implement, task decomposition, agentic delegation, parallel agent coordination |
 | [Prompting/](Prompting/) | Prompt architecture, anti-patterns, context injection, iterative refinement, prompt library |
-| [Tooling/](Tooling/) | CLAUDE.md, hooks, MCP integration, custom skills, settings, CI/CD, worktree isolation |
+| [Tooling & Configuration/](Tooling%20%26%20Configuration/) | CLAUDE.md hierarchy, settings & permissions, hooks, MCP, commands & skills, agents, rules, memory, keybindings, CI/CD |
 | [MCP Servers/](MCP%20Servers/) | GitHub, Slack, Google Drive, Linear, database, filesystem, and custom server integrations |
 
 ### Quality and Safety

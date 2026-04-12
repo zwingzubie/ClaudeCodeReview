@@ -1,6 +1,6 @@
 ## Task-Specific Prompt Patterns: Matching Prompt Structure to Task Type
 
-**Related to:** [Prompting Overview](00-overview.md) — Pattern 2 · [Workflows: Task Decomposition](../Workflows/02-task-decomposition.md)[^a] · [Prompting: Prompt Architecture](01-prompt-architecture.md)[^b] · [Tooling: Custom Skills](../Tooling/04-custom-skills.md)[^c]
+**Related to:** [Prompting Overview](00-overview.md) — Pattern 2 · [Workflows: Task Decomposition](../Workflows/02-task-decomposition.md)[^a] · [Prompting: Prompt Architecture](01-prompt-architecture.md)[^b] · [Tooling: Custom Skills](../Tooling & Configuration/04-custom-skills.md)[^c]
 
 ---
 
@@ -138,4 +138,4 @@ Documentation prompts that do not specify the audience, purpose, and format prod
 
 [^a]: [Workflows: Task Decomposition](../Workflows/02-task-decomposition.md) — task decomposition determines what tasks are appropriate for AI; task prompt patterns determine how to structure those tasks once selected.
 [^b]: [Prompting: Prompt Architecture](01-prompt-architecture.md) — task prompt patterns are the applied form of prompt architecture; the architecture principles manifest as specific patterns per task type.
-[^c]: [Tooling: Custom Skills](../Tooling/04-custom-skills.md) — high-value task prompt patterns become custom skills; the pattern library is the source from which skills are extracted.
+[^c]: [Tooling: Custom Skills](../Tooling & Configuration/04-custom-skills.md) — high-value task prompt patterns become custom skills; the pattern library is the source from which skills are extracted.

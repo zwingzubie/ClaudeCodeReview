@@ -1,6 +1,6 @@
 ## Context Optimization
 
-**Related to:** [Cost & Token Economics Overview](00-overview.md) — Cost Area 3 · [Workflows: Session Hygiene](../Workflows/04-session-hygiene.md) · [Workflows: Context Engineering](../Workflows/03-context-engineering.md) · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)
+**Related to:** [Cost & Token Economics Overview](00-overview.md) — Cost Area 3 · [Workflows: Session Hygiene](../Workflows/04-session-hygiene.md) · [Workflows: Context Engineering](../Workflows/03-context-engineering.md) · [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)
 
 ---
 

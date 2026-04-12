@@ -1,6 +1,6 @@
 ## MCP Server 1: GitHub Integration
 
-**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 1 · [Tooling: MCP Integration](../Tooling/03-mcp-integration.md)[^a] · [Governance: Review Policies](../Governance/01-review-policies.md)[^b] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^c]
+**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 1 · [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md)[^a] · [Governance: Review Policies](../Governance/01-review-policies.md)[^b] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^c]
 
 ---
 
@@ -124,6 +124,6 @@ For the QA engineer, cross-repository search is useful for identifying test cove
     MCP architecture overview; permission scoping guidance; the three primary MCP security risks relevant to GitHub write access.
 
 
-[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the GitHub server specifically.
+[^a]: [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the GitHub server specifically.
 [^b]: [Governance: Review Policies](../Governance/01-review-policies.md) — GitHub MCP enables sessions to query PR context during review; it is a tool for making review policy requirements actionable within a session.
 [^c]: [Workflows: Context Engineering](../Workflows/03-context-engineering.md) — GitHub MCP provides live repository context to sessions; it is a primary context engineering tool for teams whose work context lives in GitHub.

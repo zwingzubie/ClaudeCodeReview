@@ -1,6 +1,6 @@
 ## Cost Monitoring and Alerting
 
-**Related to:** [Cost & Token Economics Overview](00-overview.md) — Cost Area 5 · [Metrics: Health Dashboard](../Metrics/02-health-dashboard.md) · [Governance: Quarterly Health Review](../Governance/05-quarterly-health-review.md) · [Tooling: Hooks and Automation](../Tooling/02-hooks-and-automation.md)
+**Related to:** [Cost & Token Economics Overview](00-overview.md) — Cost Area 5 · [Metrics: Health Dashboard](../Metrics/02-health-dashboard.md) · [Governance: Quarterly Health Review](../Governance/05-quarterly-health-review.md) · [Tooling: Hooks and Automation](../Tooling & Configuration/02-hooks-and-automation.md)
 
 ---
 

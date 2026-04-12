@@ -1,6 +1,6 @@
 ## Dependency and Supply Chain Security
 
-**Related to:** [Security Overview](00-overview.md) — Security Area 3 · [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md)[^a] · [Tooling: CI/CD Integration](../Tooling/06-cicd-integration.md)[^b] · [Governance: Compliance and Audit](../Governance/06-compliance-and-audit.md)[^c] · [Ethics: Intellectual Property](../Ethics/01-intellectual-property.md)[^d]
+**Related to:** [Security Overview](00-overview.md) — Security Area 3 · [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md)[^a] · [Tooling: CI/CD Integration](../Tooling & Configuration/06-cicd-integration.md)[^b] · [Governance: Compliance and Audit](../Governance/06-compliance-and-audit.md)[^c] · [Ethics: Intellectual Property](../Ethics/01-intellectual-property.md)[^d]
 
 ---
 
@@ -101,7 +101,7 @@ The four-criteria framework (maintainer credibility, recent activity, CVE histor
 
 [^a]: [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md) — dependency vulnerabilities are a primary category of the supply chain risk described there; AI-generated dependency selections are a specific threat vector.
 
-[^b]: [Tooling: CI/CD Integration](../Tooling/06-cicd-integration.md) — dependency scanning runs in the CI/CD pipeline as an automated gate; the integration document describes the pipeline where dependency checks execute.
+[^b]: [Tooling: CI/CD Integration](../Tooling & Configuration/06-cicd-integration.md) — dependency scanning runs in the CI/CD pipeline as an automated gate; the integration document describes the pipeline where dependency checks execute.
 
 [^c]: [Governance: Compliance and Audit](../Governance/06-compliance-and-audit.md) — dependency license compliance is a recurring audit category; license risk in AI-generated dependency selections is a compliance documentation requirement.
 

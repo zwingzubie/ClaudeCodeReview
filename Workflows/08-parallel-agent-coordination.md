@@ -1,6 +1,6 @@
 ## Parallel Agent Coordination
 
-**Related to:** [Workflows Overview](00-overview.md) — Workflow 8 · [Workflows: Agentic Delegation](07-agentic-delegation.md)[^a] · [Tooling: Worktree Isolation](../Tooling/07-worktree-isolation.md)[^b] · [Issues: Velocity Governance](../Issues/08-velocity-governance.md)[^c] · [Governance: Review Policies](../Governance/01-review-policies.md)[^d]
+**Related to:** [Workflows Overview](00-overview.md) — Workflow 8 · [Workflows: Agentic Delegation](07-agentic-delegation.md)[^a] · [Tooling: Worktree Isolation](../Tooling & Configuration/07-worktree-isolation.md)[^b] · [Issues: Velocity Governance](../Issues/08-velocity-governance.md)[^c] · [Governance: Review Policies](../Governance/01-review-policies.md)[^d]
 
 ---
 
@@ -80,7 +80,7 @@ git worktree add ../repo-claude-api -b claude/parallel/api origin/main
 git worktree add ../repo-claude-frontend -b claude/parallel/frontend origin/main
 ```
 
-Each session is then launched with its working directory set to the appropriate worktree path. After all sessions complete, each worktree branch is opened as a PR for review before any merging occurs. The full worktree lifecycle — creation, session, review, merge, removal — is documented in [Tooling/07-worktree-isolation.md](../Tooling/07-worktree-isolation.md).
+Each session is then launched with its working directory set to the appropriate worktree path. After all sessions complete, each worktree branch is opened as a PR for review before any merging occurs. The full worktree lifecycle — creation, session, review, merge, removal — is documented in [Tooling & Configuration/07-worktree-isolation.md](../Tooling/07-worktree-isolation.md).
 
 **Recommended Practice:**
 - Create all session worktrees from the same base commit before any session starts. If sessions start from different base commits — because main received a merge between the first and last worktree creation — the integration will be more complex than necessary. Create all worktrees atomically: `git fetch origin` once, then create all worktrees in immediate succession.[^5]
@@ -146,7 +146,7 @@ Partial parallel output — three of five sessions complete, two fail — is the
 [^4]: incident.io — "How We're Shipping Faster with Claude Code and Git Worktrees," incident.io Blog, 2026. https://incident.io/blog/shipping-faster-with-claude-code-and-git-worktrees
     Practical parallel session coordination at team scale: shared spec discipline, per-session worktree assignment, the merge agent pattern, and the retrospective process that improved coordination quality over successive parallel workflows.
 
-[^5]: Tooling — "Git Worktrees for Parallel Session Isolation," ClaudeCodeReview, 2026. Tooling/07-worktree-isolation.md
+[^5]: Tooling — "Git Worktrees for Parallel Session Isolation," ClaudeCodeReview, 2026. Tooling & Configuration/07-worktree-isolation.md
     Complete worktree lifecycle for parallel sessions: atomic creation from shared base, branch naming conventions, review-before-merge requirement, batch removal after integration. The foundational tooling prerequisite for all parallel agent coordination workflows.
 
 [^6]: Tessl — "8 Agentic Coding Trends Shaping Software Engineering in 2026," March 2026. https://tessl.io/blog/8-trends-shaping-software-engineering-in-2026-according-to-anthropics-agentic-coding-report/
@@ -154,7 +154,7 @@ Partial parallel output — three of five sessions complete, two fail — is the
 
 [^a]: [Workflows: Agentic Delegation](07-agentic-delegation.md) — parallel coordination is the multi-agent extension of single-agent delegation; understanding delegation is a prerequisite for understanding parallel coordination.
 
-[^b]: [Tooling: Worktree Isolation](../Tooling/07-worktree-isolation.md) — worktree isolation is the technical prerequisite for safe parallel agent execution; the workflow pattern depends on the isolation mechanism.
+[^b]: [Tooling: Worktree Isolation](../Tooling & Configuration/07-worktree-isolation.md) — worktree isolation is the technical prerequisite for safe parallel agent execution; the workflow pattern depends on the isolation mechanism.
 
 [^c]: [Issues: Velocity Governance](../Issues/08-velocity-governance.md) — parallel agents produce the highest velocity multiplier and the highest governance complexity; the velocity-governance tension reaches its peak in parallel coordination.
 

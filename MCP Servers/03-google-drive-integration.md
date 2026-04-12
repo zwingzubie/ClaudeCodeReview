@@ -1,6 +1,6 @@
 ## MCP Server 3: Google Drive Integration
 
-**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 3 · [Tooling: MCP Integration](../Tooling/03-mcp-integration.md)[^a] · [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md)[^b] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^c]
+**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 3 · [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md)[^a] · [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md)[^b] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^c]
 
 ---
 
@@ -86,7 +86,7 @@ This pattern does require that the referenced Drive documents are well-organized
 
 **Recommended Practice:**
 - Audit the current CLAUDE.md for content that exists in a Drive document: architectural patterns that have an ADR, security requirements that have a security runbook, testing requirements that have a test plan template. For each, replace the CLAUDE.md content with a Drive reference and validate that Claude correctly retrieves and applies the Drive document in a session.[^5]
-- Establish a monthly CLAUDE.md review practice (see [CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)) that specifically checks for Drive document references that may have become stale — Drive documents that have been moved, renamed, or deleted since the CLAUDE.md reference was added.[^3]
+- Establish a monthly CLAUDE.md review practice (see [CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)) that specifically checks for Drive document references that may have become stale — Drive documents that have been moved, renamed, or deleted since the CLAUDE.md reference was added.[^3]
 - Do not eliminate CLAUDE.md content entirely in favor of Drive references. CLAUDE.md retains value for hard prohibitions, active corrections, and short-form conventions that do not warrant a full document. The principle is: if the content belongs in a Drive document, reference the Drive document; if it belongs only in CLAUDE.md, keep it in CLAUDE.md.[^5]
 - When a new Drive document is created that contains session-relevant content, add the Drive reference to CLAUDE.md at the same time. The two documents should evolve together; new Drive documentation that is not referenced from CLAUDE.md is documentation Claude will not access unless explicitly directed to.[^2]
 
@@ -130,6 +130,6 @@ This pattern does require that the referenced Drive documents are well-organized
 [^10]: Anthropic — "MCP Security Best Practices," Model Context Protocol Documentation, 2025. https://modelcontextprotocol.io/docs/concepts/security
     Minimum-permission configuration; prompt injection risk via retrieved document content; governance model for write-access MCP operations.
 
-[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the Google Drive server specifically.
+[^a]: [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the Google Drive server specifically.
 [^b]: [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md) — Google Drive MCP makes ADRs stored in Drive queryable within sessions; it is the accessibility mechanism for teams whose ADRs live in Drive.
 [^c]: [Workflows: Context Engineering](../Workflows/03-context-engineering.md) — Google Drive MCP provides access to external documentation stores; it extends the context engineering layer to cover documentation that cannot live in the repository.

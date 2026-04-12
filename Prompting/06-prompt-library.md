@@ -1,6 +1,6 @@
 ## Prompt Library Management: Building and Maintaining a Shared Prompt Repository
 
-**Related to:** [Prompting Overview](00-overview.md) — Pattern 6 · [Tooling: Custom Skills](../Tooling/04-custom-skills.md)[^a] · [Learning: Team Knowledge Sharing](../Learning/03-team-knowledge-sharing.md)[^b] · [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md)[^c]
+**Related to:** [Prompting Overview](00-overview.md) — Pattern 6 · [Tooling: Custom Skills](../Tooling & Configuration/04-custom-skills.md)[^a] · [Learning: Team Knowledge Sharing](../Learning/03-team-knowledge-sharing.md)[^b] · [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md)[^c]
 
 ---
 
@@ -148,6 +148,6 @@ The quarterly audit is the structural mechanism for detecting staleness at scale
     - Quarterly audit process: how to run the audit efficiently, what triggers an update vs. a deprecation, and how to read the health report to identify library coverage gaps
 
 
-[^a]: [Tooling: Custom Skills](../Tooling/04-custom-skills.md) — custom skills are extracted from the prompt library when patterns stabilize; the library is the upstream source and skills are the distribution mechanism.
+[^a]: [Tooling: Custom Skills](../Tooling & Configuration/04-custom-skills.md) — custom skills are extracted from the prompt library when patterns stabilize; the library is the upstream source and skills are the distribution mechanism.
 [^b]: [Learning: Team Knowledge Sharing](../Learning/03-team-knowledge-sharing.md) — the prompt library is the primary artifact of team knowledge sharing for prompting practices; library contributions and maintenance are how individual discoveries become team assets.
 [^c]: [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md) — the prompt library is the primary countermeasure to prompt fragmentation; shared, versioned prompts replace the per-engineer ad-hoc variation that fragmentation describes.

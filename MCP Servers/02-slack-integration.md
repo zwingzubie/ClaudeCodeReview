@@ -1,6 +1,6 @@
 ## MCP Server 2: Slack Integration
 
-**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 2 · [Tooling: MCP Integration](../Tooling/03-mcp-integration.md)[^a] · [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md)[^b] · [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md)[^c]
+**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 2 · [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md)[^a] · [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md)[^b] · [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md)[^c]
 
 ---
 
@@ -127,6 +127,6 @@ This is not a hypothetical concern. A team member who asks a sensitive question 
     MCP open standard architecture; client-server protocol model; permission scoping guidance.
 
 
-[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the Slack server specifically.
+[^a]: [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the Slack server specifically.
 [^b]: [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md) — Slack MCP makes conversation-based decisions queryable; it is a tool for capturing the tacit knowledge that knowledge transfer practices depend on.
 [^c]: [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md) — Slack MCP can surface shared prompting patterns from team channels; it is a discovery mechanism for reducing fragmentation.

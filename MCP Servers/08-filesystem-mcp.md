@@ -1,6 +1,6 @@
 ## MCP Server 8: Filesystem MCP — Scope Control and Security Implications
 
-**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 8 · [Tooling: MCP Integration](../Tooling/03-mcp-integration.md)[^a] · [Security: Secrets Management](../Security/04-secrets-management.md)[^b] · [MCP Servers: Configuration, Security, and Governance](06-configuration-security-governance.md)[^c] · [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md)[^d]
+**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 8 · [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md)[^a] · [Security: Secrets Management](../Security/04-secrets-management.md)[^b] · [MCP Servers: Configuration, Security, and Governance](06-configuration-security-governance.md)[^c] · [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md)[^d]
 
 ---
 
@@ -121,7 +121,7 @@ Production server filesystem access is categorically prohibited. Even in a devel
 [^5]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
     Local documentation access as a context engineering pattern; filesystem MCP as the integration that enables session-local documentation context without manual copy-paste; the cross-repository context use case for distributed frontend/backend teams.
 
-[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to filesystem server implementations.
+[^a]: [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to filesystem server implementations.
 [^b]: [Security: Secrets Management](../Security/04-secrets-management.md) — filesystem MCP scope determines what file paths Claude Code can read; secrets in accessible paths are a primary risk of misconfigured filesystem scope.
 [^c]: [MCP Servers: Configuration, Security, and Governance](06-configuration-security-governance.md) — filesystem access scope requires explicit governance; the governance framework determines which directories should be accessible and under what conditions.
-[^d]: [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md) — filesystem MCP scope is a permission boundary; the two documents address path-level access control at the MCP layer and the settings layer.
+[^d]: [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md) — filesystem MCP scope is a permission boundary; the two documents address path-level access control at the MCP layer and the settings layer.

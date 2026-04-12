@@ -1,6 +1,6 @@
 ## Team Knowledge Sharing: Turning Individual AI Discoveries Into Team Assets
 
-**Related to:** [Learning Overview](00-overview.md) — Practice 3 · [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md)[^a] · [Tooling: Custom Skills](../Tooling/04-custom-skills.md)[^b] · [Prompting: Prompt Library Management](../Prompting/06-prompt-library.md)[^c] · [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md)[^d]
+**Related to:** [Learning Overview](00-overview.md) — Practice 3 · [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md)[^a] · [Tooling: Custom Skills](../Tooling & Configuration/04-custom-skills.md)[^b] · [Prompting: Prompt Library Management](../Prompting/06-prompt-library.md)[^c] · [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md)[^d]
 
 ---
 
@@ -147,6 +147,6 @@ The "first week AI tour" is a half-day structured introduction to the team's acc
 
 
 [^a]: [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md) — team knowledge sharing is the ongoing form of the same discipline; knowledge transfer covers the ramp, knowledge sharing covers the steady state.
-[^b]: [Tooling: Custom Skills](../Tooling/04-custom-skills.md) — custom skills are a primary knowledge sharing artifact; a prompt pattern that one engineer discovers becomes a team asset when it is encoded as a skill.
+[^b]: [Tooling: Custom Skills](../Tooling & Configuration/04-custom-skills.md) — custom skills are a primary knowledge sharing artifact; a prompt pattern that one engineer discovers becomes a team asset when it is encoded as a skill.
 [^c]: [Prompting: Prompt Library Management](../Prompting/06-prompt-library.md) — the prompt library is the primary repository for shared prompting knowledge; team knowledge sharing feeds the library and the library distributes what is shared.
 [^d]: [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md) — team knowledge sharing is the countermeasure to prompt fragmentation; shared practices reduce the per-engineer variation that fragmentation documents as a risk.

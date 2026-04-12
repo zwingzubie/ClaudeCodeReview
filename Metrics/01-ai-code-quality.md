@@ -1,6 +1,6 @@
 ## AI Code Quality Metrics: Measuring What Matters After AI Generation
 
-**Related to:** [Metrics Overview](00-overview.md) — Metric 1 · [Issues: Architectural Drift](../Issues/03-architectural-drift.md)[^a] · [Governance: Review Policies](../Governance/01-review-policies.md)[^b] · [Tooling: CI/CD Integration](../Tooling/06-cicd-integration.md)[^c] · [QA & Testing: AI-Generated Test Coverage](../QA%20%26%20Testing/02-ai-generated-test-coverage.md)[^d]
+**Related to:** [Metrics Overview](00-overview.md) — Metric 1 · [Issues: Architectural Drift](../Issues/03-architectural-drift.md)[^a] · [Governance: Review Policies](../Governance/01-review-policies.md)[^b] · [Tooling: CI/CD Integration](../Tooling & Configuration/06-cicd-integration.md)[^c] · [QA & Testing: AI-Generated Test Coverage](../QA%20%26%20Testing/02-ai-generated-test-coverage.md)[^d]
 
 ---
 
@@ -149,6 +149,6 @@ Complexity and duplication metrics require tooling to measure automatically — 
 
 [^b]: [Governance: Review Policies](../Governance/01-review-policies.md) — review policy pass rates and post-merge defect rates are the primary code quality metrics; the metrics operationalize how well review policy is functioning.
 
-[^c]: [Tooling: CI/CD Integration](../Tooling/06-cicd-integration.md) — CI/CD pipelines generate the quality signal data that the health dashboard aggregates; CI/CD integration is the data collection infrastructure for quality metrics.
+[^c]: [Tooling: CI/CD Integration](../Tooling & Configuration/06-cicd-integration.md) — CI/CD pipelines generate the quality signal data that the health dashboard aggregates; CI/CD integration is the data collection infrastructure for quality metrics.
 
 [^d]: [QA & Testing: AI-Generated Test Coverage](../QA%20%26%20Testing/02-ai-generated-test-coverage.md) — test coverage is a primary code quality metric for AI-generated code; coverage analysis feeds the quality signal that this document defines.

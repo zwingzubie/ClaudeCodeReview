@@ -1,6 +1,6 @@
 ## Engineer Onboarding: Ramping Into AI-Assisted Development
 
-**Related to:** [Learning Overview](00-overview.md) — Practice 1 · [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md)[^a] · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)[^b] · [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md)[^c] · [Issues: Skill Atrophy](../Issues/06-skill-atrophy.md)[^d]
+**Related to:** [Learning Overview](00-overview.md) — Practice 1 · [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md)[^a] · [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)[^b] · [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md)[^c] · [Issues: Skill Atrophy](../Issues/06-skill-atrophy.md)[^d]
 
 ---
 
@@ -165,6 +165,6 @@ The fragile expert finding (see Issues — Comprehension Debt) is directly relev
     - First-session task design: the tutorial's example tasks are calibrated to onboarding difficulty — bounded, well-specified, with architectural precedent and existing tests
 
 [^a]: [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md) — knowledge transfer practices are the upstream input to onboarding; what the team documents determines what new engineers receive in the onboarding process.
-[^b]: [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md) — onboarding includes CLAUDE.md orientation; new engineers must understand the constraint layer before using Claude Code on the codebase.
+[^b]: [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md) — onboarding includes CLAUDE.md orientation; new engineers must understand the constraint layer before using Claude Code on the codebase.
 [^c]: [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md) — onboarding includes usage policy training; policy comprehension is a gate before engineers use Claude Code on production code.
 [^d]: [Issues: Skill Atrophy](../Issues/06-skill-atrophy.md) — onboarding for engineers who have grown up with AI tools requires particular attention to foundational skill development; the risk described there is highest for new-to-team engineers.

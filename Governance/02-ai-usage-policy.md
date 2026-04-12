@@ -1,6 +1,6 @@
 ## AI Acceptable Use Policy: Authorized and Prohibited Uses of Claude Code
 
-**Related to:** [Governance Overview](00-overview.md) — Policy 2 · [Ethics: Intellectual Property](../Ethics/01-intellectual-property.md)[^a] · [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md)[^b] · [Governance: Review Policies](01-review-policies.md)[^c] · [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md)[^d]
+**Related to:** [Governance Overview](00-overview.md) — Policy 2 · [Ethics: Intellectual Property](../Ethics/01-intellectual-property.md)[^a] · [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md)[^b] · [Governance: Review Policies](01-review-policies.md)[^c] · [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md)[^d]
 
 ---
 
@@ -151,4 +151,4 @@ The review cadence for the acceptable use policy matters as much as the initial 
 
 [^c]: [Governance: Review Policies](01-review-policies.md) — Usage policy and review policy together form the complete AI governance framework; one governs what engineers do, the other governs what ships.
 
-[^d]: [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md) — Settings and permissions are the technical enforcement layer for usage policy; policy without enforcement is advisory only.
+[^d]: [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md) — Settings and permissions are the technical enforcement layer for usage policy; policy without enforcement is advisory only.

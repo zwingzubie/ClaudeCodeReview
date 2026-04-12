@@ -1,6 +1,6 @@
 ## Codebase Bloat: The Expanding Surface Area Nobody Signed Up to Maintain
 
-**Related to:** [Issues Overview](overview.md) — Issue 2 · [Metrics: Codebase Health](../Metrics/06-codebase-health.md)[^a] · [QA & Testing: Regression Prevention](../QA%20%26%20Testing/04-regression-prevention.md)[^b] · [Governance: Review Policies](../Governance/01-review-policies.md)[^c] · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)[^d]
+**Related to:** [Issues Overview](overview.md) — Issue 2 · [Metrics: Codebase Health](../Metrics/06-codebase-health.md)[^a] · [QA & Testing: Regression Prevention](../QA%20%26%20Testing/04-regression-prevention.md)[^b] · [Governance: Review Policies](../Governance/01-review-policies.md)[^c] · [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)[^d]
 
 ---
 
@@ -138,4 +138,4 @@ AI tools generate code at a rate that outpaces any team's capacity to review, re
 
 [^c]: [Governance: Review Policies](../Governance/01-review-policies.md) — review policies include scope gates that limit AI-generated additions per PR; these are the primary governance mechanism for controlling bloat rate.
 
-[^d]: [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md) — CLAUDE.md constraints can prohibit specific patterns that generate bloat; the configuration layer is the session-time enforcement point for scope discipline.
+[^d]: [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md) — CLAUDE.md constraints can prohibit specific patterns that generate bloat; the configuration layer is the session-time enforcement point for scope discipline.

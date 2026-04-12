@@ -1,6 +1,6 @@
 ## Architecture Decision Records in AI-Assisted Teams
 
-**Related to:** [Documentation Overview](00-overview.md) — Area 1: Architecture Decision Records · [Issues: Architectural Drift](../Issues/03-architectural-drift.md)[^a] · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)[^b] · [Governance: Review Policies](../Governance/01-review-policies.md)[^c] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^d] · [Documentation: Rationale Capture](04-rationale-capture.md)[^e]
+**Related to:** [Documentation Overview](00-overview.md) — Area 1: Architecture Decision Records · [Issues: Architectural Drift](../Issues/03-architectural-drift.md)[^a] · [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)[^b] · [Governance: Review Policies](../Governance/01-review-policies.md)[^c] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^d] · [Documentation: Rationale Capture](04-rationale-capture.md)[^e]
 
 ---
 
@@ -128,7 +128,7 @@ Claude Code can draft ADRs from the raw material of decision discussions — mee
 
 [^a]: [Issues: Architectural Drift](../Issues/03-architectural-drift.md) — ADRs are the primary countermeasure to architectural drift; the three failure modes identified here (session amnesia, drift, review blindness) map directly to that issue's documented patterns and root causes.
 
-[^b]: [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md) — ADR AI Constraints fields are the source of truth for CLAUDE.md entries; the two artifacts are maintained together, with each ADR acceptance triggering a corresponding CLAUDE.md update.
+[^b]: [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md) — ADR AI Constraints fields are the source of truth for CLAUDE.md entries; the two artifacts are maintained together, with each ADR acceptance triggering a corresponding CLAUDE.md update.
 
 [^c]: [Governance: Review Policies](../Governance/01-review-policies.md) — ADR references in PR descriptions are a review policy requirement; the PR review workflow depends on ADRs being current, accessible, and linked at the time of review.
 

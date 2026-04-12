@@ -1,6 +1,6 @@
 ## MCP Server 4: Linear Integration
 
-**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 4 · [Tooling: MCP Integration](../Tooling/03-mcp-integration.md)[^a] · [Governance: Sprint Planning Gates](../Governance/03-sprint-planning-gates.md)[^b] · [Workflows: Task Decomposition](../Workflows/02-task-decomposition.md)[^c]
+**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 4 · [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md)[^a] · [Governance: Sprint Planning Gates](../Governance/03-sprint-planning-gates.md)[^b] · [Workflows: Task Decomposition](../Workflows/02-task-decomposition.md)[^c]
 
 ---
 
@@ -130,6 +130,6 @@ For the architect reviewing implementation sessions, cross-tool chaining also cr
     Minimum-permission configuration; bot account governance for write-access operations; prompt injection risk via retrieved ticket content.
 
 
-[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the Linear server specifically.
+[^a]: [Tooling: MCP Integration](../Tooling & Configuration/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the Linear server specifically.
 [^b]: [Governance: Sprint Planning Gates](../Governance/03-sprint-planning-gates.md) — Linear MCP provides ticket context to sessions; sprint planning gate classifications can be surfaced within sessions working on classified tickets.
 [^c]: [Workflows: Task Decomposition](../Workflows/02-task-decomposition.md) — Linear MCP provides task context that informs decomposition; sessions can query ticket requirements and acceptance criteria as part of task planning.

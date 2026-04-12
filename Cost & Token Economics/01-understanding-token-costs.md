@@ -1,6 +1,6 @@
 ## Understanding Token Costs
 
-**Related to:** [Cost & Token Economics Overview](00-overview.md) — Cost Area 1 · [Metrics: Session and Context Efficiency](../Metrics/00-overview.md) · [Workflows: Session Hygiene](../Workflows/04-session-hygiene.md) · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)
+**Related to:** [Cost & Token Economics Overview](00-overview.md) — Cost Area 1 · [Metrics: Session and Context Efficiency](../Metrics/00-overview.md) · [Workflows: Session Hygiene](../Workflows/04-session-hygiene.md) · [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md)
 
 ---
 

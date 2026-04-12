@@ -1,6 +1,6 @@
 ## Secrets Management in AI-Assisted Workflows
 
-**Related to:** [Security Overview](00-overview.md) — Security Area 4 · [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md)[^a] · [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md)[^b] · [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md)[^c] · [MCP Servers: Configuration, Security, and Governance](../MCP%20Servers/06-configuration-security-governance.md)[^d]
+**Related to:** [Security Overview](00-overview.md) — Security Area 4 · [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md)[^a] · [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md)[^b] · [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md)[^c] · [MCP Servers: Configuration, Security, and Governance](../MCP%20Servers/06-configuration-security-governance.md)[^d]
 
 ---
 
@@ -99,7 +99,7 @@ The environment variable pattern — reading credentials from `os.environ`, `pro
 [^6]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
     CLAUDE.md constraint syntax for credential handling patterns; the mechanism by which session-level constraints override AI default code generation behavior for security-critical patterns.
 
-[^a]: [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md) — permission scoping controls what Claude Code can read; secrets management and permission boundaries address the same exposure risk at different layers.
+[^a]: [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md) — permission scoping controls what Claude Code can read; secrets management and permission boundaries address the same exposure risk at different layers.
 
 [^b]: [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md) — secrets entering AI sessions are a training data privacy risk; the two documents address the same exposure from operational and ethical perspectives.
 

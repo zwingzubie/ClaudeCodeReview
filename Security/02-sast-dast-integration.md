@@ -1,6 +1,6 @@
 ## SAST and DAST Integration
 
-**Related to:** [Security Overview](00-overview.md) — Security Area 2 · [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md)[^a] · [Tooling: CI/CD Integration](../Tooling/06-cicd-integration.md)[^b] · [Tooling: Hooks and Automation](../Tooling/02-hooks-and-automation.md)[^c] · [Metrics: Security Vulnerability Trends](../Metrics/04-security-vulnerability-trends.md)[^d]
+**Related to:** [Security Overview](00-overview.md) — Security Area 2 · [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md)[^a] · [Tooling: CI/CD Integration](../Tooling & Configuration/06-cicd-integration.md)[^b] · [Tooling: Hooks and Automation](../Tooling & Configuration/02-hooks-and-automation.md)[^c] · [Metrics: Security Vulnerability Trends](../Metrics/04-security-vulnerability-trends.md)[^d]
 
 ---
 
@@ -104,8 +104,8 @@ DAST tooling for a small team has a different configuration profile than enterpr
 
 [^a]: [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md) — SAST/DAST integration is the primary automated detection mechanism for the vulnerability classes described there; scanning converts the qualitative risk into a detectable signal.
 
-[^b]: [Tooling: CI/CD Integration](../Tooling/06-cicd-integration.md) — SAST/DAST tools are integrated through CI/CD pipelines; the two documents describe the security tool and its pipeline deployment.
+[^b]: [Tooling: CI/CD Integration](../Tooling & Configuration/06-cicd-integration.md) — SAST/DAST tools are integrated through CI/CD pipelines; the two documents describe the security tool and its pipeline deployment.
 
-[^c]: [Tooling: Hooks and Automation](../Tooling/02-hooks-and-automation.md) — SAST scanning can be triggered as a pre-commit hook for fast feedback; the hook integration provides session-time detection before pipeline runs.
+[^c]: [Tooling: Hooks and Automation](../Tooling & Configuration/02-hooks-and-automation.md) — SAST scanning can be triggered as a pre-commit hook for fast feedback; the hook integration provides session-time detection before pipeline runs.
 
 [^d]: [Metrics: Security Vulnerability Trends](../Metrics/04-security-vulnerability-trends.md) — SAST/DAST scan results feed the vulnerability trend metrics; the scanner is the data source for the security health signal on the dashboard.

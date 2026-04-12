@@ -1,6 +1,6 @@
 ## Runbook Standards for AI-Assisted Operations
 
-**Related to:** [Documentation Overview](00-overview.md) — Area 2: Runbook Standards · [Governance: Incident Response](../Governance/07-incident-response.md)[^a] · [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md)[^b] · [Tooling: Hooks and Automation](../Tooling/02-hooks-and-automation.md)[^c] · [QA & Testing: QA Engineer Workflow](../QA%20&%20Testing/05-qa-engineer-workflow.md)[^d]
+**Related to:** [Documentation Overview](00-overview.md) — Area 2: Runbook Standards · [Governance: Incident Response](../Governance/07-incident-response.md)[^a] · [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md)[^b] · [Tooling: Hooks and Automation](../Tooling & Configuration/02-hooks-and-automation.md)[^c] · [QA & Testing: QA Engineer Workflow](../QA%20&%20Testing/05-qa-engineer-workflow.md)[^d]
 
 ---
 
@@ -113,5 +113,5 @@ The Google Drive runbook library with MCP accessibility is the recommended appro
 
 [^a]: [Governance: Incident Response](../Governance/07-incident-response.md) — runbooks are the operational artifact incident response procedures depend on; the two documents are written and maintained together.
 [^b]: [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md) — security incident runbooks are the primary operational countermeasure to the vulnerability accumulation documented here.
-[^c]: [Tooling: Hooks and Automation](../Tooling/02-hooks-and-automation.md) — hooks can trigger runbook validation steps; automated checks in the pipeline enforce runbook currency requirements.
+[^c]: [Tooling: Hooks and Automation](../Tooling & Configuration/02-hooks-and-automation.md) — hooks can trigger runbook validation steps; automated checks in the pipeline enforce runbook currency requirements.
 [^d]: [QA & Testing: QA Engineer Workflow](../QA%20&%20Testing/05-qa-engineer-workflow.md) — QA engineers are primary runbook consumers; their workflow defines what runbook detail level is operationally sufficient.

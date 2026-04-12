@@ -1,6 +1,6 @@
 ## Threat Modeling for AI-Assisted Development
 
-**Related to:** [Security Overview](00-overview.md) — Security Area 1 · [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md)[^a] · [Ethics: Security Responsibility](../Ethics/03-security-responsibility.md)[^b] · [Governance: Review Policies](../Governance/01-review-policies.md)[^c] · [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md)[^d]
+**Related to:** [Security Overview](00-overview.md) — Security Area 1 · [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md)[^a] · [Ethics: Security Responsibility](../Ethics/03-security-responsibility.md)[^b] · [Governance: Review Policies](../Governance/01-review-policies.md)[^c] · [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md)[^d]
 
 ---
 
@@ -121,4 +121,4 @@ The mapping is direct: every threat model mitigation that takes the form "Claude
 
 [^c]: [Governance: Review Policies](../Governance/01-review-policies.md) — review policies require security review for high-risk components; threat model outputs define which components are high-risk and should trigger enhanced review.
 
-[^d]: [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md) — permission scoping is a primary technical control for threats identified in threat modeling; the threat model informs what permissions Claude Code should never have.
+[^d]: [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md) — permission scoping is a primary technical control for threats identified in threat modeling; the threat model informs what permissions Claude Code should never have.

@@ -1,6 +1,6 @@
 ## MCP Server 6: Configuration, Security, and Governance
 
-**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 6 · [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md)[^a] · [Security: Secrets Management](../Security/04-secrets-management.md)[^b] · [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md)[^c] · [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md)[^d]
+**Related to:** [MCP Servers Overview](00-overview.md) — MCP Server 6 · [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md)[^a] · [Security: Secrets Management](../Security/04-secrets-management.md)[^b] · [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md)[^c] · [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md)[^d]
 
 ---
 
@@ -130,7 +130,7 @@ For automated sessions — CI pipelines, scheduled jobs, or other contexts where
     External tool integration as a component of context engineering; shared configuration artifacts as team-level productivity multipliers; the governance overhead that scales with integration surface area.
 
 
-[^a]: [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md) — MCP server permissions are a specific category of settings governance; the two documents address the same concern at tool level and MCP level.
+[^a]: [Tooling: Settings and Permissions](../Tooling & Configuration/05-settings-and-permissions.md) — MCP server permissions are a specific category of settings governance; the two documents address the same concern at tool level and MCP level.
 [^b]: [Security: Secrets Management](../Security/04-secrets-management.md) — MCP server configurations often include credentials and API keys; secrets management practices are a prerequisite for secure MCP configuration.
 [^c]: [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md) — usage policy governs what data sources Claude Code can access; MCP server configuration is the technical implementation of those access boundaries.
 [^d]: [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md) — MCP servers can expose sensitive data to AI sessions; privacy protection requires that MCP scope is governed as carefully as direct file access.
