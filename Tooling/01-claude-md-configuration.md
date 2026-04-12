@@ -48,7 +48,7 @@ Anthropic's guidance recommends organizing CLAUDE.md with clear sections for dif
 
 Boris Cherny describes the right update cadence as continuous: every time Claude makes a mistake in a session, the correction goes into CLAUDE.md immediately so it does not happen again in any subsequent session by any engineer.[^1] For a team of 11, this requires a clear ownership model — without it, every engineer adds corrections in their own style, the file accumulates contradictions, and the architect who is nominally responsible has no visibility into what changed and why.
 
-A sole-owner model introduces a practical bottleneck: when the architect is unavailable, engineers have no clear path for urgent corrections. This tension requires an explicit resolution in the ownership policy, not just an assumption that PRs will be reviewed quickly.
+A sole-owner model introduces a practical bottleneck: when the architect is unavailable, engineers have no clear path for urgent corrections. This tension requires an explicit resolution in the ownership policy, not just an assumption that PRs will be reviewed quickly.[^14]
 
 **Recommended Practice:**
 - Assign the architect sole write access to CLAUDE.md (enforced through git CODEOWNERS). Engineers identify corrections in session logs or PR reviews and propose them to the architect as a two-line PR rather than editing the file directly. This keeps the update velocity high while maintaining coherence.[^1]
@@ -105,8 +105,8 @@ Length is the most common silent failure mode. Anthropic's documentation and emp
 
 ---
 
-[^1]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Continuous update discipline: every session mistake is immediately added as a CLAUDE.md correction; the compound effect of six months of maintained corrections vs. a static file.
+[^1]: HowBorisUsesClaudeCode.com — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
+    Fan-curated resource documenting Boris Cherny's (Claude Code's creator at Anthropic) workflow tips. Continuous update discipline: every session mistake is immediately added as a CLAUDE.md correction ("Compounding Engineering"); the compound effect of six months of maintained corrections vs. a static file.
 
 [^2]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
     CLAUDE.md length discipline: the pruning test; what to include vs. what Claude already does correctly; the import system and its use for modular configuration.
@@ -114,8 +114,8 @@ Length is the most common silent failure mode. Anthropic's documentation and emp
 [^3]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
     CLAUDE.md file structure guidance: section organization, import syntax, scoped instruction patterns for directory-specific behavior.
 
-[^4]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    CLAUDE.md as the primary team context layer: how it transforms individual AI sessions into team-coherent outputs; the distinction between hard prohibitions and soft guidance in instruction design.
+[^4]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," January 2026. https://addyosmani.com/blog/ai-coding-workflow/
+    CLAUDE.md as a behavioral specification document: Osmani describes maintaining a CLAUDE.md with process rules and preferences that shape Claude's output; the distinction between hard prohibitions and soft guidance in instruction design.
 
 [^5]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
     Modular context architecture: how team specialization in maintaining different context files enables depth without requiring any single person to own the complete instruction set.
@@ -145,10 +145,8 @@ Length is the most common silent failure mode. Anthropic's documentation and emp
     - Team ownership model: how to configure CODEOWNERS, the PR review process for CLAUDE.md changes, and the standing retrospective agenda item for collecting corrections
     - Validation: the test checklist approach for verifying CLAUDE.md effectiveness after updates
 
-[^13]: Jack Herrington — "CLAUDE.md Best Practices: What I Learned After 6 Months," YouTube, January 2026. https://www.youtube.com/watch?v=N7sXwKj8qP2
-    - Real-world file structure evolution: how a CLAUDE.md grows, accumulates noise, and what a disciplined pruning process looks like in practice
-    - Import system walkthrough: live demonstration of modular configuration with domain-specific instruction files and conditional imports
-    - Common mistakes: instructions that seemed important but produced no observable behavior change when added — and what that pattern reveals about file length and attention distribution
+[^14]: Addy Osmani — "Your AI coding agents need a manager," January 2026. https://addyosmani.com/blog/coding-agents-manager/
+    Team-level coordination challenges with AI coding agents and the need for explicit governance structures rather than informal assumptions about review velocity and availability. See also: TrueFoundry — "Claude Code Governance: Building an Enterprise Usage Policy from Scratch," March 2026. https://www.truefoundry.com/blog/claude-code-governance-building-an-enterprise-usage-policy-from-scratch — addresses ownership models and escalation paths in Claude Code deployments.
 
 [^a]: [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md) — ADR AI Constraints fields are the source of truth for CLAUDE.md entries; ADR acceptance triggers CLAUDE.md updates as a required workflow step.
 
