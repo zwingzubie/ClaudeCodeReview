@@ -103,3 +103,8 @@ This failure mode is distinct from coverage gaps. Coverage tools will report 100
 
 [^7]: Henry Coles — "PIT Mutation Testing," pitest.org, 2025. https://pitest.org
     Mutation testing as the detection mechanism for assertions that mirror implementation bugs; mutation score interpretation for AI-generated test suites; the relationship between assertion independence and mutation score.
+
+[^a]: [Governance: Review Policies](../Governance/01-review-policies.md) — test session design is independent QA coverage that backs up review policy; the two are complementary gates with different ownership.
+[^b]: [Issues: Review Theater](../Issues/05-review-theater.md) — independent test session design is the backstop when review theater allows defects through; QA coverage is what catches what rubber-stamp review misses.
+[^c]: [Workflows: Verification-Driven Development](../Workflows/05-verification-driven-development.md) — verification-driven development and test session design share the principle that AI output must be independently verified; the workflow practice and the QA practice are aligned.
+[^d]: [Prompting: Task-Specific Prompt Patterns](../Prompting/02-task-prompt-patterns.md) — test-generation prompts are a specific task prompt pattern category; the prompting patterns for generating tests are documented in relation to this QA workflow.
