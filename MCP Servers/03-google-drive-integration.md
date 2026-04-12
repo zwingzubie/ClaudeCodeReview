@@ -30,6 +30,27 @@ Content retrieval handles the Google Docs format natively, returning document te
 
 ## Section 2: Architecture Documentation and ADRs
 
+```mermaid
+sequenceDiagram
+    participant E as Engineer
+    participant CC as Claude Code
+    participant DM as Google Drive MCP
+    participant GD as Google Drive API
+
+    E->>CC: "Implement payment retry logic"
+    CC->>DM: search_files("payment retry", folder="Architecture/ADRs/")
+    DM->>GD: Drive search query
+    GD-->>DM: ADR-012-payment-retry.md
+    DM-->>CC: ADR content: decision + alternatives rejected
+    CC->>DM: get_file("Operations/Runbooks/payment-service-runbook.md")
+    DM->>GD: File content request
+    GD-->>DM: Runbook text
+    DM-->>CC: Operational constraints + patterns
+    CC->>E: "Based on ADR-012 (which rejected exponential backoff)<br/>and the runbook constraints, here's my approach..."
+    E->>CC: Approve
+    CC->>CC: Implement with architectural<br/>consistency enforced by Drive docs
+```
+
 **Description:** Architecture decision records are the highest-value Drive content for engineering sessions. An ADR documents a technology choice, the alternatives that were considered, and the reasoning behind the decision. Without ADR access, Claude Code sessions operate in a decision vacuum: Claude proposes approaches based on training data defaults and the current codebase state, without knowing which alternatives the team has already evaluated and rejected. With ADR access, Claude can be instructed to read the relevant ADRs before proposing approaches — producing suggestions that are architecturally consistent rather than accidentally revisiting closed decisions.[^5]
 
 For the architect, this integration shifts the role of ADRs from static archives to active session inputs. An ADR written six months ago that is never read in a session produces no ongoing value; an ADR that Claude reads at the start of every relevant implementation session actively constrains Claude's suggestions to the team's documented architectural intent. The integration is what converts documentation into living constraint.

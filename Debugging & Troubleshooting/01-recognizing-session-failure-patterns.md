@@ -14,6 +14,24 @@ The failure modes of Claude Code sessions are recognizable if engineers know wha
 
 ## Section 1: The Four Primary Failure Signals
 
+```mermaid
+flowchart TD
+    A[Session Output Received] --> B{Addresses the<br/>right problem?}
+    B -- No --> C[Scope Drift<br/>Specification problem]
+    B -- Yes --> D{Respects stated<br/>constraints?}
+    D -- No --> E[Constraint Violation<br/>Context/CLAUDE.md gap]
+    D -- Yes --> F{Information is<br/>accurate & specific?}
+    F -- No --> G[False Specificity<br/>Hallucination risk]
+    F -- Yes --> H{Precision maintained<br/>vs. earlier turns?}
+    H -- No --> I[Quality Regression<br/>Context degradation]
+    H -- Yes --> J[Session Healthy<br/>Continue]
+
+    C --> K[Reformulate specification]
+    E --> L[Update CLAUDE.md or compact]
+    G --> M[Independently verify,<br/>inject authoritative docs]
+    I --> N[Compact or reset session]
+```
+
 **Description:** Four failure signals account for the majority of Claude Code session failures that reach the engineer's attention. Each has a distinct cause and a distinct appropriate response. Learning to recognize them specifically — rather than experiencing a general sense that "the session is going badly" — reduces the time from recognition to resolution.
 
 **Scope Drift:** The model addresses a problem adjacent to the one specified rather than the problem itself. A request to "refactor the payment service's retry logic for testability" produces a response that refactors the retry logic for performance — superficially related, technically plausible, but not what was asked. Scope drift is usually a specification problem: the task brief was ambiguous enough that the model resolved the ambiguity in a direction different from the engineer's intent.[^3]

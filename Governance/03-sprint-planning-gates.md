@@ -28,6 +28,32 @@ Sprint planning must account for all three dimensions to produce accurate veloci
 
 ## Section 2: The AI Readiness Classification System
 
+```mermaid
+flowchart TD
+    A[Story enters sprint planning] --> B{spec.md complete<br/>or producible in 1hr?}
+    B -- No --> C[AI-Assisted or<br/>Human-Primary]
+    B -- Yes --> D{Clear codebase<br/>pattern precedent?}
+    D -- No --> C
+    D -- Yes --> E{Correctness criticality<br/>low enough?}
+    E -- No --> C
+    E -- Yes --> F[AI-Primary ✓]
+
+    F --> G[Attach spec.md to ticket]
+    G --> H[Sprint begins]
+    H --> I{Sprint AI-primary %<br/>> 40% of points?}
+    I -- No --> J[Continue]
+    I -- Yes --> K[Architect triage:<br/>reclassify unstarted stories]
+
+    J --> L[Sprint Review]
+    K --> L
+    L --> M[Sprint Retrospective:<br/>Classification accuracy check]
+    M --> N{Stories matched<br/>classification?}
+    N -- Yes --> O[Log accuracy]
+    N -- No --> P[Log classification miss:<br/>which dimension misjudged?]
+    P --> Q[Quarterly criteria review]
+    O --> Q
+```
+
 **Description:** The three-tier classification system — AI-primary, AI-assisted, human-primary — provides sprint planning with a consistent vocabulary for describing how a task will be worked, what review requirements apply, and how to estimate effort. AI-primary tasks are those where the engineer will prompt Claude Code to generate the first-pass implementation and review the output: the AI generates, the human verifies. AI-assisted tasks are those where the engineer is the primary author, using Claude Code for targeted assistance — generating specific functions, explaining patterns, suggesting tests — but retaining continuous authorship. Human-primary tasks are those where AI assistance is either inappropriate (correctness criticality requires end-to-end human ownership), unavailable (no applicable pattern precedent for AI to work within), or counterproductive (exploratory work where human reasoning is the primary tool and AI suggestions would misdirect it).[^7]
 
 The prerequisite for AI-primary classification is a completed spec.md. A spec.md is not a user story — it is a technical specification that provides Claude Code with the inputs, outputs, edge cases, integration constraints, and codebase patterns it needs to produce usable first-pass output without multiple rounds of clarification. The spec.md requirement is both a quality gate and a comprehension gate: an engineer who cannot produce a spec.md does not yet understand the task well enough to own an AI-generated implementation. The investment in the spec.md typically takes 30–60 minutes and reduces the AI session time and review rework by substantially more.[^8]

@@ -28,6 +28,35 @@ Each of these channels creates documentation requirements that are different in 
 
 ## Section 2: The AI Governance Log as a Compliance Artifact
 
+```mermaid
+flowchart TD
+    subgraph Quarterly["Quarterly Cycle"]
+        A[Quarterly Health Review] --> B[Update governance log:<br/>policy versions, review dates,<br/>authorized tools]
+        B --> C[Verify data handling config:<br/>enterprise plan, training opt-out]
+        C --> D[CTO: 2hr regulatory scan<br/>EU AI Act, SOC2, sector guidance]
+        D --> E{New requirement<br/>triggers review?}
+        E -- Yes --> F[Out-of-cycle governance review]
+        E -- No --> G[Document scan findings<br/>in governance log]
+        F --> G
+        G --> H[Check prepared customer<br/>statement still accurate]
+    end
+
+    subgraph Incident["Per-Incident"]
+        I[AI-generated incident] --> J[Log in incident system]
+        J --> K[Root cause analysis<br/>within 48hr for P1/P2]
+        K --> L[Governance actions<br/>with owners + deadlines]
+        L --> B
+    end
+
+    subgraph Audit["On Audit Request"]
+        M[SOC2 auditor /<br/>enterprise questionnaire] --> N[Pull governance log]
+        N --> O[Provide authorized tools list,<br/>policy review dates,<br/>incident log, vendor docs]
+        O --> P{Gaps found?}
+        P -- Yes --> Q[Remediate + update log]
+        P -- No --> R[Audit complete]
+    end
+```
+
 **Description:** The AI governance log is the central compliance artifact for AI tool use. It is a living document that records the team's AI governance state at any point in time: which tools are authorized, which policies govern their use, who owns each policy, when each policy was last reviewed, what overrides have been granted, and what incidents have been recorded. A governance log with this information can answer the vast majority of SOC 2 audit questions and enterprise security questionnaire items about AI development practices in under an hour — compared to days of document reconstruction when no log exists.[^7]
 
 The governance log serves two audiences simultaneously. Internal governance uses it to verify that the team's practices are current and that policies have active owners. External compliance uses it to demonstrate that the team has formal AI governance and that governance is actively maintained — not a policy document written once and never reviewed. The same log, maintained for internal governance purposes, produces the external compliance evidence. The marginal cost of making the governance log audit-ready is small; the compliance risk of not having it is large.[^8]

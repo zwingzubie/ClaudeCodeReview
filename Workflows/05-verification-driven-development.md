@@ -46,6 +46,30 @@ A counterintuitive finding from the TDAD research is important for teams designi
 
 ## Section 3: TDD with Agentic AI
 
+```mermaid
+flowchart TD
+    A[Engineer writes<br/>failing tests] --> B[Hand to Claude:<br/>'implement until tests pass']
+    B --> C[Claude implements]
+    C --> D[Run targeted tests<br/>from TDAD impact analysis]
+    D --> E{Tests pass?}
+    E -- No --> F[Claude self-corrects<br/>reads failure output]
+    F --> C
+    E -- Yes --> G[Run full test suite:<br/>regression check]
+    G --> H{Regressions?}
+    H -- Yes --> I[Claude fixes regression]
+    I --> D
+    H -- No --> J[PostToolUse hook:<br/>linter + type checker]
+    J --> K{Lint/type errors?}
+    K -- Yes --> L[Claude fixes]
+    L --> J
+    K -- No --> M[SAST scan on<br/>modified files]
+    M --> N{Security findings?}
+    N -- Yes --> O[Engineer reviews<br/>Claude fixes]
+    O --> M
+    N -- No --> P[Engineer reviews output]
+    P --> Q[CI pipeline:<br/>terminal verification layer]
+```
+
 **Description:** The mainstream narrative is that AI-assisted development has disrupted TDD: when code is generated in seconds, the discipline of writing tests first seems to slow things down rather than speed them up. In practice, the relationship is the inverse — AI tools are most effective precisely when tests already exist, because the tests provide the verification mechanism that allows the AI to self-correct.[^6]
 
 The practical TDD pattern for agentic AI sessions has three steps: write tests first (human or AI), hand implementation to Claude with the tests as verification targets, iterate until all tests pass.[^6] This gives Claude a concrete success criterion at every step — not "did I write plausible-looking code?" but "do these tests pass?" The quality difference between these two verification modes is material.

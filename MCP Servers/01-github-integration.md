@@ -30,6 +30,31 @@ Write operations — creating issues, opening pull requests, posting review comm
 
 ## Section 2: Issue-Driven Development Workflow
 
+```mermaid
+sequenceDiagram
+    participant E as Engineer
+    participant CC as Claude Code
+    participant GM as GitHub MCP Server
+    participant GH as GitHub API
+
+    E->>CC: "Implement ENG-247"
+    CC->>GM: read_issue(#247)
+    GM->>GH: GET /repos/.../issues/247
+    GH-->>GM: Issue body + all comments + labels
+    GM-->>CC: Full issue context
+    CC->>GM: list_linked_issues(#247)
+    GM->>GH: GET linked/parent issues
+    GH-->>GM: Related issue context
+    GM-->>CC: Dependency + epic context
+    CC->>E: "I've read the issue. Here's my implementation plan..."
+    E->>CC: Approve plan
+    CC->>CC: Implement against full<br/>authoritative requirements
+    CC->>E: Implementation complete
+    E->>GM: (write, if enabled) post_comment(#247, summary)
+    GM->>GH: POST /issues/247/comments
+    GH-->>GM: Comment created
+```
+
 **Description:** The highest-value use pattern for the GitHub MCP server is anchoring implementation sessions to the issue being implemented. The current workflow — where an engineer reads the issue, mentally summarizes it, then describes the task to Claude — introduces two unnecessary losses: the engineer's summary is incomplete, and Claude starts from the engineer's interpretation rather than the authoritative source. The integration eliminates both.[^5]
 
 A session that begins with "read issue #247 and implement the described behavior" gives Claude direct access to the original requirements, the acceptance criteria in the issue body, the edge cases documented in comments, and any linked issues that provide additional context. This is qualitatively different from a prompt that describes the same task from memory. For complex issues with significant comment history — the type where the final implementation constraint was decided in the fourteenth comment — the gap is material.[^6]

@@ -10,6 +10,40 @@ This memo covers the four layers of context engineering: the `CLAUDE.md` shared 
 
 ## Section 1: The CLAUDE.md Architecture
 
+```mermaid
+flowchart LR
+    subgraph Persistent["Persistent Context (survives resets)"]
+        A[CLAUDE.md<br/>root — team conventions,<br/>corrections, prohibitions]
+        A --> B[@git-workflow.md]
+        A --> C[@testing-requirements.md]
+        A --> D[@security-invariants.md]
+        A --> E[@api-conventions.md]
+    end
+
+    subgraph Feature["Feature Context"]
+        F[spec.md<br/>requirements, design,<br/>task breakdown, AC]
+    end
+
+    subgraph Session["Session Context (in-window)"]
+        G[Session brief +<br/>task prompt]
+        H[Files read<br/>during session]
+        I[Conversation history]
+        J[/compact summary<br/>replaces history]
+    end
+
+    subgraph MultiAgent["Multi-Agent"]
+        K[.claude/agents/<br/>subagent definitions]
+    end
+
+    Persistent --> G
+    Feature --> G
+    G --> H
+    H --> I
+    I -- context fills --> J
+    J --> I
+    K -- orchestrator assigns scope --> H
+```
+
 **Description:** `CLAUDE.md` is the file Claude reads at the start of every session. It is the team's persistent context layer — the architectural contract that ensures every engineer's AI sessions operate with the same conventions, constraints, and understanding of the codebase. For a team our size, it is the single highest-leverage context artifact available, and the architect's most important maintainability tool.[^2]
 
 Its value compounds over time. Boris Cherny, who created Claude Code, has described his team's practice: `CLAUDE.md` is updated multiple times per week. Any time Claude does something incorrectly, the correction is added to the file so it does not recur.[^3] Over months, this produces an increasingly accurate behavioral contract — one that eliminates whole categories of AI error that would otherwise require individual correction in every session.

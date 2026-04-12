@@ -28,6 +28,48 @@ Three server types cover most engineering workflow integrations: **resource serv
 
 ## Section 2: Starting with Read-Only Integrations
 
+```mermaid
+flowchart TD
+    subgraph Session["Claude Code Session (MCP Client)"]
+        A[Session starts]
+        B[Claude receives tool manifests<br/>from configured servers]
+        C[Claude calls tools during session]
+    end
+
+    subgraph ReadOnly["Read-Only MCP Servers (start here)"]
+        D[PostgreSQL MCP<br/>SELECT-only user<br/>live schema queries]
+        E[GitHub MCP<br/>repo/issues/PRs<br/>read scopes only]
+        F[Google Drive MCP<br/>drive.readonly<br/>ADRs & runbooks]
+        G[Linear MCP<br/>read-only API key<br/>tickets & comments]
+    end
+
+    subgraph WriteAccess["Write-Access Servers (add after 1 month)"]
+        H[GitHub MCP write<br/>draft PRs, bot comments]
+        I[Linear MCP write<br/>bot account, comments only]
+    end
+
+    A --> B
+    B --> D
+    B --> E
+    B --> F
+    B --> G
+
+    D --> C
+    E --> C
+    F --> C
+    G --> C
+
+    C --> J{Write operation?}
+    J -- No --> K[Result in context window]
+    J -- Yes --> L[Confirmation prompt<br/>alwaysAllow: false]
+    L --> M{Engineer approves?}
+    M -- Yes --> H
+    M -- Yes --> I
+    M -- No --> N[Cancelled]
+    H --> O[Audit log entry]
+    I --> O
+```
+
 **Description:** The safest and most immediately valuable MCP integrations are read-only: they give Claude information it needs without giving it the ability to change anything outside the local repository. A PostgreSQL MCP server configured with a read-only connection allows Claude to query the actual database schema during a session — eliminating the manual step of copying schema excerpts into prompts and ensuring Claude is always working with the current schema rather than an excerpt that may be out of date.[^5]
 
 The productivity return on read-only integrations is high and the risk is low. If Claude makes a bad query to a read-only database connection, nothing is harmed. If Claude misinterprets documentation fetched via a resource server, the consequence is a poorly-scoped prompt — recoverable within the session. This risk profile makes read-only integrations the right starting point for teams that have not previously worked with MCP.[^1]

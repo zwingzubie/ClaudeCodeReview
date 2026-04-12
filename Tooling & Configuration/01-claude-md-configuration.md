@@ -30,6 +30,40 @@ The least useful content categories are: general best practices Claude already k
 
 ## Section 2: File Structure and Organization
 
+```mermaid
+flowchart LR
+    subgraph Root["Repository Root"]
+        A[CLAUDE.md<br/>≤ 500 tokens<br/>architect-owned]
+    end
+
+    subgraph Imports[".claude/ directory"]
+        B[git-workflow.md]
+        C[testing-requirements.md]
+        D[security-invariants.md]
+        E[api-conventions.md]
+        F[component-patterns.md]
+    end
+
+    subgraph Scope["Conditional scope"]
+        G["When in src/api/:<br/>apply api-conventions.md"]
+        H["When in src/components/:<br/>apply component-patterns.md"]
+    end
+
+    A -- "@.claude/git-workflow.md" --> B
+    A -- "@.claude/testing-requirements.md" --> C
+    A -- "@.claude/security-invariants.md" --> D
+    A -- "@.claude/api-conventions.md" --> E
+    A -- "@.claude/component-patterns.md" --> F
+
+    E --> G
+    F --> H
+
+    I[Backend lead] -- maintains --> E
+    J[Frontend lead] -- maintains --> F
+    K[Architect] -- maintains --> A
+    K -- maintains --> D
+```
+
 **Description:** An unstructured CLAUDE.md is harder to maintain, harder to prune, and more likely to have contradictions develop between instructions added at different times by different engineers. Structure enables the architect to reason about the file as a whole, not just add to the end. It also makes it possible to identify which category of instruction is consuming most of the file's effective attention — a file where 80% of the content is architectural patterns and only 5% is security invariants may have the wrong balance for a team that has recurring security issues.[^5]
 
 Anthropic's guidance recommends organizing CLAUDE.md with clear sections for different instruction types and using the import system to reference separate files for large instruction categories rather than embedding everything inline. A CLAUDE.md that imports a `git-workflow.md`, a `testing-requirements.md`, and a `security-invariants.md` is shorter, more navigable, and easier to maintain than one where all these categories are interleaved in a single document.[^2]

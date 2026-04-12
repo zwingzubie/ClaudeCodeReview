@@ -14,6 +14,26 @@ The economic stakes are concrete. For a team of 11 running an average of three s
 
 ## Section 1: The Three-Tier Task Taxonomy
 
+```mermaid
+flowchart TD
+    A[New AI session task] --> B{Specification<br/>complete?}
+    B -- No --> C[Write spec first]
+    C --> B
+    B -- Yes --> D{Solution ambiguous<br/>or novel design?}
+    D -- Yes --> E{Complex multi-system<br/>reasoning required?}
+    E -- Yes --> F{Failed 2+ correction<br/>cycles at Sonnet?}
+    F -- Yes --> G[Tier 3: Opus<br/>Architecture / security /<br/>complex debugging]
+    F -- No --> H[Tier 2: Sonnet<br/>Feature implementation /<br/>bug diagnosis / PR review]
+    E -- No --> H
+    D -- No --> I{Verification fast<br/>and unambiguous?}
+    I -- Yes --> J[Tier 1: Haiku<br/>Boilerplate / commit msgs /<br/>docs / renaming / fixtures]
+    I -- No --> H
+
+    G --> K[Log reason for escalation]
+    H --> L[Team default]
+    J --> M[Pre-specify completely<br/>before session]
+```
+
 **Description:** The foundation of a model selection strategy is a task taxonomy — a shared classification of the work the team does into groups that correspond to appropriate model tiers. Without a taxonomy, each engineer makes individual model selection decisions based on habit or intuition, producing inconsistent outcomes: the same task type handled at different tiers by different engineers on different days. A shared taxonomy converts individual decisions into a consistent team policy that can be reviewed, improved, and enforced through CLAUDE.md defaults.[^1]
 
 The three tiers correspond to the primary Claude model tiers and to the cognitive complexity profile of typical software engineering tasks. The taxonomy is not a rigid rule — it is a default classification that engineers can override with explicit justification when a task does not fit its expected tier. The value is that the override requires a deliberate judgment rather than an unreflective default, which surfaces model selection decisions that the team can learn from.[^3]

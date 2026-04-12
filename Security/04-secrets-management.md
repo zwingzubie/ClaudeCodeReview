@@ -16,6 +16,38 @@ The response to this risk has three layers: preventing secrets from entering AI 
 
 ## Section 1: The Specific Risk of Claude Code Reading Secrets
 
+```mermaid
+flowchart LR
+    subgraph Creation
+        A[Secret created<br/>API key / credential]
+    end
+    subgraph Storage
+        B[Stored in<br/>credential manager<br/>or .env file]
+        C[.gitignore<br/>excludes .env]
+        D[.claudeignore<br/>excludes .env]
+    end
+    subgraph UseInSession
+        E[Claude Code session<br/>starts from repo root]
+        F{.claudeignore<br/>present?}
+        F -- Yes --> G[Secret excluded<br/>from context]
+        F -- No --> H[Secret enters<br/>context window ⚠]
+        H --> I[May appear in<br/>generated output]
+        I --> J[Engineer commits<br/>generated file]
+        J --> K[Pre-commit hook<br/>detects secret ✓]
+        K -- blocked --> L[Rotate secret<br/>immediately]
+    end
+    subgraph Rotation
+        M[Periodic rotation<br/>or on exposure]
+        M --> N[Revoke old credential]
+        N --> O[Issue new credential]
+        O --> B
+    end
+
+    A --> B
+    B --> E
+    G --> P[Safe session<br/>execution]
+```
+
 **Description:** Claude Code's context window includes the content of files it reads during a session. In a repository with good secrets hygiene — no credentials in committed files, `.env` files excluded from version control — this presents limited risk. In real engineering environments, however, secrets hygiene is rarely perfect. Engineers work with `.env` files in their local working directories, test fixtures may contain realistic-looking credentials, CI configuration files may reference secrets in ways that Claude Code reads as literal values, and history may contain credentials that were committed and later removed but remain in git history readable by tools that traverse the repository.[^3]
 
 The risk is not primarily that Claude Code will exfiltrate secrets — Anthropic's data handling policy does not use session inputs for training, and the session data handling is documented. The risk is that a session producing a code suggestion, a test file, or a documentation snippet may incorporate credential values it read from context into its output, and that output may then be committed to version control in a form that was not reviewed as carefully as the original source file. An engineer reviewing a generated test file may not notice that a fixture value in the generated output matches an actual API key from a `.env` file the session read earlier.[^1]

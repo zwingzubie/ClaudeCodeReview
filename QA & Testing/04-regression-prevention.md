@@ -30,6 +30,31 @@ Second, AI-generated code tends to be locally coherent and globally inconsistent
 
 ## Section 2: Pre-Merge Regression Test Hooks in CI
 
+```mermaid
+flowchart TD
+    A[AI-primary PR opened] --> B[CI: identify changed files]
+    B --> C[Dependency graph analysis:<br/>find all dependent modules]
+    C --> D{Dependent test suite<br/>> 20 min?}
+    D -- Yes --> E[Escalate to architect<br/>for scoping decision]
+    D -- No --> F[Run full regression suite<br/>for dependent modules]
+
+    F --> G{Regressions found?}
+    G -- Yes --> H[Block merge<br/>notify engineer]
+    H --> I[Engineer reviews regression]
+    I --> J{Shared utility<br/>modified?}
+    J -- Yes --> K[Read call graph docs<br/>in CLAUDE.md]
+    K --> L[Fresh-context reviewer session:<br/>analyze diff for regression risks]
+    L --> M[Fix and re-run]
+    J -- No --> M
+    M --> F
+
+    G -- No --> N[Merge approved]
+    N --> O{AI-introduced regression<br/>found post-merge?}
+    O -- Yes --> P[QA adds test to<br/>regression library<br/>tests/regression/ai-touched/]
+    O -- No --> Q[Done]
+    P --> Q
+```
+
 **Description:** Standard CI regression test configurations run the test suite for the modules that a PR directly modifies. This scoping is reasonable for human-authored changes, where modifications are usually contained within the engineer's explicit scope. For AI-generated changes, it is systematically insufficient: because AI may modify shared utilities as a side effect of implementing a specific feature, the regression tests that need to run are for all callers of any modified utility, not just for the directly modified module.[^5]
 
 Pre-merge regression hooks for AI-primary PRs should use a broader scoping strategy: identify all changed files, identify all modules that depend on those files, and run the full regression test suite for all dependent modules before merge. This produces a larger CI footprint for AI-primary PRs, but the cost is justified by the regression pattern AI introduces. A 15-minute CI run that catches a regression before merge is far cheaper than a post-production regression investigation.[^5]

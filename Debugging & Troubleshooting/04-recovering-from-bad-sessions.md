@@ -14,6 +14,35 @@ The economic case for structured recovery is straightforward. An unstructured re
 
 ## Section 1: The Pre-Reset Diagnostic
 
+```mermaid
+flowchart TD
+    A[Session Failing] --> B[Pre-Reset Diagnostic<br/>5 min max]
+    B --> C{Which failure signal?}
+    C --> D[Scope Drift]
+    C --> E[Constraint Violation]
+    C --> F[False Specificity]
+    C --> G[Quality Regression]
+
+    B --> H{Root cause?}
+    H --> I[Underspecification]
+    H --> J[Missing context]
+    H --> K[Context degradation]
+    H --> L[Wrong model tier]
+
+    B --> M[Extract salvageable output]
+    M --> N{Partial output correct?}
+    N -- Yes --> O[git stash correct portion<br/>carry forward as fact]
+    N -- No --> P[Extract failure description<br/>as context for recovery]
+
+    O --> Q[Write recovery session brief]
+    P --> Q
+    Q --> R[Address root cause explicitly]
+    R --> S[Recovery Session]
+    S --> T[Confirm prevention works]
+    T --> U[Implement prevention action<br/>CLAUDE.md / prompt library]
+    U --> V[Share with team]
+```
+
 **Description:** Before resetting a failing session, five minutes of structured diagnosis converts an isolated failure into a team learning. The diagnostic answers four questions: what went wrong (which failure signal was present), why it went wrong (specification problem, hallucination, context degradation, or wrong model tier), what from the session is salvageable, and what change to the next session will prevent the same failure. Without this diagnostic, the next session starts with the same conditions that caused the current one to fail.[^3]
 
 The diagnostic is not a lengthy post-mortem — it is a brief structured reflection performed while the failure is fresh and the session context is visible. Engineers who perform the diagnostic consistently report that the majority of session failures fall into a small number of recurring categories specific to their codebase and workflow, and that recognizing these categories becomes faster with practice. The diagnostic accelerates over time.[^1]

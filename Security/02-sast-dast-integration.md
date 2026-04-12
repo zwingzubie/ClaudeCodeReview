@@ -44,6 +44,36 @@ For a team of 11 without a dedicated security engineer, tool selection should pr
 
 ## Section 3: Claude Code Hooks for Pre-Commit SAST
 
+```mermaid
+flowchart TD
+    A[Engineer runs<br/>Claude Code session] --> B[Claude generates<br/>or edits files]
+    B --> C[Stop event hook fires<br/>Semgrep on modified files]
+    C --> D{Critical findings?}
+    D -- Yes --> E[Block: engineer must<br/>fix before continuing]
+    D -- No --> F[Medium/low warnings<br/>shown, session continues]
+
+    E --> G[Engineer fixes issue]
+    G --> B
+
+    F --> H[Engineer stages changes<br/>git add]
+    H --> I[Pre-commit hook<br/>detect-secrets / trufflehog]
+    I --> J{Secrets detected?}
+    J -- Yes --> K[Commit blocked<br/>Rotate credential]
+    J -- No --> L[git commit]
+
+    L --> M[PR opened]
+    M --> N[CI pipeline]
+    N --> O[Semgrep SAST<br/>before tests]
+    O --> P{High/critical<br/>findings?}
+    P -- Yes --> Q[PR merge blocked]
+    P -- No --> R[Run test suite]
+    R --> S[CodeQL weekly scan<br/>on main branch]
+    S --> T[DAST: OWASP ZAP<br/>vs. staging on deploy]
+    T --> U{DAST findings?}
+    U -- Yes --> V[Add custom SAST rule<br/>to catch pattern statically]
+    U -- No --> W[Promote to production]
+```
+
 **Description:** Claude Code's hook system allows the team to insert scanning steps at defined points in the AI development workflow. The Stop event hook — which runs after Claude Code completes a task and before control returns to the engineer — is the appropriate insertion point for pre-commit SAST on AI-generated code. This hook runs scanning before the engineer even stages the generated code for commit, providing a feedback layer that is earlier and faster than the CI pipeline scan. For the category of findings that would fail CI anyway, catching them in the hook eliminates the round-trip of commit, push, CI failure, fix, re-commit, re-push.[^6]
 
 The hook architecture also addresses a behavioral gap: some engineers will not run a SAST scan manually before staging AI-generated code, but will act on findings that appear automatically in the terminal immediately after generation. The hook makes the right behavior the default behavior rather than the effortful behavior. This is a workflow design principle that applies beyond SAST — the most reliably followed security practices are the ones that happen automatically, not the ones that depend on individual discipline under time pressure.[^7]

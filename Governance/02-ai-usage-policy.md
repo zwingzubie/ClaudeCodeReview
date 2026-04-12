@@ -71,6 +71,36 @@ The relevant question is not whether data will be misused — Anthropic's data h
 
 ## Section 5: Policy Enforcement and Review Cadence
 
+```mermaid
+flowchart TD
+    A[Potential Policy Event] --> B{Event type?}
+    B -- New capability --> C[Architect reviews<br/>4-question assessment]
+    C --> D{Risk clear?}
+    D -- Yes --> E[Approve with constraints<br/>Update CLAUDE.md]
+    D -- No --> F[Escalate to CTO]
+
+    B -- Suspected violation --> G{First occurrence?}
+    G -- Yes --> H[Coaching conversation<br/>Why did this happen?]
+    H --> I{Root cause?}
+    I -- Didn't know policy --> J[Communication improvement]
+    I -- Policy unclear --> K[Policy clarification]
+    I -- Policy wrong --> L[Policy revision]
+    G -- Repeat --> M[Log in incident system<br/>Escalate if pattern]
+
+    B -- Exception request --> N[Engineer requests override]
+    N --> O[Architect evaluates risk]
+    O --> P{Acceptable?}
+    P -- Yes --> Q[Grant exception<br/>Document in log]
+    P -- No --> R[Deny with alternative]
+
+    E --> S[Quarterly policy review]
+    J --> S
+    K --> S
+    L --> S
+    Q --> S
+    S --> T[Update policy changelog]
+```
+
 **Description:** A policy that is not enforced is not a policy — it is a wish list. Enforcement requires that violations are surfaced when they occur, that the team knows enforcement is happening, and that violations produce consequences proportionate to their risk. On an 11-person team, enforcement is primarily cultural rather than technical: the team culture around AI use is shaped more by how the architect and CTO respond to violations than by the policy document itself. A single well-handled violation that results in a team conversation and a CLAUDE.md update builds enforcement culture more effectively than a policy that is filed and never discussed.[^13]
 
 The review cadence for the acceptable use policy matters as much as the initial policy content. AI tooling evolves faster than annual review cycles; a policy written in January may be inadequate by September when new capabilities have been adopted and new compliance requirements have emerged. Quarterly review at the engineering health review, combined with immediate review when new capabilities are authorized or incidents occur, keeps the policy current with the team's actual practice.[^2]

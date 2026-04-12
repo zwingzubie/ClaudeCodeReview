@@ -42,6 +42,28 @@ The optimal compact timing is at natural session phase boundaries: after explora
 
 ## Section 3: Session Reset vs. Compact
 
+```mermaid
+flowchart TD
+    A{Degradation detected<br/>or turn-count limit hit} --> B{Is session output<br/>mostly correct so far?}
+    B -- Yes --> C{Primary problem:<br/>context size?}
+    C -- Yes --> D[/compact Focus on current phase]
+    D --> E[Review compact summary]
+    E --> F{Summary captures<br/>critical decisions?}
+    F -- No --> G[Add missing info<br/>to first post-compact message]
+    F -- Yes --> H[Continue session<br/>from reset context]
+    G --> H
+
+    B -- No --> I{Multiple turns going<br/>in wrong direction?}
+    I -- Yes --> J[Extract useful fragments<br/>before closing]
+    J --> K[Write revised session brief<br/>addressing root cause]
+    K --> L[Fresh session reset]
+    I -- No --> D
+
+    C -- No --> M{Specification problem<br/>or wrong model tier?}
+    M -- Yes --> J
+    M -- No --> D
+```
+
 **Description:** Compact and session reset are both context management interventions, but they address different situations. Compact is appropriate when the session has made meaningful progress that should be preserved and the primary problem is context size. Session reset is appropriate when the session has gone significantly off course — accumulated incorrect state, gone in the wrong direction for multiple turns, or established incorrect assumptions that the compact summary would also include. Applying compact when reset is needed preserves the incorrect state in the summary; applying reset when compact would suffice discards progress unnecessarily.[^5]
 
 The decision criterion is the quality of what the session has produced: if the session's output to this point is largely correct and useful, compact and continue; if the session's output has been going in the wrong direction and a significant proportion of what would be captured in the summary is incorrect, start fresh with a better specification. The question is not "how much have I invested" — sunk cost reasoning leads to continuing bad sessions past the optimal stopping point — but "what is the starting state I want for the next phase of this work?"[^1]

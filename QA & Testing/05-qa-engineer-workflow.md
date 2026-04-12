@@ -16,6 +16,31 @@ This document covers the four core workflow areas: the QA engineer's repositione
 
 ## Section 1: The QA Engineer as Quality Gate, Not Test Generator
 
+```mermaid
+flowchart TD
+    A[Feature enters development] --> B[QA: Test session design review<br/>before test generation begins]
+    B --> C[AI generates implementation<br/>+ tests from same spec]
+    C --> D[QA: Coverage gap analysis<br/>after test generation]
+    D --> E{Circular validation<br/>risk?}
+    E -- Yes --> F[QA: Circularity check<br/>write independent tests]
+    E -- No --> G[QA: Review test suite<br/>signal quality assessment]
+    F --> G
+
+    G --> H[PR submitted]
+    H --> I[QA: Pre-release exploratory<br/>testing for AI-primary modules]
+    I --> J[Hypothesis-driven<br/>explore-module session]
+    J --> K{Failure mode<br/>discovered?}
+    K -- Yes --> L[Add to regression library<br/>tests/regression/ai-touched/]
+    L --> M[Add CLAUDE.md entry<br/>for this failure pattern]
+    K -- No --> N[Release approved]
+    M --> N
+
+    N --> O{Post-release incident?}
+    O -- Yes --> P[QA: Post-incident<br/>CLAUDE.md contribution]
+    P --> Q[Update test command library<br/>.claude/commands/]
+    O -- No --> R[Monthly AI practice review<br/>QA presents findings]
+```
+
 **Description:** In a pre-AI workflow, a significant portion of QA time was spent on activities that AI can now do well: generating test case scaffolding, writing boilerplate test structure, producing test cases for well-specified happy paths. The QA engineer's comparative advantage is not in generating test boilerplate — it is in the judgment-intensive activities that AI performs poorly: assessing whether a test suite would actually catch the failures that matter, identifying the implied tests that are not in the acceptance criteria, and breaking the circular validation that occurs when AI generates both code and tests from the same source.[^3]
 
 Repositioning the QA engineer as a quality gate rather than a test generator is not a demotion — it is an elevation to the work that produces the most value. A QA engineer who is spending 60% of their time writing test scaffolding that AI could generate is underutilized. A QA engineer who is spending 60% of their time on coverage gap analysis, regression library curation, test session design, and circularity breaking is providing a function that cannot be automated and that directly determines whether the team ships working software.

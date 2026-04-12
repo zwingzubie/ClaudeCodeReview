@@ -30,6 +30,33 @@ There is a second, more acute risk: typosquatting and dependency confusion attac
 
 ## Section 2: Automated Dependency Scanning
 
+```mermaid
+flowchart TD
+    A[Claude Code session suggests<br/>package X] --> B[Engineer: verify package<br/>exists in registry]
+    B --> C{Exact name match<br/>no typosquatting?}
+    C -- No --> D[Reject: possible<br/>typosquatting attack]
+    C -- Yes --> E{Maintainer active<br/>in last 12 months?}
+    E -- No --> F[Reject: abandoned package<br/>use team-approved alternative]
+    E -- Yes --> F2{CVE in advisory<br/>database?}
+    F2 -- Yes --> G[Reject or evaluate<br/>severity + fix available]
+    F2 -- No --> H{License compatible<br/>with team model?}
+    H -- No --> I[Reject: license conflict]
+    H -- Yes --> J[Add to manifest<br/>update lockfile]
+
+    J --> K[Pre-commit hook:<br/>npm audit / pip-audit]
+    K --> L{High/critical<br/>CVEs found?}
+    L -- Yes --> M[Block commit<br/>engineer resolves]
+    L -- No --> N[Commit proceeds]
+
+    N --> O[CI pipeline:<br/>npm audit --audit-level=high]
+    O --> P{Blocking findings?}
+    P -- Yes --> Q[PR merge blocked]
+    P -- No --> R[Dependabot daily scan<br/>on main branch]
+    R --> S{New CVE in<br/>existing dependency?}
+    S -- Yes --> T[Dependabot opens PR<br/>routes to dependency owner]
+    S -- No --> U[Clean]
+```
+
 **Description:** Manual dependency review is necessary but not sufficient. The CVE landscape changes continuously: a package that was clean at last review may have accumulated vulnerabilities since. Automated dependency scanning runs the current codebase's dependency manifest against an up-to-date vulnerability database on a defined cadence, producing alerts when dependencies with known vulnerabilities are detected. For a small team, this scanning is the difference between discovering a critical dependency vulnerability before deployment and discovering it via a breach notification.[^4]
 
 GitHub Dependabot (free for GitHub-hosted repositories), Snyk (free tier covers most small-team needs), and registry-native audit tools (`npm audit`, `pip-audit`, `bundler-audit`) each provide automated scanning at different levels of integration depth. Dependabot is the lowest-friction starting point for teams already on GitHub: it runs automatically, opens PRs for dependency updates, and requires no additional configuration for basic vulnerability scanning. Snyk provides richer context — exploitability scores, remediation guidance, license compliance — but requires a subscription for team-scale features. Registry-native tools provide the most current vulnerability data for their specific ecosystem and are appropriate for CI pipeline integration.

@@ -42,6 +42,34 @@ Per-engineer visibility is not a surveillance mechanism — it is a feedback mec
 
 ## Section 3: Approval Workflows for High-Cost Activities
 
+```mermaid
+flowchart TD
+    A[Engineer plans session] --> B{Expected cost<br/>> $5?}
+    B -- No --> C[Run session<br/>standard workflow]
+    B -- Yes --> D[Pre-notification:<br/>task + expected cost +<br/>model tier + expected output]
+    D --> E{Session type?}
+    E -- Agentic overnight /<br/>non-interactive --> F[Requires written<br/>architect approval]
+    E -- Large Opus /<br/>codebase analysis --> G[Slack / standup mention<br/>implicit approval if no redirect]
+
+    F --> H{Architect approves?}
+    H -- No --> I[Rescope session<br/>or use different approach]
+    H -- Yes --> J[Run session]
+    G --> J
+    C --> K[Session completes]
+    J --> K
+
+    K --> L{Session cost<br/>> $10?}
+    L -- Yes --> M[Log in session log:<br/>task type + outcome]
+    L -- No --> N[Sprint cost tracking]
+    M --> N
+
+    N --> O[Sprint cost retrospective<br/>10 min review]
+    O --> P{Over sprint<br/>allocation?}
+    P -- Yes --> Q[Identify overrun sessions<br/>were they justified?]
+    Q --> R[1-2 actions for next sprint]
+    P -- No --> S[Quarterly CTO review:<br/>cost-per-feature trend]
+```
+
 **Description:** Some AI usage patterns are predictably high-cost and warrant a lightweight pre-authorization workflow rather than retrospective review. Extended agentic sessions, full-codebase analysis, complex architectural analysis at Opus tier, and sessions that will run overnight or without active human supervision are the primary categories. Pre-authorization is not bureaucracy for its own sake — it is the mechanism by which the team ensures that high-cost activities have explicit rationale and expected value before they run, rather than after.[^2]
 
 The approval workflow for a team of 11 should be minimal: a brief Slack message or stand-up mention ("I'm planning a full-codebase security analysis session with Opus today — expected cost $15–20, should surface the dependency audit issues from last sprint"). This framing requires the engineer to estimate cost, articulate expected value, and create awareness before running the session. The architect can redirect if the approach is misaligned; otherwise, approval is implicit in the lack of redirection.[^3]

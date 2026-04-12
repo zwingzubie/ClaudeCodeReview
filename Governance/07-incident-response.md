@@ -32,6 +32,40 @@ The second distinct challenge is distinguishing AI-generation errors from human 
 
 ## Section 2: Incident Classification for AI-Generated Failures
 
+```mermaid
+flowchart TD
+    A[Production Failure Detected] --> B[Identify failing code path]
+    B --> C[Locate introducing commit]
+    C --> D{Generation method<br/>on PR?}
+    D -- AI-primary --> E[Page architect<br/>immediately]
+    D -- AI-assisted --> F[Standard response +<br/>AI overlay steps]
+    D -- Human-authored --> G[Standard incident<br/>response]
+
+    E --> H{Severity?}
+    H -- P1 --> I[Rollback / feature flag off<br/>Escalate to CTO in 1hr]
+    H -- P2 --> J[Mitigate<br/>Escalate in 4hr]
+    H -- P3 --> K[Log for sprint retro]
+
+    I --> L[Preserve logs & traces<br/>before rollback]
+    J --> L
+    L --> M[Parallel tracks]
+    M --> N[Engineer: stabilize]
+    M --> O[Architect: transcript RCA]
+    M --> P[QA: reproduce in staging]
+
+    O --> Q{Failure type?}
+    Q -- Generation error --> R[CLAUDE.md gap analysis]
+    Q -- Review failure --> S[PR template update]
+    Q -- Specification failure --> T[Product process review]
+    Q -- Comprehension failure --> U[Raise understanding<br/>requirements at review]
+
+    R --> V[Post-incident retrospective<br/>within 1 week]
+    S --> V
+    T --> V
+    U --> V
+    V --> W[Governance actions<br/>with owners + deadlines]
+```
+
 **Description:** The standard P1/P2/P3 severity classification applies to AI-generated failures, but requires additional dimensions to capture the AI-specific information needed for root cause analysis and post-incident governance. The severity classification determines the urgency of response; the AI-specific classification determines the investigation path and which governance actions are mandatory.[^4]
 
 Severity definitions remain standard: P1 is a production outage or data integrity failure affecting customers; P2 is a significant production degradation or security vulnerability requiring urgent remediation within hours; P3 is a defect affecting a subset of users or a non-critical function that can be resolved within the sprint. What changes for AI-generated failures is the addition of a classification dimension that distinguishes whether the failure was a generation error (the model produced incorrect code), a review failure (the model produced incorrect code and review did not catch it), a specification failure (the model correctly implemented what was asked but the specification was wrong), or a comprehension failure (correct code that could not be diagnosed quickly at incident time due to insufficient human understanding).[^3]

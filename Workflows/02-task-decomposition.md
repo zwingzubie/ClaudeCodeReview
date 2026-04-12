@@ -44,6 +44,33 @@ High-suitability tasks score well on all three axes: a new REST endpoint in an e
 
 ## Section 3: Decomposition in Practice
 
+```mermaid
+flowchart TD
+    A[Epic / Large Feature] --> B[Write spec.md<br/>requirements + design + AC]
+    B --> C[Break into atomic tasks<br/>one function / endpoint /<br/>component per task]
+
+    C --> D{Three-axis suitability<br/>per task}
+    D --> E{Common pattern<br/>in training data?}
+    E -- No --> F[Human-primary]
+    E -- Yes --> G{Relevant code<br/>examples available?}
+    G -- No --> F
+    G -- Yes --> H{Fast feedback<br/>loop available?}
+    H -- No --> F
+    H -- Yes --> I[AI-primary candidate]
+
+    I --> J{spec.md complete?}
+    J -- No --> K[Write spec.md first<br/>30-60 min investment]
+    K --> J
+    J -- Yes --> L[Single AI session<br/>≤ 300-line PR target]
+
+    F --> M[Human drafts with<br/>AI assisting refinement]
+
+    L --> N[Atomic commit]
+    M --> N
+    N --> O[Next task in spec.md]
+    O --> D
+```
+
 **Description:** Effective task decomposition for AI sessions is a different skill from traditional sprint planning or story breakdown. The relevant unit is not a user story but a prompt: a single, verifiable task that Claude can complete in one session without exceeding context limits or requiring organizational knowledge the AI cannot have.
 
 The practical standard is one function, one endpoint, one isolated component, one test suite for a specific module. Addy Osmani describes this as the "atomic chunk" principle: "Work in small, atomic chunks — commit after each logical change to create rollback save points and enable better AI performance on focused tasks."[^7] This is not just about AI performance; it is about maintaining the human review quality described in Issue 5. A 200-line PR representing one AI task is reviewable. A 1,200-line PR representing six merged AI tasks is not.

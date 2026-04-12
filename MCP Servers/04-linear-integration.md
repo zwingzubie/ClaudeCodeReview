@@ -46,6 +46,29 @@ The practical effect is that the implementation Claude produces is anchored to t
 
 ## Section 3: QA Workflow Integration
 
+```mermaid
+stateDiagram-v2
+    [*] --> Backlog: Issue created
+    Backlog --> InProgress: Sprint planning assigns ticket
+    InProgress --> InReview: Engineer submits PR
+    note right of InProgress
+        Claude reads full ticket<br/>+ all comments<br/>before writing code
+    end note
+    InReview --> InQA: PR approved
+    note right of InReview
+        Claude reads PR diff<br/>+ closing issue<br/>for review context
+    end note
+    InQA --> Done: Tests pass
+    InQA --> InProgress: Defect found
+    note right of InQA
+        Claude reads acceptance criteria<br/>generates test plan mapped<br/>to each criterion
+    end note
+    note right of InQA
+        Bot posts defect comment<br/>after engineer approval
+    end note
+    Done --> [*]
+```
+
 **Description:** The QA engineer's workflow is the highest-leverage application of the Linear integration beyond implementation sessions. Test planning sessions anchored to the ticket's acceptance criteria produce more complete coverage than those anchored to the engineer's memory of the acceptance criteria. The gap between those two starting points is where regression misses originate: a test suite that tests what the engineer remembered from the ticket rather than what the ticket actually specified.[^7]
 
 The specific value for QA is threefold: acceptance criteria are retrieved in full rather than recalled from memory, linked issues are available to reveal edge cases and dependency constraints that affect testing scope, and the comment thread is accessible to surface the implementation decisions that the QA engineer may not have been present for. Together, these inputs produce a test plan that reflects the full scope of what was built and why, not a reconstruction from partial information.
