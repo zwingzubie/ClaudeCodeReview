@@ -56,6 +56,23 @@ The 2× threshold is a governance flag, not an automatic intervention threshold.
 
 ## Section 4: Root Cause Analysis for Rework
 
+```mermaid
+flowchart TD
+    A[Rework Event Observed] --> B{Root Cause?}
+    B --> C[Defect Rework]
+    B --> D[Architectural Rework]
+    B --> E[Comprehension-Driven\nRewrite]
+    C --> F[Verification Gap\nImprove prompting & review]
+    D --> G[CLAUDE.md Context Gap\nAdd architectural guidance]
+    E --> H[Readability Standard Gap\nEnforce naming & comment standards]
+    F --> I[Measure Rework Rate\nDifferential Next Sprint]
+    G --> I
+    H --> I
+    I --> |Differential still > 2×| J[Governance Review]
+    I --> |Differential 1.3–1.5×| K[Healthy Range — Continue Monitoring]
+    J --> B
+```
+
 **Description:** Rework events fall into three root cause categories, each of which signals a different governance gap: defect rework (the code was incorrect and required bug fixes), architectural rework (the code was correct but did not fit the codebase's structural patterns and required redesign), and comprehension-driven rewrite (the code worked but was sufficiently difficult to understand that the team chose to rewrite rather than extend it). The proportion of rework in each category is diagnostic: a team with high defect rework has a verification gap; a team with high architectural rework has a CLAUDE.md context gap; a team with high comprehension-driven rework has a readability and review standard gap.[^9]
 
 Architectural rework is the most expensive and the most preventable. It occurs when AI-generated code solves the stated problem correctly but in a way that violates the codebase's established patterns — using a different abstraction layer, duplicating logic that should reference a shared component, or introducing dependencies that conflict with the module's intended isolation. This type of rework is preventable through CLAUDE.md configuration that describes architectural patterns explicitly, but it is invisible without root cause analysis — aggregate rework rate does not distinguish it from defect correction.[^10]
@@ -123,7 +140,7 @@ The most direct improvement loop is CLAUDE.md updates triggered by rework root c
 [^8]: daily.dev — "Engineering Metrics for AI Code Governance in 2026," daily.dev, April 2026. https://daily.dev/blog/engineering-metrics-ai-governance-2026
     Overview of threshold-based governance triggers; describes the 2× rework differential as the industry-consensus flag for escalation.
 
-[^9]: Fannar Steinn Sigurdsson et al. — "Root Cause Classification of AI-Generated Code Failures," arXiv:2505.16339, May 2025. https://arxiv.org/abs/2505.16339
+[^9]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
     Empirical study classifying AI code failures into defect, architectural, and comprehension categories; provides frequency distributions and governance recommendations for each.
 
 [^10]: Kyros — "CLAUDE.md as Architecture Documentation: Preventing AI Architectural Drift," Kyros Engineering Blog, March 2026. https://kyros.ai/blog/claudemd-architecture-documentation

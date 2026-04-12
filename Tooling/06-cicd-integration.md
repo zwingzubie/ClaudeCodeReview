@@ -10,6 +10,26 @@ Running Claude Code in CI/CD pipelines extends its analysis capabilities beyond 
 
 This memo covers when CI-run Claude Code adds value versus when it adds noise, how to configure automated PR review steps, how to integrate Claude Code with security gate tooling, how to use CI to enforce test coverage standards on AI-primary code, and how to maintain a governance-grade audit trail of pipeline runs. The common thread is intentionality: each CI integration should have a defined purpose, a defined scope, and a defined threshold for what constitutes a blocking finding versus an advisory comment. Pipelines without these definitions accumulate Claude Code steps that generate noise, fatigue engineers, and are eventually disabled — which is worse than never adding them.[^2]
 
+```mermaid
+flowchart TD
+    PR[Pull Request Opened] --> R[PR Review Step\n/review-pr skill]
+    PR --> S[Security Gate\nSAST output + Claude triage]
+    PR --> C[Coverage Gate\nAI-primary threshold check]
+    R --> RF{Critical\nFindings?}
+    RF --> |Yes| BLOCK[Block Merge\nLine-specific review comments]
+    RF --> |No| ADVISE[Advisory PR Comments\nOrganized by category]
+    S --> SF{High/Critical\nVulnerabilities?}
+    SF --> |Yes| BLOCK
+    SF --> |No| ADVISE
+    C --> CF{Coverage\nBelow Threshold?}
+    CF --> |Yes| GEN[Generate Candidate Tests\nPosted as PR comment for review]
+    CF --> |No| MERGE[Ready to Merge]
+    BLOCK --> |Engineer addresses or dismisses\nwith justification| MERGE
+    ADVISE --> MERGE
+    GEN --> |Engineer reviews\nand merges tests| MERGE
+    MERGE --> LOG[Audit Log\ntimestamp · skill version · findings · dismissals]
+```
+
 ---
 
 ## Section 1: Claude Code in CI Pipelines
@@ -100,7 +120,7 @@ Tracking suppressed findings is as important as tracking acted-upon findings. If
 [^2]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
     CI integration intentionality: why each pipeline step needs a defined purpose and threshold; the noise-vs-value distinction; human override mechanisms for blocking findings.
 
-[^3]: Fannar Steinn et al. — "Automated Code Review Quality with Large Language Models," arXiv:2505.16339, 2026. https://arxiv.org/abs/2505.16339
+[^3]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
     CI review quality: the relationship between skill/prompt design and false-positive rate; how generic prompts produce noise and structured prompts produce actionable findings; false-positive fatigue as a pipeline risk.
 
 [^4]: Jack Herrington — "Claude Code CI Integration: A Practical Setup Guide," YouTube, February 2026. https://www.youtube.com/watch?v=9nVlR4MqF7E

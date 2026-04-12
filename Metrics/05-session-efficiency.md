@@ -28,6 +28,20 @@ The context exhaustion problem is structural. Claude Code sessions have a finite
 
 ## Section 2: Session Length and Complexity Thresholds
 
+```mermaid
+flowchart TD
+    A[Session in Progress] --> B{Complexity Signal\nDetected?}
+    B --> |No| C{Session > 90 min or\n> 800 lines generated?}
+    C --> |No| A
+    C --> |Yes| B
+    B --> |Yes| D{Still on original\ntask frame?}
+    D --> |Yes — context\nstill coherent| E[Run /compact]
+    D --> |No — scope has\nexpanded significantly| F[Start Fresh Session]
+    E --> G[Continue with\ncompacted context]
+    F --> H[Reconstruct relevant context\n3-min setup: CLAUDE.md +\nmodule examples + task summary]
+    H --> I[New Focused Session]
+```
+
 **Description:** No single session length threshold applies to all tasks or all engineers, but there are complexity signals that reliably indicate when a session is approaching the point of diminishing returns. These signals include: the AI beginning to repeat suggestions it made earlier in the session, the output starting to lack the specific variable names and function patterns established in the codebase examples loaded at session start, the task requiring coordination across more than three files simultaneously, and the engineer finding it difficult to evaluate whether the AI's output is correct because the session context is too large to hold in working memory.[^5]
 
 The /compact decision point — when to run /compact versus when to start a fresh session — depends on whether the important context from the session's start is still accessible and relevant. If the session has moved significantly from the original task frame, starting fresh with a tightly scoped context is usually more effective than compacting and continuing, because /compact preserves a summary of what happened but cannot restore the specific code examples and constraints that shaped the session's best outputs. If the session is still on the original task and the context is still coherent, /compact can extend the session productively.[^6]
@@ -110,7 +124,7 @@ Whether session efficiency varies by engineer or by task type is a diagnostic qu
 [^3]: METR — "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity," February 2026. https://metr.org/blog/2026-02-ai-developer-productivity
     Includes analysis of session length and output quality correlation; documents the point-of-diminishing-returns pattern in long AI coding sessions.
 
-[^4]: Fannar Steinn Sigurdsson et al. — "Context Window Saturation and Output Quality Degradation in Long LLM Coding Sessions," arXiv:2505.16339, May 2025. https://arxiv.org/abs/2505.16339
+[^4]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
     Empirical study of output quality as a function of session length and context density; documents the context exhaustion mechanism and its effect on code consistency.
 
 [^5]: The Pragmatic Engineer — "Session Structure for AI-Assisted Development: What High-Performing Teams Do Differently," The Pragmatic Engineer Newsletter, March 2026. https://newsletter.pragmaticengineer.com/p/session-structure-ai-development

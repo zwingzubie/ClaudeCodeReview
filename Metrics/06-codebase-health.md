@@ -8,6 +8,22 @@
 
 Codebase health is the lagging indicator in the AI governance metrics suite. While defect rates and security findings reflect what AI-generated code did wrong in a specific sprint, codebase health metrics reflect what AI adoption has done to the codebase's long-term structure, maintainability, and coherence over months or quarters. GitClear's 2025 analysis documented the structural shifts that AI adoption introduces at scale: copy-paste code percentage rising from 8.3% to 12.3%, refactoring declining from 25% to under 10% of commit activity.[^1] These are not quality failures in individual PRs — they are systemic changes in the codebase's evolutionary trajectory, produced by the cumulative effect of AI generation patterns that optimize for new code output over structural maintenance.
 
+```mermaid
+flowchart LR
+    A[AI Adoption\nIncreases] --> B[More AI-Generated Code\nOptimized for Direct Solutions]
+    B --> C[Duplication Rises\nRefactoring Declines\nComplexity Increases]
+    C --> D[CLAUDE.md Context\nMust Grow to Stay Accurate]
+    D --> E[Sessions Need More\nManual Context Loading]
+    E --> F[AI Output Deviates\nfrom Established Patterns]
+    F --> G[More Architectural\nRework]
+    G --> C
+    C --> H{Health Threshold\nExceeded?}
+    H --> |Yes| I[Remediation Sprint:\nDeduplication + Refactoring]
+    I --> J[Update CLAUDE.md\nArchitecture Guidance]
+    J --> B
+    H --> |No| K[Continue Quarterly\nMonitoring]
+```
+
 The feedback loop makes codebase health a high-priority governance concern: poor codebase health degrades future AI output quality. As duplication rises and complexity increases, the CLAUDE.md context required to navigate the codebase accurately becomes more extensive, sessions require more manual context loading to produce targeted outputs, and AI-generated code is more likely to deviate from established patterns because those patterns are harder to represent concisely in context. Monitoring codebase health proactively — before the degradation is severe enough to impede development — is both a quality governance practice and a practical investment in the team's future AI productivity.[^2]
 
 ---
@@ -129,7 +145,7 @@ Automated metrics for architectural consistency include import graph consistency
 [^10]: GitHub Octoverse — "The State of AI in Software Development," GitHub Octoverse Report, 2025. https://octoverse.github.com/2025
     Includes analysis of test coverage patterns in AI-assisted repositories; documents the implementation-following test bias in same-session test generation.
 
-[^11]: Fannar Steinn Sigurdsson et al. — "Behavioral vs. Implementation Coverage: Evaluating AI-Generated Test Suites," arXiv:2505.16339, May 2025. https://arxiv.org/abs/2505.16339
+[^11]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
     Empirical study of behavioral coverage quality in AI-generated test suites; quantifies the gap between line coverage percentage and behavioral coverage completeness.
 
 [^12]: Stack Overflow — "Developer Survey 2025: AI Tools and Code Quality," Stack Overflow, December 2025. https://stackoverflow.com/research/2025-developer-survey

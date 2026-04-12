@@ -42,6 +42,22 @@ When criteria are well-formed, the test generation output can be high quality. A
 
 ## Section 3: The Risk of Circular Validation
 
+```mermaid
+flowchart TD
+    AC[Acceptance Criteria] --> AI[Claude Code Session]
+    AI --> IMPL[Implementation]
+    AI --> TESTS[Generated Tests]
+    IMPL --> PASS{Tests Pass?}
+    TESTS --> PASS
+    PASS --> |Yes — but shared\nmisinterpretation| SHIP[Feature Ships Broken]
+    PASS --> |Yes — correct| OK[Feature Works Correctly]
+
+    AC --> QA[QA Engineer\nIndependent Review]
+    QA --> CHECK{Does implementation\nmatch intent?}
+    CHECK --> |No — catches\ncircularity| FIX[Fix Before Ship]
+    CHECK --> |Yes| OK
+```
+
 **Description:** Circular validation is the failure mode in which the same misunderstanding of a requirement propagates into both the implementation and the tests, and both appear correct because they are consistent with each other rather than with the requirement. It is the most significant risk in AI-assisted acceptance criteria automation, and it is structurally difficult to detect because every visible quality signal — test pass rate, coverage percentage, CI status — is green.[^2]
 
 The mechanism is specific: Claude Code reads an acceptance criterion, forms an interpretation of what it means, generates implementation code based on that interpretation, and generates test cases based on the same interpretation. If the interpretation is correct, both the implementation and the tests are correct. If the interpretation is wrong, both are wrong in the same way. A human reviewer who did not write the original acceptance criterion and did not observe the AI's interpretation is the only way to break this circularity — they can read both the criterion and the implementation and assess whether the implementation actually satisfies the criterion as the product team intended it.[^6]
@@ -96,7 +112,7 @@ This repositioning changes what the QA engineer does, not whether their role is 
 [^5]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
     Testability criteria for acceptance criteria: the conditions under which AI test generation from requirements is reliable versus high-risk; product manager roles in preventing circular validation.
 
-[^6]: Fannar Steinn Sigurdsson et al. — "Root Cause Classification of AI-Generated Code Failures," arXiv:2505.16339, May 2025. https://arxiv.org/abs/2505.16339
+[^6]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
     Shared misinterpretation as a failure root cause category; the empirical distribution of circular validation failures versus coverage gap failures in AI-generated test suites.
 
 [^7]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf

@@ -30,6 +30,19 @@ The specification input is the most critical. When Claude Code has access to the
 
 ## Section 2: The Writer/Reviewer Pattern Applied to Tests
 
+```mermaid
+flowchart TD
+    A[Spec / Acceptance Criteria] --> B[Test Generation Session\nWriter — spec + known edge cases]
+    B --> C[Generated Test Suite]
+    C --> D[Reviewer Session\nFresh context — spec only, no implementation]
+    A --> D
+    D --> E{Gaps Found?}
+    E --> |Yes| F[Gap Report:\nMissing spec coverage\nWeak assertions\nUncovered error paths]
+    F --> G[Extend Test Suite]
+    G --> D
+    E --> |No| H[Test Suite Complete\nfor Human Review]
+```
+
 **Description:** The writer/reviewer pattern — running a fresh-context session to review the output of a generating session — is as applicable to test suites as it is to implementation code. The generating session knows which failure modes it chose to cover; it cannot easily see which failure modes it did not cover, because the uncovered modes are not present in its context. A fresh-context reviewer session approaches the test suite with no knowledge of the implementation choices and can identify gaps that are structurally invisible to the generating session.[^5]
 
 The reviewer session for a test suite has a different prompt than the reviewer session for implementation code. The reviewer is not looking for bugs in the tests themselves — it is looking for missing coverage: failure modes that exist in the spec but are not exercised by any test, edge cases that a fresh reading of the requirements surfaces, and assertions that are phrased so weakly that they would pass even if the implementation were wrong. This is gap analysis, not bug detection.[^5]
@@ -98,7 +111,7 @@ This failure mode is distinct from coverage gaps. Coverage tools will report 100
 [^5]: Workflows — "06-writer-reviewer-pattern.md," ClaudeCodeReview, 2026.
     The writer/reviewer pattern: fresh-context gap analysis as the structural complement to generating sessions; reviewer session prompt design for test suite gap detection rather than bug detection.
 
-[^6]: Fannar Steinn Sigurdsson et al. — "Root Cause Classification of AI-Generated Code Failures," arXiv:2505.16339, May 2025. https://arxiv.org/abs/2505.16339
+[^6]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
     Context degradation in combined test sessions: the empirical case for separating unit and integration test generation; context scope as a determinant of test quality in AI-generated suites.
 
 [^7]: Henry Coles — "PIT Mutation Testing," pitest.org, 2025. https://pitest.org
