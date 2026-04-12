@@ -118,7 +118,7 @@ This repositioning requires deliberate workflow changes. The QA engineer must us
 [^10]: GitClear — "2025 Coding on Copilot: 2023 Data Shows Downward Pressure on Code Quality," GitClear Research, 2025. https://www.gitclear.com/coding_on_copilot_data_shows_ais_downward_pressure_on_code_quality
     AI-generated regression patterns: higher regression introduction rates correlated with context window limits; cross-module dependency failures as the primary regression mechanism in AI-generated code.
 
-[^11]: Fannar Steinn Sigurdsson et al. — "Root Cause Classification of AI-Generated Code Failures," arXiv:2505.16339, May 2025. https://arxiv.org/abs/2505.16339
+[^11]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
     Regression classification and prevention: the distinction between regressions caused by AI unfamiliarity with edge cases versus regressions caused by context window limits; curated regression libraries as a preventive response.
 
 [^12]: Boris Cherny — "How Boris Uses Claude Code," howborisusesclaudecode.com, January 2026. https://howborisusesclaudecode.com
