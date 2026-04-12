@@ -171,3 +171,7 @@ The METR productivity studies found that tasks where engineers expected 19% spee
     - Anti-pattern catalog: all six anti-patterns demonstrated in context of a real development workflow, with structural alternatives shown in the same session
     - CLAUDE.md clarification instruction: how adding "ask before improving without specific objectives" to CLAUDE.md prevents the vague improvement request anti-pattern at the session level
     - Permission review practice: the specific habit that maintains meaningful permission oversight while minimizing friction in high-velocity sessions
+
+[^a]: [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md) — prompt anti-patterns are a primary cause of fragmentation; engineers who prompt poorly produce inconsistent output that compounds into the fragmentation risk described there.
+[^b]: [Prompting: Prompt Architecture](01-prompt-architecture.md) — prompt anti-patterns are defined in contrast to prompt architecture; knowing what degrades output is the inverse of knowing what structures it well.
+[^c]: [Governance: Review Policies](../Governance/01-review-policies.md) — reviewers should recognize when AI-generated code bears the signatures of anti-pattern prompting; the anti-pattern analysis informs what review should look for.

@@ -1,6 +1,6 @@
 ## Session and Context Efficiency: Getting Consistent Output from Claude Code Sessions
 
-**Related to:** [Metrics Overview](00-overview.md) — Metric 4: Session and Context Efficiency
+**Related to:** [Metrics Overview](00-overview.md) — Metric 4: Session and Context Efficiency · [Issues: Skill Atrophy](../Issues/06-skill-atrophy.md)[^a] · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^b] · [Ethics: Environmental Costs](../Ethics/05-environmental-costs.md)[^c]
 
 ---
 
@@ -143,3 +143,9 @@ Whether session efficiency varies by engineer or by task type is a diagnostic qu
     - 0:00–2:30: Overview of task type as a predictor of session efficiency
     - 4:30–8:00: Demonstration of session structuring notes in CLAUDE.md for high-failure task types
     - 10:00–13:30: How prompt library and CLAUDE.md work together to reduce session overhead
+
+[^a]: [Issues: Skill Atrophy](../Issues/06-skill-atrophy.md) — declining session efficiency without AI assistance is a leading indicator of skill atrophy; the metric distinguishes AI-assisted from AI-dependent output.
+
+[^b]: [Workflows: Context Engineering](../Workflows/03-context-engineering.md) — context engineering quality is the primary variable in session efficiency; sessions with well-engineered context produce more in fewer turns.
+
+[^c]: [Ethics: Environmental Costs](../Ethics/05-environmental-costs.md) — session efficiency is the operational form of the environmental cost concern; efficient sessions minimize compute per unit of output.

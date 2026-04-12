@@ -149,3 +149,9 @@ The most direct improvement loop is CLAUDE.md updates triggered by rework root c
     - 0:00–4:00: Overview of team-level AI governance metrics including rework rate
     - 7:00–10:30: Demonstrates the PR origin classification system and rework tagging
     - 15:00–19:00: Case study of rework-driven CLAUDE.md updates in production
+
+[^a]: [Issues: Comprehension Debt](../Issues/01-comprehension-debt.md) — rework rate is the primary metric for detecting comprehension debt in production; high rework on AI-generated code indicates that engineers accepted output they did not fully understand.
+
+[^b]: [Governance: Review Policies](../Governance/01-review-policies.md) — review policy quality is reflected in rework rates; policies that are not substantively applied produce locally high pass rates and elevated post-merge rework.
+
+[^c]: [Workflows: Verification-Driven Development](../Workflows/05-verification-driven-development.md) — verification-driven development is the workflow practice with the strongest evidence for reducing rework; the metric and the practice are paired as outcome and intervention.

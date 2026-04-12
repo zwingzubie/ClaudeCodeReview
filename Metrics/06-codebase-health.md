@@ -1,6 +1,6 @@
 ## Codebase Health Indicators: Monitoring Long-Term Structural Effects of AI Adoption
 
-**Related to:** [Metrics Overview](00-overview.md) — Metric 5: Codebase Health Indicators
+**Related to:** [Metrics Overview](00-overview.md) — Metric 5: Codebase Health Indicators · [Issues: Codebase Bloat](../Issues/02-codebase-bloat.md)[^a] · [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md)[^b] · [Governance: Quarterly Health Review](../Governance/05-quarterly-health-review.md)[^c]
 
 ---
 
@@ -155,3 +155,9 @@ Automated metrics for architectural consistency include import graph consistency
     - 0:00–3:30: Overview of the five health dimensions and their measurement tools
     - 6:00–10:30: Live setup of SonarQube configuration for AI-origin tracking
     - 13:00–16:00: Connecting health metric alerts to CLAUDE.md update triggers
+
+[^a]: [Issues: Codebase Bloat](../Issues/02-codebase-bloat.md) — codebase health indicators operationalize the bloat risk described there; the metrics make the surface area expansion visible as a measurable signal.
+
+[^b]: [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md) — ADR currency is a codebase health indicator; a codebase whose ADRs are outdated is a codebase whose documented constraints no longer match actual structure.
+
+[^c]: [Governance: Quarterly Health Review](../Governance/05-quarterly-health-review.md) — codebase health metrics are a required input to quarterly review; structural health trends inform the CTO's AI autonomy decisions.

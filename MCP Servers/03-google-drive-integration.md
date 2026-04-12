@@ -135,3 +135,7 @@ This pattern does require that the referenced Drive documents are well-organized
 
 [^10]: Anthropic — "MCP Security Best Practices," Model Context Protocol Documentation, 2025. https://modelcontextprotocol.io/docs/concepts/security
     Minimum-permission configuration; prompt injection risk via retrieved document content; governance model for write-access MCP operations.
+
+[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the Google Drive server specifically.
+[^b]: [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md) — Google Drive MCP makes ADRs stored in Drive queryable within sessions; it is the accessibility mechanism for teams whose ADRs live in Drive.
+[^c]: [Workflows: Context Engineering](../Workflows/03-context-engineering.md) — Google Drive MCP provides access to external documentation stores; it extends the context engineering layer to cover documentation that cannot live in the repository.

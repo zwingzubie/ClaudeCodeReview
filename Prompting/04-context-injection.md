@@ -1,6 +1,6 @@
 ## Context Injection: Getting the Right Information to Claude at the Right Level
 
-**Related to:** [Prompting Overview](00-overview.md) — Pattern 3
+**Related to:** [Prompting Overview](00-overview.md) — Pattern 3 · [Workflows: Context Engineering](../Workflows/03-context-engineering.md)[^a] · [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md)[^b] · [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md)[^c]
 
 ---
 
@@ -147,3 +147,7 @@ Not all context is equally worth preserving when compressing. The decisions — 
     - Context layer discipline: why injecting CLAUDE.md-level context in every prompt is a sign of a broken context hierarchy rather than good practice
     - Session memory assumptions: the specific failure modes engineers encounter when they assume Claude retains context from a prior session
     - Context compression timing: when to `/compact`, when to close and restart, and the output quality signals that indicate the context window is becoming a quality bottleneck
+
+[^a]: [Workflows: Context Engineering](../Workflows/03-context-engineering.md) — context injection is a specific technique within the broader context engineering discipline; the two documents describe the practice at different levels of specificity.
+[^b]: [Tooling: CLAUDE.md Configuration](../Tooling/01-claude-md-configuration.md) — CLAUDE.md is the primary context injection mechanism for session-persistent information; explicit injection supplements what CLAUDE.md already provides.
+[^c]: [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md) — pre-loading ADR context into sessions is a primary use case for context injection; the two documents describe the artifact and its injection pattern.

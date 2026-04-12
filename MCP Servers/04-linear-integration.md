@@ -135,3 +135,7 @@ For the architect reviewing implementation sessions, cross-tool chaining also cr
 [^10]: Jack Herrington — "Claude Code MCP Servers: A Complete Setup Guide," YouTube, November 2025. https://www.youtube.com/watch?v=3QkVZj_nKoA
     - ~4:30 — Cross-tool MCP configuration: combining Linear, GitHub, and Drive integrations in a single session configuration
     - ~12:15 — Security: credential management for multiple MCP servers; minimum-permission scoping across tool integrations
+
+[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the Linear server specifically.
+[^b]: [Governance: Sprint Planning Gates](../Governance/03-sprint-planning-gates.md) — Linear MCP provides ticket context to sessions; sprint planning gate classifications can be surfaced within sessions working on classified tickets.
+[^c]: [Workflows: Task Decomposition](../Workflows/02-task-decomposition.md) — Linear MCP provides task context that informs decomposition; sessions can query ticket requirements and acceptance criteria as part of task planning.

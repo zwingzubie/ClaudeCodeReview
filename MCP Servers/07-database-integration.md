@@ -123,3 +123,8 @@ The architect's role in database MCP governance is more active than in other MCP
 
 [^6]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
     External tool integration as context engineering; how live data access replaces summarization in high-value backend sessions; schema drift as a systemic error source in AI-assisted database development.
+
+[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to database server implementations.
+[^b]: [Security: Secrets Management](../Security/04-secrets-management.md) — database MCP requires connection credentials; secrets management practices are critical for database server configuration.
+[^c]: [MCP Servers: Configuration, Security, and Governance](06-configuration-security-governance.md) — database access requires the most rigorous MCP governance; the governance framework should be applied at maximum stringency for database servers.
+[^d]: [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md) — database MCP permission scoping controls what Claude Code can query and modify; permission configuration for database servers requires particular care.

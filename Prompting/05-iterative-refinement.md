@@ -1,6 +1,6 @@
 ## Iterative Refinement: Getting to the Right Output Through Structured Loops
 
-**Related to:** [Prompting Overview](00-overview.md) — Pattern 4
+**Related to:** [Prompting Overview](00-overview.md) — Pattern 4 · [Workflows: Verification-Driven Development](../Workflows/05-verification-driven-development.md)[^a] · [Metrics: Rework Rate](../Metrics/03-rework-rate.md)[^b] · [Workflows: Session Hygiene](../Workflows/04-session-hygiene.md)[^c]
 
 ---
 
@@ -150,3 +150,7 @@ Iteration templates accumulate from real sessions. Every time a session finds an
     - Iteration planning: how to classify a task as single-shot vs. iteration-required at the start of a session and the different session designs for each
     - Preserve-what-is-good pattern: demonstration of correction prompts that explicitly scope the correction to avoid unintended changes to correct prior-round output
     - Iteration templates in the prompt library: how templates are stored, referenced, and updated based on new session learnings
+
+[^a]: [Workflows: Verification-Driven Development](../Workflows/05-verification-driven-development.md) — verification-driven development structures the feedback loop that iterative refinement depends on; the ability to verify output is what makes structured refinement possible.
+[^b]: [Metrics: Rework Rate](../Metrics/03-rework-rate.md) — iterative refinement within a session reduces post-merge rework; the metric captures whether refinement is happening at the session level or the post-merge level.
+[^c]: [Workflows: Session Hygiene](../Workflows/04-session-hygiene.md) — session hygiene governs when to end versus continue a session; iterative refinement requires knowing when the session context has degraded to the point where refinement will not converge.

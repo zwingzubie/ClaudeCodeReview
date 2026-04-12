@@ -139,3 +139,8 @@ For automated sessions — CI pipelines, scheduled jobs, or other contexts where
 
 [^10]: Greg Kamradt — "MCP Servers for Teams: Governance and Rollout Patterns," YouTube, March 2026. https://www.youtube.com/watch?v=F8pOxXoqFcQ
     Write-access governance: the confirmation-per-write-operation policy; categorizing operations by reversibility; the case study of a team that introduced write access too broadly and the incident that resulted.
+
+[^a]: [Tooling: Settings and Permissions](../Tooling/05-settings-and-permissions.md) — MCP server permissions are a specific category of settings governance; the two documents address the same concern at tool level and MCP level.
+[^b]: [Security: Secrets Management](../Security/04-secrets-management.md) — MCP server configurations often include credentials and API keys; secrets management practices are a prerequisite for secure MCP configuration.
+[^c]: [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md) — usage policy governs what data sources Claude Code can access; MCP server configuration is the technical implementation of those access boundaries.
+[^d]: [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md) — MCP servers can expose sensitive data to AI sessions; privacy protection requires that MCP scope is governed as carefully as direct file access.

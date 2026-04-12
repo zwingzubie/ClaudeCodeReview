@@ -133,3 +133,7 @@ For the QA engineer, cross-repository search is useful for identifying test cove
 [^9]: Greg Kamradt — "MCP Servers for Teams: Governance and Rollout Patterns," YouTube, March 2026. https://www.youtube.com/watch?v=F8pOxXoqFcQ
     - ~9:10 — Shared `.mcp.json` in version control: review discipline, per-server scope documentation, and quarterly access audit workflow
     - ~17:50 — Prompt injection via MCP tool results: threat model and the human-in-the-loop confirmation pattern
+
+[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the GitHub server specifically.
+[^b]: [Governance: Review Policies](../Governance/01-review-policies.md) — GitHub MCP enables sessions to query PR context during review; it is a tool for making review policy requirements actionable within a session.
+[^c]: [Workflows: Context Engineering](../Workflows/03-context-engineering.md) — GitHub MCP provides live repository context to sessions; it is a primary context engineering tool for teams whose work context lives in GitHub.

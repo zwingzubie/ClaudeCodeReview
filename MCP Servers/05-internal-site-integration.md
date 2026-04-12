@@ -140,3 +140,7 @@ For maintenance, the server's error logs are the primary signal: errors that rep
 
 [^10]: Anthropic — "MCP Security Best Practices," Model Context Protocol Documentation, 2025. https://modelcontextprotocol.io/docs/concepts/security
     Credential management for shared MCP servers; prompt injection risk; the elevated blast radius of compromised shared-server credentials vs. individual credentials.
+
+[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to custom internal server implementations.
+[^b]: [Security: Secrets Management](../Security/04-secrets-management.md) — internal MCP servers often require authentication credentials; secrets management practices apply to MCP server configuration.
+[^c]: [MCP Servers: Configuration, Security, and Governance](06-configuration-security-governance.md) — internal server implementations require the same configuration security analysis as commercial MCP servers; the governance framework applies to both.

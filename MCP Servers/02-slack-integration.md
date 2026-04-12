@@ -136,3 +136,7 @@ This is not a hypothetical concern. A team member who asks a sensitive question 
 [^10]: Greg Kamradt — "MCP Servers for Teams: Governance and Rollout Patterns," YouTube, March 2026. https://www.youtube.com/watch?v=F8pOxXoqFcQ
     - ~9:10 — Shared `.mcp.json` in version control: review discipline, per-server scope documentation, and quarterly access audit workflow
     - ~25:30 — Case study: permission incidents during team MCP rollout and resulting configuration changes
+
+[^a]: [Tooling: MCP Integration](../Tooling/03-mcp-integration.md) — MCP integration covers the general configuration discipline; this document applies it to the Slack server specifically.
+[^b]: [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md) — Slack MCP makes conversation-based decisions queryable; it is a tool for capturing the tacit knowledge that knowledge transfer practices depend on.
+[^c]: [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md) — Slack MCP can surface shared prompting patterns from team channels; it is a discovery mechanism for reducing fragmentation.
