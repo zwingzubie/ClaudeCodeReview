@@ -92,6 +92,22 @@ Compliance requirements around AI are evolving rapidly. What was not asked in a 
 
 ---
 
+---
+
+## Scaling Beyond 11 Engineers
+
+The governance policies documented here were designed for a team of 11. Not all of them scale linearly as the team grows. When headcount reaches 15 or above, three structural changes become necessary before the current policies break down.
+
+First, the architect can no longer be the sole reviewer for CLAUDE.md corrections, override requests, and new capability authorizations without creating a blocking bottleneck. At 15+ engineers, assign domain leads (backend lead, frontend lead) as co-reviewers for the instruction files they own, with the architect retaining final authority on the root CLAUDE.md and security-invariants files. The CODEOWNERS file should reflect this tiered ownership explicitly.[^11]
+
+Second, the agentic-delegated usage category requires more formal governance at scale. With 11 engineers, informal architect notification before sessions exceeding two hours is workable. With 15 or more, a lightweight request-and-approval workflow (a two-field form: task description and checkpoint plan) replaces informal notification, ensuring the architect has documented context for every authorized agentic session rather than relying on recall.[^3]
+
+Third, the quarterly engineering health review shifts from an architect-to-CTO presentation to a cross-functional review including domain leads. The dataset grows too large for one person to interpret without domain context; domain leads provide the contextual interpretation that keeps aggregate metrics actionable. The CTO's role remains strategic oversight rather than operational management of the specifics.[^16]
+
+These changes are not improvements to the current governance — they are anticipatory adaptations for a scale at which the current structure would produce bottlenecks or lose coverage. Review whether any of these structural changes are warranted at each quarterly health review, using team size and policy violation frequency as the primary indicators.
+
+---
+
 ## Summary of Recommended Actions
 
 | Policy Area | Immediate Action | Owner |
