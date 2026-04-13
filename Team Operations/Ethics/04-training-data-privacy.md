@@ -22,7 +22,7 @@ The critical distinction is between what is logged and what is used for training
 - Brief the full team on the distinction between session logging (which occurs under all plans) and training data contribution (which varies by plan and configuration). Engineers who understand the full data lifecycle make more careful session composition decisions.[^1]
 - Add a session data awareness question to the team's development workflow checklist: "Does this session include data that was produced under a privacy obligation or competitive confidentiality expectation?" This question, asked before session composition, is the primary intervention point for preventing inadvertent privacy exposure.
 - Maintain a written summary of the team's current Anthropic plan type and its data handling provisions, updated whenever the plan changes. This document should be accessible to all engineers, not just to the CTO who manages the account.[^3]
-- Review the team's data handling provisions after any significant change to the product's data processing obligations — a new customer contract, a new regulatory requirement, a significant product feature change. What was adequate before the change may not be adequate after it.[^6]
+- Review the team's data handling provisions after any significant change to the product's data processing obligations — a new customer contract, a new regulatory requirement, a significant product feature change. What was adequate before the change may not be adequate after it.
 
 ---
 
@@ -30,12 +30,12 @@ The critical distinction is between what is logged and what is used for training
 
 **Description:** Anthropic's data use policies differentiate between individual API use, team API use, and enterprise API use, with different data retention, training data contribution, and data processing terms at each tier. For the Claude Code integration, the relevant policy document is Anthropic's Usage Policy and the applicable data processing addendum for the team's plan type. The policies were most recently substantively updated in late 2025 and apply to sessions generated through both the API and the Claude Code product.[^7]
 
-Under the current policies, enterprise plan customers can negotiate data processing agreements that include training data opt-out, reduced retention periods, and data residency provisions. These provisions are not available by default under individual or standard team plans. The practical implication for a team working on a commercial product with customer data is that the default plan may not provide the data handling protections the team's obligations require — and that determining whether the current plan is adequate requires reading the current policy documentation, not relying on assumptions formed when the plan was first established.[^8]
+Under the current policies, enterprise plan customers can negotiate data processing agreements that include training data opt-out, reduced retention periods, and data residency provisions. These provisions are not available by default under individual or standard team plans. The practical implication for a team working on a commercial product with customer data is that the default plan may not provide the data handling protections the team's obligations require — and that determining whether the current plan is adequate requires reading the current policy documentation, not relying on assumptions formed when the plan was first established.
 
 **Recommended Practice:**
 - The CTO should review the current Anthropic data use policy and data processing addendum annually, not just at initial account setup. Policy terms change, and annual review is the minimum frequency for maintaining an accurate understanding of the team's data handling posture.[^9]
 - Determine whether the team's current plan type includes training data opt-out. If not, evaluate whether the team's data obligations require that provision and upgrade to an appropriate plan if so. This is a binary determination — the team either has the provision or does not.[^7]
-- Document the outcome of the annual policy review in writing: what the current terms are, whether they meet the team's current obligations, and what changes (if any) were made to the plan or usage practices as a result. This documentation is the evidence of due diligence if a compliance question arises.[^6]
+- Document the outcome of the annual policy review in writing: what the current terms are, whether they meet the team's current obligations, and what changes (if any) were made to the plan or usage practices as a result. This documentation is the evidence of due diligence if a compliance question arises.
 - Assign the annual review as a specific CTO calendar task rather than a general "review when relevant" obligation. Compliance reviews that are not on a calendar are not reliably performed — and a privacy incident is not the right trigger for discovering that the policy review has not occurred.[^3]
 
 ---
@@ -64,7 +64,7 @@ The risk is heightened for agentic sessions — multi-step sessions where Claude
 - Maintain a list of information categories that require session scope awareness before use in AI sessions: unreleased features under active development, acquisition or partnership discussions, roadmap details not in public documentation, investor or board materials. This list is not a prohibition — it is a prompt to verify that the session's data handling terms are appropriate before including such information.[^13]
 - For sessions involving unreleased product features, add a prompt-level reminder: "This session involves unreleased features. Limit context to what is necessary for the current task." This narrows the information scope deliberately rather than letting Claude's context-building behavior determine what proprietary information appears in the session.[^12]
 - For agentic sessions in modules containing unreleased or proprietary features, configure the session scope to exclude directories or files whose contents should not appear in session data. Claude Code's CLAUDE.md `ignore` configuration is the mechanism for this scope control.
-- Brief the team on the agentic session scope issue specifically: unlike a manual prompt where the engineer chooses what to include, an agentic session's information scope is determined partly by Claude's tool call decisions. Engineers who understand this difference apply more deliberate session scoping than those who assume agentic sessions contain only what they explicitly asked about.[^8]
+- Brief the team on the agentic session scope issue specifically: unlike a manual prompt where the engineer chooses what to include, an agentic session's information scope is determined partly by Claude's tool call decisions. Engineers who understand this difference apply more deliberate session scoping than those who assume agentic sessions contain only what they explicitly asked about.
 
 ---
 
@@ -95,51 +95,42 @@ CLAUDE.md session scope reminders are the primary operational tool for maintaini
 ---
 
 [^1]: Anthropic — "Privacy and Data Handling," Claude Code Documentation, 2026. https://code.claude.com/docs/en/privacy-data-handling
-    Session data retention and training use policies: what is logged, what may contribute to training, and how plan type affects these terms; the distinction between logging and training data contribution.
+ Session data retention and training use policies: what is logged, what may contribute to training, and how plan type affects these terms; the distinction between logging and training data contribution.
 
 [^2]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Session data awareness in practice: how engineers who understand the data lifecycle of their sessions compose prompts differently; the gap between assumed and actual session data handling.
+ Session data awareness in practice: how engineers who understand the data lifecycle of their sessions compose prompts differently; the gap between assumed and actual session data handling.
 
 [^3]: Anthropic — "Usage Policy and Enterprise Data Agreements," Anthropic Documentation, 2026. https://www.anthropic.com/policies/usage-policy
-    Enterprise vs. standard plan data handling: training opt-out, retention, and data residency provisions; the policy update cycle and the obligation to review current terms rather than cached assumptions.
+ Enterprise vs. standard plan data handling: training opt-out, retention, and data residency provisions; the policy update cycle and the obligation to review current terms rather than cached assumptions.
 
 [^4]: Stack Overflow — "Developers Remain Willing but Reluctant to Use AI: The 2025 Developer Survey Results," December 29, 2025. https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here/
-    Developer assumptions about session data privacy: the gap between what developers believe about AI session data handling and what current policies say.
-
-
-[^6]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    Compliance obligations and AI tool data handling: how product changes and customer contract additions create triggers for policy re-review; documentation of compliance reviews as due diligence evidence.
+ Developer assumptions about session data privacy: the gap between what developers believe about AI session data handling and what current policies say.
 
 [^7]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    Data processing addenda under enterprise API agreements: the practical difference between standard and enterprise data handling terms for teams with compliance requirements.
-
-[^8]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Enterprise plan data handling in practice: how engineering teams manage data obligations within AI-assisted workflows; the policy awareness gap between account managers and day-to-day engineers.
+ Data processing addenda under enterprise API agreements: the practical difference between standard and enterprise data handling terms for teams with compliance requirements.
 
 [^9]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Annual data governance review practice: organizational processes for maintaining accurate understanding of AI tool data handling terms under evolving privacy obligations.
+ Annual data governance review practice: organizational processes for maintaining accurate understanding of AI tool data handling terms under evolving privacy obligations.
 
 [^10]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Production data in debugging sessions: the mechanism by which real customer data enters AI sessions through routine debugging workflows; the inadvertent vs. deliberate distinction.
+ Production data in debugging sessions: the mechanism by which real customer data enters AI sessions through routine debugging workflows; the inadvertent vs. deliberate distinction.
 
 [^11]: Yonatan Sason — "The Black Box Problem: Why AI-Generated Code Stops Being Maintainable," *Towards Data Science*, March 6, 2026. https://towardsdatascience.com/the-black-box-problem-why-ai-generated-code-stops-being-maintainable/
-    Data classification frameworks for AI session content: how to tier session content by sensitivity and apply different handling rules to each tier.
+ Data classification frameworks for AI session content: how to tier session content by sensitivity and apply different handling rules to each tier.
 
 [^12]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - CLAUDE.md session scope configuration: specific syntax for adding data handling reminders to module-level configuration files; the agentic session scope control mechanisms
-    - Data minimization in practice: how to configure Claude Code sessions to limit context scope in sensitive modules while maintaining AI assistance effectiveness
-    - Enterprise API configuration for data privacy: the settings that affect training data contribution and retention for teams with regulatory obligations
+ - CLAUDE.md session scope configuration: specific syntax for adding data handling reminders to module-level configuration files; the agentic session scope control mechanisms
+ - Data minimization in practice: how to configure Claude Code sessions to limit context scope in sensitive modules while maintaining AI assistance effectiveness
+ - Enterprise API configuration for data privacy: the settings that affect training data contribution and retention for teams with regulatory obligations
 
 [^13]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Competitive exposure through AI sessions: the risk profile for unreleased feature information, roadmap details, and proprietary design decisions included in AI development sessions.
-
+ Competitive exposure through AI sessions: the risk profile for unreleased feature information, roadmap details, and proprietary design decisions included in AI development sessions.
 
 [^15]: GitHub — "Octoverse 2025: The State of AI in Software Development," GitHub Octoverse 2025. https://github.blog/news-insights/research/the-state-of-open-source-and-ai/
-    Team-level AI data governance: organizational practices for maintaining session data policies across a team using AI tools daily; the gap between initial adoption policies and current practice.
+ Team-level AI data governance: organizational practices for maintaining session data policies across a team using AI tools daily; the gap between initial adoption policies and current practice.
 
 [^16]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    CLAUDE.md as a data governance tool: how module-level session configuration files function as operational privacy reminders rather than policy documents; the specificity requirement for behavioral effectiveness.
-
+ CLAUDE.md as a data governance tool: how module-level session configuration files function as operational privacy reminders rather than policy documents; the specificity requirement for behavioral effectiveness.
 
 [^a]: [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md) — privacy constraints on what data enters AI sessions are a core usage policy requirement; this ethical analysis is the basis for those policy provisions.
 

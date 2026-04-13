@@ -28,27 +28,27 @@ A documented failure mode requires active management: when the file grows too lo
 ---
 
 [^1]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Team-level tooling standardization and its impact on output consistency; shared configuration artifacts as consistency infrastructure; treating AI configuration as a first-class engineering artifact.
+ Team-level tooling standardization and its impact on output consistency; shared configuration artifacts as consistency infrastructure; treating AI configuration as a first-class engineering artifact.
 
 [^2]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md as a session-initialization artifact; the three-level hierarchy (global, project, `.claude/`); how the file interacts with the model's context window at session start.
+ CLAUDE.md as a session-initialization artifact; the three-level hierarchy (global, project, `.claude/`); how the file interacts with the model's context window at session start.
 
 [^3]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Import directives for modular CLAUDE.md structure; CLAUDE.md length pruning discipline; custom command library setup alongside CLAUDE.md.
+ Import directives for modular CLAUDE.md structure; CLAUDE.md length pruning discipline; custom command library setup alongside CLAUDE.md.
 
 [^4]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    CLAUDE.md as a living corrections document: update discipline, compound value of accumulated corrections, and team ownership model.
+ CLAUDE.md as a living corrections document: update discipline, compound value of accumulated corrections, and team ownership model.
 
 [^5]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
-    How accumulated session learning in CLAUDE.md shifts AI sessions from generic to codebase-aware over time.
+ How accumulated session learning in CLAUDE.md shifts AI sessions from generic to codebase-aware over time.
 
 [^6]: Anthropic — "Claude Code: Settings and Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/settings
-    Global vs. project-level CLAUDE.md resolution order; file length management; the relationship between CLAUDE.md and settings.json in controlling session behavior.
+ Global vs. project-level CLAUDE.md resolution order; file length management; the relationship between CLAUDE.md and settings.json in controlling session behavior.
 
 [^7]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Modular CLAUDE.md: using import directives to maintain separate context files for git conventions, API patterns, and testing requirements
-    - Global vs. project CLAUDE.md: how personal `~/.claude/CLAUDE.md` supplements team-level configuration without overriding it
-    - Shared context files as a team artifact: how team-level CLAUDE.md anchors all sessions to the same architectural constraints
+ - Modular CLAUDE.md: using import directives to maintain separate context files for git conventions, API patterns, and testing requirements
+ - Global vs. project CLAUDE.md: how personal `~/.claude/CLAUDE.md` supplements team-level configuration without overriding it
+ - Shared context files as a team artifact: how team-level CLAUDE.md anchors all sessions to the same architectural constraints
 
 ---
 
@@ -70,27 +70,24 @@ Key settings surfaces include: `permissions.allow` and `permissions.deny` arrays
 ---
 
 [^8]: Anthropic — "Security and Permissions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/security-permissions
-    Permission profile configuration, `--allowedTools` flag semantics, and the rationale for work-context-specific permission scoping in production-adjacent sessions.
+ Permission profile configuration, `--allowedTools` flag semantics, and the rationale for work-context-specific permission scoping in production-adjacent sessions.
 
 [^9]: Anthropic — "Claude Code: Settings and Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/settings
-    Settings resolution order (managed → user → project → local); `settings.local.json` gitignore convention; environment variable injection and model selection configuration.
+ Settings resolution order (managed → user → project → local); `settings.local.json` gitignore convention; environment variable injection and model selection configuration.
 
 [^10]: Anthropic — "Enterprise Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/enterprise-configuration
-    `managed-settings.json` and `managed-mcp.json` as non-overridable policy floors; deployment patterns for organization-wide Claude Code configuration; drop-in fragment support via `managed-settings.d/`.
+ `managed-settings.json` and `managed-mcp.json` as non-overridable policy floors; deployment patterns for organization-wide Claude Code configuration; drop-in fragment support via `managed-settings.d/`.
 
 [^11]: Sonar (SonarSource) — "Sonar Data Reveals Critical 'Verification Gap' in AI Coding," press release, January 8, 2026. https://www.sonarsource.com/company/press-releases/sonar-data-reveals-critical-verification-gap-in-ai-coding/
-    96% of developers distrust AI-generated code; only 48% verify before committing. 42% of all committed code now originates from AI. Automation bias and its effect on permission hygiene.
+ 96% of developers distrust AI-generated code; only 48% verify before committing. 42% of all committed code now originates from AI. Automation bias and its effect on permission hygiene.
 
 [^12]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    CI/CD audit logging, session permission scoping, and the staged-write pattern that isolates review analysis from write operations. Service account permission model for pipeline sessions.
-
-[^13]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Permission model design in AI coding tools; how structured behavioral constraints reduce the cognitive load of AI session oversight for engineering teams.
+ CI/CD audit logging, session permission scoping, and the staged-write pattern that isolates review analysis from write operations. Service account permission model for pipeline sessions.
 
 [^14]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Settings.json structure: `permissions.allow`, `permissions.deny`, and the difference between project and user settings files
-    - Work-context permission profiles: how to create separate configurations for frontend, backend, and migration sessions
-    - Local override patterns: `settings.local.json` for machine-specific configuration without polluting team settings
+ - Settings.json structure: `permissions.allow`, `permissions.deny`, and the difference between project and user settings files
+ - Work-context permission profiles: how to create separate configurations for frontend, backend, and migration sessions
+ - Local override patterns: `settings.local.json` for machine-specific configuration without polluting team settings
 
 ---
 
@@ -114,28 +111,28 @@ Given that AI-generated code introduces security vulnerabilities at higher rates
 ---
 
 [^15]: Anthropic — "Hooks Reference," Claude Code Documentation, 2026. https://code.claude.com/docs/en/hooks-reference
-    Complete hooks API: event types (PreToolUse, PostToolUse, UserPromptSubmit, Stop, Notification), shell command configuration, blocking semantics, and tool-name matchers.
+ Complete hooks API: event types (PreToolUse, PostToolUse, UserPromptSubmit, Stop, Notification), shell command configuration, blocking semantics, and tool-name matchers.
 
 [^16]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Hook configuration patterns for automated quality gates; `UserPromptSubmit` for context injection; hooks as enforcement for quality standards that CLAUDE.md cannot enforce alone.
+ Hook configuration patterns for automated quality gates; `UserPromptSubmit` for context injection; hooks as enforcement for quality standards that CLAUDE.md cannot enforce alone.
 
 [^17]: Anthropic — "Claude Code Hooks Reference," Claude Code Documentation, 2026. https://code.claude.com/docs/en/hooks
-    Notification event configuration; system notification dispatch patterns for parallel session management; hook ordering when multiple hooks target the same event.
+ Notification event configuration; system notification dispatch patterns for parallel session management; hook ordering when multiple hooks target the same event.
 
 [^18]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Hooks as the automation layer that converts CLAUDE.md intentions into enforced behavior; the argument that manual quality gate discipline fails at team scale.
+ Hooks as the automation layer that converts CLAUDE.md intentions into enforced behavior; the argument that manual quality gate discipline fails at team scale.
 
 [^19]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    SAST hook integration at session stop; how automated scanning at the hook level provides a security floor independent of engineer attentiveness.
+ SAST hook integration at session stop; how automated scanning at the hook level provides a security floor independent of engineer attentiveness.
 
 [^20]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - PostToolUse hook setup: running linting and tests automatically on every file write without manual invocation
-    - Stop event hooks: SAST scanning at session completion and system notification dispatch for parallel session management
-    - UserPromptSubmit injection: inserting sprint context and current date into every session start
+ - PostToolUse hook setup: running linting and tests automatically on every file write without manual invocation
+ - Stop event hooks: SAST scanning at session completion and system notification dispatch for parallel session management
+ - UserPromptSubmit injection: inserting sprint context and current date into every session start
 
 ---
 
-## Configuration 4: .mcp.json — Model Context Protocol Integration
+## Configuration 4:.mcp.json — Model Context Protocol Integration
 
 **Description:** The Model Context Protocol (MCP) is an open standard that allows Claude Code to interact with external tools, services, and data sources through a standardized interface. MCP server configurations are defined in `.mcp.json` at the project root — a shared, checked-in artifact that gives every team member's sessions access to the same external context without individual setup overhead.[^21]
 
@@ -153,25 +150,25 @@ The MCP permission model mirrors the settings permission model: servers are gran
 ---
 
 [^21]: Anthropic — "Model Context Protocol Introduction," Claude Code Documentation, 2026. https://code.claude.com/docs/en/mcp-introduction
-    MCP open standard architecture; server permission model; minimum-permission configuration guidance; the progression from read-only to write-access integrations.
+ MCP open standard architecture; server permission model; minimum-permission configuration guidance; the progression from read-only to write-access integrations.
 
 [^22]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
-    MCP's role in reducing manual coordination overhead; how AI-tool integration shifts engineering workflows from local-only to service-aware sessions.
+ MCP's role in reducing manual coordination overhead; how AI-tool integration shifts engineering workflows from local-only to service-aware sessions.
 
 [^23]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    `.mcp.json` as a shared, checked-in team artifact; per-project MCP server configuration patterns; relationship between `.mcp.json` and `settings.json` for MCP credential handling.
+ `.mcp.json` as a shared, checked-in team artifact; per-project MCP server configuration patterns; relationship between `.mcp.json` and `settings.json` for MCP credential handling.
 
 [^24]: Anthropic — "MCP Configuration Security," Claude Code Documentation, 2026. https://code.claude.com/docs/en/mcp-security
-    Credential handling for MCP server connections; environment variable reference syntax in `.mcp.json`; separation of team configuration from machine-specific secrets.
+ Credential handling for MCP server connections; environment variable reference syntax in `.mcp.json`; separation of team configuration from machine-specific secrets.
 
 [^25]: Jack Herrington — "Claude Code MCP Servers: A Complete Setup Guide," YouTube, November 2025. https://www.youtube.com/watch?v=3QkVZj_nKoA
-    - MCP server architecture: the connection between Claude Code and external services and the read vs. write permission boundary
-    - Building a custom Postgres MCP server for live schema inspection and parameterized query execution
-    - Security considerations: credential management, OAuth scoping, and audit log configuration for MCP operations
+ - MCP server architecture: the connection between Claude Code and external services and the read vs. write permission boundary
+ - Building a custom Postgres MCP server for live schema inspection and parameterized query execution
+ - Security considerations: credential management, OAuth scoping, and audit log configuration for MCP operations
 
 ---
 
-## Configuration 5: .claude/commands/ and .claude/skills/ — Custom Skills and Commands
+## Configuration 5:.claude/commands/ and.claude/skills/ — Custom Skills and Commands
 
 **Description:** Claude Code supports two complementary mechanisms for packaging reusable workflows: slash commands in `.claude/commands/` and skills in `.claude/skills/`. Slash commands are markdown files invoked with `/command-name` during a session — parameterized templates that encode the best prompt structure for a specific recurring task: feature scaffolding, refactoring passes, security review, test generation, or PR description creation. Skills extend this with supporting files and structured metadata, enabling more complex multi-artifact workflows.[^26]
 
@@ -189,25 +186,25 @@ Both commands and skills are checked into git in their respective directories, m
 ---
 
 [^26]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    `.claude/commands/` setup and file format; slash command parameterization; relationship between commands and CLAUDE.md context inheritance.
+ `.claude/commands/` setup and file format; slash command parameterization; relationship between commands and CLAUDE.md context inheritance.
 
 [^27]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Skills vs. commands: when to use each; `.claude/skills/` structure with supporting files; team ownership and PR review process for shared prompt artifacts.
+ Skills vs. commands: when to use each; `.claude/skills/` structure with supporting files; team ownership and PR review process for shared prompt artifacts.
 
 [^28]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Shared prompt libraries as consistency infrastructure across mixed-experience teams; how well-designed reusable commands close the prompt-engineering skill gap between senior and junior engineers.
+ Shared prompt libraries as consistency infrastructure across mixed-experience teams; how well-designed reusable commands close the prompt-engineering skill gap between senior and junior engineers.
 
 [^29]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    The five foundational command types every team should maintain; command update cadence as a team practice.
+ The five foundational command types every team should maintain; command update cadence as a team practice.
 
 [^30]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Custom command file format: writing parameterized markdown commands and placing them in `.claude/commands/`
-    - The five foundational command library entries: scaffolding, refactoring, security review, test generation, and PR description
-    - Skills vs. commands: when supporting files justify using `.claude/skills/` over a single command file
+ - Custom command file format: writing parameterized markdown commands and placing them in `.claude/commands/`
+ - The five foundational command library entries: scaffolding, refactoring, security review, test generation, and PR description
+ - Skills vs. commands: when supporting files justify using `.claude/skills/` over a single command file
 
 ---
 
-## Configuration 6: .claude/agents/ — Subagent Definitions
+## Configuration 6:.claude/agents/ — Subagent Definitions
 
 **Description:** Claude Code supports subagent delegation — spawning independent Claude instances with their own context windows to perform parallel or scoped tasks. Subagent behavior can be configured through definition files in `.claude/agents/`, which specify the model to use, the tools available to the subagent, its instructions, and the scope of its access. This allows a team to define reusable delegation targets: a specialized code-review agent, a documentation-generation agent, a security-audit agent — each with pre-configured scopes and instructions.[^31]
 
@@ -225,25 +222,25 @@ Agent definitions in `.claude/agents/` are checked into git as team artifacts. A
 ---
 
 [^31]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    `.claude/agents/` file format and supported fields; agent scope and tool access configuration; team-owned agent definitions as checked-in artifacts.
+ `.claude/agents/` file format and supported fields; agent scope and tool access configuration; team-owned agent definitions as checked-in artifacts.
 
 [^32]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Subagent delegation patterns; orchestrator-worker decomposition for context-window management; agent definitions as reusable delegation targets.
+ Subagent delegation patterns; orchestrator-worker decomposition for context-window management; agent definitions as reusable delegation targets.
 
 [^33]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
-    How multi-agent orchestration patterns are becoming standard practice for complex software tasks; the operational shift from single-session to coordinated-agent workflows.
+ How multi-agent orchestration patterns are becoming standard practice for complex software tasks; the operational shift from single-session to coordinated-agent workflows.
 
 [^34]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Agent definition as documentation: why encoding expected inputs, outputs, and failure modes is part of the engineering contract for a delegation target.
+ Agent definition as documentation: why encoding expected inputs, outputs, and failure modes is part of the engineering contract for a delegation target.
 
 [^35]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Agent definition structure: model selection, tool access scoping, and instruction inheritance from CLAUDE.md
-    - Orchestrator-worker decomposition: how to split a complex task across three agents without exhausting the orchestrating session's context window
-    - Permission isolation: how agent-level tool restrictions prevent delegated sessions from acquiring parent-session permissions
+ - Agent definition structure: model selection, tool access scoping, and instruction inheritance from CLAUDE.md
+ - Orchestrator-worker decomposition: how to split a complex task across three agents without exhausting the orchestrating session's context window
+ - Permission isolation: how agent-level tool restrictions prevent delegated sessions from acquiring parent-session permissions
 
 ---
 
-## Configuration 7: .claude/rules/ — Scoped Instruction Overrides
+## Configuration 7:.claude/rules/ — Scoped Instruction Overrides
 
 **Description:** The `.claude/rules/` directory allows teams to define instruction files that apply only when Claude is working within specific file path patterns. Where CLAUDE.md applies globally to every session, a rules file can target a subtree — applying additional constraints, conventions, or context only when the file being operated on matches the rule's path gate. This enables differentiated behavior for different parts of the codebase without burdening every session with context that only applies to a fraction of work.[^36]
 
@@ -261,21 +258,21 @@ Rules files complement rather than replace CLAUDE.md: the global file establishe
 ---
 
 [^36]: Anthropic — "Claude Code: Settings and Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/settings
-    `.claude/rules/` directory structure; path gate syntax; how rules files interact with global CLAUDE.md context at session time.
+ `.claude/rules/` directory structure; path gate syntax; how rules files interact with global CLAUDE.md context at session time.
 
 [^37]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Rules files as a complement to CLAUDE.md; scoped instruction design patterns; the principle of keeping effective context lean for any given task.
+ Rules files as a complement to CLAUDE.md; scoped instruction design patterns; the principle of keeping effective context lean for any given task.
 
 [^38]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Rules files for high-specificity contexts: the argument for automatic context injection over engineer-managed per-session prompting.
+ Rules files for high-specificity contexts: the argument for automatic context injection over engineer-managed per-session prompting.
 
 [^39]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Modular context design: how layered instruction files reduce cognitive overhead for engineers working across multiple code contexts in a single sprint.
+ Modular context design: how layered instruction files reduce cognitive overhead for engineers working across multiple code contexts in a single sprint.
 
 [^40]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Rules file path gate syntax: matching subtrees, file extensions, and named directories
-    - CLAUDE.md + rules file interaction: how global and scoped instructions compose at session initialization
-    - Maintenance discipline: updating rules files alongside the code they govern to prevent instruction drift
+ - Rules file path gate syntax: matching subtrees, file extensions, and named directories
+ - CLAUDE.md + rules file interaction: how global and scoped instructions compose at session initialization
+ - Maintenance discipline: updating rules files alongside the code they govern to prevent instruction drift
 
 ---
 
@@ -296,21 +293,21 @@ Memory is distinct from CLAUDE.md: CLAUDE.md encodes team-level, codebase-specif
 ---
 
 [^41]: Anthropic — "Claude Code Memory," Claude Code Documentation, 2026. https://code.claude.com/docs/en/memory
-    Memory system architecture: `MEMORY.md` index structure, topic file conventions, memory type categories, and the distinction between session memory and CLAUDE.md instructions.
+ Memory system architecture: `MEMORY.md` index structure, topic file conventions, memory type categories, and the distinction between session memory and CLAUDE.md instructions.
 
 [^42]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Memory vs. CLAUDE.md: when to use each; feedback memory as a correction mechanism; memory pruning discipline for project memories that decay as work evolves.
+ Memory vs. CLAUDE.md: when to use each; feedback memory as a correction mechanism; memory pruning discipline for project memories that decay as work evolves.
 
 [^43]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    The memory-to-CLAUDE.md escalation pattern: when a correction recurs across multiple sessions, it belongs in the shared team configuration rather than individual memory.
+ The memory-to-CLAUDE.md escalation pattern: when a correction recurs across multiple sessions, it belongs in the shared team configuration rather than individual memory.
 
 [^44]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
-    Persistent memory as a mechanism for accumulating institutional knowledge in AI sessions; how memory systems shift AI tooling from stateless to stateful collaboration.
+ Persistent memory as a mechanism for accumulating institutional knowledge in AI sessions; how memory systems shift AI tooling from stateless to stateful collaboration.
 
 [^45]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Memory file structure: `MEMORY.md` as an index with topic files for different memory categories
-    - Session memory vs. CLAUDE.md: when accumulated knowledge belongs in personal memory vs. team configuration
-    - Memory pruning: identifying and removing stale project memories that no longer reflect current work state
+ - Memory file structure: `MEMORY.md` as an index with topic files for different memory categories
+ - Session memory vs. CLAUDE.md: when accumulated knowledge belongs in personal memory vs. team configuration
+ - Memory pruning: identifying and removing stale project memories that no longer reflect current work state
 
 ---
 
@@ -331,25 +328,25 @@ Memory is distinct from CLAUDE.md: CLAUDE.md encodes team-level, codebase-specif
 ---
 
 [^46]: Anthropic — "Claude Code: Settings and Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/settings
-    `~/.claude.json` as a managed state file; per-project trust decision persistence; OAuth token caching for MCP server connections; the distinction between personal and team configuration artifacts.
+ `~/.claude.json` as a managed state file; per-project trust decision persistence; OAuth token caching for MCP server connections; the distinction between personal and team configuration artifacts.
 
 [^47]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    `~/.claude/keybindings.json` format; chord binding syntax; onboarding recommendations for keybinding setup; high-value shortcuts for parallel session workflows.
+ `~/.claude/keybindings.json` format; chord binding syntax; onboarding recommendations for keybinding setup; high-value shortcuts for parallel session workflows.
 
 [^48]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Onboarding friction reduction: why keybinding setup in the first week is a high-ROI investment for long-term workflow efficiency.
+ Onboarding friction reduction: why keybinding setup in the first week is a high-ROI investment for long-term workflow efficiency.
 
 [^49]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Personal configuration discipline: distinguishing between machine-local settings and team artifacts; the case for minimal personal override surface area.
+ Personal configuration discipline: distinguishing between machine-local settings and team artifacts; the case for minimal personal override surface area.
 
 [^50]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - `~/.claude/keybindings.json` setup: file structure, chord binding syntax, and recommended bindings for parallel session workflows
-    - `.claude.json` state file: what it contains, when to inspect it, and how per-project trust decisions affect session behavior
-    - Personal vs. team configuration: the boundary between machine-local files and checked-in team artifacts
+ - `~/.claude/keybindings.json` setup: file structure, chord binding syntax, and recommended bindings for parallel session workflows
+ - `.claude.json` state file: what it contains, when to inspect it, and how per-project trust decisions affect session behavior
+ - Personal vs. team configuration: the boundary between machine-local files and checked-in team artifacts
 
 ---
 
-## Configuration 10: CI/CD Pipeline Integration — Headless Sessions and .worktreeinclude
+## Configuration 10: CI/CD Pipeline Integration — Headless Sessions and.worktreeinclude
 
 **Description:** Claude Code runs in headless mode (`claude -p`) as a pipeline actor — enabling automated code review, documentation generation, migration execution, and test suite creation without human session management. The `--permission-mode plan` flag supports read-only analysis pipelines — architecture summaries, dependency audits, test coverage analysis — that run safely against every PR without risk of automated modification.[^51]
 
@@ -367,21 +364,21 @@ All team configuration artifacts — CLAUDE.md, `settings.json`, `.mcp.json`, ho
 ---
 
 [^51]: Anthropic — "Claude Code in CI/CD Pipelines," Claude Code Documentation, 2026. https://code.claude.com/docs/en/cicd
-    Headless CI mode patterns; `--permission-mode plan` flag for read-only analysis; how team configuration artifacts apply in pipeline sessions.
+ Headless CI mode patterns; `--permission-mode plan` flag for read-only analysis; how team configuration artifacts apply in pipeline sessions.
 
 [^52]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    PR review step design; plan-mode analysis pipeline for architecture summaries; PR comment severity classification; treating AI pipeline failures as blocking rather than advisory.
+ PR review step design; plan-mode analysis pipeline for architecture summaries; PR comment severity classification; treating AI pipeline failures as blocking rather than advisory.
 
 [^53]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    `.worktreeinclude` for copying gitignored files into worktree CI environments; worktree isolation patterns for parallel pipeline sessions.
+ `.worktreeinclude` for copying gitignored files into worktree CI environments; worktree isolation patterns for parallel pipeline sessions.
 
 [^54]: Anthropic — "Security and Permissions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/security-permissions
-    Service account permission model for pipeline sessions; `--allowedTools` scoping for headless sessions; audit logging configuration for CI permission grants.
+ Service account permission model for pipeline sessions; `--allowedTools` scoping for headless sessions; audit logging configuration for CI permission grants.
 
 [^55]: Jack Herrington — "Claude Code MCP Servers: A Complete Setup Guide," YouTube, November 2025. https://www.youtube.com/watch?v=3QkVZj_nKoA
-    - Headless session configuration: how `.mcp.json` and CLAUDE.md apply in CI environments without interactive session management
-    - Service account scoping: configuring read-only permissions for pipeline Claude instances
-    - Worktree patterns for parallel CI sessions: isolating concurrent pipeline runs without configuration conflicts
+ - Headless session configuration: how `.mcp.json` and CLAUDE.md apply in CI environments without interactive session management
+ - Service account scoping: configuring read-only permissions for pipeline Claude instances
+ - Worktree patterns for parallel CI sessions: isolating concurrent pipeline runs without configuration conflicts
 
 ---
 
@@ -413,7 +410,7 @@ All team configuration artifacts — CLAUDE.md, `settings.json`, `.mcp.json`, ho
 |---|---|---|---|
 | 1 | CLAUDE.md | Create team CLAUDE.md; establish architect update protocol | Architect |
 | 2 | settings.json + Hooks | Define permissions and team-standard hooks; check in | Architect |
-| 3 | .mcp.json | Configure read-only MCP servers first; define shared file | Backend lead |
+| 3 |.mcp.json | Configure read-only MCP servers first; define shared file | Backend lead |
 | 4 | commands/ + skills/ | Build initial 5-command library; establish PR review process | Engineering team |
 | 5 | agents/ | Define code-reviewer and doc-generator agents | Architect |
 | 6 | rules/ | Add scoped rules for migration and API directories | Architect |

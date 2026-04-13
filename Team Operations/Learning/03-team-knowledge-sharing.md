@@ -16,7 +16,7 @@ The problem is not that engineers are unwilling to share — it is that the norm
 
 **Description:** AI workflow knowledge accumulates at the individual level because there is no default mechanism for externalizing it. An engineer who discovers that a particular context structure reliably produces accurate API integration code has learned something valuable — but unless they document it immediately and share it through a channel others monitor, the knowledge dies with the session. A week later, they may not remember the specific insight; a month later, a colleague runs the same prompt pattern, encounters the same failure mode, and spends the same hour diagnosing it.[^3]
 
-The decay rate for AI workflow knowledge is faster than for traditional engineering knowledge because AI tools themselves change. A prompt strategy that worked in one model version may produce different output in the next; a CLAUDE.md rule that addressed a specific failure mode may become irrelevant when the failure mode is resolved in a model update. This means AI workflow knowledge is not only poorly shared — it has a shorter shelf life than codebase or architectural knowledge, making the cost of reinvention higher relative to the total useful lifetime of each insight.[^4]
+The decay rate for AI workflow knowledge is faster than for traditional engineering knowledge because AI tools themselves change. A prompt strategy that worked in one model version may produce different output in the next; a CLAUDE.md rule that addressed a specific failure mode may become irrelevant when the failure mode is resolved in a model update. This means AI workflow knowledge is not only poorly shared — it has a shorter shelf life than codebase or architectural knowledge, making the cost of reinvention higher relative to the total useful lifetime of each insight.
 
 **Recommended Practice:**
 - Audit the team's current AI knowledge distribution: ask each engineer to identify their top three AI workflow discoveries from the last month. If similar discoveries appear independently across engineers, you have direct evidence of reinvention cost and a starting inventory for the shared library.[^1]
@@ -56,7 +56,7 @@ The Friday timing is deliberate. End-of-week recall is better than Monday recall
 
 ## Section 4: Shared Prompt and Pattern Retrospectives
 
-**Description:** The quarterly retrospective is the mechanism by which the team reviews its accumulated AI workflow knowledge as a whole: what is in the shared library, what has been valuable, what has become obsolete, and what gaps the library does not yet address. The retrospective is not a meeting to generate new knowledge — it is a half-day working session to evaluate and organize knowledge that has already been collected across the preceding quarter's session logs and stand-up notes.[^13]
+**Description:** The quarterly retrospective is the mechanism by which the team reviews its accumulated AI workflow knowledge as a whole: what is in the shared library, what has been valuable, what has become obsolete, and what gaps the library does not yet address. The retrospective is not a meeting to generate new knowledge — it is a half-day working session to evaluate and organize knowledge that has already been collected across the preceding quarter's session logs and stand-up notes.
 
 The retrospective produces three outputs: a revised and pruned prompt and pattern library, a prioritized list of gaps (areas where the team lacks documented patterns despite recurring need), and a set of proposed CLAUDE.md updates. These outputs are directly useful and directly accountable: each proposed CLAUDE.md change should cite the session logs or stand-up notes that motivated it, not just a general assertion that the change is beneficial. This traceability makes the library trustworthy — engineers can see why each rule exists.[^7]
 
@@ -78,7 +78,7 @@ The "first week AI tour" is a half-day structured introduction to the team's acc
 - The architect prepares a "library introduction" artifact for each new hire: a curated selection of five session log summaries from the shared library, chosen to illustrate the range of task types the team works on and the range of failure modes documented. Annotate each summary with a one-sentence note explaining what makes it representative or instructive.[^7]
 - Schedule a pairing session with a senior engineer in the new hire's first sprint, specifically focused on AI workflow practice: the new engineer runs a session on a first-sprint task while the senior engineer observes, then debriefs on prompt choices, context management, and verification practice. This pairing is distinct from the general onboarding buddy relationship.[^2]
 - Add the team's AI workflow knowledge artifacts (CLAUDE.md, command library, curated session log selection, stand-up note archive) to the onboarding documentation index alongside the standard codebase onboarding materials. New engineers who do not know these materials exist cannot use them.[^1]
-- After the new engineer's first month, the architect should review whether they have begun contributing to the shared library (session log summaries, stand-up findings). Contribution within the first month indicates that the knowledge transfer was effective; absence of contribution after two months indicates that the new engineer does not yet understand how to identify or document a library-worthy insight — a gap worth addressing before it compounds.[^13]
+- After the new engineer's first month, the architect should review whether they have begun contributing to the shared library (session log summaries, stand-up findings). Contribution within the first month indicates that the knowledge transfer was effective; absence of contribution after two months indicates that the new engineer does not yet understand how to identify or document a library-worthy insight — a gap worth addressing before it compounds.
 
 ---
 
@@ -95,56 +95,48 @@ The "first week AI tour" is a half-day structured introduction to the team's acc
 ---
 
 [^1]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Team-level knowledge transfer mechanisms: how structured peer sharing creates collective organizational knowledge rather than distributed individual knowledge; the cost of reinvention when AI workflow insights are not shared.
+ Team-level knowledge transfer mechanisms: how structured peer sharing creates collective organizational knowledge rather than distributed individual knowledge; the cost of reinvention when AI workflow insights are not shared.
 
 [^2]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    AI workflow documentation as a team asset: the categories of workflow knowledge that benefit from structured capture vs. those adequately handled by informal sharing; lightweight capture formats that fit within existing engineering cadences.
+ AI workflow documentation as a team asset: the categories of workflow knowledge that benefit from structured capture vs. those adequately handled by informal sharing; lightweight capture formats that fit within existing engineering cadences.
 
 [^3]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    Knowledge decay in AI-assisted teams: why AI workflow knowledge has a shorter shelf life than traditional engineering knowledge; the compounding cost of undocumented reinvention across a team over time.
-
-[^4]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Prompt strategy versioning: how model changes affect prompt effectiveness; why AI workflow documentation requires active maintenance rather than one-time capture; the implications for team knowledge library curation.
+ Knowledge decay in AI-assisted teams: why AI workflow knowledge has a shorter shelf life than traditional engineering knowledge; the compounding cost of undocumented reinvention across a team over time.
 
 [^5]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Session-level insights as the atomic unit of AI workflow knowledge: what makes a session finding worth documenting; the distinction between a pattern (reusable) and an observation (informational only); informal vs. structured sharing as complementary rather than competing.
+ Session-level insights as the atomic unit of AI workflow knowledge: what makes a session finding worth documenting; the distinction between a pattern (reusable) and an observation (informational only); informal vs. structured sharing as complementary rather than competing.
 
 [^6]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md as a living document: the workflow for converting session findings into CLAUDE.md updates; ownership and review cadence for shared prompt libraries and command collections.
+ CLAUDE.md as a living document: the workflow for converting session findings into CLAUDE.md updates; ownership and review cadence for shared prompt libraries and command collections.
 
 [^7]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Institutional AI knowledge: how teams that maintain structured workflow documentation compound their AI effectiveness over time; what distinguishes teams that improve quarter-over-quarter from those that plateau.
+ Institutional AI knowledge: how teams that maintain structured workflow documentation compound their AI effectiveness over time; what distinguishes teams that improve quarter-over-quarter from those that plateau.
 
 [^8]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    Knowledge transfer and comprehension: why transferring the reasoning behind AI workflow decisions (not just the decisions themselves) is necessary for new engineers to apply the knowledge adaptively rather than mechanically.
+ Knowledge transfer and comprehension: why transferring the reasoning behind AI workflow decisions (not just the decisions themselves) is necessary for new engineers to apply the knowledge adaptively rather than mechanically.
 
 [^9]: Yonatan Sason — "The Black Box Problem: Why AI-Generated Code Stops Being Maintainable," *Towards Data Science*, March 6, 2026. https://towardsdatascience.com/the-black-box-problem-why-ai-generated-code-stops-being-maintainable/
-    Library traceability: how session-log-grounded CLAUDE.md rules create trustworthy governance documents vs. rules that accumulate without clear origin; the cost of ungoverned rule proliferation in team AI standards.
+ Library traceability: how session-log-grounded CLAUDE.md rules create trustworthy governance documents vs. rules that accumulate without clear origin; the cost of ungoverned rule proliferation in team AI standards.
 
 [^10]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Workflow knowledge sharing as a debt prevention mechanism: how teams that invest in structured knowledge transfer avoid the compounding cost of undocumented AI practice divergence across engineers; lightweight formats as a prerequisite for sustainable adoption.
+ Workflow knowledge sharing as a debt prevention mechanism: how teams that invest in structured knowledge transfer avoid the compounding cost of undocumented AI practice divergence across engineers; lightweight formats as a prerequisite for sustainable adoption.
 
 [^11]: daily.dev — "What's Actually Working in AI-Assisted Development: Patterns from Engineering Teams," April 2026. https://daily.dev/blog/ai-assisted-development-patterns
-    Stand-up format analysis: the time constraints that make AI workflow stand-ups sustainable; why ten-minute sessions maintained over quarters generate more cumulative knowledge than monthly hour-long sessions that are frequently skipped.
+ Stand-up format analysis: the time constraints that make AI workflow stand-ups sustainable; why ten-minute sessions maintained over quarters generate more cumulative knowledge than monthly hour-long sessions that are frequently skipped.
 
 [^12]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025
-    Team-level AI workflow adoption patterns: the correlation between structured knowledge sharing practices and team-wide AI proficiency gains; how teams that document and share AI workflow findings develop more consistent and more advanced practices over time.
-
-[^13]: Gartner — "AI Augmented Development: Engineering Productivity Trends," January 2026. https://www.gartner.com/en/documents/ai-augmented-development-2026
-    Quarterly review cycles for AI tooling practices: how teams that review and prune their AI workflow libraries maintain higher-quality documentation than those that only add to it; the signal value of library usage metrics in retrospective agenda design.
+ Team-level AI workflow adoption patterns: the correlation between structured knowledge sharing practices and team-wide AI proficiency gains; how teams that document and share AI workflow findings develop more consistent and more advanced practices over time.
 
 [^14]: Stack Overflow — "Developer Survey Results," December 2025. https://stackoverflow.blog/2025/12/developer-survey
-    Consensus-building in AI workflow governance: how engineering teams balance individual workflow preference with team standardization; the dynamics of rule adoption when engineers have divergent AI usage patterns.
+ Consensus-building in AI workflow governance: how engineering teams balance individual workflow preference with team standardization; the dynamics of rule adoption when engineers have divergent AI usage patterns.
 
 [^15]: CIO — "Managing AI-Augmented Engineering Teams: What Leaders Need to Know," April 2026. https://www.cio.com/article/ai-augmented-engineering-teams-leadership
-    Onboarding challenges in AI-assisted teams: the compounding divergence that results when new engineers default to prior-role AI habits; what structured knowledge transfer reduces vs. what it cannot address without pairing and mentorship.
-
+ Onboarding challenges in AI-assisted teams: the compounding divergence that results when new engineers default to prior-role AI habits; what structured knowledge transfer reduces vs. what it cannot address without pairing and mentorship.
 
 [^17]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Session log as a teaching artifact: how annotated session recordings transfer workflow knowledge that written documentation alone cannot convey; what to highlight when sharing a session for team learning
-    - Command library demonstration: how the tutorial's walkthrough of reusable commands illustrates the value of team-level prompt and pattern libraries vs. individual prompt collections
-    - Knowledge transfer for new team members: the first-session walkthrough format as an onboarding pattern applicable to team AI workflow orientation
-
+ - Session log as a teaching artifact: how annotated session recordings transfer workflow knowledge that written documentation alone cannot convey; what to highlight when sharing a session for team learning
+ - Command library demonstration: how the tutorial's walkthrough of reusable commands illustrates the value of team-level prompt and pattern libraries vs. individual prompt collections
+ - Knowledge transfer for new team members: the first-session walkthrough format as an onboarding pattern applicable to team AI workflow orientation
 
 [^a]: [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md) — team knowledge sharing is the ongoing form of the same discipline; knowledge transfer covers the ramp, knowledge sharing covers the steady state.
 [^b]: [Tooling: Custom Skills](../Tooling & Configuration/04-custom-skills.md) — custom skills are a primary knowledge sharing artifact; a prompt pattern that one engineer discovers becomes a team asset when it is encoded as a skill.

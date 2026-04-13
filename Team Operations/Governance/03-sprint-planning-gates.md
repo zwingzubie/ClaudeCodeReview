@@ -6,9 +6,9 @@
 
 ## Overview
 
-Sprint velocity estimates derived from historical human-authored code break down when AI is introduced without adjustment. AI-generated code can compress certain task types dramatically — a well-specified CRUD endpoint that took a senior engineer three days now takes three hours — while doing nearly nothing for others, such as resolving an ambiguous performance regression that requires exploratory profiling and architectural judgment. A team that treats all tasks as AI-accelerated will either inflate velocity estimates and miss sprints, or underestimate the sustained human effort that remains necessary for a significant share of work.[^1]
+Sprint velocity estimates derived from historical human-authored code break down when AI is introduced without adjustment. AI-generated code can compress certain task types dramatically — a well-specified CRUD endpoint that took a senior engineer three days now takes three hours — while doing nearly nothing for others, such as resolving an ambiguous performance regression that requires exploratory profiling and architectural judgment. A team that treats all tasks as AI-accelerated will either inflate velocity estimates and miss sprints, or underestimate the sustained human effort that remains necessary for a significant share of work.
 
-AI readiness is not a property of engineers — it is a property of tasks. The same engineer who produces excellent AI-primary output on a well-specified data transformation module will produce poor output on an underspecified integration that requires architectural judgment about state management across two services. Sprint planning that accounts for task-level AI readiness produces more accurate velocity estimates, more realistic sprint commitments, and fewer mid-sprint corrections. This policy establishes the classification system and sprint-level governance that make that accountability possible for an 11-person team.[^2]
+AI readiness is not a property of engineers — it is a property of tasks. The same engineer who produces excellent AI-primary output on a well-specified data transformation module will produce poor output on an underspecified integration that requires architectural judgment about state management across two services. Sprint planning that accounts for task-level AI readiness produces more accurate velocity estimates, more realistic sprint commitments, and fewer mid-sprint corrections. This policy establishes the classification system and sprint-level governance that make that accountability possible for an 11-person team.
 
 ---
 
@@ -21,7 +21,7 @@ Sprint planning must account for all three dimensions to produce accurate veloci
 **Recommended Practice:**
 - Add a three-dimension AI readiness assessment to the sprint planning ceremony for all stories above two story points. The assessment takes under three minutes per story and produces the classification in Section 2. Stories below two points default to AI-assisted treatment.[^3]
 - When a task scores poorly on specification clarity, the sprint planning response is not to classify it as human-primary and move on — it is to either invest pre-sprint effort in producing a spec.md that raises the specification clarity score, or to explicitly budget for the specification work as a separate sprint item.[^5]
-- Train the architect to facilitate the pattern precedent assessment during planning: they have the codebase context to evaluate whether the task's target area has strong, medium, or weak pattern precedent. Engineers who are less familiar with the full codebase may overestimate pattern precedent in modules they have not worked in.[^1]
+- Train the architect to facilitate the pattern precedent assessment during planning: they have the codebase context to evaluate whether the task's target area has strong, medium, or weak pattern precedent. Engineers who are less familiar with the full codebase may overestimate pattern precedent in modules they have not worked in.
 - Document the AI readiness reasoning for each classified story in the sprint ticket. "AI-primary: specification complete (see spec.md in /specs/), strong pattern precedent in similar endpoints, low correctness criticality" creates accountability and a retrospective record that the quarterly classification accuracy review uses.[^6]
 
 ---
@@ -30,28 +30,28 @@ Sprint planning must account for all three dimensions to produce accurate veloci
 
 ```mermaid
 flowchart TD
-    A[Story enters sprint planning] --> B{spec.md complete<br/>or producible in 1hr?}
-    B -- No --> C[AI-Assisted or<br/>Human-Primary]
-    B -- Yes --> D{Clear codebase<br/>pattern precedent?}
-    D -- No --> C
-    D -- Yes --> E{Correctness criticality<br/>low enough?}
-    E -- No --> C
-    E -- Yes --> F[AI-Primary ✓]
+ A[Story enters sprint planning] --> B{spec.md complete<br/>or producible in 1hr?}
+ B -- No --> C[AI-Assisted or<br/>Human-Primary]
+ B -- Yes --> D{Clear codebase<br/>pattern precedent?}
+ D -- No --> C
+ D -- Yes --> E{Correctness criticality<br/>low enough?}
+ E -- No --> C
+ E -- Yes --> F[AI-Primary ✓]
 
-    F --> G[Attach spec.md to ticket]
-    G --> H[Sprint begins]
-    H --> I{Sprint AI-primary %<br/>> 40% of points?}
-    I -- No --> J[Continue]
-    I -- Yes --> K[Architect triage:<br/>reclassify unstarted stories]
+ F --> G[Attach spec.md to ticket]
+ G --> H[Sprint begins]
+ H --> I{Sprint AI-primary %<br/>> 40% of points?}
+ I -- No --> J[Continue]
+ I -- Yes --> K[Architect triage:<br/>reclassify unstarted stories]
 
-    J --> L[Sprint Review]
-    K --> L
-    L --> M[Sprint Retrospective:<br/>Classification accuracy check]
-    M --> N{Stories matched<br/>classification?}
-    N -- Yes --> O[Log accuracy]
-    N -- No --> P[Log classification miss:<br/>which dimension misjudged?]
-    P --> Q[Quarterly criteria review]
-    O --> Q
+ J --> L[Sprint Review]
+ K --> L
+ L --> M[Sprint Retrospective:<br/>Classification accuracy check]
+ M --> N{Stories matched<br/>classification?}
+ N -- Yes --> O[Log accuracy]
+ N -- No --> P[Log classification miss:<br/>which dimension misjudged?]
+ P --> Q[Quarterly criteria review]
+ O --> Q
 ```
 
 **Description:** The three-tier classification system — AI-primary, AI-assisted, human-primary — provides sprint planning with a consistent vocabulary for describing how a task will be worked, what review requirements apply, and how to estimate effort. AI-primary tasks are those where the engineer will prompt Claude Code to generate the first-pass implementation and review the output: the AI generates, the human verifies. AI-assisted tasks are those where the engineer is the primary author, using Claude Code for targeted assistance — generating specific functions, explaining patterns, suggesting tests — but retaining continuous authorship. Human-primary tasks are those where AI assistance is either inappropriate (correctness criticality requires end-to-end human ownership), unavailable (no applicable pattern precedent for AI to work within), or counterproductive (exploratory work where human reasoning is the primary tool and AI suggestions would misdirect it).[^7]
@@ -103,7 +103,7 @@ The communication challenge is framing governance in terms that are meaningful t
 **Recommended Practice:**
 - Prepare a two-minute sprint planning gate explanation for product stakeholders that uses outcome language: "This classification system prevents the rework accumulation we saw in Q3 by ensuring that AI generates code only for tasks where it produces reliable first-pass output. The result is more predictable sprint completion, not slower sprint velocity."[^13]
 - Share the sprint AI-primary percentage metric with product managers as a sprint health indicator, alongside burn-down and velocity. Product managers who can see the percentage and understand what it measures will surface questions about specific classifications — which is productive dialogue, not interference.[^14]
-- When a product manager requests velocity acceleration that would require exceeding the AI-primary cap, the CTO facilitates a conversation about tradeoffs rather than an engineering veto. The specific question is: which stories would we reclassify, and what is the rework risk we are accepting? Making the risk explicit converts an abstract governance constraint into a concrete delivery decision.[^2]
+- When a product manager requests velocity acceleration that would require exceeding the AI-primary cap, the CTO facilitates a conversation about tradeoffs rather than an engineering veto. The specific question is: which stories would we reclassify, and what is the rework risk we are accepting? Making the risk explicit converts an abstract governance constraint into a concrete delivery decision.
 - Document the shared understanding between engineering and product in the engineering handbook: what is the sprint planning gate, what does each classification mean, and what are the velocity expectations for each tier? A written document that product managers have read is more durable than a verbal briefing that each new PM receives differently.[^3]
 
 ---
@@ -124,48 +124,40 @@ The communication challenge is framing governance in terms that are meaningful t
 
 ---
 
-[^1]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Sprint velocity miscalibration as a function of undifferentiated AI task treatment; the pattern precedent dimension and how the architect's codebase context informs readiness assessment.
-
-[^2]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    CTO role in AI governance communication; DORA delivery stability findings and their relationship to ungoverned AI adoption in sprint planning; the shared engineering-product governance understanding.
-
 [^3]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Three-dimension AI readiness framework: specification clarity, pattern precedent, and correctness criticality as the practical dimensions that determine task-level AI suitability.
+ Three-dimension AI readiness framework: specification clarity, pattern precedent, and correctness criticality as the practical dimensions that determine task-level AI suitability.
 
 [^4]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Specification prerequisites for AI-primary task classification; the three-question sprint planning assessment and its relationship to task decomposition and session scoping best practices.
+ Specification prerequisites for AI-primary task classification; the three-question sprint planning assessment and its relationship to task decomposition and session scoping best practices.
 
 [^5]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Spec.md as a comprehension gate and quality prerequisite; why the investment in specification before AI session reduces total sprint cycle time rather than adding overhead.
+ Spec.md as a comprehension gate and quality prerequisite; why the investment in specification before AI session reduces total sprint cycle time rather than adding overhead.
 
 [^6]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    Sprint metric reporting: AI-primary percentage as a sprint health and quarterly review input; the classification miss log as a mechanism for retrospective calibration.
+ Sprint metric reporting: AI-primary percentage as a sprint health and quarterly review input; the classification miss log as a mechanism for retrospective calibration.
 
 [^7]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Three-tier classification system definitions; empirical findings on AI-primary vs. AI-assisted task outcomes; the human authorship dimension that distinguishes tiers.
+ Three-tier classification system definitions; empirical findings on AI-primary vs. AI-assisted task outcomes; the human authorship dimension that distinguishes tiers.
 
 [^8]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Spec.md as a prerequisite for AI-primary output quality; how specification completeness at planning time correlates with review round count and QA failure rates.
-
+ Spec.md as a prerequisite for AI-primary output quality; how specification completeness at planning time correlates with review round count and QA failure rates.
 
 [^11]: Stack Overflow — "2025 Developer Survey," Stack Overflow, December 2025. https://survey.stackoverflow.co/2025/
-    AI productivity misalignment by task type; the relationship between classification accuracy and team AI maturity as a lagging indicator; retrospective calibration as a learning mechanism.
+ AI productivity misalignment by task type; the relationship between classification accuracy and team AI maturity as a lagging indicator; retrospective calibration as a learning mechanism.
 
 [^12]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Classification miss logging as a debt-prevention mechanism; the aggregate signal that quarterly calibration reviews produce from individual retrospective observations.
+ Classification miss logging as a debt-prevention mechanism; the aggregate signal that quarterly calibration reviews produce from individual retrospective observations.
 
 [^13]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Stakeholder communication about AI governance; why product managers' AI productivity expectations are systematically miscalibrated and how to reframe governance in delivery outcome terms.
+ Stakeholder communication about AI governance; why product managers' AI productivity expectations are systematically miscalibrated and how to reframe governance in delivery outcome terms.
 
 [^14]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    The rework accumulation mechanism that sprint planning gates prevent; product-engineering velocity dialogue as a governance practice; the 40% cap as rework risk management rather than restriction.
-
+ The rework accumulation mechanism that sprint planning gates prevent; product-engineering velocity dialogue as a governance practice; the 40% cap as rework risk management rather than restriction.
 
 [^17]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Spec.md construction walkthrough: how to produce a complete specification in 30–60 minutes that gives Claude Code the context it needs for reliable AI-primary output
-    - Classification system onboarding: how to introduce the three tiers to new engineers so that their first sprint uses the classification correctly without constant guidance
-    - Retrospective calibration workflow: using sprint retrospective data to identify systematic classification errors and adjust the criteria for the next sprint
+ - Spec.md construction walkthrough: how to produce a complete specification in 30–60 minutes that gives Claude Code the context it needs for reliable AI-primary output
+ - Classification system onboarding: how to introduce the three tiers to new engineers so that their first sprint uses the classification correctly without constant guidance
+ - Retrospective calibration workflow: using sprint retrospective data to identify systematic classification errors and adjust the criteria for the next sprint
 
 [^a]: [Governance: Review Policies](01-review-policies.md) — Sprint planning gates determine AI readiness classification before work begins; review policies govern what happens after; together they bracket the development cycle.
 

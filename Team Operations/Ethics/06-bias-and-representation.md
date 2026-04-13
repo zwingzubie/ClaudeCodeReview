@@ -30,12 +30,12 @@ The training data origin of these patterns matters for understanding their persi
 
 **Description:** User-facing features — authentication, personalization, recommendation, content moderation, search ranking — are the highest-stakes category for bias in AI-generated code, because they determine how the product behaves differently for different user populations. AI-generated authentication code may default to security assumptions calibrated to a high-trust, high-connectivity user context. AI-generated recommendation logic may reflect training data demographics in its default weights. AI-generated content moderation may be calibrated to a cultural baseline that is not the team's target user population.[^7]
 
-The engineer's responsibility when reviewing AI-generated user-facing features is to evaluate not just whether the feature works, but whether it works equivalently for the range of users who will use it. This is a different question than functional correctness, and it requires different review input: understanding of the user population, awareness of the training data bias patterns likely to affect this feature type, and, in some cases, testing with data that represents non-default user populations.[^8]
+The engineer's responsibility when reviewing AI-generated user-facing features is to evaluate not just whether the feature works, but whether it works equivalently for the range of users who will use it. This is a different question than functional correctness, and it requires different review input: understanding of the user population, awareness of the training data bias patterns likely to affect this feature type, and, in some cases, testing with data that represents non-default user populations.
 
 **Recommended Practice:**
 - Apply a user population coverage check to all AI-generated user-facing feature PRs: identify the range of user populations the feature will serve and evaluate whether the AI-generated implementation makes assumptions that favor any population. This check is a prompt, not a comprehensive audit — it focuses review attention on the dimension most likely to reveal bias.[^7]
 - For authentication and identity features specifically, review AI-generated code against the team's target user geography: does the code make name format assumptions that do not apply to non-Western users? Does it assume phone number formats, postal code formats, or address structures that are US-centric? These assumptions are common AI output patterns in authentication-adjacent code.[^2]
-- Test AI-generated recommendation and personalization logic with data representing non-default user populations before shipping. Functional testing with a single representative user persona does not reveal differential behavior across user populations — the test data needs to represent the full range.[^9]
+- Test AI-generated recommendation and personalization logic with data representing non-default user populations before shipping. Functional testing with a single representative user persona does not reveal differential behavior across user populations — the test data needs to represent the full range.
 - When AI-generated content moderation logic is used, evaluate the calibration baseline explicitly: who determined what content is "normal" vs. "problematic" in the training data, and does that calibration match the team's target user population and product context? Content moderation calibration is highly culturally specific, and default calibration may not match the team's context.[^10]
 
 ---
@@ -72,11 +72,11 @@ The reviewer's responsibility for these patterns is not to produce perfect cultu
 
 **Description:** The challenge of incorporating bias review into code review is that it adds a review dimension without a clear time budget. Engineers already reviewing for correctness, architecture, security, and maintainability are being asked to add cultural assumption review as a fifth dimension. Without explicit structure, this addition either disappears under time pressure or makes every review exhaustively slow. The solution is a lightweight checklist approach that applies the right level of scrutiny to the right code: user-facing code receives the full bias checklist, non-user-facing code receives a brief pass, and the full bias review process is reserved for features with high user population coverage.[^15]
 
-The additional review input question — when to involve reviewers beyond the standard set — is best answered by feature type rather than by case-by-case judgment. Features with high exposure to diverse user populations, features that handle identity or demographic information, and features with content moderation or recommendation logic are the categories that consistently benefit from diverse review input. Having this criterion written down produces more consistent review escalation than relying on individuals to make the judgment under deadline pressure.[^8]
+The additional review input question — when to involve reviewers beyond the standard set — is best answered by feature type rather than by case-by-case judgment. Features with high exposure to diverse user populations, features that handle identity or demographic information, and features with content moderation or recommendation logic are the categories that consistently benefit from diverse review input. Having this criterion written down produces more consistent review escalation than relying on individuals to make the judgment under deadline pressure.
 
 **Recommended Practice:**
 - Maintain a two-tier bias review checklist: a brief five-question pass for all user-facing AI-generated code (assumptions about name format, locale, gender, accessibility, example values), and an extended review for high-exposure features (authentication, recommendation, content moderation, personalization). The brief pass adds minimal time; the extended review is applied selectively.[^15]
-- Define the feature categories that warrant diverse review input and document them in the team's PR guide: identity features, recommendation and personalization logic, content moderation, any feature with significant user-visible text or UI copy. When a PR falls in these categories, the architect routes to the extended review process.[^9]
+- Define the feature categories that warrant diverse review input and document them in the team's PR guide: identity features, recommendation and personalization logic, content moderation, any feature with significant user-visible text or UI copy. When a PR falls in these categories, the architect routes to the extended review process.
 - Incorporate bias review findings into the team's retrospective cycle: what bias patterns appeared in AI-generated code this sprint, what categories of code produced them, and what review interventions were effective? This cycle makes bias review learning cumulative and drives CLAUDE.md and checklist updates based on real findings.
 - The architect should maintain the bias review checklist and update it based on retrospective findings. A checklist that does not update is a checklist that stops finding new patterns. The review process should be as adaptive as the code it reviews.[^16]
 
@@ -95,55 +95,45 @@ The additional review input question — when to involve reviewers beyond the st
 ---
 
 [^1]: Yonatan Sason — "The Black Box Problem: Why AI-Generated Code Stops Being Maintainable," *Towards Data Science*, March 6, 2026. https://towardsdatascience.com/the-black-box-problem-why-ai-generated-code-stops-being-maintainable/
-    Training data bias mechanisms in AI-generated code: how demographic underrepresentation in training corpora produces culturally narrow default outputs in user-facing code.
+ Training data bias mechanisms in AI-generated code: how demographic underrepresentation in training corpora produces culturally narrow default outputs in user-facing code.
 
 [^2]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Cultural assumptions in AI-generated user-facing features: the categories of embedded assumption that technical correctness review does not surface; the reviewer responsibility for implicit bias.
+ Cultural assumptions in AI-generated user-facing features: the categories of embedded assumption that technical correctness review does not surface; the reviewer responsibility for implicit bias.
 
 [^3]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Three bias categories in AI-generated code: naming and example assumptions, documentation and comment assumptions, API and interaction design assumptions; team briefing framework.
+ Three bias categories in AI-generated code: naming and example assumptions, documentation and comment assumptions, API and interaction design assumptions; team briefing framework.
 
 [^4]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Persistence of training data bias patterns: why culturally narrow defaults in AI output are stable across model versions and require explicit review intervention rather than model improvement.
-
+ Persistence of training data bias patterns: why culturally narrow defaults in AI output are stable across model versions and require explicit review intervention rather than model improvement.
 
 [^6]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    Bias pattern documentation and cumulative review improvement: how logging recurring bias patterns in AI output accelerates review quality over time.
+ Bias pattern documentation and cumulative review improvement: how logging recurring bias patterns in AI output accelerates review quality over time.
 
 [^7]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    User-facing feature bias evaluation: the equivalence test for AI-generated authentication, recommendation, and personalization features; differential behavior analysis across user populations.
-
-[^8]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    Diverse review input criteria for high-exposure features: organizational governance for bias review escalation; feature type categories that consistently warrant additional review depth.
-
-[^9]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Testing AI-generated user-facing features with diverse population data: practical approaches for evaluating differential behavior in recommendation, personalization, and content moderation features.
+ User-facing feature bias evaluation: the equivalence test for AI-generated authentication, recommendation, and personalization features; differential behavior analysis across user populations.
 
 [^10]: Dark Reading — "AI-Assisted Development: The Security Risks Nobody Is Managing," October 2025. https://www.darkreading.com/application-security/ai-assisted-development-security-risks
-    Content moderation calibration and cultural specificity: how AI-generated moderation logic inherits training data cultural calibration rather than the team's product context.
+ Content moderation calibration and cultural specificity: how AI-generated moderation logic inherits training data cultural calibration rather than the team's product context.
 
 [^11]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    Accessibility failure rate in AI-generated frontend code: the WCAG 2.1 AA compliance gap between AI-generated and hand-written frontend components; the training data underrepresentation explanation.
-
+ Accessibility failure rate in AI-generated frontend code: the WCAG 2.1 AA compliance gap between AI-generated and hand-written frontend components; the training data underrepresentation explanation.
 
 [^13]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md accessibility configuration: module-level instructions for generating WCAG-compliant components; the generation-point intervention approach for accessibility.
+ CLAUDE.md accessibility configuration: module-level instructions for generating WCAG-compliant components; the generation-point intervention approach for accessibility.
 
 [^14]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025
-    Variable naming and documentation bias in AI output: survey data on developer awareness of cultural assumptions in AI-generated code; the review gap for non-functional bias.
+ Variable naming and documentation bias in AI output: survey data on developer awareness of cultural assumptions in AI-generated code; the review gap for non-functional bias.
 
 [^15]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Two-tier bias review design: lightweight vs. extended review process; the feature exposure level as the criterion for extended review; bias review as a scaled rather than uniform process.
+ Two-tier bias review design: lightweight vs. extended review process; the feature exposure level as the criterion for extended review; bias review as a scaled rather than uniform process.
 
 [^16]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Adaptive review process design: how bias review checklists should update based on retrospective findings; the architect's role in maintaining review quality across model and team changes.
-
+ Adaptive review process design: how bias review checklists should update based on retrospective findings; the architect's role in maintaining review quality across model and team changes.
 
 [^18]: ThePrimeagen (The PrimeTime) — "Jr Devs - 'I Can't Code Anymore'," YouTube, February 21, 2025. https://www.youtube.com/watch?v=1Se2zTlXDwY
-    - First-person experience with biased AI output: examples from junior developers of discovering cultural assumptions in AI-generated code during review
-    - The review gap: how technical correctness review misses cultural assumption review when the checklist does not include it
-    - Practical correction workflow: how to identify and correct naming, example, and documentation assumptions in AI-generated code without slowing the review process
-
+ - First-person experience with biased AI output: examples from junior developers of discovering cultural assumptions in AI-generated code during review
+ - The review gap: how technical correctness review misses cultural assumption review when the checklist does not include it
+ - Practical correction workflow: how to identify and correct naming, example, and documentation assumptions in AI-generated code without slowing the review process
 
 [^a]: [Governance: Review Policies](../Governance/01-review-policies.md) — review policies should include bias review criteria; this document's analysis informs what reviewers should look for in AI-generated content.
 

@@ -60,26 +60,26 @@ There are two mechanisms for making ADRs session-accessible. The first, and most
 
 ```mermaid
 flowchart TD
-    DISC[Architectural Decision Made<br/>meeting · PR review · Slack thread] --> DRAFT["Claude Code drafts ADR<br/>from meeting notes / thread transcript<br/>within 24 hours of decision"]
-    DRAFT --> ARCH[Architect Reviews Draft<br/>Confirms rationale<br/>Corrects mischaracterized alternatives<br/>Adds AI Constraints field]
-    ARCH --> Q{ADR accepted?}
-    Q --> |Revisions needed| DRAFT
-    Q --> |Accepted| MERGE["Merge to docs/adr/NNN-title.md<br/>Update docs/adr/README.md index<br/>Mark any superseded ADRs"]
-    MERGE --> CLAUDE["Extract AI Constraints field<br/>Add to CLAUDE.md with ADR reference<br/>'# See ADR-042 — do not...'"]
-    CLAUDE --> ACTIVE["ADR Active<br/>Sessions query README.md index<br/>CLAUDE.md enforces constraints"]
-    ACTIVE --> CHANGE{Architecture revisited?}
-    CHANGE --> |Yes| NEW[New ADR drafted<br/>Old ADR marked Superseded<br/>CLAUDE.md constraint updated]
-    NEW --> ARCH
-    CHANGE --> |No| QUARTERLY[Quarterly ADR Review<br/>Stale? Missing? Ready for supersession?]
-    QUARTERLY --> ACTIVE
+ DISC[Architectural Decision Made<br/>meeting · PR review · Slack thread] --> DRAFT["Claude Code drafts ADR<br/>from meeting notes / thread transcript<br/>within 24 hours of decision"]
+ DRAFT --> ARCH[Architect Reviews Draft<br/>Confirms rationale<br/>Corrects mischaracterized alternatives<br/>Adds AI Constraints field]
+ ARCH --> Q{ADR accepted?}
+ Q --> |Revisions needed| DRAFT
+ Q --> |Accepted| MERGE["Merge to docs/adr/NNN-title.md<br/>Update docs/adr/README.md index<br/>Mark any superseded ADRs"]
+ MERGE --> CLAUDE["Extract AI Constraints field<br/>Add to CLAUDE.md with ADR reference<br/>'# See ADR-042 — do not...'"]
+ CLAUDE --> ACTIVE["ADR Active<br/>Sessions query README.md index<br/>CLAUDE.md enforces constraints"]
+ ACTIVE --> CHANGE{Architecture revisited?}
+ CHANGE --> |Yes| NEW[New ADR drafted<br/>Old ADR marked Superseded<br/>CLAUDE.md constraint updated]
+ NEW --> ARCH
+ CHANGE --> |No| QUARTERLY[Quarterly ADR Review<br/>Stale? Missing? Ready for supersession?]
+ QUARTERLY --> ACTIVE
 ```
 
-**Description:** The discipline of ADR creation breaks down primarily because of the lag between the decision and the documentation. Architectural decisions are made during fast-moving discussions, code reviews, and Slack threads — contexts where the intention to document is present but the immediate time to do it is not. By the time an engineer returns to write the ADR, the nuance of the discussion has faded, the alternatives considered are harder to reconstruct, and the rationale has partially merged with the outcome in memory.[^9]
+**Description:** The discipline of ADR creation breaks down primarily because of the lag between the decision and the documentation. Architectural decisions are made during fast-moving discussions, code reviews, and Slack threads — contexts where the intention to document is present but the immediate time to do it is not. By the time an engineer returns to write the ADR, the nuance of the discussion has faded, the alternatives considered are harder to reconstruct, and the rationale has partially merged with the outcome in memory.
 
 Claude Code can draft ADRs from the raw material of decision discussions — meeting notes, Slack thread exports, PR comment threads, and architecture meeting transcripts. The draft will not be publication-ready: it will require architect review to confirm the rationale, correct mischaracterized alternatives, and add the AI Constraints field. But a draft that is 70% right and requires 15 minutes of review is produced and reviewed more often than a blank template that requires 45 minutes of writing from scratch. Reducing the per-ADR creation cost is the primary mechanism for improving ADR adoption rate.[^1]
 
 **Recommended Practice:**
-- Define a standard ADR drafting prompt: "Read the following [meeting notes / Slack thread / PR comments] and draft an ADR using our template (docs/adr/TEMPLATE.md). Focus on accurately representing the alternatives that were considered and the reasons the chosen option was preferred. Flag any points where you are uncertain about the rationale." This prompt produces usable drafts rather than generic documentation.[^9]
+- Define a standard ADR drafting prompt: "Read the following [meeting notes / Slack thread / PR comments] and draft an ADR using our template (docs/adr/TEMPLATE.md). Focus on accurately representing the alternatives that were considered and the reasons the chosen option was preferred. Flag any points where you are uncertain about the rationale." This prompt produces usable drafts rather than generic documentation.
 - Assign the responsibility for initiating the ADR draft to the session participant who owned the architectural decision — typically the architect. The architect triggers the Claude Code drafting session within 24 hours of the decision meeting and then reviews the draft before adding it to the PR that implements the decision.[^4]
 - For decisions made during PR review (as opposed to formal architectural discussions), include an ADR drafting step in the PR merge criteria: if a significant architectural point was decided in PR comments, the architect drafts an ADR from those comments before merge. PR comment threads are the most common location of undocumented architectural decisions in fast-moving teams.[^5]
 - When Claude Code drafts an ADR, include the AI Constraints field draft in the prompt output, then transfer it directly to CLAUDE.md as part of the ADR acceptance step. This creates a consistent workflow: decision discussion → ADR draft → architect review → ADR merge + CLAUDE.md update. No decision escapes the loop without both artifacts being produced.[^6]
@@ -100,31 +100,28 @@ Claude Code can draft ADRs from the raw material of decision discussions — mee
 ---
 
 [^1]: Michael Nygard — "Documenting Architecture Decisions," Cognitect, November 2011. https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions
-    Original ADR format rationale and template structure; the foundational argument for why decisions rather than architectures need documentation; the Nygard fields that all ADR variants derive from.
+ Original ADR format rationale and template structure; the foundational argument for why decisions rather than architectures need documentation; the Nygard fields that all ADR variants derive from.
 
 [^2]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Session context limitations and CLAUDE.md as the mechanism for carrying architectural decisions across sessions; the three failure modes that ADRs prevent in AI-assisted development.
+ Session context limitations and CLAUDE.md as the mechanism for carrying architectural decisions across sessions; the three failure modes that ADRs prevent in AI-assisted development.
 
 [^3]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Architectural drift toward training data norms as a specific risk in AI-assisted teams; ADR-enforced constraints in CLAUDE.md as the primary countermeasure; the architect's role in ADR ownership.
+ Architectural drift toward training data norms as a specific risk in AI-assisted teams; ADR-enforced constraints in CLAUDE.md as the primary countermeasure; the architect's role in ADR ownership.
 
 [^4]: Yue Liu et al. — "Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild," arXiv:2603.28592, March 30, 2026. https://arxiv.org/html/2603.28592
-    Compounding decision entropy in AI-assisted codebases: how undocumented micro-decisions accumulate into an incomprehensible palimpsest; quarterly ADR review as a maintenance practice.
+ Compounding decision entropy in AI-assisted codebases: how undocumented micro-decisions accumulate into an incomprehensible palimpsest; quarterly ADR review as a maintenance practice.
 
 [^5]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    ADR references in PR review: how linking AI-generated code to the relevant ADR at review time prevents architectural drift from passing through the review gate undetected.
+ ADR references in PR review: how linking AI-generated code to the relevant ADR at review time prevents architectural drift from passing through the review gate undetected.
 
 [^6]: Anthropic — "Model Context Protocol," Anthropic, 2025. https://www.anthropic.com/news/model-context-protocol
-    MCP as the mechanism for making external documentation stores queryable within Claude Code sessions; the Google Drive MCP configuration for ADR accessibility; CLAUDE.md and MCP as complementary context layers.
+ MCP as the mechanism for making external documentation stores queryable within Claude Code sessions; the Google Drive MCP configuration for ADR accessibility; CLAUDE.md and MCP as complementary context layers.
 
 [^7]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    Context engineering for AI sessions: how pre-loading ADR context before beginning implementation prevents the session from contradicting documented decisions; the explicit pre-load pattern.
+ Context engineering for AI sessions: how pre-loading ADR context before beginning implementation prevents the session from contradicting documented decisions; the explicit pre-load pattern.
 
 [^8]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Repository structure as session context: how docs/adr/ placement within the repository makes ADRs part of the working context; the index file as the primary ADR discovery mechanism for sessions.
-
-[^9]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    ADR documentation lag as the primary failure mode for ADR adoption; using AI to draft from discussion transcripts as the mechanism that reduces per-ADR creation cost and improves adoption rates.
+ Repository structure as session context: how docs/adr/ placement within the repository makes ADRs part of the working context; the index file as the primary ADR discovery mechanism for sessions.
 
 [^a]: [Issues: Architectural Drift](../Issues/03-architectural-drift.md) — ADRs are the primary countermeasure to architectural drift; the three failure modes identified here (session amnesia, drift, review blindness) map directly to that issue's documented patterns and root causes.
 

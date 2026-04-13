@@ -8,7 +8,7 @@
 
 Hallucination — the generation of confident, plausible-sounding output that is factually incorrect — is the failure mode that makes AI-generated code most dangerous to ship without verification. Unlike obvious errors that fail tests or generate runtime exceptions, hallucinated output often passes automated checks, reads correctly to a casual reviewer, and fails only in production under conditions the engineer did not anticipate. The confidence with which language models present incorrect information is one of their most consequential properties: there is no correlation between model certainty and model accuracy for claims about external facts.[^1]
 
-The engineering context introduces specific hallucination categories that general AI guidance does not adequately address. An AI that confabulates a historical date is harmless; an AI that confabulates a function signature produces code that fails at runtime; an AI that confabulates a library's security behavior produces code that is exploitable in production. For engineering teams, the stakes of hallucination are directly proportional to the criticality of the code the AI is generating, and the mitigation must be calibrated to those stakes rather than applied uniformly.[^2]
+The engineering context introduces specific hallucination categories that general AI guidance does not adequately address. An AI that confabulates a historical date is harmless; an AI that confabulates a function signature produces code that fails at runtime; an AI that confabulates a library's security behavior produces code that is exploitable in production. For engineering teams, the stakes of hallucination are directly proportional to the criticality of the code the AI is generating, and the mitigation must be calibrated to those stakes rather than applied uniformly.
 
 Veracode's Spring 2026 analysis found that 45% of AI-generated code fails at least one security test — a failure rate driven partly by hallucinated assumptions about how security-relevant APIs and frameworks behave. These failures survive code review at high rates because they are structurally plausible: the code looks like code that should work, uses the right abstractions, and implements the right overall pattern. The hallucination is in the details that make the difference between secure and insecure behavior.[^3]
 
@@ -32,12 +32,12 @@ The highest-risk hallucination categories for engineering work are: external API
 
 **Description:** The "read before trust" pattern is the primary operational mitigation for hallucination: before accepting any AI-generated claim about a function, method, API, or library behavior, read the authoritative source for that claim. For internal code, the authoritative source is the source file. For external libraries, it is the current version documentation. For framework behavior, it is the framework's own documentation or test suite. Reading the source is the only reliable verification — the model's confident assertion about what a function does is not verification.[^6]
 
-The pattern is not as burdensome as it sounds for the majority of AI-generated code. Most AI output references functions and libraries that the engineer already knows — the verification step is either trivially quick (confirming a known API) or provides valuable information (discovering that an API has changed since the engineer last used it). The expensive verification cases are external libraries the engineer is not familiar with, where "read before trust" requires enough reading to actually understand what the library does — exactly the case where hallucination is most likely and most consequential.[^2]
+The pattern is not as burdensome as it sounds for the majority of AI-generated code. Most AI output references functions and libraries that the engineer already knows — the verification step is either trivially quick (confirming a known API) or provides valuable information (discovering that an API has changed since the engineer last used it). The expensive verification cases are external libraries the engineer is not familiar with, where "read before trust" requires enough reading to actually understand what the library does — exactly the case where hallucination is most likely and most consequential.
 
 **Recommended Practice:**
 - Apply "read before trust" categorically to: any function or method the engineer would not recognize without the AI's assistance, any security-relevant API usage, and any library or framework version the session has not explicitly been given documentation for. These are the categories where hallucination frequency and impact are both highest.[^6]
 - Automate the verification step where possible: for internal code, use IDE navigation to jump to the definition of any AI-generated function call and confirm its signature matches the usage. For external libraries, configure the IDE's type checking to flag mismatched signatures immediately rather than requiring manual verification. Type errors from hallucinated signatures are easier to catch than logical errors from hallucinated behavior.[^4]
-- For AI-generated test code, apply "read before trust" to the assertions: verify that each test assertion actually tests what the test name claims it tests. An AI-generated test that asserts `result !== null` when the test is named `"should return the correct user ID"` is passing while providing false coverage — a hallucination of test correctness rather than of implementation.[^7]
+- For AI-generated test code, apply "read before trust" to the assertions: verify that each test assertion actually tests what the test name claims it tests. An AI-generated test that asserts `result!== null` when the test is named `"should return the correct user ID"` is passing while providing false coverage — a hallucination of test correctness rather than of implementation.[^7]
 - Document "read before trust" invocations in code review: when reviewing AI-generated code, note which external references were verified and against which source. This documentation creates a verification record that makes hallucinated output less likely to survive the review process and creates accountability for the verification step.
 
 ---
@@ -82,25 +82,22 @@ Sonar's 2026 research found that the verification gap — the proportion of AI-g
 ---
 
 [^1]: Simon Willison — "LLM Hallucination: A Practical Framework for 2026," simonwillison.net, March 2026. https://simonwillison.net/2026/Mar/llm-hallucination-practical-framework/
-    Hallucination as a structural property of language model generation; confidence-accuracy independence; high-risk hallucination categories for engineering work; "read before trust" as the primary operational mitigation.
-
-[^2]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    The hallucination stakes by code criticality; verification effort calibration to risk category; context injection as the highest-leverage hallucination reduction technique.
+ Hallucination as a structural property of language model generation; confidence-accuracy independence; high-risk hallucination categories for engineering work; "read before trust" as the primary operational mitigation.
 
 [^3]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
-    45% security test failure rate for AI-generated code; hallucination concentration in security-critical code categories; security API semantic hallucination as the primary failure mechanism.
+ 45% security test failure rate for AI-generated code; hallucination concentration in security-critical code categories; security API semantic hallucination as the primary failure mechanism.
 
 [^4]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md library version documentation; hallucination-reducing constraint patterns; assertion justification prompting; version-specific anchors in session context.
+ CLAUDE.md library version documentation; hallucination-reducing constraint patterns; assertion justification prompting; version-specific anchors in session context.
 
 [^5]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Context injection workflow for external library sessions; security library documentation injection; CLAUDE.md as a version-anchor document; pre-session context preparation for hallucination reduction.
+ Context injection workflow for external library sessions; security library documentation injection; CLAUDE.md as a version-anchor document; pre-session context preparation for hallucination reduction.
 
 [^6]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    "Read before trust" pattern implementation in daily engineering practice; verification categories and their appropriate sources; the efficiency case for targeted rather than uniform verification.
+ "Read before trust" pattern implementation in daily engineering practice; verification categories and their appropriate sources; the efficiency case for targeted rather than uniform verification.
 
 [^7]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    Test hallucination as a distinct risk category; false coverage confidence from hallucinated assertions; mutation testing as the verification approach for AI-generated test suites; the verification gap for test code.
+ Test hallucination as a distinct risk category; false coverage confidence from hallucinated assertions; mutation testing as the verification approach for AI-generated test suites; the verification gap for test code.
 
 [^8]: Sonar (SonarSource) — "Sonar Data Reveals Critical 'Verification Gap' in AI Coding," press release, January 8, 2026. https://www.sonarsource.com/company/press-releases/sonar-data-reveals-critical-verification-gap-in-ai-coding/
-    The verification gap in test code specifically; engineer acceptance rates for AI-generated tests vs. production code; the misconception that tests are inherently lower-risk to accept without review.
+ The verification gap in test code specifically; engineer acceptance rates for AI-generated tests vs. production code; the misconception that tests are inherently lower-risk to accept without review.

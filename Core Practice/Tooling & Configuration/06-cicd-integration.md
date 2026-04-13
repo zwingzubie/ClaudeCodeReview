@@ -12,22 +12,22 @@ This memo covers when CI-run Claude Code adds value versus when it adds noise, h
 
 ```mermaid
 flowchart TD
-    PR[Pull Request Opened] --> R[PR Review Step<br/>/review-pr skill]
-    PR --> S[Security Gate<br/>SAST output + Claude triage]
-    PR --> C[Coverage Gate<br/>AI-primary threshold check]
-    R --> RF{Critical<br/>Findings?}
-    RF --> |Yes| BLOCK[Block Merge<br/>Line-specific review comments]
-    RF --> |No| ADVISE[Advisory PR Comments<br/>Organized by category]
-    S --> SF{High/Critical<br/>Vulnerabilities?}
-    SF --> |Yes| BLOCK
-    SF --> |No| ADVISE
-    C --> CF{Coverage<br/>Below Threshold?}
-    CF --> |Yes| GEN[Generate Candidate Tests<br/>Posted as PR comment for review]
-    CF --> |No| MERGE[Ready to Merge]
-    BLOCK --> |Engineer addresses or dismisses<br/>with justification| MERGE
-    ADVISE --> MERGE
-    GEN --> |Engineer reviews<br/>and merges tests| MERGE
-    MERGE --> LOG[Audit Log<br/>timestamp · skill version · findings · dismissals]
+ PR[Pull Request Opened] --> R[PR Review Step<br/>/review-pr skill]
+ PR --> S[Security Gate<br/>SAST output + Claude triage]
+ PR --> C[Coverage Gate<br/>AI-primary threshold check]
+ R --> RF{Critical<br/>Findings?}
+ RF --> |Yes| BLOCK[Block Merge<br/>Line-specific review comments]
+ RF --> |No| ADVISE[Advisory PR Comments<br/>Organized by category]
+ S --> SF{High/Critical<br/>Vulnerabilities?}
+ SF --> |Yes| BLOCK
+ SF --> |No| ADVISE
+ C --> CF{Coverage<br/>Below Threshold?}
+ CF --> |Yes| GEN[Generate Candidate Tests<br/>Posted as PR comment for review]
+ CF --> |No| MERGE[Ready to Merge]
+ BLOCK --> |Engineer addresses or dismisses<br/>with justification| MERGE
+ ADVISE --> MERGE
+ GEN --> |Engineer reviews<br/>and merges tests| MERGE
+ MERGE --> LOG[Audit Log<br/>timestamp · skill version · findings · dismissals]
 ```
 
 ---
@@ -76,12 +76,12 @@ Feeding CLAUDE.md security constraints into the CI security review step is criti
 
 ## Section 4: Test Generation and Coverage Gates
 
-**Description:** AI-primary code — code written substantially by Claude Code in an interactive session — carries a systematic test coverage risk: Claude tends to write implementation code faster than test code, and engineers working in flow with an AI assistant may reach the end of a feature with comprehensive implementation and sparse tests.[^10] CI test generation and coverage gates address this by enforcing that PRs from AI-primary sessions meet a coverage threshold before merge, and optionally by having Claude Code generate missing tests as part of the pipeline itself. The coverage gate is the enforcement mechanism; test generation is the assistance mechanism that helps PRs pass the gate without requiring the engineer to manually write all missing tests.
+**Description:** AI-primary code — code written substantially by Claude Code in an interactive session — carries a systematic test coverage risk: Claude tends to write implementation code faster than test code, and engineers working in flow with an AI assistant may reach the end of a feature with comprehensive implementation and sparse tests. CI test generation and coverage gates address this by enforcing that PRs from AI-primary sessions meet a coverage threshold before merge, and optionally by having Claude Code generate missing tests as part of the pipeline itself. The coverage gate is the enforcement mechanism; test generation is the assistance mechanism that helps PRs pass the gate without requiring the engineer to manually write all missing tests.
 
 Test quality is a distinct concern from test coverage. A coverage gate enforces that lines are executed by tests; it does not enforce that those tests would catch a regression. Claude Code in CI can run a test quality check alongside coverage measurement: examining whether the tests for changed code assert meaningful properties (not just that the function runs without error), whether edge cases are covered, and whether the test names describe the behavior being verified. This quality check should produce advisory findings rather than blocking ones — flagging low-quality tests for human review rather than blocking merge, because the line between a simple smoke test and an inadequate test depends on context that is difficult to assess automatically.
 
 **Recommended Practice:**
-- Define per-PR coverage thresholds for AI-primary code in `.claude/settings.json` or CI configuration. A reasonable starting threshold is 80% line coverage for new code in PRs where Claude Code was the primary author. Tag AI-primary PRs using a consistent label (e.g., `ai-primary`) to enable threshold differentiation.[^10]
+- Define per-PR coverage thresholds for AI-primary code in `.claude/settings.json` or CI configuration. A reasonable starting threshold is 80% line coverage for new code in PRs where Claude Code was the primary author. Tag AI-primary PRs using a consistent label (e.g., `ai-primary`) to enable threshold differentiation.
 - Configure a test generation step that runs after coverage measurement for PRs that fall below threshold. The step should invoke Claude Code with the uncovered lines as context and generate candidate tests, posting them as a PR comment for engineer review before they are added to the codebase. Generated tests require human review before merge — never auto-commit generated test code.
 - Run the test quality check as an advisory step with findings formatted as a structured comment. Flag tests that only assert function execution without asserting return values, tests with no assertions, and tests that duplicate existing coverage without adding new assertions.
 - Track coverage trend data across PRs over time. A CI step that records per-PR coverage and plots it over time reveals whether AI-primary development is creating a coverage deficit that accumulates across releases — an early warning system for technical debt in the test suite.
@@ -115,37 +115,31 @@ Tracking suppressed findings is as important as tracking acted-upon findings. If
 ---
 
 [^1]: Anthropic — "Claude Code in CI/CD Pipelines," Claude Code Documentation, 2026. https://docs.anthropic.com/en/docs/claude-code/ci-cd
-    CI pipeline integration architecture: triggering on PR events, `--allowedTools` scoping for CI sessions, CLAUDE.md context injection, and the permission model for unattended pipeline runs.
+ CI pipeline integration architecture: triggering on PR events, `--allowedTools` scoping for CI sessions, CLAUDE.md context injection, and the permission model for unattended pipeline runs.
 
 [^2]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    CI integration intentionality: why each pipeline step needs a defined purpose and threshold; the noise-vs-value distinction; human override mechanisms for blocking findings.
+ CI integration intentionality: why each pipeline step needs a defined purpose and threshold; the noise-vs-value distinction; human override mechanisms for blocking findings.
 
 [^3]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    CI review quality: the relationship between skill/prompt design and false-positive rate; how generic prompts produce noise and structured prompts produce actionable findings; false-positive fatigue as a pipeline risk.
-
+ CI review quality: the relationship between skill/prompt design and false-positive rate; how generic prompts produce noise and structured prompts produce actionable findings; false-positive fatigue as a pipeline risk.
 
 [^5]: CodeRabbit — "AI Code Review Best Practices 2026," CodeRabbit Blog, 2026. https://coderabbit.ai/blog/ai-code-review-best-practices-2026
-    Writer/reviewer pattern in CI: how automated review using the same skill as interactive review produces consistent standards; the role of CI review in preparing PRs for human reviewer focus.
+ Writer/reviewer pattern in CI: how automated review using the same skill as interactive review produces consistent standards; the role of CI review in preparing PRs for human reviewer focus.
 
 [^6]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Finding format and actionability: why line-specific review comments are more actionable than general summaries; the engineering UX of CI finding presentation in the code review interface.
+ Finding format and actionability: why line-specific review comments are more actionable than general summaries; the engineering UX of CI finding presentation in the code review interface.
 
 [^7]: Veracode — "Integrating AI-Assisted Code Review with SAST Pipelines," Veracode Blog, 2026. https://www.veracode.com/blog/ai-assisted-code-review-sast-integration-2026
-    SAST and Claude Code integration: how contextual AI analysis reduces SAST false-positive rates; feeding SAST output as session context; the complementary strengths of rule-based SAST and contextual LLM analysis.
+ SAST and Claude Code integration: how contextual AI analysis reduces SAST false-positive rates; feeding SAST output as session context; the complementary strengths of rule-based SAST and contextual LLM analysis.
 
 [^8]: Sonar — "AI Code Review in the Security Gate: 2026 Configuration Guide," Sonar Blog, 2026. https://www.sonarsource.com/blog/ai-code-review-security-gate-2026
-    CLAUDE.md as security calibration context: how project-specific security constraints anchor CI security review to actual risk profiles; severity threshold configuration for blocking vs. advisory security findings.
+ CLAUDE.md as security calibration context: how project-specific security constraints anchor CI security review to actual risk profiles; severity threshold configuration for blocking vs. advisory security findings.
 
 [^9]: Dark Reading — "AI-Assisted Security Code Review: Findings from 200 Enterprise Deployments," Dark Reading, March 2026. https://www.darkreading.com/ai-assisted-security-code-review-enterprise-2026
-    Security gate threshold configuration: the operational consequences of miscalibrated thresholds; monthly governance reporting as a signal for recalibration; act-on vs. suppression rates as pipeline quality metrics.
-
-[^10]: Sabrina Ramonov — "AI Coding Productivity at Scale," March 2026. https://sabrina.dev/blog/ai-coding-productivity-2026
-    AI-primary code and coverage debt: how AI-assisted development creates systematic test coverage risk; coverage threshold differentiation for AI-primary vs. human-primary PRs; the role of CI in enforcing coverage standards.
-
+ Security gate threshold configuration: the operational consequences of miscalibrated thresholds; monthly governance reporting as a signal for recalibration; act-on vs. suppression rates as pipeline quality metrics.
 
 [^13]: Kyros — "Audit Requirements for AI-Assisted Software Development," Kyros Research, 2026. https://kyros.ai/research/audit-requirements-ai-assisted-development-2026
-    Pipeline audit log requirements: what a compliance-grade CI Claude Code run record must include; the governance value of logging skill version and CLAUDE.md version hash alongside findings.
-
+ Pipeline audit log requirements: what a compliance-grade CI Claude Code run record must include; the governance value of logging skill version and CLAUDE.md version hash alongside findings.
 
 [^a]: [QA & Testing: AI-Generated Test Coverage](../QA%20%26%20Testing/02-ai-generated-test-coverage.md) — CI/CD pipelines run coverage analysis on every merge; the integration document describes the pipeline and the QA document defines what the coverage gates require.
 

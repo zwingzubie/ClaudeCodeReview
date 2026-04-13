@@ -6,7 +6,7 @@
 
 ## Overview
 
-Monthly practice reviews are operational — they track whether the team is following the practices it has committed to following. They catch drift, surface individual incidents, and produce adjustments to process. What monthly reviews cannot produce is strategic visibility: whether the direction of drift over the past six months is toward better or worse outcomes, whether the team's AI adoption is producing sustainable velocity improvement or accumulating a rework liability that will surface as delivery failures in a future quarter, or whether the governance decisions made in Q1 actually produced the improvements they were designed to produce. That visibility requires a quarterly cadence with a different analytical frame.[^1]
+Monthly practice reviews are operational — they track whether the team is following the practices it has committed to following. They catch drift, surface individual incidents, and produce adjustments to process. What monthly reviews cannot produce is strategic visibility: whether the direction of drift over the past six months is toward better or worse outcomes, whether the team's AI adoption is producing sustainable velocity improvement or accumulating a rework liability that will surface as delivery failures in a future quarter, or whether the governance decisions made in Q1 actually produced the improvements they were designed to produce. That visibility requires a quarterly cadence with a different analytical frame.
 
 The quarterly engineering health review is the CTO's primary mechanism for exercising strategic oversight of AI-assisted engineering. It is not a longer version of the monthly practice review — it is a different artifact, operating at a different time horizon, with different decision authorities attached to it. The monthly review asks: are we following our practices? The quarterly review asks: are our practices producing good engineering outcomes, and are our governance decisions calibrated correctly to support them? Only the quarterly review can surface the kind of trend signals that DORA's research has captured: teams managing AI governance actively saw 7.2% delivery stability improvement, while teams without active governance saw equivalent degradation over the same period.[^2]
 
@@ -14,13 +14,13 @@ The quarterly engineering health review is the CTO's primary mechanism for exerc
 
 ## Section 1: The Strategic vs. Operational Distinction
 
-**Description:** The strategic vs. operational distinction in governance review is not just about cadence — it is about the analytical unit. Operational reviews examine individual practices and individual incidents: did this PR meet the review standard? was this sprint's AI-primary percentage within bounds? did this violation get handled correctly? Strategic reviews examine aggregate patterns and trend directions: is the team's AI-generated code quality improving or degrading over time? is technical debt accumulation accelerating? are delivery outcomes improving as AI adoption matures, or are they plateauing in a way that suggests the current governance model has reached its effectiveness ceiling?[^3]
+**Description:** The strategic vs. operational distinction in governance review is not just about cadence — it is about the analytical unit. Operational reviews examine individual practices and individual incidents: did this PR meet the review standard? was this sprint's AI-primary percentage within bounds? did this violation get handled correctly? Strategic reviews examine aggregate patterns and trend directions: is the team's AI-generated code quality improving or degrading over time? is technical debt accumulation accelerating? are delivery outcomes improving as AI adoption matures, or are they plateauing in a way that suggests the current governance model has reached its effectiveness ceiling?
 
 Monthly data is too noisy for strategic signal extraction. A single sprint with unusual characteristics — a team member out sick, an unusually complex story, a production incident that consumed review capacity — can make a month look anomalous without reflecting any underlying trend. Six-month trend data smooths this noise and reveals the direction the team is actually moving. DORA's 2025 research found that delivery stability differences between teams with active AI governance and those without were not visible in any single month's data, but were clearly visible in six-month rolling averages — which is precisely the analytical unit the quarterly review is designed to produce.[^2]
 
 **Recommended Practice:**
-- The quarterly health review requires six-month chart data for all tracked metrics, not just the most recent quarter. A six-month chart shows trend direction, rate of change, and whether interventions from prior quarters produced the intended effects. Quarterly point-in-time data without trend context produces decisions that respond to noise rather than signal.[^1]
-- Distinguish the strategic review clearly from the monthly practice review in the team calendar and in the review documents: different format, different agenda, different decision authorities. Teams that conflate the two produce reviews that are neither operationally useful nor strategically informative.[^3]
+- The quarterly health review requires six-month chart data for all tracked metrics, not just the most recent quarter. A six-month chart shows trend direction, rate of change, and whether interventions from prior quarters produced the intended effects. Quarterly point-in-time data without trend context produces decisions that respond to noise rather than signal.
+- Distinguish the strategic review clearly from the monthly practice review in the team calendar and in the review documents: different format, different agenda, different decision authorities. Teams that conflate the two produce reviews that are neither operationally useful nor strategically informative.
 - The CTO is the primary decision-maker at the quarterly review, not an attendee. The architect presents the data and analysis; the CTO interprets strategic signals and makes the governance decisions that require CTO authority (Section 4). Reviews where the CTO attends but does not exercise decision authority are not functioning as strategic governance.[^4]
 - Prepare the quarterly review data package at least three days before the review meeting: six-month metric charts, governance effectiveness evaluation (Section 3), and decision items with pre-prepared cost-benefit analysis. The review meeting is for interpretation and decision, not for data collection. Same-day data preparation produces poor strategic analysis.[^5]
 
@@ -35,7 +35,7 @@ Framing metric findings in terms of delivery risk rather than technical quality 
 **Recommended Practice:**
 - Use the standard four-section structure for every quarterly review: executive summary (two paragraphs), metric trends (six-month charts for each metric), interpretation and risk assessment (delivery risk framing), governance recommendations (specific proposals with cost-benefit analysis). Structural consistency across quarters makes trend comparison easier and prevents each review from requiring a fresh orientation.[^6]
 - The executive summary must include a one-sentence engineering health status (Green / Yellow / Red with a brief rationale) and the top decision item requiring CTO attention. The CTO should be able to read the executive summary in two minutes and understand what the review requires of them before opening the detailed sections.[^7]
-- Metric annotations are required at inflection points in the six-month charts: what happened in the sprint or month where a metric changed direction? Was it a policy change, a staffing change, a major delivery event, or unexplained? Inflection annotations prevent the CTO from misattributing metric movements to the wrong cause.[^3]
+- Metric annotations are required at inflection points in the six-month charts: what happened in the sprint or month where a metric changed direction? Was it a policy change, a staffing change, a major delivery event, or unexplained? Inflection annotations prevent the CTO from misattributing metric movements to the wrong cause.
 - The governance recommendations section must propose specific, actionable changes — not "consider improving review quality" but "raise the AI-primary code secondary review requirement from security-critical modules to include all modules over 200 lines, estimated cost: 0.5 hours per sprint, estimated risk reduction: 25% in review-escaped defect rate based on Q1/Q2 data." Vague recommendations produce no decisions; specific recommendations with cost-benefit analysis produce approvals or denials with reasoning.[^5]
 
 ---
@@ -101,46 +101,37 @@ The specific governance findings that translate to annual planning inputs are: p
 
 ---
 
-[^1]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Strategic vs. operational governance cadence; the limitations of monthly data for strategic signal extraction; the six-month trend as the appropriate analytical unit for engineering health assessment.
-
 [^2]: DORA / Google Cloud — "DORA 2025 Accelerate State of DevOps Report," 2025. https://dora.dev/research/2025/
-    7.2% delivery stability improvement for teams with active AI governance vs. equivalent degradation without; six-month rolling average as the analytical unit where governance differences become visible.
-
-[^3]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    Strategic vs. operational distinction in AI governance reviews; CTO role in interpreting strategic signals vs. architect role in operational monitoring.
+ 7.2% delivery stability improvement for teams with active AI governance vs. equivalent degradation without; six-month rolling average as the analytical unit where governance differences become visible.
 
 [^4]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    CTO as primary decision-maker at quarterly reviews; governance effectiveness documentation in the changelog; annual governance model review timing.
+ CTO as primary decision-maker at quarterly reviews; governance effectiveness documentation in the changelog; annual governance model review timing.
 
 [^5]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Quarterly review preparation timeline; tooling acquisition pre-work requirements; decision proposal completeness as a prerequisite for CTO decision quality.
+ Quarterly review preparation timeline; tooling acquisition pre-work requirements; decision proposal completeness as a prerequisite for CTO decision quality.
 
 [^6]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    Four-section presentation structure: executive summary through governance recommendations; structural consistency across quarters for trend comparison.
+ Four-section presentation structure: executive summary through governance recommendations; structural consistency across quarters for trend comparison.
 
 [^7]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Delivery risk framing for technical metric findings; the translation from technical quality metrics to delivery outcome language appropriate for CTO decision-making.
-
+ Delivery risk framing for technical metric findings; the translation from technical quality metrics to delivery outcome language appropriate for CTO decision-making.
 
 [^10]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    CTO-authority decision categories; structured decision proposals as a prerequisite for high-quality quarterly review decisions; the architect-analyzes / CTO-decides division of roles.
+ CTO-authority decision categories; structured decision proposals as a prerequisite for high-quality quarterly review decisions; the architect-analyzes / CTO-decides division of roles.
 
 [^11]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Sprint AI-primary cap change decision requirements; capacity planning findings from quarterly reviews as annual planning inputs; resource allocation decisions at the CTO level.
+ Sprint AI-primary cap change decision requirements; capacity planning findings from quarterly reviews as annual planning inputs; resource allocation decisions at the CTO level.
 
 [^12]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    Annual governance summary as an annual planning input; technical debt roadmap candidacy criteria; the early warning function of quarterly reviews in annual planning.
+ Annual governance summary as an annual planning input; technical debt roadmap candidacy criteria; the early warning function of quarterly reviews in annual planning.
 
 [^13]: Stack Overflow — "2025 Developer Survey," Stack Overflow, December 2025. https://survey.stackoverflow.co/2025/
-    Technical debt patterns that surface in quarterly reviews; the relationship between quarterly governance findings and engineering roadmap prioritization.
-
+ Technical debt patterns that surface in quarterly reviews; the relationship between quarterly governance findings and engineering roadmap prioritization.
 
 [^15]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Metric tracking configuration: how to configure Claude Code session logging to produce the data needed for quarterly review metric charts without manual data collection
-    - Governance effectiveness measurement: specific approaches for quantifying the review round count reduction from spec.md requirements and similar governance interventions
-    - Annual governance model review: how to structure the meta-review that determines whether the governance model's overhead is calibrated to the team's AI maturity level
-
+ - Metric tracking configuration: how to configure Claude Code session logging to produce the data needed for quarterly review metric charts without manual data collection
+ - Governance effectiveness measurement: specific approaches for quantifying the review round count reduction from spec.md requirements and similar governance interventions
+ - Annual governance model review: how to structure the meta-review that determines whether the governance model's overhead is calibrated to the team's AI maturity level
 
 [^a]: [Metrics: Team Health Dashboard](../Metrics/02-health-dashboard.md) — The health dashboard is the primary data source for quarterly review; the review cadence and the dashboard metrics are designed together.
 

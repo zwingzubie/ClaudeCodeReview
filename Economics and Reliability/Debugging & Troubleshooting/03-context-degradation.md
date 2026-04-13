@@ -44,32 +44,32 @@ The optimal compact timing is at natural session phase boundaries: after explora
 
 ```mermaid
 flowchart TD
-    A{Degradation detected<br/>or turn-count limit hit} --> B{Is session output<br/>mostly correct so far?}
-    B -- Yes --> C{Primary problem:<br/>context size?}
-    C -- Yes --> D[/compact Focus on current phase]
-    D --> E[Review compact summary]
-    E --> F{Summary captures<br/>critical decisions?}
-    F -- No --> G[Add missing info<br/>to first post-compact message]
-    F -- Yes --> H[Continue session<br/>from reset context]
-    G --> H
+ A{Degradation detected<br/>or turn-count limit hit} --> B{Is session output<br/>mostly correct so far?}
+ B -- Yes --> C{Primary problem:<br/>context size?}
+ C -- Yes --> D[/compact Focus on current phase]
+ D --> E[Review compact summary]
+ E --> F{Summary captures<br/>critical decisions?}
+ F -- No --> G[Add missing info<br/>to first post-compact message]
+ F -- Yes --> H[Continue session<br/>from reset context]
+ G --> H
 
-    B -- No --> I{Multiple turns going<br/>in wrong direction?}
-    I -- Yes --> J[Extract useful fragments<br/>before closing]
-    J --> K[Write revised session brief<br/>addressing root cause]
-    K --> L[Fresh session reset]
-    I -- No --> D
+ B -- No --> I{Multiple turns going<br/>in wrong direction?}
+ I -- Yes --> J[Extract useful fragments<br/>before closing]
+ J --> K[Write revised session brief<br/>addressing root cause]
+ K --> L[Fresh session reset]
+ I -- No --> D
 
-    C -- No --> M{Specification problem<br/>or wrong model tier?}
-    M -- Yes --> J
-    M -- No --> D
+ C -- No --> M{Specification problem<br/>or wrong model tier?}
+ M -- Yes --> J
+ M -- No --> D
 ```
 
-**Description:** Compact and session reset are both context management interventions, but they address different situations. Compact is appropriate when the session has made meaningful progress that should be preserved and the primary problem is context size. Session reset is appropriate when the session has gone significantly off course — accumulated incorrect state, gone in the wrong direction for multiple turns, or established incorrect assumptions that the compact summary would also include. Applying compact when reset is needed preserves the incorrect state in the summary; applying reset when compact would suffice discards progress unnecessarily.[^5]
+**Description:** Compact and session reset are both context management interventions, but they address different situations. Compact is appropriate when the session has made meaningful progress that should be preserved and the primary problem is context size. Session reset is appropriate when the session has gone significantly off course — accumulated incorrect state, gone in the wrong direction for multiple turns, or established incorrect assumptions that the compact summary would also include. Applying compact when reset is needed preserves the incorrect state in the summary; applying reset when compact would suffice discards progress unnecessarily.
 
 The decision criterion is the quality of what the session has produced: if the session's output to this point is largely correct and useful, compact and continue; if the session's output has been going in the wrong direction and a significant proportion of what would be captured in the summary is incorrect, start fresh with a better specification. The question is not "how much have I invested" — sunk cost reasoning leads to continuing bad sessions past the optimal stopping point — but "what is the starting state I want for the next phase of this work?"[^1]
 
 **Recommended Practice:**
-- Use a reset when the session has produced substantially incorrect output across multiple turns — code going in the wrong architectural direction, tests written for the wrong behavior, or a debugging hypothesis that has been applied incorrectly for several turns. In these cases, the compact summary will capture incorrect conclusions that will contaminate the post-compact session.[^5]
+- Use a reset when the session has produced substantially incorrect output across multiple turns — code going in the wrong architectural direction, tests written for the wrong behavior, or a debugging hypothesis that has been applied incorrectly for several turns. In these cases, the compact summary will capture incorrect conclusions that will contaminate the post-compact session.
 - Before resetting, extract any useful information from the failed session: individual correct observations, useful error messages, confirmed hypotheses, or partial implementations that are correct even if the overall direction was wrong. These can be injected as starting context for the fresh session rather than being re-derived.[^3]
 - When starting a fresh session after a reset, write a revised session brief that explicitly addresses the reason the prior session failed: if it failed because of an underspecified requirement, the new brief should specify that requirement explicitly; if it failed because of incorrect context injection, the new brief should inject the correct context. The reset session should not repeat the conditions that caused the prior session to fail.[^2]
 - Track session resets in the session log alongside compacts. A high reset rate relative to compacts indicates that sessions are frequently going significantly wrong rather than gradually degrading — a pattern that warrants review of the team's session scoping and brief-writing practices rather than just their compact timing.
@@ -85,7 +85,7 @@ Multi-session task architecture converts the context degradation problem from a 
 **Recommended Practice:**
 - For any task expected to require more than 15 turns, decompose it into sessions before starting. Define the output of each session — a written design document, a set of implemented files, a debugging hypothesis to test — so that each session has a clear deliverable that can be passed to the next session as concrete context.[^6]
 - Use written artifacts as session handoffs: at the end of a session, ask the model to generate a structured summary of decisions made, constraints established, and the specific starting point for the next session. This summary is better than the compact output for cross-session handoff because it is formatted as starting context for a fresh session rather than as a summary of a completed conversation.[^3]
-- In the session log, group related sessions by task: "Architecture analysis (session 1 of 3): explored current implementation, identified coupling points, documented [output]. Session 2 will: ..." This grouping maintains the task-level view across multiple sessions and provides the documentation chain for understanding a complex task's evolution.[^4]
+- In the session log, group related sessions by task: "Architecture analysis (session 1 of 3): explored current implementation, identified coupling points, documented [output]. Session 2 will:..." This grouping maintains the task-level view across multiple sessions and provides the documentation chain for understanding a complex task's evolution.[^4]
 - Evaluate multi-session task architecture as a standard approach for complex work rather than a fallback for sessions that run too long. A planned three-session workflow for a complex feature is more predictable in cost, quality, and timeline than a single-session attempt that becomes a four-session workflow when the first session degrades and requires a restart.
 
 ---
@@ -102,19 +102,16 @@ Multi-session task architecture converts the context degradation problem from a 
 ---
 
 [^1]: Anthropic — "Managing Long Sessions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/managing-long-sessions
-    Context degradation mechanism; `/compact` mechanics and timing; session reset vs. compact decision criteria; context window attention behavior as the session lengthens.
+ Context degradation mechanism; `/compact` mechanics and timing; session reset vs. compact decision criteria; context window attention behavior as the session lengthens.
 
 [^2]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Early degradation signals; precision decline as a degradation proxy; multi-session workflow architecture for complex tasks; written artifact handoffs between sessions.
+ Early degradation signals; precision decline as a degradation proxy; multi-session workflow architecture for complex tasks; written artifact handoffs between sessions.
 
 [^3]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Context fidelity testing patterns; pre-compact note-taking habit; extracting useful output from failed sessions before reset; structured session handoff document format.
+ Context fidelity testing patterns; pre-compact note-taking habit; extracting useful output from failed sessions before reset; structured session handoff document format.
 
 [^4]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Proactive compact timing at phase boundaries; compact summary review as a quality gate; turn-count soft limits by session type; pre-planned compact points for multi-phase sessions.
-
-[^5]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Session reset as the intervention for accumulated incorrect state; sunk cost reasoning as the primary cause of continuing bad sessions; the compact vs. reset decision framework applied to common session failure types.
+ Proactive compact timing at phase boundaries; compact summary review as a quality gate; turn-count soft limits by session type; pre-planned compact points for multi-phase sessions.
 
 [^6]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-    Multi-session workflow architecture as a standard approach for complex tasks; session scope and termination criteria for long tasks; cost and quality comparison between planned multi-session and degraded single-session approaches.
+ Multi-session workflow architecture as a standard approach for complex tasks; session scope and termination criteria for long tasks; cost and quality comparison between planned multi-session and degraded single-session approaches.

@@ -10,15 +10,15 @@ Six ethical risk areas are documented below. They do not require the team to tak
 
 ## Risk 1: Intellectual Property and Code Attribution
 
-**Description:** AI models are trained on large corpora of publicly available code, including code under various open-source licenses. When Claude generates code that closely resembles a licensed implementation, the legal status of that output is genuinely unsettled in 2026. Several jurisdictions have seen litigation around AI-generated outputs and their relationship to training data — and while no uniform ruling has established clear liability, the risk of inadvertent license violation is not zero, particularly for implementations of well-known algorithms or utility functions that appear frequently in training data.[^3]
+**Description:** AI models are trained on large corpora of publicly available code, including code under various open-source licenses. When Claude generates code that closely resembles a licensed implementation, the legal status of that output is genuinely unsettled in 2026. Several jurisdictions have seen litigation around AI-generated outputs and their relationship to training data — and while no uniform ruling has established clear liability, the risk of inadvertent license violation is not zero, particularly for implementations of well-known algorithms or utility functions that appear frequently in training data.
 
 Beyond legal risk, there is a question of attribution that affects the team's relationship with the open-source ecosystem the codebase depends on. Engineers who use AI tools to generate implementations that draw on open-source projects benefit from that work without the acknowledgment mechanisms (forks, PRs, citations) that traditionally signaled that relationship.[^4] This is not currently actionable in most legal contexts, but it represents a form of ethical accountability that the team should consciously address rather than ignore.
 
 **Proposed Solution:**
-- Add a code provenance awareness step to the security review process: for AI-generated implementations of non-trivial algorithms, run a brief similarity check against known licensed implementations before merge. GitHub Copilot's duplicate detection feature and similar tools can identify outputs with high similarity to indexed code.[^3]
+- Add a code provenance awareness step to the security review process: for AI-generated implementations of non-trivial algorithms, run a brief similarity check against known licensed implementations before merge. GitHub Copilot's duplicate detection feature and similar tools can identify outputs with high similarity to indexed code.
 - Document in CLAUDE.md any specific patterns or functions that should not be AI-generated due to IP sensitivity — cryptographic implementations, third-party API clients with complex licensing, and any modules with known external dependencies whose licenses warrant caution.[^5]
 - When AI generates an implementation that engineers recognize as closely matching a specific open-source project, treat it as a dependency: evaluate the license, document the relationship, and handle it the same way you would if you had copied the code directly.[^4]
-- Brief the team on what to do if an AI-generated output is identified as potentially problematic: escalate to the architect for IP review, do not merge until resolution, and document the decision regardless of outcome. Having a clear escalation path prevents individual engineers from making consequential IP decisions alone under time pressure.[^3]
+- Brief the team on what to do if an AI-generated output is identified as potentially problematic: escalate to the architect for IP review, do not merge until resolution, and document the decision regardless of outcome. Having a clear escalation path prevents individual engineers from making consequential IP decisions alone under time pressure.
 
 ---
 
@@ -54,13 +54,13 @@ The responsibility gap is structural: AI tools generate code faster than human s
 
 **Description:** Claude Code processes the content of files it reads during sessions — including code, configuration files, and any data that appears in the codebase. For most engineering work, this raises no significant privacy concerns. But it creates risks in specific contexts: sessions involving production data schemas, sessions on repositories containing personally identifiable information (PII), sessions in regulated environments (healthcare, finance) where data residency and processing restrictions apply, and sessions involving proprietary business logic that the organization may not wish to share with a third-party model provider.[^12]
 
-The privacy risk is not hypothetical. A 2025 survey of enterprise AI deployments found that 43% of organizations had experienced an incident where an employee shared sensitive internal information with a public AI tool outside their data governance policy.[^13] For a team operating under a former CTO with likely enterprise customers, the question of what goes into a Claude Code session — and what should not — is a practical policy question, not just a technical one.
+The privacy risk is not hypothetical. A 2025 survey of enterprise AI deployments found that 43% of organizations had experienced an incident where an employee shared sensitive internal information with a public AI tool outside their data governance policy. For a team operating under a former CTO with likely enterprise customers, the question of what goes into a Claude Code session — and what should not — is a practical policy question, not just a technical one.
 
 **Proposed Solution:**
 - Establish a clear policy on what may not be passed to Claude Code sessions: production PII, customer-identifying data, credentials outside of designated secrets management systems, and information subject to contractual confidentiality obligations.[^12]
 - Add a CLAUDE.md reminder about sensitive data categories: "Do not include production PII, customer data, or credentials in session context. Use anonymized fixtures for data-dependent tasks." This makes the policy present at the point of use rather than documented only in an onboarding document that fades from memory.[^5]
 - For sessions involving regulated data (HIPAA, PCI-DSS, GDPR-relevant), confirm that the Anthropic API data processing terms align with the team's compliance obligations before conducting those sessions. When in doubt, use anonymized local fixtures rather than real data.[^12]
-- Review Anthropic's current data retention and training policies annually and whenever the team's compliance obligations change. Policies that were acceptable when they were reviewed may not remain so as regulations evolve or as the team's customer base changes.[^13]
+- Review Anthropic's current data retention and training policies annually and whenever the team's compliance obligations change. Policies that were acceptable when they were reviewed may not remain so as regulations evolve or as the team's customer base changes.
 
 ---
 
@@ -106,63 +106,57 @@ The most operationally relevant form of this bias for a software team is archite
 ---
 
 [^1]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Ethical responsibilities created by AI adoption: the argument that ignoring ethical risk areas makes teams less prepared when they surface as incidents rather than reducing the underlying risk.
+ Ethical responsibilities created by AI adoption: the argument that ignoring ethical risk areas makes teams less prepared when they surface as incidents rather than reducing the underlying risk.
 
 [^2]: Anthropic — "Eight Trends Defining How Software Gets Built in 2026," Anthropic, 2026. https://claude.com/blog/eight-trends-defining-how-software-gets-built-in-2026
-    Responsibility framing: "Delegate, Review, Own" — AI handles execution; engineers retain ownership of outcomes including ethical accountability for what AI generates under their direction.
-
-[^3]: Software Freedom Law Center / Electronic Frontier Foundation — "AI and Open Source: Code Generation, Licensing, and Developer Responsibility," 2026. https://www.eff.org/deeplinks/2026/02/ai-code-generation-open-source-legal-landscape
-    Current legal landscape for AI-generated code and open-source licenses; practical guidance for provenance awareness and similarity checking before merge.
+ Responsibility framing: "Delegate, Review, Own" — AI handles execution; engineers retain ownership of outcomes including ethical accountability for what AI generates under their direction.
 
 [^4]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
-    Attribution and the open-source ecosystem: how AI-assisted development changes the relationship between teams and the projects whose patterns they rely on.
+ Attribution and the open-source ecosystem: how AI-assisted development changes the relationship between teams and the projects whose patterns they rely on.
 
 [^5]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md as the mechanism for encoding ethical constraints: IP sensitivity markers, data handling reminders, and architectural constraints that prevent common ethical failure modes.
+ CLAUDE.md as the mechanism for encoding ethical constraints: IP sensitivity markers, data handling reminders, and architectural constraints that prevent common ethical failure modes.
 
 [^6]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    Differential skill development between senior and junior engineers under AI assistance; the comprehension gap and its long-term career implications for early-career developers.
+ Differential skill development between senior and junior engineers under AI assistance; the comprehension gap and its long-term career implications for early-career developers.
 
 [^7]: George Fitzmaurice — "'We're Trading Deep Understanding for Quick Fixes': Junior Software Developers Lack Coding Skills Because of an Overreliance on AI Tools," *IT Pro*, February 24, 2025. https://www.itpro.com/software/development/junior-developer-ai-tools-coding-skills
-    AI eliminates the discovery phase of junior development; the mechanism through which speed of production masks absence of comprehension; long-term career implications.
+ AI eliminates the discovery phase of junior development; the mechanism through which speed of production masks absence of comprehension; long-term career implications.
 
 [^8]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025
-    Employer hesitance about junior developers who cannot demonstrate capability without AI; the structural disadvantage for early-career engineers whose skills developed primarily through AI assistance.
+ Employer hesitance about junior developers who cannot demonstrate capability without AI; the structural disadvantage for early-career engineers whose skills developed primarily through AI assistance.
 
 [^9]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    The Explanation Gate as a mentoring mechanism for junior engineers: using the teach-back requirement to surface and address comprehension gaps before they compound.
+ The Explanation Gate as a mentoring mechanism for junior engineers: using the teach-back requirement to surface and address comprehension gaps before they compound.
 
 [^10]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
-    45% failure rate on security tests; the stagnation of security pass rates despite model improvements; the argument for structural security review requirements rather than model-capability-based optimism.
+ 45% failure rate on security tests; the stagnation of security pass rates despite model improvements; the argument for structural security review requirements rather than model-capability-based optimism.
 
 [^11]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    Audit trail creation for AI-generated security-critical code: visible responsibility assignment as a governance and liability management practice.
+ Audit trail creation for AI-generated security-critical code: visible responsibility assignment as a governance and liability management practice.
 
 [^12]: Anthropic — "Privacy and Data Handling," Claude Code Documentation, 2026. https://code.claude.com/docs/en/privacy-data-handling
-    Data processing terms, session data retention policies, and guidance on what categories of data should not be included in Claude Code sessions.
-
-[^13]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    43% of enterprise organizations experienced a sensitive-information incident involving a public AI tool; data governance policy as a prerequisite for responsible AI deployment.
+ Data processing terms, session data retention policies, and guidance on what categories of data should not be included in Claude Code sessions.
 
 [^14]: Anthropic — "Anthropic's Approach to AI Safety and Environmental Responsibility," Anthropic, 2026. https://www.anthropic.com/safety-and-responsibility
-    Anthropic's energy usage reporting and sustainability commitments; guidance for organizations including AI compute in ESG accounting.
+ Anthropic's energy usage reporting and sustainability commitments; guidance for organizations including AI compute in ESG accounting.
 
 [^15]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Session hygiene as a compute efficiency practice alongside a quality practice; model tier selection guidelines and the proportionality principle for Opus vs. Sonnet selection.
+ Session hygiene as a compute efficiency practice alongside a quality practice; model tier selection guidelines and the proportionality principle for Opus vs. Sonnet selection.
 
 [^16]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Model tier selection rationale: when to use Opus 4.6 vs. Sonnet 4.6 for different session types; compute proportionality as a deliberate practice rather than a default behavior.
+ Model tier selection rationale: when to use Opus 4.6 vs. Sonnet 4.6 for different session types; compute proportionality as a deliberate practice rather than a default behavior.
 
 [^17]: Yue Liu et al. — "Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild," arXiv:2603.28592, March 30, 2026. https://arxiv.org/html/2603.28592
-    Training data bias in AI-generated outputs: implicit architectural assumptions, convention drift toward majority patterns, and the role of explicit constraint in overriding training data defaults.
+ Training data bias in AI-generated outputs: implicit architectural assumptions, convention drift toward majority patterns, and the role of explicit constraint in overriding training data defaults.
 
 [^18]: ThePrimeagen (The PrimeTime) — "Jr Devs - 'I Can't Code Anymore'," YouTube, February 21, 2025. https://www.youtube.com/watch?v=1Se2zTlXDwY
-    - Junior developer perspective: first-person account of skill atrophy and the recognition that AI assistance was masking rather than building foundational capability
-    - The career risk: why employers in 2025–2026 are skeptical of junior developers whose AI-assisted output quality masks uncertain independent competence
-    - Practical countermeasures: what individual engineers and teams can do to ensure AI use builds rather than replaces the skills that underlie long-term career development
+ - Junior developer perspective: first-person account of skill atrophy and the recognition that AI assistance was masking rather than building foundational capability
+ - The career risk: why employers in 2025–2026 are skeptical of junior developers whose AI-assisted output quality masks uncertain independent competence
+ - Practical countermeasures: what individual engineers and teams can do to ensure AI use builds rather than replaces the skills that underlie long-term career development
 
 [^19]: Lex Fridman Podcast #461 ft. ThePrimeagen, YouTube, March 22, 2025. https://www.youtube.com/watch?v=tNZnLkRBYA8
-    - 5:01:16 — The ethical dimension of AI dependency: which skills will differentiate engineers as AI-generated code becomes the norm, and the responsibility senior engineers have to ensure junior peers develop them
-    - 4:18:32 — Leadership responsibility: why CTOs must model the ethical standards around AI use they expect from their teams, including transparency about limitations and active skill development investment
-    - 20:00 — The broader profession: implications of mass AI adoption for the software engineering pipeline and the long-term capability of the field
+ - 5:01:16 — The ethical dimension of AI dependency: which skills will differentiate engineers as AI-generated code becomes the norm, and the responsibility senior engineers have to ensure junior peers develop them
+ - 4:18:32 — Leadership responsibility: why CTOs must model the ethical standards around AI use they expect from their teams, including transparency about limitations and active skill development investment
+ - 20:00 — The broader profession: implications of mass AI adoption for the software engineering pipeline and the long-term capability of the field
 

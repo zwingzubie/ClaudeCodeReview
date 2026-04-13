@@ -72,10 +72,10 @@ CLAUDE.md integration is the highest form of prompt graduation: a pattern valida
 
 **Description:** Prompt quality degrades as codebases evolve. A prompt that produced excellent output in January when the authentication module used one pattern may produce mediocre output in July when the module has been refactored. The prompt did not change; the codebase context it was written for did. Detecting this staleness requires either systematic validation (re-running prompts against current tasks on a schedule) or trigger-based validation (reviewing affected prompts whenever a major refactor lands). Teams that do neither will use stale prompts without knowing it, attributing the quality degradation to the model or the task rather than to the outdated prompt.[^14]
 
-The quarterly audit is the structural mechanism for detecting staleness at scale. For each stable prompt, the audit asks: has the codebase changed in ways that would affect this prompt's assumptions? Has the model changed in ways that would make this prompt structure less effective? Have engineers reported output quality issues for this prompt type? Has a better prompt pattern emerged from recent sessions that should supersede this entry? Prompts that survive the audit without changes are confirmed as current; prompts that fail any of the four questions are updated, deprecated, or sent back to experimental status.[^15]
+The quarterly audit is the structural mechanism for detecting staleness at scale. For each stable prompt, the audit asks: has the codebase changed in ways that would affect this prompt's assumptions? Has the model changed in ways that would make this prompt structure less effective? Have engineers reported output quality issues for this prompt type? Has a better prompt pattern emerged from recent sessions that should supersede this entry? Prompts that survive the audit without changes are confirmed as current; prompts that fail any of the four questions are updated, deprecated, or sent back to experimental status.
 
 **Recommended Practice:**
-- Run a quarterly library audit as a structured process: assign each stable prompt to an engineer to validate against a current task, check metadata accuracy, and update the last-validated-date. The audit produces a library health report: N prompts validated and confirmed, M prompts updated, K prompts deprecated. Track this report over time to observe library health trends.[^15]
+- Run a quarterly library audit as a structured process: assign each stable prompt to an engineer to validate against a current task, check metadata accuracy, and update the last-validated-date. The audit produces a library health report: N prompts validated and confirmed, M prompts updated, K prompts deprecated. Track this report over time to observe library health trends.
 - Implement staleness signals beyond the audit: add a hook that notifies the library maintainer when a file referenced by a library prompt (via `@` or by path mention) is modified in a merge to main. This is not a full validation, but it is a trigger to review the affected prompt before it silently produces degraded output.[^10]
 - Use version control commit history as a staleness proxy. Prompts whose referenced files have had many commits since the prompt was last validated are higher-priority audit targets than prompts whose referenced files have been stable. This focuses audit effort where staleness risk is highest.[^6]
 - When retiring a library entry, write a one-sentence retirement note explaining why: "Deprecated March 2026 — authentication module refactored to use `AuthService` pattern; see `prompts/implementation/auth-service-endpoint.md` for current version." This prevents engineers from re-introducing the retired prompt from source control without understanding why it was retired.[^14]
@@ -95,58 +95,53 @@ The quarterly audit is the structural mechanism for detecting staleness at scale
 ---
 
 [^1]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Shared prompt libraries as team capability: the network-effect argument for shared over individual collections; prompt quality as a function of institutional memory vs. individual seniority.
+ Shared prompt libraries as team capability: the network-effect argument for shared over individual collections; prompt quality as a function of institutional memory vs. individual seniority.
 
 [^2]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Prompt validation discipline: the difference between a validated library and a collection of ideas; quarterly review as the mechanism for maintaining library accuracy over time.
+ Prompt validation discipline: the difference between a validated library and a collection of ideas; quarterly review as the mechanism for maintaining library accuracy over time.
 
 [^3]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Claude Code skills vs. prompt library distinction; version-controlled prompts directory convention; the lifecycle from ad-hoc prompt to library entry to skill.
+ Claude Code skills vs. prompt library distinction; version-controlled prompts directory convention; the lifecycle from ad-hoc prompt to library entry to skill.
 
 [^4]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Network-effect argument for shared libraries: empirical evidence that teams with shared, peer-reviewed prompt repositories produce more consistent output quality than teams relying on individual engineer prompt collections.
+ Network-effect argument for shared libraries: empirical evidence that teams with shared, peer-reviewed prompt repositories produce more consistent output quality than teams relying on individual engineer prompt collections.
 
 [^5]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Library scope definition; context injection documentation in prompt entries; CLAUDE.md cross-reference accuracy maintenance.
+ Library scope definition; context injection documentation in prompt entries; CLAUDE.md cross-reference accuracy maintenance.
 
 [^6]: daily.dev — "The Developer's Guide to Prompt Engineering in 2026," daily.dev, March 2026. https://daily.dev/blog/the-developers-guide-to-prompt-engineering-in-2026
-    Library directory structure and naming conventions; findability as the primary organizational constraint; version control commit history as a staleness proxy.
+ Library directory structure and naming conventions; findability as the primary organizational constraint; version control commit history as a staleness proxy.
 
 [^7]: Ravikanth Konda — "Patterns for Effective AI-Assisted Software Development," International Journal of AI in Business, Data and Cloud Management Systems, February 2026. https://ijaibdcms.org
-    Prompt metadata standards: the five required metadata fields and the engineer trust judgment they support; test case documentation as the evidence basis for maturity labels.
+ Prompt metadata standards: the five required metadata fields and the engineer trust judgment they support; test case documentation as the evidence basis for maturity labels.
 
 [^8]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Prompt template body format; `{{placeholder}}` notation for variable fields; context injection documentation in usage notes; skill elevation criteria for frequently-used templates.
+ Prompt template body format; `{{placeholder}}` notation for variable fields; context injection documentation in usage notes; skill elevation criteria for frequently-used templates.
 
 [^9]: Judy Shen and Alex Tamkin — "How Instruction Following Affects Context Use in Large Language Models," Anthropic / arXiv:2601.20245, January 2026. https://arxiv.org/abs/2601.20245
-    Validation bar for library entry: the three-criteria minimum (real-task testing, peer review, documented test cases); experimental tier as the path to stable entry.
+ Validation bar for library entry: the three-criteria minimum (real-task testing, peer review, documented test cases); experimental tier as the path to stable entry.
 
 [^10]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    Deprecation path as a library integrity mechanism; stale prompts under institutional authority as a quality failure; staleness trigger via file-modification hook.
+ Deprecation path as a library integrity mechanism; stale prompts under institutional authority as a quality failure; staleness trigger via file-modification hook.
 
 [^11]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Experimental tier management: time limits on experimental status; the contribution pipeline from personal prompt to shared experimental to validated stable.
+ Experimental tier management: time limits on experimental status; the contribution pipeline from personal prompt to shared experimental to validated stable.
 
 [^12]: Sreecharan Sankaranarayanan — "Towards Reliable AI Code Agents: A Framework for Evaluating Context Window Management," arXiv:2602.20206, February 2026. https://arxiv.org/abs/2602.20206
-    Prompt lifecycle direction: the progression from ad-hoc experiment to library entry to skill or CLAUDE.md instruction; graduation criteria and lifecycle documentation.
-
+ Prompt lifecycle direction: the progression from ad-hoc experiment to library entry to skill or CLAUDE.md instruction; graduation criteria and lifecycle documentation.
 
 [^14]: GitClear — "2025 Coding on Copilot: 2023 Data Shows Downward Pressure on Code Quality," GitClear Research, 2025. https://www.gitclear.com/coding_on_copilot_data_shows_ais_downward_pressure_on_code_quality
-    Prompt staleness and codebase evolution: how codebase changes degrade prompt quality without any change to the prompt; retirement notes as institutional memory preservation.
-
-[^15]: Gartner — "Hype Cycle for Emerging Technologies, 2026," Gartner Research, January 2026. https://www.gartner.com/en/documents/hype-cycle-emerging-technologies-2026
-    Systematic prompt validation at scale: the quarterly audit framework; library health tracking over time; model evolution as a second staleness vector alongside codebase evolution.
+ Prompt staleness and codebase evolution: how codebase changes degrade prompt quality without any change to the prompt; retirement notes as institutional memory preservation.
 
 [^16]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Prompt library setup from scratch: creating the directory structure, writing the README, and seeding the library with the first three validated prompt entries
-    - Validation workflow: how to test a prompt against a real task, document the test case, and write a peer review request that covers the four review criteria
-    - Lifecycle demonstration: following a prompt from an ad-hoc session discovery through experimental entry, stable validation, and final graduation to a Claude Code skill
+ - Prompt library setup from scratch: creating the directory structure, writing the README, and seeding the library with the first three validated prompt entries
+ - Validation workflow: how to test a prompt against a real task, document the test case, and write a peer review request that covers the four review criteria
+ - Lifecycle demonstration: following a prompt from an ad-hoc session discovery through experimental entry, stable validation, and final graduation to a Claude Code skill
 
 [^17]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Library structure and findability: the three-tier directory convention applied to a real team's task vocabulary; thirty-second findability as the usability criterion
-    - Metadata in practice: what each of the five metadata fields communicates to a peer engineer and the trust calibration difference between a fully-documented entry and a bare prompt file
-    - Quarterly audit process: how to run the audit efficiently, what triggers an update vs. a deprecation, and how to read the health report to identify library coverage gaps
-
+ - Library structure and findability: the three-tier directory convention applied to a real team's task vocabulary; thirty-second findability as the usability criterion
+ - Metadata in practice: what each of the five metadata fields communicates to a peer engineer and the trust calibration difference between a fully-documented entry and a bare prompt file
+ - Quarterly audit process: how to run the audit efficiently, what triggers an update vs. a deprecation, and how to read the health report to identify library coverage gaps
 
 [^a]: [Tooling: Custom Skills](../Tooling & Configuration/04-custom-skills.md) — custom skills are extracted from the prompt library when patterns stabilize; the library is the upstream source and skills are the distribution mechanism.
 [^b]: [Learning: Team Knowledge Sharing](../Learning/03-team-knowledge-sharing.md) — the prompt library is the primary artifact of team knowledge sharing for prompting practices; library contributions and maintenance are how individual discoveries become team assets.

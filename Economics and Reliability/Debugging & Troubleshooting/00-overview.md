@@ -30,7 +30,7 @@ Veracode's Spring 2026 analysis found that 45% of AI-generated code fails at lea
 
 **Proposed Solution:**
 - Treat all AI-generated claims about external APIs, library versions, framework behavior, and platform constraints as unverified until checked against authoritative documentation. This is not AI-specific skepticism — it is the same verification discipline applied to any information whose source cannot be directly inspected. For AI output, the source cannot be inspected: the model's internal confidence does not predict the accuracy of its claims about external facts.[^5]
-- Use the "read before trust" pattern for any AI-generated code that references functions, methods, or modules not already in the session context: read the actual source or documentation for the referenced item before accepting the AI's characterization of it. This pattern catches the most common form of AI hallucination — plausible-but-wrong characterization of existing code behavior.[^7]
+- Use the "read before trust" pattern for any AI-generated code that references functions, methods, or modules not already in the session context: read the actual source or documentation for the referenced item before accepting the AI's characterization of it. This pattern catches the most common form of AI hallucination — plausible-but-wrong characterization of existing code behavior.
 - For AI-generated tests, verify that the tests actually test what they claim to test by reviewing their assertions explicitly, not just confirming that they pass. An AI-generated test that asserts the wrong condition passes while providing false coverage — a specific hallucination category that is difficult to detect without reading the test body.[^3]
 - Add hallucination-prone task types to the team's CLAUDE.md: "When referencing external library APIs, include the library version and cite the specific documentation section. Do not assert behavior of external dependencies that is not present in the current session context." This constraint does not prevent hallucination, but it makes the model flag uncertainty rather than presenting guesses with false confidence.[^1]
 
@@ -54,11 +54,11 @@ The important diagnostic distinction is between context degradation and task dif
 
 **Description:** Recovery from a bad session — one that has produced incorrect output, gone in the wrong direction, or accumulated corrupted context state — requires a structured approach rather than an ad-hoc attempt to patch the current session into correctness. The most common mistake is continuing to iterate corrections on a failing session past the point of diminishing returns, accumulating cost and time without resolution, when a session reset would have been both faster and cheaper.[^4]
 
-Recovery is a two-step process: diagnostic (understanding what went wrong and why) and remedial (determining what intervention will address the root cause rather than its symptoms). A session that produced wrong output because of an under-specified task needs a better specification before the next session, not just a different prompt. A session that failed because the model's information about a library API was out of date needs the current documentation injected as context, not a correction in natural language that the model cannot verify.[^7]
+Recovery is a two-step process: diagnostic (understanding what went wrong and why) and remedial (determining what intervention will address the root cause rather than its symptoms). A session that produced wrong output because of an under-specified task needs a better specification before the next session, not just a different prompt. A session that failed because the model's information about a library API was out of date needs the current documentation injected as context, not a correction in natural language that the model cannot verify.
 
 **Proposed Solution:**
 - Before resetting a bad session, spend five minutes diagnosing the failure: was the output wrong because of (a) insufficient specification, (b) hallucinated factual claims, (c) context degradation, (d) incorrect model tier for the task complexity, or (e) a task category that AI handles poorly? The diagnostic determines the intervention for the next session, not just the reset of the current one.[^4]
-- For sessions that produced substantially wrong output, git reset or stash any AI-generated changes before starting the recovery session. Working on top of incorrect AI output in the recovery session compounds the problem — the incorrect code is now part of the context and may influence the recovery output in undesirable ways.[^7]
+- For sessions that produced substantially wrong output, git reset or stash any AI-generated changes before starting the recovery session. Working on top of incorrect AI output in the recovery session compounds the problem — the incorrect code is now part of the context and may influence the recovery output in undesirable ways.
 - Document the failure and its diagnosis in the session log before starting the recovery session. The act of writing the diagnosis reinforces the learning and ensures that the cause of the failure is recorded before the recovery session's activity overwrites it in the engineer's working memory.[^4]
 - After a successful recovery, update CLAUDE.md or the team's prompt library with the constraint or context injection that would have prevented the original failure. The recovery session is complete when both the task is done and the systemic prevention is documented — not when the code is working. Prevention documentation is the engineering value that distinguishes a session failure from a team learning.[^1]
 
@@ -91,33 +91,30 @@ The signal for escalation is repeated session failure after reasonable attempts 
 ---
 
 [^1]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Session failure patterns and early recognition; CLAUDE.md constraints for reducing hallucination confidence; recovery documentation as a team learning artifact; escalation criteria in AI usage policy.
+ Session failure patterns and early recognition; CLAUDE.md constraints for reducing hallucination confidence; recovery documentation as a team learning artifact; escalation criteria in AI usage policy.
 
 [^2]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-    The two-turn correction rule; distinguishing task difficulty from session failure; context degradation vs. genuine task complexity; escalation as a workflow step rather than a failure indicator.
+ The two-turn correction rule; distinguishing task difficulty from session failure; context degradation vs. genuine task complexity; escalation as a workflow step rather than a failure indicator.
 
 [^3]: Sonar (SonarSource) — "Sonar Data Reveals Critical 'Verification Gap' in AI Coding," press release, January 8, 2026. https://www.sonarsource.com/company/press-releases/sonar-data-reveals-critical-verification-gap-in-ai-coding/
-    77% of developers distrust AI-generated code but lack structured diagnostic approaches; the verification gap between stated distrust and actual verification behavior; test hallucination as a specific coverage risk.
+ 77% of developers distrust AI-generated code but lack structured diagnostic approaches; the verification gap between stated distrust and actual verification behavior; test hallucination as a specific coverage risk.
 
 [^4]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Early failure signal recognition; the cost of late recognition in long sessions; five-minute pre-reset diagnostic habit; documentation of failure diagnosis before recovery session.
+ Early failure signal recognition; the cost of late recognition in long sessions; five-minute pre-reset diagnostic habit; documentation of failure diagnosis before recovery session.
 
 [^5]: Simon Willison — "LLM Hallucination: A Practical Framework for 2026," simonwillison.net, March 2026. https://simonwillison.net/2026/Mar/llm-hallucination-practical-framework/
-    Hallucination as a structural property of language model generation; the "read before trust" verification pattern; why model confidence does not predict factual accuracy; hallucination-prone task type identification.
+ Hallucination as a structural property of language model generation; the "read before trust" verification pattern; why model confidence does not predict factual accuracy; hallucination-prone task type identification.
 
 [^6]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
-    45% security test failure rate for AI-generated code; subtle wrong output as the highest-risk failure mode; the gap between casual review and systematic verification.
-
-[^7]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    "Read before trust" pattern implementation; git stash before recovery sessions; external API verification discipline; recovery session context injection from current documentation.
+ 45% security test failure rate for AI-generated code; subtle wrong output as the highest-risk failure mode; the gap between casual review and systematic verification.
 
 [^8]: Anthropic — "Managing Long Sessions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/managing-long-sessions
-    Context degradation symptoms and their distinction from task difficulty; `/compact` as the primary degradation intervention; proactive vs. reactive compact timing; planned compact checkpoints for long sessions.
+ Context degradation symptoms and their distinction from task difficulty; `/compact` as the primary degradation intervention; proactive vs. reactive compact timing; planned compact checkpoints for long sessions.
 
 [^9]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Escalation criteria for agentic workflows; the boundary between AI-appropriate and human-judgment-required tasks; normalization of escalation in team workflow documentation.
+ Escalation criteria for agentic workflows; the boundary between AI-appropriate and human-judgment-required tasks; normalization of escalation in team workflow documentation.
 
 [^10]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Context degradation signals: how to identify the early warning signs before quality noticeably declines
-    - Compact timing: demonstrations of proactive vs. reactive compaction and their quality outcomes
-    - CLAUDE.md updates after failures: converting bad sessions into systemic prevention
+ - Context degradation signals: how to identify the early warning signs before quality noticeably declines
+ - Compact timing: demonstrations of proactive vs. reactive compaction and their quality outcomes
+ - CLAUDE.md updates after failures: converting bad sessions into systemic prevention

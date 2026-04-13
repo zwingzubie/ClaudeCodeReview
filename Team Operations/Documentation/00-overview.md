@@ -46,19 +46,19 @@ The knowledge transfer failure mode is not individual; it is structural. An engi
 - Require a comprehension summary as part of the merge criteria for AI-heavy PRs: a brief explanation by the PR author of what the AI-generated code does, why it is structured as it is, and what the key tradeoffs were. This summary is written for the next engineer — the onboarder who will inherit this code without having been present for the session.[^12]
 - Treat session transcripts for significant architecture or implementation sessions as a documentation artifact: store them in Google Drive alongside ADRs and runbooks, linked from the relevant PR. Not all sessions warrant archiving — the criterion is whether a future engineer would benefit from reading the history of how this code came to be.[^10]
 - Design the new engineer onboarding process for AI-assisted codebases explicitly: the reading list is not "read the codebase" but "read the ADRs, read the session transcripts for the components you'll own, read the rationale captures in CLAUDE.md, and then read the code." This order produces comprehension that the code-first approach no longer provides.[^11]
-- Measure comprehension as an explicit team health metric, not a proxy metric. The Questions Without Answers metric — the number of questions a new engineer asked about the codebase that no existing engineer could answer — is a direct measure of comprehension debt that standard velocity and coverage metrics do not capture.[^13]
+- Measure comprehension as an explicit team health metric, not a proxy metric. The Questions Without Answers metric — the number of questions a new engineer asked about the codebase that no existing engineer could answer — is a direct measure of comprehension debt that standard velocity and coverage metrics do not capture.
 
 ---
 
 ## Area 4: Rationale Capture for AI-Generated Decisions
 
-**Description:** Rationale capture is the practice of recording not just what was decided but why — including decisions that AI made during implementation that engineers accepted without consciously deciding. This class of decision is new in AI-assisted development. Before AI, every line of code reflected a human engineer's implicit choices about structure, naming, algorithms, error handling, and patterns — choices that were often undocumented but at least knowable by asking the author. When AI generates code and an engineer approves it without examining every implicit choice, the rationale for those choices exists only within the AI session that is now closed.[^14]
+**Description:** Rationale capture is the practice of recording not just what was decided but why — including decisions that AI made during implementation that engineers accepted without consciously deciding. This class of decision is new in AI-assisted development. Before AI, every line of code reflected a human engineer's implicit choices about structure, naming, algorithms, error handling, and patterns — choices that were often undocumented but at least knowable by asking the author. When AI generates code and an engineer approves it without examining every implicit choice, the rationale for those choices exists only within the AI session that is now closed.
 
 The rationale gap compounds over time. As AI-generated code is built upon by subsequent AI sessions, each of which inherits implicit decisions without understanding their provenance, the gap between the codebase's shape and the team's ability to explain that shape widens. Teams that have experienced this describe a specific symptom: engineers who are afraid to change things because they don't know why they are the way they are — a form of comprehension debt that manifests as velocity loss and risk aversion rather than visible technical debt.[^15]
 
 **Proposed Solution:**
 - Establish rationale capture as a session discipline: before committing AI-generated code, ask Claude to explain the key implementation choices it made — the algorithm selected, the data structure chosen, the error handling approach, the naming conventions. This explanation becomes the rationale record.[^16]
-- Embed rationale in commit messages and PR descriptions as a standard template field: "Key decisions: [what AI decided and why, in plain language]." A commit message that says "Add user session management" captures what was done; one that also says "Used Redis over in-memory store because session sharing across server instances is required for the planned horizontal scaling" captures why — and that why is what future sessions need.[^14]
+- Embed rationale in commit messages and PR descriptions as a standard template field: "Key decisions: [what AI decided and why, in plain language]." A commit message that says "Add user session management" captures what was done; one that also says "Used Redis over in-memory store because session sharing across server instances is required for the planned horizontal scaling" captures why — and that why is what future sessions need.
 - Maintain CLAUDE.md as a rationale repository alongside a constraint repository. For each significant constraint or convention in CLAUDE.md, add a rationale comment: not just "Use the repository pattern for all database access" but "Use the repository pattern — decision rationale in docs/adr/003-repository-pattern.md — because direct ORM use in service layer was producing untestable code in Q1." This makes CLAUDE.md educationally useful rather than just operationally constraining.[^5]
 - Define a rationale capture threshold: not every AI decision warrants documentation, but decisions that affect the public API, the data model, cross-service interfaces, security boundaries, or the team's established conventions do. The architect sets and maintains this threshold; the team applies it as part of the PR review checklist.[^15]
 
@@ -76,47 +76,40 @@ The rationale gap compounds over time. As AI-generated code is built upon by sub
 ---
 
 [^1]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    The structural documentation gap in AI-assisted development: how AI-speed output creates knowledge divergence that documentation practices designed for human-paced development cannot close.
+ The structural documentation gap in AI-assisted development: how AI-speed output creates knowledge divergence that documentation practices designed for human-paced development cannot close.
 
 [^2]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    The three classes of knowledge that AI-assisted development erodes: architectural decisions, operational procedures, and implementation rationale. The documentation infrastructure that prevents each class of erosion.
+ The three classes of knowledge that AI-assisted development erodes: architectural decisions, operational procedures, and implementation rationale. The documentation infrastructure that prevents each class of erosion.
 
 [^3]: Michael Nygard — "Documenting Architecture Decisions," Cognitect, November 2011. https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions
-    Original ADR format and rationale; the foundational case for why decisions rather than just designs need documentation; the template that most ADR tooling is derived from.
+ Original ADR format and rationale; the foundational case for why decisions rather than just designs need documentation; the template that most ADR tooling is derived from.
 
 [^4]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md as the mechanism for encoding architectural decisions into every session: how ADR constraints in the system prompt prevent AI sessions from contradicting documented decisions.
+ CLAUDE.md as the mechanism for encoding architectural decisions into every session: how ADR constraints in the system prompt prevent AI sessions from contradicting documented decisions.
 
 [^5]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    ADR linkage in PR review: how connecting AI-generated code to architectural decisions creates the accountability record that review processes need to evaluate whether AI output is architecturally coherent.
+ ADR linkage in PR review: how connecting AI-generated code to architectural decisions creates the accountability record that review processes need to evaluate whether AI output is architecturally coherent.
 
 [^6]: Anthropic — "Model Context Protocol," Anthropic, 2025. https://www.anthropic.com/news/model-context-protocol
-    MCP architecture for connecting Claude Code sessions to external documentation stores: how Google Drive MCP enables AI sessions to query ADRs, runbooks, and rationale documentation at session time.
+ MCP architecture for connecting Claude Code sessions to external documentation stores: how Google Drive MCP enables AI sessions to query ADRs, runbooks, and rationale documentation at session time.
 
 [^7]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Runbook standards for AI-assisted operations: the precision requirements that make runbooks both human-readable and machine-executable; operational knowledge transfer in AI-heavy teams.
-
+ Runbook standards for AI-assisted operations: the precision requirements that make runbooks both human-readable and machine-executable; operational knowledge transfer in AI-heavy teams.
 
 [^9]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Claude Code as an execution agent for structured procedures: how agentic session patterns apply to runbook execution and the session discipline required for safe automated operational steps.
+ Claude Code as an execution agent for structured procedures: how agentic session patterns apply to runbook execution and the session discipline required for safe automated operational steps.
 
 [^10]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    Epistemic debt and its relationship to AI-assisted codebase maintenance: how comprehension debt accumulates structurally rather than individually, and the documentation practices that prevent it.
+ Epistemic debt and its relationship to AI-assisted codebase maintenance: how comprehension debt accumulates structurally rather than individually, and the documentation practices that prevent it.
 
 [^11]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    Comprehension gaps in AI-assisted teams: the structural divergence between code complexity and team understanding; how onboarding fails when the codebase contains knowledge that only exists in closed sessions.
+ Comprehension gaps in AI-assisted teams: the structural divergence between code complexity and team understanding; how onboarding fails when the codebase contains knowledge that only exists in closed sessions.
 
 [^12]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    Comprehension documentation as a merge criterion: the specific fields that make AI-heavy PR reviews produce knowledge artifacts rather than only quality gates.
-
-[^13]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    Comprehension metrics in AI-assisted engineering teams: the questions-without-answers indicator and its relationship to team capability degradation over time.
-
-[^14]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    The rationale gap and its compounding effect: how AI sessions that inherit undocumented decisions produce codebases shaped by reasons that no engineer can reconstruct.
+ Comprehension documentation as a merge criterion: the specific fields that make AI-heavy PR reviews produce knowledge artifacts rather than only quality gates.
 
 [^15]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    Rationale debt as a velocity risk: the specific mechanism by which comprehension gaps manifest as risk aversion and reluctance to change — the "afraid to touch it" failure mode in AI-heavy codebases.
+ Rationale debt as a velocity risk: the specific mechanism by which comprehension gaps manifest as risk aversion and reluctance to change — the "afraid to touch it" failure mode in AI-heavy codebases.
 
 [^16]: Yue Liu et al. — "Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild," arXiv:2603.28592, March 30, 2026. https://arxiv.org/html/2603.28592
-    Rationale capture as a session discipline: the before-commit explanation request and how it produces documentation that post-hoc reconstruction cannot replicate.
+ Rationale capture as a session discipline: the before-commit explanation request and how it produces documentation that post-hoc reconstruction cannot replicate.

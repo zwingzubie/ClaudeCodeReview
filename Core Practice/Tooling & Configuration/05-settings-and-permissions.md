@@ -42,12 +42,12 @@ The key distinction in settings management is between settings that are project 
 
 ## Section 3: Agentic Session Permission Scoping
 
-**Description:** Agentic sessions — sessions where Claude Code operates with minimal human supervision, executing multi-step tasks over extended periods — require narrower permission scoping than interactive sessions, not broader. This is counterintuitive to engineers who think of automation as needing more access, but the logic is sound: in an interactive session, an engineer reviews each significant action in real time and can intervene immediately. In an unattended session, an incorrect action can propagate through many steps before anyone notices.[^7] A CI-run code review session needs read access to the repository and write access to post PR comments; it does not need write access to the filesystem, deployment tools, or database connections. Granting only those permissions makes the session safer to run unattended.
+**Description:** Agentic sessions — sessions where Claude Code operates with minimal human supervision, executing multi-step tasks over extended periods — require narrower permission scoping than interactive sessions, not broader. This is counterintuitive to engineers who think of automation as needing more access, but the logic is sound: in an interactive session, an engineer reviews each significant action in real time and can intervene immediately. In an unattended session, an incorrect action can propagate through many steps before anyone notices. A CI-run code review session needs read access to the repository and write access to post PR comments; it does not need write access to the filesystem, deployment tools, or database connections. Granting only those permissions makes the session safer to run unattended.
 
 Broad permissions in agentic sessions are a governance risk because they create a gap between what an authorized human would approve and what the session can do autonomously. If a CI session has filesystem write access and database access because those were convenient to include, a prompt injection vulnerability or a misconfigured skill could trigger operations that no engineer would have approved interactively. The `--allowedTools` flag, passed at session invocation time, is the primary mechanism for narrowing permissions to exactly what a specific agentic workflow requires. For CI integration, this means defining the exact tool set for each pipeline step and passing it explicitly rather than relying on the broader project defaults.
 
 **Recommended Practice:**
-- For every agentic session type (CI review, automated security scan, scheduled refactoring), define the minimum tool set the session requires and document it. Start with no tools allowed and add only what the workflow demonstrably needs.[^7]
+- For every agentic session type (CI review, automated security scan, scheduled refactoring), define the minimum tool set the session requires and document it. Start with no tools allowed and add only what the workflow demonstrably needs.
 - Pass `--allowedTools` explicitly at every agentic session invocation, even if the project's default settings would permit the same tools. Explicit scoping at invocation time makes the permission intent visible in the CI configuration or script rather than buried in settings files.
 - Never grant write access to production systems in agentic sessions unless the specific session type is a deployment workflow with its own approval gates. Code review sessions, security scan sessions, and test-generation sessions should be read-heavy with write access limited to commenting and reporting.[^3]
 - Log the `--allowedTools` configuration for every CI session run. Include it in the CI step output so that permission scope is part of the audit trail, not just an implicit property of the run.
@@ -64,7 +64,7 @@ Profile-based permission management also simplifies onboarding: a new engineer d
 - Define and document three profiles as the baseline: read-only (exploration), write (implementation), and execution (test/CI). Store the tool lists for each profile as comments in `.claude/settings.json` or as a reference table in CLAUDE.md.[^9]
 - When creating new skills or CI workflows, explicitly state which profile they operate under. The skill file should include a line like "This skill operates under the read-only profile" so engineers invoking it know the permission scope.
 - Review profile definitions during the quarterly permission audit. As the team's tooling evolves, profiles may need to add or remove tools to stay current. A read-only profile that still includes a tool that now has write side effects is no longer read-only in practice.[^10]
-- For high-risk workflows (anything touching production data, external APIs, or deployment systems), create a named profile with explicit documentation of why each tool is included. High-risk profiles should require Architect review before being used in any agentic session.[^7]
+- For high-risk workflows (anything touching production data, external APIs, or deployment systems), create a named profile with explicit documentation of why each tool is included. High-risk profiles should require Architect review before being used in any agentic session.
 
 ---
 
@@ -95,27 +95,21 @@ CLAUDE.md serves as a permission governance layer when it explicitly documents t
 ---
 
 [^1]: Anthropic — "Security and Permissions," Claude Code Documentation, 2026. https://docs.anthropic.com/en/docs/claude-code/security
-    Permission model architecture: allowed/denied tool lists, the three-state model (always-allow, always-deny, ask-each-time), composition across global/project/session layers.
+ Permission model architecture: allowed/denied tool lists, the three-state model (always-allow, always-deny, ask-each-time), composition across global/project/session layers.
 
 [^2]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Minimal-permission principle in practice: why granting only the access a task requires is a trust-building practice, not just a security practice; CLAUDE.md as a permission governance layer.
+ Minimal-permission principle in practice: why granting only the access a task requires is a trust-building practice, not just a security practice; CLAUDE.md as a permission governance layer.
 
 [^3]: Anthropic — "Claude Code Settings Reference," Claude Code Documentation, 2026. https://docs.anthropic.com/en/docs/claude-code/settings
-    Settings composition: how global, project, and session-level settings layer and narrow; the `--allowedTools` and `--deniedTools` flags; always-deny vs. ask-each-time protection levels.
-
-
-[^7]: Gartner — "Hype Cycle for AI Engineering, 2026," Gartner Research, February 2026. https://www.gartner.com/en/documents/hype-cycle-ai-engineering-2026
-    Agentic session governance: why unattended sessions require narrower permissions than interactive sessions; the governance gap between authorized-human actions and autonomous-session capabilities.
-
+ Settings composition: how global, project, and session-level settings layer and narrow; the `--allowedTools` and `--deniedTools` flags; always-deny vs. ask-each-time protection levels.
 
 [^9]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Permission profiles for task categories: defining read-only, write, and execution profiles as reusable configurations rather than per-task decisions
-    - Profile-based onboarding: how named profiles simplify permission education for new engineers joining a team
-    - Profile review during audits: how to detect when a profile's tool list has drifted from its intended scope
+ - Permission profiles for task categories: defining read-only, write, and execution profiles as reusable configurations rather than per-task decisions
+ - Profile-based onboarding: how named profiles simplify permission education for new engineers joining a team
+ - Profile review during audits: how to detect when a profile's tool list has drifted from its intended scope
 
 [^10]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Permission profiles as productivity infrastructure: how named profiles reduce cognitive overhead in daily use; the role of profiles in making permission decisions teachable rather than expert-knowledge-dependent.
-
+ Permission profiles as productivity infrastructure: how named profiles reduce cognitive overhead in daily use; the role of profiles in making permission decisions teachable rather than expert-knowledge-dependent.
 
 [^a]: [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md) — settings and permissions are the technical enforcement layer for usage policy; policy constraints become permission configurations.
 

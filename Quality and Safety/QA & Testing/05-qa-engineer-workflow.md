@@ -18,27 +18,27 @@ This document covers the four core workflow areas: the QA engineer's repositione
 
 ```mermaid
 flowchart TD
-    A[Feature enters development] --> B[QA: Test session design review<br/>before test generation begins]
-    B --> C[AI generates implementation<br/>+ tests from same spec]
-    C --> D[QA: Coverage gap analysis<br/>after test generation]
-    D --> E{Circular validation<br/>risk?}
-    E -- Yes --> F[QA: Circularity check<br/>write independent tests]
-    E -- No --> G[QA: Review test suite<br/>signal quality assessment]
-    F --> G
+ A[Feature enters development] --> B[QA: Test session design review<br/>before test generation begins]
+ B --> C[AI generates implementation<br/>+ tests from same spec]
+ C --> D[QA: Coverage gap analysis<br/>after test generation]
+ D --> E{Circular validation<br/>risk?}
+ E -- Yes --> F[QA: Circularity check<br/>write independent tests]
+ E -- No --> G[QA: Review test suite<br/>signal quality assessment]
+ F --> G
 
-    G --> H[PR submitted]
-    H --> I[QA: Pre-release exploratory<br/>testing for AI-primary modules]
-    I --> J[Hypothesis-driven<br/>explore-module session]
-    J --> K{Failure mode<br/>discovered?}
-    K -- Yes --> L[Add to regression library<br/>tests/regression/ai-touched/]
-    L --> M[Add CLAUDE.md entry<br/>for this failure pattern]
-    K -- No --> N[Release approved]
-    M --> N
+ G --> H[PR submitted]
+ H --> I[QA: Pre-release exploratory<br/>testing for AI-primary modules]
+ I --> J[Hypothesis-driven<br/>explore-module session]
+ J --> K{Failure mode<br/>discovered?}
+ K -- Yes --> L[Add to regression library<br/>tests/regression/ai-touched/]
+ L --> M[Add CLAUDE.md entry<br/>for this failure pattern]
+ K -- No --> N[Release approved]
+ M --> N
 
-    N --> O{Post-release incident?}
-    O -- Yes --> P[QA: Post-incident<br/>CLAUDE.md contribution]
-    P --> Q[Update test command library<br/>.claude/commands/]
-    O -- No --> R[Monthly AI practice review<br/>QA presents findings]
+ N --> O{Post-release incident?}
+ O -- Yes --> P[QA: Post-incident<br/>CLAUDE.md contribution]
+ P --> Q[Update test command library<br/>.claude/commands/]
+ O -- No --> R[Monthly AI practice review<br/>QA presents findings]
 ```
 
 **Description:** In a pre-AI workflow, a significant portion of QA time was spent on activities that AI can now do well: generating test case scaffolding, writing boilerplate test structure, producing test cases for well-specified happy paths. The QA engineer's comparative advantage is not in generating test boilerplate — it is in the judgment-intensive activities that AI performs poorly: assessing whether a test suite would actually catch the failures that matter, identifying the implied tests that are not in the acceptance criteria, and breaking the circular validation that occurs when AI generates both code and tests from the same source.[^3]
@@ -55,12 +55,12 @@ Repositioning the QA engineer as a quality gate rather than a test generator is 
 
 ## Section 2: Using Claude Code for Exploratory Testing Scripts
 
-**Description:** Exploratory testing — testing that is not guided by predefined test cases but by the tester's hypothesis-driven investigation of how the system might fail — is one of the QA engineer's highest-value activities and one of the hardest to scale. Claude Code can accelerate exploratory testing by generating targeted exploration scripts: scripts that probe boundary conditions, stress specific error paths, generate unusual input combinations, and exercise the race conditions and state management edge cases that unit tests typically do not reach.[^5]
+**Description:** Exploratory testing — testing that is not guided by predefined test cases but by the tester's hypothesis-driven investigation of how the system might fail — is one of the QA engineer's highest-value activities and one of the hardest to scale. Claude Code can accelerate exploratory testing by generating targeted exploration scripts: scripts that probe boundary conditions, stress specific error paths, generate unusual input combinations, and exercise the race conditions and state management edge cases that unit tests typically do not reach.
 
-The key distinction is that exploratory test scripts are generated with the QA engineer's hypotheses as input, not with the spec or the implementation. The QA engineer says: "I suspect this module has problems with concurrent access to the session cache during high-load scenarios. Generate a test script that exercises this." The session is guided by human expertise about where to look, not by implementation analysis of what to verify. This is the combination that is most effective: AI execution speed directed by human judgment about failure likelihood.[^5]
+The key distinction is that exploratory test scripts are generated with the QA engineer's hypotheses as input, not with the spec or the implementation. The QA engineer says: "I suspect this module has problems with concurrent access to the session cache during high-load scenarios. Generate a test script that exercises this." The session is guided by human expertise about where to look, not by implementation analysis of what to verify. This is the combination that is most effective: AI execution speed directed by human judgment about failure likelihood.
 
 **Recommended Practice:**
-- Maintain a standing exploratory testing session prompt in `.claude/commands/explore-module` that accepts: the module to explore, the QA engineer's hypothesis about failure modes, and the relevant environment configuration. The prompt should instruct Claude Code to generate scripts that deliberately attempt to trigger the stated failure modes rather than to verify correct behavior.[^5]
+- Maintain a standing exploratory testing session prompt in `.claude/commands/explore-module` that accepts: the module to explore, the QA engineer's hypothesis about failure modes, and the relevant environment configuration. The prompt should instruct Claude Code to generate scripts that deliberately attempt to trigger the stated failure modes rather than to verify correct behavior.
 - Before a major release, run exploratory testing sessions for every AI-primary module: provide the module, the list of AI-generated features, and a standing list of failure mode categories (concurrency, error path handling, boundary inputs, state management, timeout behavior). Generate scripts for each category and review the results with the engineer who owns the module.[^6]
 - Use the QA engineer's domain expertise to direct exploratory session coverage toward the failure modes most likely in the team's specific codebase. A payment processing module warrants exploratory sessions focused on concurrency and partial failure states; an API gateway warrants sessions focused on authentication bypass and rate limiting edge cases.[^3]
 - Document exploratory testing findings in the regression library, not just in Jira or Linear. A failure mode discovered through exploratory testing is a candidate for a permanent regression test — the exploratory session that discovers a bug is the predecessor to the regression test that prevents its recurrence.[^7]
@@ -110,27 +110,23 @@ QA contributions to CLAUDE.md are structured differently than architectural or i
 
 ---
 
-
 [^2]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    `.claude/commands/` as governance infrastructure; CLAUDE.md as the session context layer for team standards; command ownership as a quality governance assignment; QA engineer as testing infrastructure owner.
+ `.claude/commands/` as governance infrastructure; CLAUDE.md as the session context layer for team standards; command ownership as a quality governance assignment; QA engineer as testing infrastructure owner.
 
 [^3]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-    QA workflow checkpoints in AI-assisted development: test session design review, coverage gap analysis, circularity checking; the governance cadence for a QA engineer on an 11-person team with high AI adoption.
+ QA workflow checkpoints in AI-assisted development: test session design review, coverage gap analysis, circularity checking; the governance cadence for a QA engineer on an 11-person team with high AI adoption.
 
 [^4]: Boris Cherny — "How Boris Uses Claude Code," howborisusesclaudecode.com, January 2026. https://howborisusesclaudecode.com
-    Command library versioning and documentation standards; CLAUDE.md contribution process from session failures; the relationship between command quality and team-wide test generation quality.
-
-[^5]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," The Pragmatic Engineer Newsletter, March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Exploratory testing with AI: hypothesis-driven session design as the effective model; the distinction between AI-generated exploratory scripts and AI-generated verification tests; QA expertise as the direction-setting input for exploratory sessions.
+ Command library versioning and documentation standards; CLAUDE.md contribution process from session failures; the relationship between command quality and team-wide test generation quality.
 
 [^6]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    Pre-release exploratory testing scope for AI-primary modules; failure mode category coverage as the organizing framework for exploratory sessions before major releases.
+ Pre-release exploratory testing scope for AI-primary modules; failure mode category coverage as the organizing framework for exploratory sessions before major releases.
 
 [^7]: QA & Testing — "04-regression-prevention.md," ClaudeCodeReview, 2026.
-    Regression library as the destination for exploratory testing discoveries; the connection between exploratory testing findings and permanent regression prevention; post-incident library contribution as the standard practice.
+ Regression library as the destination for exploratory testing discoveries; the connection between exploratory testing findings and permanent regression prevention; post-incident library contribution as the standard practice.
 
 [^8]: Yue Liu et al. — "Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild," arXiv:2603.28592, March 30, 2026. https://arxiv.org/html/2603.28592
-    CLAUDE.md as long-term memory for QA knowledge: encoding failure history into session context; module-specific testing entries as higher-value context than general testing principles; the survivorship of AI-introduced issues in codebases lacking QA-driven session context.
+ CLAUDE.md as long-term memory for QA knowledge: encoding failure history into session context; module-specific testing entries as higher-value context than general testing principles; the survivorship of AI-introduced issues in codebases lacking QA-driven session context.
 
 [^a]: [Documentation: Runbook Standards](../Documentation/02-runbook-standards.md) — QA engineers are primary runbook consumers; their workflow defines what runbook detail level is operationally sufficient.
 [^b]: [Governance: Review Policies](../Governance/01-review-policies.md) — QA engineer workflow is independent of but complementary to the review policy workflow; the two are parallel quality gates.

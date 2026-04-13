@@ -26,7 +26,7 @@ A 2026 analysis found that AI-generated PRs had logic and correctness issues 75%
 
 **Description:** Eight engineers using Claude Code in eight different ways generates not just inconsistent outputs but inconsistent risks. An engineer who passes production PII to a session, an engineer who uses a session to make unreviewed configuration changes to a shared environment, and an engineer who uses agentic mode without a human review step before merge all create risks that compound when they occur simultaneously or go undetected. Acceptable use guidelines define the boundaries of authorized Claude Code use — not to restrict legitimate productivity, but to ensure that high-risk uses are explicit and reviewed rather than accidental and invisible.[^9]
 
-The lack of shared standards is a team vulnerability. The Pragmatic Engineer's 2026 AI tooling survey found that at companies with under 20 engineers — our team's size — AI acceptable use policies were present in only 23% of organizations, despite widespread individual AI tool adoption.[^10] The absence of a policy is not neutral: it means high-risk uses are possible without any governance mechanism to surface or address them.
+The lack of shared standards is a team vulnerability. The Pragmatic Engineer's 2026 AI tooling survey found that at companies with under 20 engineers — our team's size — AI acceptable use policies were present in only 23% of organizations, despite widespread individual AI tool adoption. The absence of a policy is not neutral: it means high-risk uses are possible without any governance mechanism to surface or address them.
 
 **Proposed Solution:**
 - Define authorized Claude Code usage categories: AI-assisted (human writes, AI augments), AI-primary (AI generates first pass, human reviews before merge), and agentic-delegated (AI runs unattended, output reviewed before any production effect). Each category has different review requirements — document them in the team's engineering handbook.[^3]
@@ -80,14 +80,14 @@ Google's DORA 2026 research found a 7.2% decrease in delivery stability correlat
 
 ## Policy 6: Compliance and Audit Requirements
 
-**Description:** For teams with enterprise customers, regulated-industry clients, or contractual security obligations, AI-generated code creates new compliance requirements that extend beyond standard engineering governance. SOC 2 Type II audits increasingly ask about AI tool usage and the controls around it; security questionnaires from enterprise prospects now routinely include questions about AI code generation practices; and data processing agreements may be affected by what data enters AI model sessions. A team that has not addressed these requirements is not prepared for the audit cycle they will face as the company scales.[^17]
+**Description:** For teams with enterprise customers, regulated-industry clients, or contractual security obligations, AI-generated code creates new compliance requirements that extend beyond standard engineering governance. SOC 2 Type II audits increasingly ask about AI tool usage and the controls around it; security questionnaires from enterprise prospects now routinely include questions about AI code generation practices; and data processing agreements may be affected by what data enters AI model sessions. A team that has not addressed these requirements is not prepared for the audit cycle they will face as the company scales.
 
-Compliance requirements around AI are evolving rapidly. What was not asked in a 2024 SOC 2 audit may be a required control in a 2026 audit. The teams that manage this transition best are those that have proactively documented their AI governance practices in audit-ready form — not as a compliance exercise, but as a natural output of the governance work described in this section.[^17]
+Compliance requirements around AI are evolving rapidly. What was not asked in a 2024 SOC 2 audit may be a required control in a 2026 audit. The teams that manage this transition best are those that have proactively documented their AI governance practices in audit-ready form — not as a compliance exercise, but as a natural output of the governance work described in this section.
 
 **Proposed Solution:**
-- Maintain an AI governance log as a standard engineering artifact: what AI tools are in use, what policies govern their use, who owns each policy, and when each policy was last reviewed. This is the primary artifact for AI-related compliance inquiries.[^17]
+- Maintain an AI governance log as a standard engineering artifact: what AI tools are in use, what policies govern their use, who owns each policy, and when each policy was last reviewed. This is the primary artifact for AI-related compliance inquiries.
 - Review Anthropic's SOC 2 Type II attestation and any applicable BAAs (Business Associate Agreements for HIPAA contexts) and include these in the team's vendor documentation alongside other critical infrastructure providers.[^12]
-- When responding to customer security questionnaires or RFP security sections, have a prepared statement about AI code generation practices: the tools used, the governance policies in place, and the security controls applied to AI-generated code. This should be reviewed and updated annually.[^17]
+- When responding to customer security questionnaires or RFP security sections, have a prepared statement about AI code generation practices: the tools used, the governance policies in place, and the security controls applied to AI-generated code. This should be reviewed and updated annually.
 - As AI-specific regulations emerge (the EU AI Act's implications for code generation tools are still being interpreted as of Q1 2026), assign the CTO responsibility for monitoring regulatory developments and triggering governance reviews when new requirements apply to the team's practices.[^9]
 
 ---
@@ -122,63 +122,57 @@ These changes are not improvements to the current governance — they are antici
 ---
 
 [^1]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Governance as velocity management: the argument that deliberate governance enables sustainable velocity rather than limiting it; the structural pressure toward velocity-over-quality in CTO-adjacent teams.
+ Governance as velocity management: the argument that deliberate governance enables sustainable velocity rather than limiting it; the structural pressure toward velocity-over-quality in CTO-adjacent teams.
 
 [^2]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
-    45% AI code security failure rate; stagnation despite model improvements as evidence that governance rather than model capability is the primary lever for AI security outcomes.
+ 45% AI code security failure rate; stagnation despite model improvements as evidence that governance rather than model capability is the primary lever for AI security outcomes.
 
 [^3]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-    Human delegation ceiling: 0–20% fully delegatable tasks; 80–100% requiring active supervision. The foundational data point for acceptable use policy and sprint planning gate design.
+ Human delegation ceiling: 0–20% fully delegatable tasks; 80–100% requiring active supervision. The foundational data point for acceptable use policy and sprint planning gate design.
 
 [^4]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Standard review practices and their limitations for AI-generated code: cognitive load increase, reviewer unfamiliarity with AI inference patterns, and the structural differences between evaluating AI-generated vs. human-authored code.
+ Standard review practices and their limitations for AI-generated code: cognitive load increase, reviewer unfamiliarity with AI inference patterns, and the structural differences between evaluating AI-generated vs. human-authored code.
 
 [^5]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    AI PRs with 75% more logic/correctness issues and 3× readability problems; the case for AI-specific review policies calibrated to AI's distinctive failure modes.
+ AI PRs with 75% more logic/correctness issues and 3× readability problems; the case for AI-specific review policies calibrated to AI's distinctive failure modes.
 
 [^6]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Writer/reviewer pattern as a preprocessing step for human review: fresh-context review sessions that give human reviewers a structured finding set rather than a blank slate.
+ Writer/reviewer pattern as a preprocessing step for human review: fresh-context review sessions that give human reviewers a structured finding set rather than a blank slate.
 
 [^7]: Graphite — "Best Practices for Managing Pull Request Size." https://graphite.com/guides/best-practices-managing-pr-size
-    Research supporting the 300–400 line PR limit: review quality, defect detection rates, and review time as a function of PR size; the specific decline threshold above 400 lines.
+ Research supporting the 300–400 line PR limit: review quality, defect detection rates, and review time as a function of PR size; the specific decline threshold above 400 lines.
 
 [^8]: daily.dev — "Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code
-    The "can you explain it" standard as an architectural review gate: why test passage is insufficient evidence of comprehension and why PR review must include explanation capability.
+ The "can you explain it" standard as an architectural review gate: why test passage is insufficient evidence of comprehension and why PR review must include explanation capability.
 
 [^9]: Anthropic — "Security and Permissions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/security-permissions
-    Permission model documentation: authorized vs. prohibited operations, `--dangerouslySkipPermissions` flag documentation and risks, and the permission scoping framework for different session types.
-
-[^10]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Acceptable use policy adoption rates: 23% of sub-20-person engineering teams have AI use policies despite widespread individual adoption; the governance gap at small companies.
+ Permission model documentation: authorized vs. prohibited operations, `--dangerouslySkipPermissions` flag documentation and risks, and the permission scoping framework for different session types.
 
 [^11]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Override procedures and permission scope: when to escalate new capability requests; the discipline of treating governance documentation like production code.
+ Override procedures and permission scope: when to escalate new capability requests; the discipline of treating governance documentation like production code.
 
 [^12]: METR — "We Are Changing Our Developer Productivity Experiment Design," METR Research, February 2026. https://www.metr.org/blog/2026-02-24-uplift-update/
-    19% productivity slowdown on complex tasks; AI readiness classification as a sprint planning practice; the evidence base for human-primary classification thresholds.
+ 19% productivity slowdown on complex tasks; AI readiness classification as a sprint planning practice; the evidence base for human-primary classification thresholds.
 
 [^13]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Spec.md as sprint planning prerequisite: task specification as a readiness gate; "waterfall in 15 minutes" as the pre-sprint specification discipline.
+ Spec.md as sprint planning prerequisite: task specification as a readiness gate; "waterfall in 15 minutes" as the pre-sprint specification discipline.
 
 [^14]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    40% AI code percentage threshold: above this level, rework rates increase materially; sprint-level monitoring as a governance intervention before accumulation becomes critical.
+ 40% AI code percentage threshold: above this level, rework rates increase materially; sprint-level monitoring as a governance intervention before accumulation becomes critical.
 
 [^15]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    Escalation and audit trail discipline: documenting incidents, override decisions, and governance changes for compliance and pattern recognition purposes.
+ Escalation and audit trail discipline: documenting incidents, override decisions, and governance changes for compliance and pattern recognition purposes.
 
 [^16]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Quarterly engineering health review as a leadership governance mechanism: the "Delegate, Review, Own" framework applied at the organizational level; how delivery stability metrics require quarterly cadence to interpret.
-
-[^17]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    AI governance log as a compliance artifact: SOC 2 audit readiness, security questionnaire preparation, and the regulatory trajectory for AI code generation tools in 2026–2027.
+ Quarterly engineering health review as a leadership governance mechanism: the "Delegate, Review, Own" framework applied at the organizational level; how delivery stability metrics require quarterly cadence to interpret.
 
 [^18]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Governance through context: how team-level CLAUDE.md functions as a governance mechanism by encoding team standards into every session rather than relying on individual engineer compliance
-    - Permission scoping: how task-level permission management reduces governance violations by making high-risk operations require explicit approval rather than passive acceptance
-    - Audit infrastructure: how session logs and structured context provide the traceability that compliance requirements need
+ - Governance through context: how team-level CLAUDE.md functions as a governance mechanism by encoding team standards into every session rather than relying on individual engineer compliance
+ - Permission scoping: how task-level permission management reduces governance violations by making high-risk operations require explicit approval rather than passive acceptance
+ - Audit infrastructure: how session logs and structured context provide the traceability that compliance requirements need
 
 [^19]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Acceptable use in practice: how to configure Claude Code to enforce team policies through settings.json and CLAUDE.md rather than relying on engineer memory
-    - Sprint planning integration: using task classification and spec.md requirements as workflow prerequisites that implement AI readiness gates in daily practice
-    - Compliance-ready documentation: how the tutorial's CLAUDE.md and settings.json structure creates the audit trail that governance and compliance requirements need
+ - Acceptable use in practice: how to configure Claude Code to enforce team policies through settings.json and CLAUDE.md rather than relying on engineer memory
+ - Sprint planning integration: using task classification and spec.md requirements as workflow prerequisites that implement AI readiness gates in daily practice
+ - Compliance-ready documentation: how the tutorial's CLAUDE.md and settings.json structure creates the audit trail that governance and compliance requirements need
 

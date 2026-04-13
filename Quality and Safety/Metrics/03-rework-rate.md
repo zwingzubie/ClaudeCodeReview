@@ -6,7 +6,7 @@
 
 ## Overview
 
-Raw velocity — commits per sprint, PRs merged per week, story points completed — overstates the productivity benefit of AI adoption because it counts output without counting the correction cost that follows. Rework rate is the metric that restores the balance: it measures the proportion of merged code requiring modification within 30 days due to defects, architectural misfit, or comprehension-driven rewrites, and when tracked separately by code origin (AI-primary vs. human-authored), it reveals whether AI-generated code is producing disproportionate post-merge instability.[^1] A team reporting faster output without reporting rework rate is reporting an incomplete number. A team reporting both is in a position to assess whether AI adoption is producing net productivity gain or net productivity transfer — from generation to correction.
+Raw velocity — commits per sprint, PRs merged per week, story points completed — overstates the productivity benefit of AI adoption because it counts output without counting the correction cost that follows. Rework rate is the metric that restores the balance: it measures the proportion of merged code requiring modification within 30 days due to defects, architectural misfit, or comprehension-driven rewrites, and when tracked separately by code origin (AI-primary vs. human-authored), it reveals whether AI-generated code is producing disproportionate post-merge instability. A team reporting faster output without reporting rework rate is reporting an incomplete number. A team reporting both is in a position to assess whether AI adoption is producing net productivity gain or net productivity transfer — from generation to correction.
 
 The METR February 2026 productivity study found that developers working on complex tasks experienced an average 19% slowdown compared to the no-AI baseline, with slowdowns concentrated in correction cycles following AI-generated implementations that encountered implicit architectural decision points. The team's specific rework rate differential — AI-primary PRs vs. human-authored PRs — is the primary mechanism by which this pattern becomes visible at the team level. If AI-primary PRs generate 30% of merged code but 60% of rework, the CTO's velocity dashboard is showing the right number in the wrong column.
 
@@ -14,12 +14,12 @@ The METR February 2026 productivity study found that developers working on compl
 
 ## Section 1: Rework Rate as the Net Productivity Metric
 
-**Description:** The appeal of velocity metrics is their legibility: commits, PRs, and story points are countable, consistent, and available from existing tooling without additional overhead. The problem is that they measure output, not outcome, and AI adoption changes the relationship between the two. A developer who generates code twice as fast but spends 40% of their time reworking AI-generated implementations is not running at double velocity — they are running at something closer to parity, with the additional risk that rework often touches code they did not write and may not fully understand.[^3]
+**Description:** The appeal of velocity metrics is their legibility: commits, PRs, and story points are countable, consistent, and available from existing tooling without additional overhead. The problem is that they measure output, not outcome, and AI adoption changes the relationship between the two. A developer who generates code twice as fast but spends 40% of their time reworking AI-generated implementations is not running at double velocity — they are running at something closer to parity, with the additional risk that rework often touches code they did not write and may not fully understand.
 
 Rework rate converts this dynamic into a comparable number. When tracked with origin attribution — which PRs originated the code that is now being reworked — it produces a differential that can be placed directly alongside velocity data to compute net productivity. A team whose AI-primary PRs have a rework rate of 18% while human-authored PRs have a rework rate of 9% is operating at a 2× rework differential. Whether that differential is acceptable depends on whether velocity is also approximately 2× — and on whether the types of rework (defect correction vs. architectural correction vs. comprehension-driven rewrite) suggest governance gaps that could be closed.
 
 **Recommended Practice:**
-- Present velocity data and rework rate data side by side at every monthly AI practice review. Never report AI output speed without the corresponding rework rate differential — the two numbers together tell the net productivity story that either number alone conceals.[^1]
+- Present velocity data and rework rate data side by side at every monthly AI practice review. Never report AI output speed without the corresponding rework rate differential — the two numbers together tell the net productivity story that either number alone conceals.
 - Calculate a net productivity estimate quarterly: (velocity multiplier from AI adoption) ÷ (1 + rework time as proportion of total engineering hours). If the result is below 1.2×, the team's AI governance should be treated as underperforming regardless of what the raw velocity numbers show.
 - When METR-style slowdowns are visible in sprint retrospectives — developers reporting that AI-generated code "seemed faster to write but took a long time to get right" — treat this as direct evidence that rework rate tracking would surface a meaningful differential worth acting on.[^4]
 - Share rework rate differential data with the CTO alongside velocity metrics as the complete picture for AI governance investment decisions. A 19% slowdown on complex tasks is a recoverable governance gap, not a ceiling on AI productivity — but only if the gap is visible.
@@ -35,8 +35,8 @@ The distinction between rework and planned iteration requires judgment, but the 
 **Recommended Practice:**
 - Adopt the 30-day window definition in the team's contribution guidelines and add it to CLAUDE.md as context for any AI-assisted commit message generation. Consistency of definition is more important than precision — a workable boundary, applied consistently, produces reliable trends.
 - Require the commit tag format "rework: #PR-number" in any commit that modifies code within the 30-day rework window. Add this requirement to the PR template checklist. Engineers should tag rework commits at the time of authorship, not retroactively — retroactive tagging is unreliable.
-- Add a PR origin classification field to the PR template: AI-primary (>50% AI-generated), AI-assisted (<50% AI-generated), or human-authored. This single field, combined with the rework commit tag, provides all the data needed to compute origin-based rework rate without automated tooling.[^1]
-- Review the rework tagging compliance rate monthly as a leading indicator of data quality. If fewer than 80% of rework commits are properly tagged, the rework rate metric will understate the true differential, which is worse than having no rework metric — it creates false confidence.[^3]
+- Add a PR origin classification field to the PR template: AI-primary (>50% AI-generated), AI-assisted (<50% AI-generated), or human-authored. This single field, combined with the rework commit tag, provides all the data needed to compute origin-based rework rate without automated tooling.
+- Review the rework tagging compliance rate monthly as a leading indicator of data quality. If fewer than 80% of rework commits are properly tagged, the rework rate metric will understate the true differential, which is worse than having no rework metric — it creates false confidence.
 
 ---
 
@@ -58,19 +58,19 @@ The 2× threshold is a governance flag, not an automatic intervention threshold.
 
 ```mermaid
 flowchart TD
-    A[Rework Event Observed] --> B{Root Cause?}
-    B --> C[Defect Rework]
-    B --> D[Architectural Rework]
-    B --> E[Comprehension-Driven<br/>Rewrite]
-    C --> F[Verification Gap<br/>Improve prompting & review]
-    D --> G[CLAUDE.md Context Gap<br/>Add architectural guidance]
-    E --> H[Readability Standard Gap<br/>Enforce naming & comment standards]
-    F --> I[Measure Rework Rate<br/>Differential Next Sprint]
-    G --> I
-    H --> I
-    I --> |Differential still > 2×| J[Governance Review]
-    I --> |Differential 1.3–1.5×| K[Healthy Range — Continue Monitoring]
-    J --> B
+ A[Rework Event Observed] --> B{Root Cause?}
+ B --> C[Defect Rework]
+ B --> D[Architectural Rework]
+ B --> E[Comprehension-Driven<br/>Rewrite]
+ C --> F[Verification Gap<br/>Improve prompting & review]
+ D --> G[CLAUDE.md Context Gap<br/>Add architectural guidance]
+ E --> H[Readability Standard Gap<br/>Enforce naming & comment standards]
+ F --> I[Measure Rework Rate<br/>Differential Next Sprint]
+ G --> I
+ H --> I
+ I --> |Differential still > 2×| J[Governance Review]
+ I --> |Differential 1.3–1.5×| K[Healthy Range — Continue Monitoring]
+ J --> B
 ```
 
 **Description:** Rework events fall into three root cause categories, each of which signals a different governance gap: defect rework (the code was incorrect and required bug fixes), architectural rework (the code was correct but did not fit the codebase's structural patterns and required redesign), and comprehension-driven rewrite (the code worked but was sufficiently difficult to understand that the team chose to rewrite rather than extend it). The proportion of rework in each category is diagnostic: a team with high defect rework has a verification gap; a team with high architectural rework has a CLAUDE.md context gap; a team with high comprehension-driven rework has a readability and review standard gap.[^9]
@@ -116,23 +116,14 @@ The most direct improvement loop is CLAUDE.md updates triggered by rework root c
 
 ---
 
-[^1]: Roman Fedytskyi — "Measuring the Real Cost of AI-Generated Code: Beyond Velocity Metrics," Medium, March 2026. https://medium.com/@fedytskyi/measuring-real-cost-ai-generated-code
-    Argues that velocity metrics systematically overstate AI benefit by excluding correction cycle costs; proposes rework rate differential as the corrective metric.
-
-
-[^3]: GitClear — "2025 Coding Assistant Impact on Software Quality," 2025. https://gitclear.com/coding_assistants_2025
-    Quantitative analysis of AI-generated code churn rates; shows elevated rework frequency concentrated in AI-primary commits across repositories.
-
 [^4]: Boris Cherny — "How Boris Uses Claude Code," howborisusesclaudecode.com, January 2026. https://howborisusesclaudecode.com
-    Documents commit tagging conventions for AI-generated code traceability, including the "rework:" prefix pattern for attribution analysis.
-
+ Documents commit tagging conventions for AI-generated code traceability, including the "rework:" prefix pattern for attribution analysis.
 
 [^9]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Empirical study classifying AI code failures into defect, architectural, and comprehension categories; provides frequency distributions and governance recommendations for each.
+ Empirical study classifying AI code failures into defect, architectural, and comprehension categories; provides frequency distributions and governance recommendations for each.
 
 [^10]: Kyros — "CLAUDE.md as Architecture Documentation: Preventing AI Architectural Drift," Kyros Engineering Blog, March 2026. https://kyros.ai/blog/claudemd-architecture-documentation
-    Case study of how CLAUDE.md updates targeting architectural patterns reduced architectural rework in a backend API layer by 48% over two sprints.
-
+ Case study of how CLAUDE.md updates targeting architectural patterns reduced architectural rework in a backend API layer by 48% over two sprints.
 
 [^a]: [Issues: Comprehension Debt](../Issues/01-comprehension-debt.md) — rework rate is the primary metric for detecting comprehension debt in production; high rework on AI-generated code indicates that engineers accepted output they did not fully understand.
 

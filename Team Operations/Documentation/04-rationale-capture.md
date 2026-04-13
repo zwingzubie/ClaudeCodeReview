@@ -23,7 +23,7 @@ The gap compounds because downstream code inherits unexplained decisions. A futu
 **Recommended Practice:**
 - Define the rationale gap explicitly in the team's engineering practices documentation: it is not a documentation failure but a session discipline failure. The rationale gap forms because the session ends without the engineer asking Claude to explain its key decisions. Closing the gap requires changing what happens in sessions, not only what happens after them.[^2]
 - Identify the categories of AI decision that most commonly produce rationale gaps: algorithm selection, data structure choice, error handling strategy, module boundary placement, and API surface design. These are the decisions that are (a) non-obvious to a future reader and (b) most consequential when changed without understanding the original rationale.[^4]
-- Track rationale gap incidents as a team metric: count the number of times in a given sprint that an engineer — in review, in a subsequent session, or during an incident — encountered AI-generated code that no one on the team could explain. This metric should decrease as the team's rationale capture discipline improves.[^5]
+- Track rationale gap incidents as a team metric: count the number of times in a given sprint that an engineer — in review, in a subsequent session, or during an incident — encountered AI-generated code that no one on the team could explain. This metric should decrease as the team's rationale capture discipline improves.
 - Include the rationale gap in the team's onboarding to AI-assisted development: new engineers should understand why the gap forms, what it costs, and which session practices prevent it. An engineer who knows about the gap will ask the explanation question; an engineer who doesn't know about it won't know to ask.[^1]
 
 ---
@@ -44,12 +44,12 @@ The session discipline is simple: before accepting a significant AI-generated im
 
 ## Section 3: Embedding Rationale in Commit Messages and PR Descriptions
 
-**Description:** Commit messages and PR descriptions are the most persistent rationale record in a codebase — they are versioned with the code, accessible from the Git history, and readable from Claude Code sessions via the repository context. A commit message that records not just what changed but why the change was made the way it was made is a durable rationale artifact that survives the session that produced it, survives the engineer who wrote it leaving the team, and survives the codebase evolving away from the patterns it describes.[^10]
+**Description:** Commit messages and PR descriptions are the most persistent rationale record in a codebase — they are versioned with the code, accessible from the Git history, and readable from Claude Code sessions via the repository context. A commit message that records not just what changed but why the change was made the way it was made is a durable rationale artifact that survives the session that produced it, survives the engineer who wrote it leaving the team, and survives the codebase evolving away from the patterns it describes.
 
 Standard commit message practice produces messages that describe what changed: "Add session management service," "Refactor authentication handler," "Fix user query performance." These are useful for Git log navigation but useless for rationale recovery. A rationale-bearing commit message adds the why: "Add session management service using Redis for session storage — stateless service required for horizontal scaling planned in Q3; Redis chosen over in-memory store because session sharing across instances is needed; see ADR-008 for alternatives considered." The difference in writing time is under two minutes; the difference in maintenance value is substantial.
 
 **Recommended Practice:**
-- Adopt a commit message template for AI-primary commits: **[What]** [brief description of what changed]. **[Why]** [the key decision rationale, in one to three sentences]. **[ADR]** [ADR reference if applicable, otherwise "no ADR"]. The template takes 60–90 seconds to fill and produces a commit history that supports both Git navigation and rationale recovery.[^10]
+- Adopt a commit message template for AI-primary commits: **[What]** [brief description of what changed]. **[Why]** [the key decision rationale, in one to three sentences]. **[ADR]** [ADR reference if applicable, otherwise "no ADR"]. The template takes 60–90 seconds to fill and produces a commit history that supports both Git navigation and rationale recovery.
 - Define the PR description rationale section as a required field for AI-heavy PRs: "Key decisions and rationale: [explanation drawn from the session rationale elicitation, edited for clarity]." This field is not a duplicate of the commit message — it is the expanded rationale for the PR as a whole, providing context that individual commit messages may not carry.[^12]
 - Train the team to treat a PR description without a rationale section as an incomplete PR, in the same way that a PR without tests is incomplete. The review process should explicitly check whether the rationale field is present and informative — not just whether the code looks correct. A correct but unexplained implementation is a knowledge debt generator.[^8]
 - Use Claude Code to draft rationale sections for commits and PRs directly from the session's rationale elicitation output: "Draft a commit message rationale section from this session explanation: [paste Claude's explanation]. Format it as: 'Key decisions: [two to three sentences].' Keep it under 80 words." The draft will require light editing; the engineering cost is under a minute.[^7]
@@ -84,44 +84,37 @@ CLAUDE.md with rationale is substantially more useful for both humans and AI ses
 ---
 
 [^1]: Yue Liu et al. — "Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild," arXiv:2603.28592, March 30, 2026. https://arxiv.org/html/2603.28592
-    The rationale gap as a distinct category of AI-generated technical debt: how accepted-without-explanation decisions accumulate into codebases whose structural choices cannot be explained by any team member.
+ The rationale gap as a distinct category of AI-generated technical debt: how accepted-without-explanation decisions accumulate into codebases whose structural choices cannot be explained by any team member.
 
 [^2]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    Session discipline as the primary prevention for the rationale gap: the metacognitive prompting practices that force explicit reasoning before acceptance; the mechanism by which epistemic debt forms at the acceptance moment.
+ Session discipline as the primary prevention for the rationale gap: the metacognitive prompting practices that force explicit reasoning before acceptance; the mechanism by which epistemic debt forms at the acceptance moment.
 
 [^3]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    Rationale gap compounding: how downstream code inherits unexplained decisions and treats them as constraints, amplifying the original gap; the inability to distinguish deliberate from arbitrary in AI-generated code.
+ Rationale gap compounding: how downstream code inherits unexplained decisions and treats them as constraints, amplifying the original gap; the inability to distinguish deliberate from arbitrary in AI-generated code.
 
 [^4]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Categories of AI implementation decision most prone to rationale gaps: algorithm selection, data structure choice, error handling strategy; the CLAUDE.md change rationale requirement.
-
-[^5]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    Rationale gap incidents as a team metric: tracking unexplained AI decisions encountered in review and incident response; the trend as a lagging indicator of session discipline improvement.
+ Categories of AI implementation decision most prone to rationale gaps: algorithm selection, data structure choice, error handling strategy; the CLAUDE.md change rationale requirement.
 
 [^6]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Rationale capture as a session-closing discipline: the standard elicitation prompt and how it produces documentation that post-hoc reconstruction cannot replicate; the economic case for capturing rationale before the session closes.
+ Rationale capture as a session-closing discipline: the standard elicitation prompt and how it produces documentation that post-hoc reconstruction cannot replicate; the economic case for capturing rationale before the session closes.
 
 [^7]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Using Claude Code to draft rationale documentation from session explanations: how to transform a session's rationale elicitation output into commit message and PR description content with minimal engineering overhead.
+ Using Claude Code to draft rationale documentation from session explanations: how to transform a session's rationale elicitation output into commit message and PR description content with minimal engineering overhead.
 
 [^8]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Rationale field as a required PR element: treating a correct-but-unexplained implementation as an incomplete PR; the review discipline that makes rationale documentation a merge criterion rather than a documentation preference.
+ Rationale field as a required PR element: treating a correct-but-unexplained implementation as an incomplete PR; the review discipline that makes rationale documentation a merge criterion rather than a documentation preference.
 
 [^9]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md as rationale repository: the inline rationale comment format; the session closing checklist structure; how CLAUDE.md rationale-bearing constraints are more resistant to AI session erosion than constraint-only entries.
-
-[^10]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Commit message rationale as a durable documentation artifact: how What/Why/ADR commit messages survive session closure, engineer departure, and codebase evolution; the maintenance value differential for under two minutes of writing.
-
+ CLAUDE.md as rationale repository: the inline rationale comment format; the session closing checklist structure; how CLAUDE.md rationale-bearing constraints are more resistant to AI session erosion than constraint-only entries.
 
 [^12]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    PR description rationale sections: how expanded rationale in PR descriptions provides context that commit-level messages cannot carry; the relationship between PR rationale quality and review effectiveness.
+ PR description rationale sections: how expanded rationale in PR descriptions provides context that commit-level messages cannot carry; the relationship between PR rationale quality and review effectiveness.
 
 [^13]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    CLAUDE.md as a rationale repository: how rationale-bearing constraints are more effective session constraints than rule-only entries; the audit practice for adding rationale to existing constraints.
+ CLAUDE.md as a rationale repository: how rationale-bearing constraints are more effective session constraints than rule-only entries; the audit practice for adding rationale to existing constraints.
 
 [^14]: Anthropic — "Model Context Protocol," Anthropic, 2025. https://www.anthropic.com/news/model-context-protocol
-    Three-layer rationale infrastructure: ADRs, CLAUDE.md, and commit messages as complementary rationale stores that support navigation from any entry point; MCP as the mechanism connecting external rationale stores to session context.
+ Three-layer rationale infrastructure: ADRs, CLAUDE.md, and commit messages as complementary rationale stores that support navigation from any entry point; MCP as the mechanism connecting external rationale stores to session context.
 
 [^a]: [Documentation: Architecture Decision Records](01-architecture-decision-records.md) — ADRs capture formal architectural decisions; rationale capture extends this to informal AI-generated decisions below the ADR threshold; the two practices together close the full documentation gap.
 [^b]: [Issues: Comprehension Debt](../Issues/01-comprehension-debt.md) — comprehension debt is the direct consequence of failed rationale capture; undocumented AI decisions are the primary source of debt accumulation.

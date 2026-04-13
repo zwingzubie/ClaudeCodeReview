@@ -14,21 +14,21 @@ This memo covers the structure of an AI workflow onboarding program for a small 
 
 ```mermaid
 flowchart TD
-    START([New Engineer Joins]) --> CB[Week 1: Codebase Onboarding<br/>Standard process + tooling setup]
-    CB --> AI[Week 1: AI Workflow Onboarding<br/>Delivered by Architect<br/>CLAUDE.md tour · command library<br/>verification standards · escalation paths]
-    AI --> CK{Checklist Verification<br/>Can explain top 3 CLAUDE.md rules<br/>and incidents that motivated them?}
-    CK --> |Not yet| REVIEW[CLAUDE.md review<br/>with Architect]
-    REVIEW --> CK
-    CK --> |Yes| SPRINT1[Sprint 1: Mentored Tasks<br/>One per type: scaffold · refactor · test-gen<br/>Bounded scope · existing tests · available mentor]
-    SPRINT1 --> PR1[First PRs Reviewed<br/>CLAUDE.md adherence · prompt structure<br/>verification practice · feedback within 24h]
-    PR1 --> SPRINT2[Sprint 2: Continued Mentoring<br/>Async session log review<br/>Structured rubric: architecture · context · verification]
-    SPRINT2 --> MONTH1{Month 1 Assessment<br/>Can walk through session<br/>explaining prompt choices?}
-    MONTH1 --> |Compliance — not internalization| AIFREE[AI-Free Debugging Exercise<br/>Real bug · no AI access<br/>Reveals foundational understanding]
-    AIFREE --> EXTRA[Additional mentored sessions<br/>+ targeted AI-free practice]
-    EXTRA --> MONTH1
-    MONTH1 --> |Internalized| GATE[Explanation Gate Check<br/>Walk through completed module:<br/>design decisions · tradeoffs<br/>no Claude or session logs]
-    GATE --> |Pass| FULL[Full Team Member<br/>Expected to propose CLAUDE.md updates<br/>when encountering gaps]
-    GATE --> |Fail| EXTRA
+ START([New Engineer Joins]) --> CB[Week 1: Codebase Onboarding<br/>Standard process + tooling setup]
+ CB --> AI[Week 1: AI Workflow Onboarding<br/>Delivered by Architect<br/>CLAUDE.md tour · command library<br/>verification standards · escalation paths]
+ AI --> CK{Checklist Verification<br/>Can explain top 3 CLAUDE.md rules<br/>and incidents that motivated them?}
+ CK --> |Not yet| REVIEW[CLAUDE.md review<br/>with Architect]
+ REVIEW --> CK
+ CK --> |Yes| SPRINT1[Sprint 1: Mentored Tasks<br/>One per type: scaffold · refactor · test-gen<br/>Bounded scope · existing tests · available mentor]
+ SPRINT1 --> PR1[First PRs Reviewed<br/>CLAUDE.md adherence · prompt structure<br/>verification practice · feedback within 24h]
+ PR1 --> SPRINT2[Sprint 2: Continued Mentoring<br/>Async session log review<br/>Structured rubric: architecture · context · verification]
+ SPRINT2 --> MONTH1{Month 1 Assessment<br/>Can walk through session<br/>explaining prompt choices?}
+ MONTH1 --> |Compliance — not internalization| AIFREE[AI-Free Debugging Exercise<br/>Real bug · no AI access<br/>Reveals foundational understanding]
+ AIFREE --> EXTRA[Additional mentored sessions<br/>+ targeted AI-free practice]
+ EXTRA --> MONTH1
+ MONTH1 --> |Internalized| GATE[Explanation Gate Check<br/>Walk through completed module:<br/>design decisions · tradeoffs<br/>no Claude or session logs]
+ GATE --> |Pass| FULL[Full Team Member<br/>Expected to propose CLAUDE.md updates<br/>when encountering gaps]
+ GATE --> |Fail| EXTRA
 ```
 
 ## Section 1: The AI Workflow Onboarding Checklist
@@ -55,7 +55,7 @@ Session logs are an underused onboarding asset. A log from a session that comple
 - Maintain a `docs/onboarding/` directory with three curated session logs: a feature scaffolding session, a refactoring session, and a security review session. Annotate each log with comments explaining why specific prompts were structured as they were and what the alternatives would have produced.[^3]
 - Include a brief "CLAUDE.md tour" as part of the `.claude/README.md`: each major CLAUDE.md rule with a one-sentence explanation of the incident or pattern that motivated it. New engineers who understand why rules exist are more likely to follow them and more likely to propose updates when they encounter situations the rule does not address well.[^4]
 - Create a "first week tasks" list of AI-assisted tasks that were specifically chosen for their instructional value: one task per type (scaffolding, refactoring, test generation) using the team's standard commands, on modules with good test coverage, with an available mentor for the session.[^1]
-- Share the prompt retrospective notes from the last quarterly AI practice review as part of onboarding. These notes document which prompt patterns the team has found effective and which have produced poor output — real team experience that is not in any documentation.[^7]
+- Share the prompt retrospective notes from the last quarterly AI practice review as part of onboarding. These notes document which prompt patterns the team has found effective and which have produced poor output — real team experience that is not in any documentation.
 
 ---
 
@@ -69,7 +69,7 @@ The mentor for AI workflow onboarding is a different role than the general onboa
 - Designate a specific AI workflow mentor for each new engineer's first two sprints. The mentor should review at least two AI sessions per sprint: one live (observing the session in real time), one asynchronous (reviewing the session log and providing written feedback).[^8]
 - Give the mentor a structured feedback rubric: prompt architecture (were all five components present?), context management (was the context appropriately scoped?), verification practice (was verification criteria included and executed?), and session hygiene (was context cleared at appropriate points?). Structured feedback is more actionable than impressionistic feedback.[^2]
 - After the mentored period, conduct a brief competency assessment: ask the new engineer to walk through a session they ran, explaining their prompt choices and what they would change. This assessment reveals internalization (the ability to articulate reasoning) vs. compliance (following rules without understanding them). Internalization is the goal.[^9]
-- Rotate the mentor role across the team over time. Every engineer who serves as an AI workflow mentor strengthens their own practice by being required to articulate the reasoning behind their approach. Mentoring is skill maintenance for the mentor as well as skill development for the mentee.[^7]
+- Rotate the mentor role across the team over time. Every engineer who serves as an AI workflow mentor strengthens their own practice by being required to articulate the reasoning behind their approach. Mentoring is skill maintenance for the mentor as well as skill development for the mentee.
 
 ---
 
@@ -83,7 +83,7 @@ The common failure mode in first-sprint task design is assigning tasks that are 
 - Assign one bounded, well-specified task per primary task type (scaffolding, refactoring, test generation) in the first sprint. Each should have: existing tests that pass as a verification baseline, clear architectural precedent in the codebase, a spec.md already written (or jointly written with the new engineer), and an available mentor for questions during the session.[^10]
 - Avoid assigning security-critical tasks (authentication, payment processing, data access) in the first sprint. The additional scrutiny required for security-critical AI-generated code is more useful as a teaching example once the new engineer has baseline practice, not as a first experience under time pressure.[^4]
 - Review the new engineer's first sprint PRs specifically for CLAUDE.md adherence, prompt structure evidence (visible in session logs if the engineer shares them), and verification practice (did tests run before the PR was submitted?). Provide this feedback within 24 hours of the PR submission — close enough to the session that the engineer can connect the feedback to their specific choices.[^5]
-- After the first sprint, debrief: which tasks were clearest to AI-assisted execution? Which encountered unexpected complexity? What CLAUDE.md rules were most relevant? This debrief both provides learning value for the new engineer and generates input for CLAUDE.md and onboarding documentation updates.[^7]
+- After the first sprint, debrief: which tasks were clearest to AI-assisted execution? Which encountered unexpected complexity? What CLAUDE.md rules were most relevant? This debrief both provides learning value for the new engineer and generates input for CLAUDE.md and onboarding documentation updates.
 
 ---
 
@@ -114,55 +114,52 @@ The fragile expert finding (see Issues — Comprehension Debt) is directly relev
 ---
 
 [^1]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    AI workflow onboarding as a distinct knowledge transfer category: why default AI habits from previous roles diverge from team standards and how structured onboarding addresses the gap.
+ AI workflow onboarding as a distinct knowledge transfer category: why default AI habits from previous roles diverge from team standards and how structured onboarding addresses the gap.
 
 [^2]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md walkthrough as onboarding artifact; verification standards and permission hygiene as required competencies before first AI-assisted session.
+ CLAUDE.md walkthrough as onboarding artifact; verification standards and permission hygiene as required competencies before first AI-assisted session.
 
 [^3]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Command library structure and `.claude/commands/` directory organization; session log format as an onboarding teaching tool.
+ Command library structure and `.claude/commands/` directory organization; session log format as an onboarding teaching tool.
 
 [^4]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    CLAUDE.md rationale transfer: why the architect should deliver the CLAUDE.md onboarding; the importance of knowing why rules exist vs. just knowing what they are.
+ CLAUDE.md rationale transfer: why the architect should deliver the CLAUDE.md onboarding; the importance of knowing why rules exist vs. just knowing what they are.
 
 [^5]: Artur Less — "Spec-Driven Development with Claude Code," Level Up Coding / Medium, March 2026. https://levelup.gitconnected.com/spec-driven-development-with-claude-code-1b08184965e3
-    First-sprint task design: how bounded, well-specified tasks with existing test coverage and architectural precedent establish good session habits before poor ones form.
+ First-sprint task design: how bounded, well-specified tasks with existing test coverage and architectural precedent establish good session habits before poor ones form.
 
 [^6]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
-    Session logs as onboarding artifacts: how annotated real sessions transfer tacit workflow knowledge that documentation cannot convey; expectation calibration for engineers new to AI-assisted development.
-
-[^7]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Quarterly retrospective notes as onboarding material: real team experience with prompt patterns and failure modes that no documentation captures; sharing institutional AI workflow knowledge with new team members.
+ Session logs as onboarding artifacts: how annotated real sessions transfer tacit workflow knowledge that documentation cannot convey; expectation calibration for engineers new to AI-assisted development.
 
 [^8]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Structured peer-to-peer knowledge transfer as the mechanism for building genuine organizational knowledge rather than surface-level compliance; mentor role specification for AI workflow transfer.
+ Structured peer-to-peer knowledge transfer as the mechanism for building genuine organizational knowledge rather than surface-level compliance; mentor role specification for AI workflow transfer.
 
 [^9]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    Internalization vs. compliance distinction: the teach-back explanation as the assessment tool that distinguishes engineers who understand AI workflow rationale from those who follow rules without internalizing them.
+ Internalization vs. compliance distinction: the teach-back explanation as the assessment tool that distinguishes engineers who understand AI workflow rationale from those who follow rules without internalizing them.
 
 [^10]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-    First-sprint task design criteria: fully specified requirements, narrow scope, high-precedent patterns, existing verification; avoiding security-critical tasks in initial AI-assisted sessions.
+ First-sprint task design criteria: fully specified requirements, narrow scope, high-precedent patterns, existing verification; avoiding security-critical tasks in initial AI-assisted sessions.
 
 [^11]: Yonatan Sason — "The Black Box Problem: Why AI-Generated Code Stops Being Maintainable," *Towards Data Science*, March 6, 2026. https://towardsdatascience.com/the-black-box-problem-why-ai-generated-code-stops-being-maintainable/
-    Compliance vs. internalization as an onboarding outcome: how engineers who followed rules without understanding them produce the black-box code that is maintainable only while the original engineer is present.
+ Compliance vs. internalization as an onboarding outcome: how engineers who followed rules without understanding them produce the black-box code that is maintainable only while the original engineer is present.
 
 [^12]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    Comprehension gap risk during onboarding: why the first months of AI-assisted work are the highest-risk period for forming dependency patterns, and why catching them during onboarding is less costly than discovering them in incidents.
+ Comprehension gap risk during onboarding: why the first months of AI-assisted work are the highest-risk period for forming dependency patterns, and why catching them during onboarding is less costly than discovering them in incidents.
 
 [^13]: ThePrimeagen (The PrimeTime) — "Jr Devs - 'I Can't Code Anymore'," YouTube, February 21, 2025. https://www.youtube.com/watch?v=1Se2zTlXDwY
-    - AI-free debugging exercise as an onboarding success signal: what it reveals about whether AI-assisted work is building foundational understanding or covering its absence
-    - The habit formation window: why the first weeks of AI-assisted work are the highest-leverage period for establishing good practices
-    - Mentor modeling: how senior engineers who demonstrate active AI workflow practices accelerate new engineer habit formation more effectively than documentation alone
+ - AI-free debugging exercise as an onboarding success signal: what it reveals about whether AI-assisted work is building foundational understanding or covering its absence
+ - The habit formation window: why the first weeks of AI-assisted work are the highest-leverage period for establishing good practices
+ - Mentor modeling: how senior engineers who demonstrate active AI workflow practices accelerate new engineer habit formation more effectively than documentation alone
 
 [^14]: Lex Fridman Podcast #461 ft. ThePrimeagen, YouTube, March 22, 2025. https://www.youtube.com/watch?v=tNZnLkRBYA8
-    - 4:18:32 — Senior engineer mentorship in AI-assisted teams: the specific behaviors that distinguish effective AI workflow mentors from general technical mentors
-    - 20:00 — Dependency formation during onboarding: how the first months of AI tool exposure shape long-term capability trajectories in both beneficial and limiting directions
-    - 5:01:16 — The skills that make AI onboarding successful: which foundational engineering competencies enable engineers to use AI as a multiplier rather than a crutch from day one
+ - 4:18:32 — Senior engineer mentorship in AI-assisted teams: the specific behaviors that distinguish effective AI workflow mentors from general technical mentors
+ - 20:00 — Dependency formation during onboarding: how the first months of AI tool exposure shape long-term capability trajectories in both beneficial and limiting directions
+ - 5:01:16 — The skills that make AI onboarding successful: which foundational engineering competencies enable engineers to use AI as a multiplier rather than a crutch from day one
 
 [^15]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Onboarding walkthrough: how the tutorial's structure mirrors an effective AI workflow onboarding sequence — from CLAUDE.md to commands to verification to quality gates
-    - Session log demonstration: what a well-run session looks like from start to finish, including prompt structure, corrections, verification, and completion criteria
-    - First-session task design: the tutorial's example tasks are calibrated to onboarding difficulty — bounded, well-specified, with architectural precedent and existing tests
+ - Onboarding walkthrough: how the tutorial's structure mirrors an effective AI workflow onboarding sequence — from CLAUDE.md to commands to verification to quality gates
+ - Session log demonstration: what a well-run session looks like from start to finish, including prompt structure, corrections, verification, and completion criteria
+ - First-session task design: the tutorial's example tasks are calibrated to onboarding difficulty — bounded, well-specified, with architectural precedent and existing tests
 
 [^a]: [Documentation: Knowledge Transfer](../Documentation/03-knowledge-transfer.md) — knowledge transfer practices are the upstream input to onboarding; what the team documents determines what new engineers receive in the onboarding process.
 [^b]: [Tooling: CLAUDE.md Configuration](../Tooling & Configuration/01-claude-md-configuration.md) — onboarding includes CLAUDE.md orientation; new engineers must understand the constraint layer before using Claude Code on the codebase.

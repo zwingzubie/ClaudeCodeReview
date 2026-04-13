@@ -30,16 +30,16 @@ The context exhaustion problem is structural. Claude Code sessions have a finite
 
 ```mermaid
 flowchart TD
-    A[Session in Progress] --> B{Complexity Signal<br/>Detected?}
-    B --> |No| C{Session > 90 min or<br/>> 800 lines generated?}
-    C --> |No| A
-    C --> |Yes| B
-    B --> |Yes| D{Still on original<br/>task frame?}
-    D --> |Yes — context<br/>still coherent| E[Run /compact]
-    D --> |No — scope has<br/>expanded significantly| F[Start Fresh Session]
-    E --> G[Continue with<br/>compacted context]
-    F --> H[Reconstruct relevant context<br/>3-min setup: CLAUDE.md +<br/>module examples + task summary]
-    H --> I[New Focused Session]
+ A[Session in Progress] --> B{Complexity Signal<br/>Detected?}
+ B --> |No| C{Session > 90 min or<br/>> 800 lines generated?}
+ C --> |No| A
+ C --> |Yes| B
+ B --> |Yes| D{Still on original<br/>task frame?}
+ D --> |Yes — context<br/>still coherent| E[Run /compact]
+ D --> |No — scope has<br/>expanded significantly| F[Start Fresh Session]
+ E --> G[Continue with<br/>compacted context]
+ F --> H[Reconstruct relevant context<br/>3-min setup: CLAUDE.md +<br/>module examples + task summary]
+ H --> I[New Focused Session]
 ```
 
 **Description:** No single session length threshold applies to all tasks or all engineers, but there are complexity signals that reliably indicate when a session is approaching the point of diminishing returns. These signals include: the AI beginning to repeat suggestions it made earlier in the session, the output starting to lack the specific variable names and function patterns established in the codebase examples loaded at session start, the task requiring coordination across more than three files simultaneously, and the engineer finding it difficult to evaluate whether the AI's output is correct because the session context is too large to hold in working memory.
@@ -70,13 +70,13 @@ Optimal context density — the ratio of relevant, directly applicable context t
 
 ## Section 4: Tracking Session Outcomes
 
-**Description:** Session outcome tracking does not require automated instrumentation. A lightweight session log — a shared spreadsheet or simple document maintained by each engineer — captures enough data for monthly pattern analysis. The minimum useful record per session is: task description, session length in minutes, output quality rating (good/acceptable/required-significant-rework), and a brief note on any notable issues (context exhaustion, scope drift, required restart). Five fields, entered in two minutes at the end of a session, accumulate into a dataset that supports meaningful pattern analysis within one or two months.[^10]
+**Description:** Session outcome tracking does not require automated instrumentation. A lightweight session log — a shared spreadsheet or simple document maintained by each engineer — captures enough data for monthly pattern analysis. The minimum useful record per session is: task description, session length in minutes, output quality rating (good/acceptable/required-significant-rework), and a brief note on any notable issues (context exhaustion, scope drift, required restart). Five fields, entered in two minutes at the end of a session, accumulate into a dataset that supports meaningful pattern analysis within one or two months.
 
 The session log serves a dual purpose: it creates the data for team-level pattern analysis, and it prompts the engineer to reflect on the session's structural choices immediately after completing it. Engineers who log sessions consistently report that the logging practice itself — the act of rating output quality and identifying notable issues — improves subsequent session structure decisions because it makes the feedback loop from session choices to outcomes explicit.[^2]
 
 **Recommended Practice:**
-- Maintain a session log using the minimum five-field format: date, task, session length (minutes), output quality (good/acceptable/rework-required), notable issues. Add a sixth field for "session type" (new feature, bug fix, refactor, test generation) to enable analysis by task type.[^10]
-- The minimum viable template is a six-column spreadsheet row: `Date | Task Description | Length (min) | Quality (good / acceptable / rework-required) | Session Type | Notable Issues`. Maintain one tab per engineer in a shared document so the architect can aggregate across rows without requiring engineers to prepare individual summaries. A completed row takes under two minutes; an incomplete log entry (missing the quality rating or notable issues field) provides no pattern analysis value and should be completed before the session's context is lost.[^10]
+- Maintain a session log using the minimum five-field format: date, task, session length (minutes), output quality (good/acceptable/rework-required), notable issues. Add a sixth field for "session type" (new feature, bug fix, refactor, test generation) to enable analysis by task type.
+- The minimum viable template is a six-column spreadsheet row: `Date | Task Description | Length (min) | Quality (good / acceptable / rework-required) | Session Type | Notable Issues`. Maintain one tab per engineer in a shared document so the architect can aggregate across rows without requiring engineers to prepare individual summaries. A completed row takes under two minutes; an incomplete log entry (missing the quality rating or notable issues field) provides no pattern analysis value and should be completed before the session's context is lost.
 - Log sessions within 10 minutes of completion, while the session structure is still fresh. Delayed logging produces less accurate quality ratings and less useful notable issues notes. A log entry written the next day is more likely to reflect the final state of the code (after rework) than the session's actual output quality.[^2]
 - Use session logs as qualitative input for the monthly AI practice review alongside quantitative metrics. Patterns in the notable issues field — "context too broad," "scope expanded mid-session," "context exhaustion in the last 30 minutes" — identify structural session problems that aggregate metrics cannot surface.
 - Share anonymized session log summaries across the team at the monthly practice review. Individual engineers' session notes, aggregated and anonymized, reveal whether session failure modes are team-wide patterns or individual-specific habits. Team-wide patterns warrant CLAUDE.md updates or workflow changes; individual-specific patterns warrant targeted coaching.
@@ -94,7 +94,7 @@ Whether session efficiency varies by engineer or by task type is a diagnostic qu
 - Assign the architect as the named owner of the monthly aggregation run. The output is a single-page summary: task type breakdown of quality ratings, the three most common notable issues across the team, and one recommended improvement action. Distribute this summary 24 hours before the monthly AI practice review so the team can read it before the meeting rather than hearing it for the first time during the session.
 - Identify the task type with the worst combination of session length and output quality each month. This is the highest-leverage target for CLAUDE.md or prompt library improvement. A task type that consistently produces long sessions with poor output is one for which the team has insufficient session structuring guidance.
 - When session failure modes are concentrated in a task type, add a session structuring note to CLAUDE.md for that task type: recommended context to load, recommended session length before /compact, signals that the task should be decomposed. This converts individual engineers' hard-won session experience into shared, reusable guidance.[^9]
-- Review session efficiency trends at the same frequency as other AI metrics — monthly — and treat sustained decline in session quality ratings as a governance signal equivalent to rising defect rates or security findings. Session quality degradation often precedes rework rate increases by one to two months, making it a leading indicator worth tracking proactively.[^10]
+- Review session efficiency trends at the same frequency as other AI metrics — monthly — and treat sustained decline in session quality ratings as a governance signal equivalent to rising defect rates or security findings. Session quality degradation often precedes rework rate increases by one to two months, making it a leading indicator worth tracking proactively.
 
 ---
 
@@ -115,21 +115,14 @@ Whether session efficiency varies by engineer or by task type is a diagnostic qu
 
 ---
 
-
 [^2]: Boris Cherny — "How Boris Uses Claude Code," howborisusesclaudecode.com, January 2026. https://howborisusesclaudecode.com
-    Documents session logging practices and the feedback loop from session outcome observation to session structure improvement; includes the lightweight log format.
-
+ Documents session logging practices and the feedback loop from session outcome observation to session structure improvement; includes the lightweight log format.
 
 [^4]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Empirical study of output quality as a function of session length and context density; documents the context exhaustion mechanism and its effect on code consistency.
-
+ Empirical study of output quality as a function of session length and context density; documents the context exhaustion mechanism and its effect on code consistency.
 
 [^9]: Kyros — "CLAUDE.md as a Context Efficiency Tool: Reducing Per-Session Overhead," Kyros Engineering Blog, March 2026. https://kyros.ai/blog/claudemd-context-efficiency
-    Case study of how CLAUDE.md maintenance reduced average context loading time per session by 40% and improved output consistency in targeted modules.
-
-[^10]: Roman Fedytskyi — "Lightweight AI Session Tracking: The Five-Field Log That Actually Gets Used," Medium, March 2026. https://medium.com/@fedytskyi/lightweight-ai-session-tracking
-    Documents the five-field session log format; provides evidence that minimal-overhead logging produces sufficient data for monthly pattern analysis.
-
+ Case study of how CLAUDE.md maintenance reduced average context loading time per session by 40% and improved output consistency in targeted modules.
 
 [^a]: [Issues: Skill Atrophy](../Issues/06-skill-atrophy.md) — declining session efficiency without AI assistance is a leading indicator of skill atrophy; the metric distinguishes AI-assisted from AI-dependent output.
 

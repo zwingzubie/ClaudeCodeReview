@@ -91,7 +91,7 @@ For our team today, this is not a hiring problem — it is a capability problem.
 
 **Description:** Eight engineers are using Claude Code in eight different ways — different context strategies, different system prompts (or none), different verification habits, and different norms around when to accept AI output. The result is unpredictably variable outputs with no shared baseline. This fragmentation is invisible in the codebase until it produces the architectural drift and security issues described above.
 
-The Pragmatic Engineer's 2026 AI tooling survey confirms that **Claude Code dominates at small companies** — 75% adoption at the smallest teams.[^13] But widespread adoption without standardization amplifies the fragmentation problem: the more the tool is used without shared practices, the more divergent the output.
+The Pragmatic Engineer's 2026 AI tooling survey confirms that **Claude Code dominates at small companies** — 75% adoption at the smallest teams. But widespread adoption without standardization amplifies the fragmentation problem: the more the tool is used without shared practices, the more divergent the output.
 
 (I disagree that this is a problem, we can still discuss. I figure that this would also be an issue for hand-written code. I do like some of the solutions, mainly as a point of efficacy though.)
 
@@ -130,44 +130,44 @@ The danger on a small CTO-led team is that no one is structurally positioned to 
 
 ---
 
-[^1]: daily.dev — "Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code  
-[^2]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6  
-[^3]: DevOps.com — "Code Quality and Security Risks of AI-Generated Code," December 2025. https://devops.com/code-quality-and-security-risks-of-ai-generated-code/  
-[^4]: Prof. Hung-Yi Chen — "The Dark Side of Vibe Coding: The AI Code Quality Crisis and the Technical Debt Tsunami," January 2026. https://www.hungyichen.com/en/insights/vibe-coding-software-engineering-crisis  
-[^5]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges," October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt  
-[^6]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt  
-[^7]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges" (DigitalOcean quote on explicit security prompting), October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt  
-[^8]: Vocal/Futurism — "8 AI Code Generation Mistakes Devs Must Fix to Win 2026." https://vocal.media/futurism/8-ai-code-generation-mistakes-devs-must-fix-to-win-2026  
-[^9]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/  
-[^10]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges" (DigitalOcean on "vibe engineering"), October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt  
-[^11]: daily.dev — "Vibe Coding in 2026," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code  
-[^12]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025  
-[^13]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026  
+[^1]: daily.dev — "Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code 
+[^2]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6 
+[^3]: DevOps.com — "Code Quality and Security Risks of AI-Generated Code," December 2025. https://devops.com/code-quality-and-security-risks-of-ai-generated-code/ 
+[^4]: Prof. Hung-Yi Chen — "The Dark Side of Vibe Coding: The AI Code Quality Crisis and the Technical Debt Tsunami," January 2026. https://www.hungyichen.com/en/insights/vibe-coding-software-engineering-crisis 
+[^5]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges," October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt 
+[^6]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt 
+[^7]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges" (DigitalOcean quote on explicit security prompting), October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt 
+[^8]: Vocal/Futurism — "8 AI Code Generation Mistakes Devs Must Fix to Win 2026." https://vocal.media/futurism/8-ai-code-generation-mistakes-devs-must-fix-to-win-2026 
+[^9]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/ 
+[^10]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges" (DigitalOcean on "vibe engineering"), October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt 
+[^11]: daily.dev — "Vibe Coding in 2026," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code 
+[^12]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025 
+
 [^14]: Fireship — "The 'vibe coding' mind virus explained in 100 seconds," YouTube, March 26, 2025. https://www.youtube.com/watch?v=Tw18-4U7mts
-    - ~0:00 — Defines vibe coding as shipping AI-generated code without understanding it; frames the comprehension gap as the core risk
-    - ~0:45 — Why developers accept plausible-looking AI outputs without verifying the embedded logic or design decisions
-    - ~2:00 — Institutional risk: what happens when no engineer on the team can explain how a feature works after the original author leaves
-    - ~3:00 — The "can you explain it" standard as a cultural countermeasure to rubber-stamp reviews
+ - ~0:00 — Defines vibe coding as shipping AI-generated code without understanding it; frames the comprehension gap as the core risk
+ - ~0:45 — Why developers accept plausible-looking AI outputs without verifying the embedded logic or design decisions
+ - ~2:00 — Institutional risk: what happens when no engineer on the team can explain how a feature works after the original author leaves
+ - ~3:00 — The "can you explain it" standard as a cultural countermeasure to rubber-stamp reviews
 
 [^15]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Shared context files: how team-level system prompts (like CLAUDE.md) anchor all AI sessions to the same architectural constraints and naming conventions
-    - Frequent Intentional Compaction: technique for keeping long AI sessions focused and coherent as codebases grow, preventing context drift within a session
-    - Large codebase management: strategies for scoping AI context to bounded, well-defined modules so outputs stay consistent with existing architecture
+ - Shared context files: how team-level system prompts (like CLAUDE.md) anchor all AI sessions to the same architectural constraints and naming conventions
+ - Frequent Intentional Compaction: technique for keeping long AI sessions focused and coherent as codebases grow, preventing context drift within a session
+ - Large codebase management: strategies for scoping AI context to bounded, well-defined modules so outputs stay consistent with existing architecture
 
 [^16]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Step 3 (Quality Gate): configuring Claude Code hooks to run automated checks — linting, SAST scanning, tests — on every AI-generated output before it can be accepted
-    - Step 6 (CLAUDE.md): creating and maintaining the shared architectural context file that governs all team Claude Code sessions, including stack choices and off-limits patterns
-    - Steps 1–5 (Custom Skills / Prompt Playbook): defining reusable slash commands for common task types — feature scaffolding, refactoring, security review, and test generation
+ - Step 3 (Quality Gate): configuring Claude Code hooks to run automated checks — linting, SAST scanning, tests — on every AI-generated output before it can be accepted
+ - Step 6 (CLAUDE.md): creating and maintaining the shared architectural context file that governs all team Claude Code sessions, including stack choices and off-limits patterns
+ - Steps 1–5 (Custom Skills / Prompt Playbook): defining reusable slash commands for common task types — feature scaffolding, refactoring, security review, and test generation
 
 [^17]: ThePrimeagen (The PrimeTime) — "Jr Devs - 'I Can't Code Anymore'," YouTube, February 21, 2025. https://www.youtube.com/watch?v=1Se2zTlXDwY
-    - Muscle memory erosion: how exclusive reliance on AI completions degrades the low-level pattern recognition that enables fast debugging and sound architecture decisions
-    - Intentional learning habits: why engineers need deliberate AI-free practice to maintain the baseline fluency required to catch what AI gets wrong
-    - AI-free projects: argument for keeping side or learning projects free of AI assistance as a skill-maintenance discipline
+ - Muscle memory erosion: how exclusive reliance on AI completions degrades the low-level pattern recognition that enables fast debugging and sound architecture decisions
+ - Intentional learning habits: why engineers need deliberate AI-free practice to maintain the baseline fluency required to catch what AI gets wrong
+ - AI-free projects: argument for keeping side or learning projects free of AI assistance as a skill-maintenance discipline
 
 [^18]: Lex Fridman Podcast #461 ft. ThePrimeagen, YouTube, March 22, 2025 (5h 30m). https://www.youtube.com/watch?v=tNZnLkRBYA8
-    - 20:00 — AI dependency and skill atrophy: how over-reliance on AI tools erodes a developer's ability to reason independently about code under pressure
-    - 4:18:32 — Engineering culture and leadership: how CTOs and senior engineers must actively model deep technical understanding rather than velocity-first behavior
-    - 5:01:16 — Future of software engineering: which skills will differentiate engineers as AI-generated code becomes the norm, and why judgment cannot be delegated
+ - 20:00 — AI dependency and skill atrophy: how over-reliance on AI tools erodes a developer's ability to reason independently about code under pressure
+ - 4:18:32 — Engineering culture and leadership: how CTOs and senior engineers must actively model deep technical understanding rather than velocity-first behavior
+ - 5:01:16 — Future of software engineering: which skills will differentiate engineers as AI-generated code becomes the norm, and why judgment cannot be delegated
 
 [^19]: Graphite — "Best Practices for Managing Pull Request Size." https://graphite.com/guides/best-practices-managing-pr-size
-    Covers PR size research supporting the 300–400 line limit recommendation: smaller PRs receive significantly more thorough review, catch more defects per line reviewed, and merge faster — directly countering the review theater dynamic created by large AI-generated PRs.
+ Covers PR size research supporting the 300–400 line limit recommendation: smaller PRs receive significantly more thorough review, catch more defects per line reviewed, and merge faster — directly countering the review theater dynamic created by large AI-generated PRs.

@@ -6,22 +6,22 @@
 
 ## Overview
 
-Codebase health is the lagging indicator in the AI governance metrics suite. While defect rates and security findings reflect what AI-generated code did wrong in a specific sprint, codebase health metrics reflect what AI adoption has done to the codebase's long-term structure, maintainability, and coherence over months or quarters. GitClear's 2025 analysis documented the structural shifts that AI adoption introduces at scale: copy-paste code percentage rising from 8.3% to 12.3%, refactoring declining from 25% to under 10% of commit activity.[^1] These are not quality failures in individual PRs — they are systemic changes in the codebase's evolutionary trajectory, produced by the cumulative effect of AI generation patterns that optimize for new code output over structural maintenance.
+Codebase health is the lagging indicator in the AI governance metrics suite. While defect rates and security findings reflect what AI-generated code did wrong in a specific sprint, codebase health metrics reflect what AI adoption has done to the codebase's long-term structure, maintainability, and coherence over months or quarters. GitClear's 2025 analysis documented the structural shifts that AI adoption introduces at scale: copy-paste code percentage rising from 8.3% to 12.3%, refactoring declining from 25% to under 10% of commit activity. These are not quality failures in individual PRs — they are systemic changes in the codebase's evolutionary trajectory, produced by the cumulative effect of AI generation patterns that optimize for new code output over structural maintenance.
 
 ```mermaid
 flowchart LR
-    A[AI Adoption<br/>Increases] --> B[More AI-Generated Code<br/>Optimized for Direct Solutions]
-    B --> C[Duplication Rises<br/>Refactoring Declines<br/>Complexity Increases]
-    C --> D[CLAUDE.md Context<br/>Must Grow to Stay Accurate]
-    D --> E[Sessions Need More<br/>Manual Context Loading]
-    E --> F[AI Output Deviates<br/>from Established Patterns]
-    F --> G[More Architectural<br/>Rework]
-    G --> C
-    C --> H{Health Threshold<br/>Exceeded?}
-    H --> |Yes| I[Remediation Sprint:<br/>Deduplication + Refactoring]
-    I --> J[Update CLAUDE.md<br/>Architecture Guidance]
-    J --> B
-    H --> |No| K[Continue Quarterly<br/>Monitoring]
+ A[AI Adoption<br/>Increases] --> B[More AI-Generated Code<br/>Optimized for Direct Solutions]
+ B --> C[Duplication Rises<br/>Refactoring Declines<br/>Complexity Increases]
+ C --> D[CLAUDE.md Context<br/>Must Grow to Stay Accurate]
+ D --> E[Sessions Need More<br/>Manual Context Loading]
+ E --> F[AI Output Deviates<br/>from Established Patterns]
+ F --> G[More Architectural<br/>Rework]
+ G --> C
+ C --> H{Health Threshold<br/>Exceeded?}
+ H --> |Yes| I[Remediation Sprint:<br/>Deduplication + Refactoring]
+ I --> J[Update CLAUDE.md<br/>Architecture Guidance]
+ J --> B
+ H --> |No| K[Continue Quarterly<br/>Monitoring]
 ```
 
 The feedback loop makes codebase health a high-priority governance concern: poor codebase health degrades future AI output quality. As duplication rises and complexity increases, the CLAUDE.md context required to navigate the codebase accurately becomes more extensive, sessions require more manual context loading to produce targeted outputs, and AI-generated code is more likely to deviate from established patterns because those patterns are harder to represent concisely in context. Monitoring codebase health proactively — before the degradation is severe enough to impede development — is both a quality governance practice and a practical investment in the team's future AI productivity.
@@ -30,42 +30,42 @@ The feedback loop makes codebase health a high-priority governance concern: poor
 
 ## Section 1: How AI Adoption Affects Codebase Health
 
-**Description:** The GitClear 2025 data documents a consistent pattern across repositories with significant AI adoption: copy-paste code percentage increases, refactoring declines, and overall lines of code growth accelerates beyond what feature volume would predict. The mechanism is structural. AI generation optimizes for solving the stated problem in the session context — and the most direct solution is often to replicate a pattern found elsewhere in the codebase rather than to generalize or refactor toward shared abstractions. Without explicit instructions to avoid duplication, AI-generated code introduces copy-paste patterns at a rate that individual reviewers struggle to catch because the duplicated code is functionally correct and superficially well-written.[^1]
+**Description:** The GitClear 2025 data documents a consistent pattern across repositories with significant AI adoption: copy-paste code percentage increases, refactoring declines, and overall lines of code growth accelerates beyond what feature volume would predict. The mechanism is structural. AI generation optimizes for solving the stated problem in the session context — and the most direct solution is often to replicate a pattern found elsewhere in the codebase rather than to generalize or refactor toward shared abstractions. Without explicit instructions to avoid duplication, AI-generated code introduces copy-paste patterns at a rate that individual reviewers struggle to catch because the duplicated code is functionally correct and superficially well-written.
 
 The decline in refactoring is the more consequential shift. Refactoring is the primary mechanism by which codebases maintain structural health as they grow — the continuous process of generalizing repeated patterns, reducing duplication, and keeping complexity from accumulating in hot modules. When refactoring declines as a proportion of commit activity, the structural maintenance that prevents health degradation is being deferred. The code added by AI generation does not come with the structural consolidation that would keep the codebase's complexity metrics stable, which means health metrics trend upward even in months where no individual PR would be flagged for quality issues.
 
 **Recommended Practice:**
-- Track codebase health metrics on a quarterly cadence, not a monthly one. Health indicators are lagging signals that require longer time windows to show meaningful trends — monthly variation is too noisy for actionable interpretation.[^1]
+- Track codebase health metrics on a quarterly cadence, not a monthly one. Health indicators are lagging signals that require longer time windows to show meaningful trends — monthly variation is too noisy for actionable interpretation.
 - Compare codebase health trends from before and after significant increases in AI adoption. If the team began using Claude Code in Q2 2025 and has not tracked codebase health metrics, establish a baseline now and treat the current state as the starting point for governance improvement.
-- Include codebase health data in the CTO's quarterly engineering health review as the long-term governance indicator. Velocity and defect rate data shows the current sprint; codebase health data shows whether the investment in AI adoption is being managed for sustainable returns.[^4]
+- Include codebase health data in the CTO's quarterly engineering health review as the long-term governance indicator. Velocity and defect rate data shows the current sprint; codebase health data shows whether the investment in AI adoption is being managed for sustainable returns.
 - When health metrics are declining across multiple dimensions simultaneously (rising duplication, rising complexity, declining coverage), treat this as a signal to schedule a remediation sprint before the degradation becomes severe enough to impede development. Early remediation is significantly less costly than late remediation.
 
 ---
 
 ## Section 2: Lines of Code Growth Rate
 
-**Description:** Total lines of code growth rate is a blunt instrument, but it is the most accessible codebase health indicator and provides the first signal of AI-driven code bloat. Feature-driven LoC growth — code added to implement new functionality — is expected and healthy. AI-driven bloat — code added because AI generation favors verbose, explicit implementations over concise ones, and because the review and refactoring work that would normally trim unnecessary code is reduced when velocity is high — inflates LoC without proportionate feature value.[^5]
+**Description:** Total lines of code growth rate is a blunt instrument, but it is the most accessible codebase health indicator and provides the first signal of AI-driven code bloat. Feature-driven LoC growth — code added to implement new functionality — is expected and healthy. AI-driven bloat — code added because AI generation favors verbose, explicit implementations over concise ones, and because the review and refactoring work that would normally trim unnecessary code is reduced when velocity is high — inflates LoC without proportionate feature value.
 
 The diagnostic comparison is LoC growth rate versus feature delivery rate. A team adding features at a constant rate while LoC growth accelerates is likely accumulating code bloat. A team whose LoC growth rate is stable relative to feature delivery is managing AI generation volume through consistent review and refactoring. The threshold for triggering a bloat remediation sprint is a sustained period (two consecutive quarters) where LoC growth rate exceeds feature delivery growth rate by more than 30%, which indicates that code is being added faster than it is being justified by functionality.
 
 **Recommended Practice:**
-- Track total LoC for the main production codebase (excluding tests and generated files) at the end of each sprint using a simple line count command in the CI pipeline. Plot the quarterly trend alongside feature delivery count.[^5]
+- Track total LoC for the main production codebase (excluding tests and generated files) at the end of each sprint using a simple line count command in the CI pipeline. Plot the quarterly trend alongside feature delivery count.
 - Compute the LoC-per-feature ratio quarterly: total LoC added divided by features shipped. A rising ratio indicates code bloat; a stable or declining ratio indicates that AI generation is being managed for conciseness. This ratio normalizes for feature velocity changes and makes bloat visible even in high-output sprints.
-- When the LoC growth rate exceeds feature delivery growth rate by 30% for two consecutive quarters, schedule a bloat remediation sprint. The sprint's focus is identifying and eliminating duplication, consolidating related implementations that diverged during AI-heavy development, and restoring refactoring as an active practice.[^1]
+- When the LoC growth rate exceeds feature delivery growth rate by 30% for two consecutive quarters, schedule a bloat remediation sprint. The sprint's focus is identifying and eliminating duplication, consolidating related implementations that diverged during AI-heavy development, and restoring refactoring as an active practice.
 - Add explicit CLAUDE.md instructions for conciseness in domains where bloat is most visible. "Prefer modifying existing functions to adding new ones where the functionality is similar" and "before adding a new utility function, check whether an equivalent exists in [module path]" directly address the AI generation patterns that drive bloat.
 
 ---
 
 ## Section 3: Duplication and Complexity Tracking
 
-**Description:** Duplicate code percentage and cyclomatic complexity per module are the two most actionable structural health metrics. Duplicate code percentage is the direct measure of the copy-paste code increase documented in the GitClear data — it tells the team how much of the codebase is repetition rather than distinct logic. Cyclomatic complexity per module tells the team where in the codebase AI-generated code has accumulated conditional logic, branching, and exception handling in ways that make modules increasingly difficult to reason about, test, and extend.[^7]
+**Description:** Duplicate code percentage and cyclomatic complexity per module are the two most actionable structural health metrics. Duplicate code percentage is the direct measure of the copy-paste code increase documented in the GitClear data — it tells the team how much of the codebase is repetition rather than distinct logic. Cyclomatic complexity per module tells the team where in the codebase AI-generated code has accumulated conditional logic, branching, and exception handling in ways that make modules increasingly difficult to reason about, test, and extend.
 
 Rising complexity in specific modules is a particularly informative signal about AI usage patterns. AI-generated code tends to handle edge cases explicitly — generating conditional branches for scenarios that a more experienced human author might handle through a general abstraction — and this pattern accumulates complexity in modules where AI generation is concentrated. A module whose cyclomatic complexity has risen significantly over two quarters without a proportionate increase in functionality is likely a module where AI-generated edge case handling has not been consolidated into cleaner abstractions.
 
 **Recommended Practice:**
-- Run duplication detection (SonarQube, jscpd, or equivalent) and cyclomatic complexity analysis as part of the monthly metrics calculation. Export results to the same tracking system as defect and security metrics so that health trends can be compared to AI adoption trends over time.[^7]
+- Run duplication detection (SonarQube, jscpd, or equivalent) and cyclomatic complexity analysis as part of the monthly metrics calculation. Export results to the same tracking system as defect and security metrics so that health trends can be compared to AI adoption trends over time.
 - Set module-level complexity alerts at a threshold appropriate for the codebase. For most mid-size codebases, a cyclomatic complexity above 15 per function or above 50 per module warrants attention; rising by more than 20% in a single quarter warrants investigation into whether AI generation in that module is accumulating unconsolidated edge case handling.
-- When duplicate code percentage rises above 15% (from a baseline near the GitClear-reported 12.3%), schedule a deduplication review. The review should identify which modules contain the most duplication and whether the duplication patterns correspond to AI-heavy development periods.[^1]
+- When duplicate code percentage rises above 15% (from a baseline near the GitClear-reported 12.3%), schedule a deduplication review. The review should identify which modules contain the most duplication and whether the duplication patterns correspond to AI-heavy development periods.
 - Configure CLAUDE.md with deduplication guidance for high-duplication modules: "Before implementing a new data transformation function in this module, check [file path] for existing transformations that could be extended." Specific, actionable deduplication guidance in CLAUDE.md reduces AI-driven duplication more reliably than post-hoc detection.[^9]
 
 ---
@@ -115,36 +115,20 @@ Automated metrics for architectural consistency include import graph consistency
 
 ---
 
-[^1]: GitClear — "2025 Coding Assistant Impact on Software Quality: The Data," GitClear Research, 2025. https://gitclear.com/coding_assistants_2025
-    Quantitative analysis of codebase structural changes following AI adoption; documents copy-paste code increase from 8.3% to 12.3% and refactoring decline from 25% to under 10%.
-
-
-[^4]: Gartner — "Managing the Structural Health of AI-Augmented Codebases," Gartner Research, January 2026. https://gartner.com/en/documents/managing-codebase-health-ai
-    Enterprise framework for codebase health governance; covers quarterly review cadences and CTO-level reporting for long-term structural indicators.
-
-[^5]: Roman Fedytskyi — "Tracking Code Bloat in AI-Heavy Development: A Practical Approach," Medium, March 2026. https://medium.com/@fedytskyi/tracking-code-bloat-ai-development
-    Practical guide to LoC growth rate monitoring; provides the LoC-per-feature ratio methodology and threshold calibration guidance.
-
-
-[^7]: Sonar — "Measuring Duplicate Code and Complexity in AI-Generated Codebases," Sonar Blog, January 8 2026. https://sonarsource.com/blog/duplicate-code-complexity-ai-codebases
-    Configuration guide for duplication detection and complexity analysis targeting AI-heavy development patterns; documents threshold recommendations.
-
-
 [^9]: Boris Cherny — "How Boris Uses Claude Code," howborisusesclaudecode.com, January 2026. https://howborisusesclaudecode.com
-    Documents CLAUDE.md configuration patterns for reducing duplication and maintaining architectural consistency; includes deduplication guidance examples.
+ Documents CLAUDE.md configuration patterns for reducing duplication and maintaining architectural consistency; includes deduplication guidance examples.
 
 [^10]: GitHub Octoverse — "The State of AI in Software Development," GitHub Octoverse Report, 2025. https://octoverse.github.com/2025
-    Includes analysis of test coverage patterns in AI-assisted repositories; documents the implementation-following test bias in same-session test generation.
+ Includes analysis of test coverage patterns in AI-assisted repositories; documents the implementation-following test bias in same-session test generation.
 
 [^11]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Empirical study of behavioral coverage quality in AI-generated test suites; quantifies the gap between line coverage percentage and behavioral coverage completeness.
+ Empirical study of behavioral coverage quality in AI-generated test suites; quantifies the gap between line coverage percentage and behavioral coverage completeness.
 
 [^12]: Stack Overflow — "Developer Survey 2025: AI Tools and Code Quality," Stack Overflow, December 2025. https://stackoverflow.com/research/2025-developer-survey
-    Survey data on developer confidence in AI-generated tests; documents the recognition gap between coverage metrics and actual test quality.
+ Survey data on developer confidence in AI-generated tests; documents the recognition gap between coverage metrics and actual test quality.
 
 [^13]: Kyros — "Architectural Consistency in AI-Generated Code: Metrics and Governance," Kyros Engineering Blog, March 2026. https://kyros.ai/blog/architectural-consistency-ai-code
-    Case study of import graph consistency analysis as an early warning system for architectural drift; documents the CLAUDE.md update cycle triggered by consistency metric violations.
-
+ Case study of import graph consistency analysis as an early warning system for architectural drift; documents the CLAUDE.md update cycle triggered by consistency metric violations.
 
 [^a]: [Issues: Codebase Bloat](../Issues/02-codebase-bloat.md) — codebase health indicators operationalize the bloat risk described there; the metrics make the surface area expansion visible as a measurable signal.
 

@@ -14,12 +14,12 @@ Compliance for AI tool use is not primarily about restricting what engineers do 
 
 ## Section 1: The Evolving Compliance Landscape for AI Tools
 
-**Description:** The compliance landscape for AI development tools is expanding across three distinct channels simultaneously. SOC 2 Type II audits are increasingly including AI tool use in their scope: auditors are asking about data inputs to AI sessions, access controls on AI tool integrations, and whether AI-generated code receives security testing equivalent to human-authored code. Enterprise customer security questionnaires — typically part of vendor onboarding or annual renewal reviews — are adding standard sections on AI development practices, asking whether AI tools are used, what data they access, and what oversight controls exist. The EU AI Act, though primarily targeting high-risk AI systems, has provisions for AI used in consequential software that apply to some development contexts and are being interpreted broadly by enterprise legal teams conducting vendor due diligence.[^3]
+**Description:** The compliance landscape for AI development tools is expanding across three distinct channels simultaneously. SOC 2 Type II audits are increasingly including AI tool use in their scope: auditors are asking about data inputs to AI sessions, access controls on AI tool integrations, and whether AI-generated code receives security testing equivalent to human-authored code. Enterprise customer security questionnaires — typically part of vendor onboarding or annual renewal reviews — are adding standard sections on AI development practices, asking whether AI tools are used, what data they access, and what oversight controls exist. The EU AI Act, though primarily targeting high-risk AI systems, has provisions for AI used in consequential software that apply to some development contexts and are being interpreted broadly by enterprise legal teams conducting vendor due diligence.
 
-Each of these channels creates documentation requirements that are different in form but substantially overlapping in content. A SOC 2 auditor wants to see that the team has formal AI use policies and that those policies are followed; an enterprise security questionnaire asks whether AI tools process customer data; an EU AI Act compliance review asks whether AI-generated code undergoes human review. The governance documentation this policy set establishes answers all three categories of inquiry. The teams that spend the most on compliance remediation are those that have not connected their governance practices to their compliance documentation — they have both, but separately, and cannot demonstrate the connection when asked.[^4]
+Each of these channels creates documentation requirements that are different in form but substantially overlapping in content. A SOC 2 auditor wants to see that the team has formal AI use policies and that those policies are followed; an enterprise security questionnaire asks whether AI tools process customer data; an EU AI Act compliance review asks whether AI-generated code undergoes human review. The governance documentation this policy set establishes answers all three categories of inquiry. The teams that spend the most on compliance remediation are those that have not connected their governance practices to their compliance documentation — they have both, but separately, and cannot demonstrate the connection when asked.
 
 **Recommended Practice:**
-- Audit your current compliance obligations annually and specifically identify whether they include questions that implicate AI tool use. Security certifications (SOC 2, ISO 27001), regulatory requirements (HIPAA for health-adjacent work, PCI-DSS for payment processing), and enterprise customer agreements may all contain provisions that become relevant when AI tools are used in development.[^3]
+- Audit your current compliance obligations annually and specifically identify whether they include questions that implicate AI tool use. Security certifications (SOC 2, ISO 27001), regulatory requirements (HIPAA for health-adjacent work, PCI-DSS for payment processing), and enterprise customer agreements may all contain provisions that become relevant when AI tools are used in development.
 - Review the EU AI Act's implications for your product's risk category, not just for your development tools. If your product includes AI-generated code in systems that affect individuals' access to services, employment, or safety, the compliance scope is broader than the development tool question. This review belongs at the CTO level.[^5]
 - Proactive documentation is substantially cheaper than reactive compliance remediation. The governance log described in Section 2 takes approximately two hours per quarter to maintain and satisfies most AI compliance inquiries. Post-incident documentation — reconstructing what the team was doing with AI tools after an audit finding — takes far longer and produces lower-quality evidence.[^1]
 - Monitor AI-specific compliance guidance from your certification bodies: SOC 2 auditors are developing AI-specific question sets; ISO standards bodies are updating relevant standards. Assign regulatory monitoring responsibility explicitly (Section 5) so that new requirements are captured before they become findings rather than after.[^6]
@@ -30,31 +30,31 @@ Each of these channels creates documentation requirements that are different in 
 
 ```mermaid
 flowchart TD
-    subgraph Quarterly["Quarterly Cycle"]
-        A[Quarterly Health Review] --> B[Update governance log:<br/>policy versions, review dates,<br/>authorized tools]
-        B --> C[Verify data handling config:<br/>enterprise plan, training opt-out]
-        C --> D[CTO: 2hr regulatory scan<br/>EU AI Act, SOC2, sector guidance]
-        D --> E{New requirement<br/>triggers review?}
-        E -- Yes --> F[Out-of-cycle governance review]
-        E -- No --> G[Document scan findings<br/>in governance log]
-        F --> G
-        G --> H[Check prepared customer<br/>statement still accurate]
-    end
+ subgraph Quarterly["Quarterly Cycle"]
+ A[Quarterly Health Review] --> B[Update governance log:<br/>policy versions, review dates,<br/>authorized tools]
+ B --> C[Verify data handling config:<br/>enterprise plan, training opt-out]
+ C --> D[CTO: 2hr regulatory scan<br/>EU AI Act, SOC2, sector guidance]
+ D --> E{New requirement<br/>triggers review?}
+ E -- Yes --> F[Out-of-cycle governance review]
+ E -- No --> G[Document scan findings<br/>in governance log]
+ F --> G
+ G --> H[Check prepared customer<br/>statement still accurate]
+ end
 
-    subgraph Incident["Per-Incident"]
-        I[AI-generated incident] --> J[Log in incident system]
-        J --> K[Root cause analysis<br/>within 48hr for P1/P2]
-        K --> L[Governance actions<br/>with owners + deadlines]
-        L --> B
-    end
+ subgraph Incident["Per-Incident"]
+ I[AI-generated incident] --> J[Log in incident system]
+ J --> K[Root cause analysis<br/>within 48hr for P1/P2]
+ K --> L[Governance actions<br/>with owners + deadlines]
+ L --> B
+ end
 
-    subgraph Audit["On Audit Request"]
-        M[SOC2 auditor /<br/>enterprise questionnaire] --> N[Pull governance log]
-        N --> O[Provide authorized tools list,<br/>policy review dates,<br/>incident log, vendor docs]
-        O --> P{Gaps found?}
-        P -- Yes --> Q[Remediate + update log]
-        P -- No --> R[Audit complete]
-    end
+ subgraph Audit["On Audit Request"]
+ M[SOC2 auditor /<br/>enterprise questionnaire] --> N[Pull governance log]
+ N --> O[Provide authorized tools list,<br/>policy review dates,<br/>incident log, vendor docs]
+ O --> P{Gaps found?}
+ P -- Yes --> Q[Remediate + update log]
+ P -- No --> R[Audit complete]
+ end
 ```
 
 **Description:** The AI governance log is the central compliance artifact for AI tool use. It is a living document that records the team's AI governance state at any point in time: which tools are authorized, which policies govern their use, who owns each policy, when each policy was last reviewed, what overrides have been granted, and what incidents have been recorded. A governance log with this information can answer the vast majority of SOC 2 audit questions and enterprise security questionnaire items about AI development practices in under an hour — compared to days of document reconstruction when no log exists.[^7]
@@ -79,7 +79,7 @@ The data processing agreement question is frequently underestimated by small tea
 - Obtain and file Anthropic's current SOC 2 Type II attestation report. Auditors and enterprise customers frequently request vendor security certifications; having the attestation on file allows the team to respond to these requests without a delay. Review the attestation for any scope limitations or exceptions that are relevant to the team's use case.[^10]
 - Review the API terms of service and data processing provisions annually and whenever the team's use pattern materially changes (e.g., expanding to agentic use, adding new modules that handle sensitive data). The CTO owns this review; the architect can flag changes to tool use patterns that may trigger a review before the annual date.[^5]
 - For teams working in HIPAA-adjacent contexts — health records, clinical data, patient identifiers — evaluate whether a business associate agreement with Anthropic is required before any PHI-adjacent data enters a Claude Code session. When in doubt, the answer is to use anonymized data in sessions (as the Acceptable Use Policy requires) and consult legal counsel before proceeding.[^11]
-- Maintain a vendor documentation file that includes: Anthropic's current SOC 2 attestation (with issue and expiry dates noted), the current data processing terms (linked to the specific API agreement version), and any BAA or equivalent instrument if applicable. Update this file at the annual policy review and whenever vendor documentation is refreshed.[^3]
+- Maintain a vendor documentation file that includes: Anthropic's current SOC 2 attestation (with issue and expiry dates noted), the current data processing terms (linked to the specific API agreement version), and any BAA or equivalent instrument if applicable. Update this file at the annual policy review and whenever vendor documentation is refreshed.
 
 ---
 
@@ -107,7 +107,7 @@ Regulatory monitoring is not a full-time responsibility for an 11-person team �
 - Assign regulatory monitoring responsibility to the CTO explicitly, not implicitly. A responsibility that is everyone's is no one's. The CTO's regulatory monitoring obligation should appear in the governance overview document with a defined cadence: two hours of regulatory scanning per quarter, with a brief summary presented at the quarterly health review of any material developments.[^14]
 - Maintain a short list of authoritative regulatory monitoring sources: the EU AI Act implementation tracker from the European AI Office, relevant US agency guidance (NIST AI RMF updates, sector-specific agency publications), and two or three industry organizations that aggregate AI regulatory developments for software companies. The list should be curated to avoid both coverage gaps and information overload.[^15]
 - Define the trigger conditions for a governance review based on regulatory developments: a new requirement that affects data handling in AI sessions, a new compliance certification requirement that includes AI tool scope, or a material change to the EU AI Act's implementation guidance for software development. When a monitoring scan identifies a trigger condition, the CTO initiates an out-of-cycle governance review rather than waiting for the next quarterly review.[^5]
-- Document the regulatory monitoring activity: what was scanned, what was found, whether a governance review was triggered, and what the outcome was. A CTO who cannot demonstrate that regulatory monitoring occurred is in a worse compliance position than one who scanned, found nothing material, and documented the finding. The documentation of active monitoring is itself a compliance artifact.[^4]
+- Document the regulatory monitoring activity: what was scanned, what was found, whether a governance review was triggered, and what the outcome was. A CTO who cannot demonstrate that regulatory monitoring occurred is in a worse compliance position than one who scanned, found nothing material, and documented the finding. The documentation of active monitoring is itself a compliance artifact.
 
 ---
 
@@ -132,48 +132,40 @@ Regulatory monitoring is not a full-time responsibility for an 11-person team �
 ---
 
 [^1]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
-    Compliance cost comparison: proactive documentation vs. reactive remediation; the growing scope of AI tool use in SOC 2 audit frameworks; security testing requirements for AI-generated code.
+ Compliance cost comparison: proactive documentation vs. reactive remediation; the growing scope of AI tool use in SOC 2 audit frameworks; security testing requirements for AI-generated code.
 
 [^2]: Anthropic — "Privacy and Data Handling," Claude Code Documentation, 2026. https://code.claude.com/docs/en/privacy-data-handling
-    Governance log as compliance artifact; version control for governance documents as an audit history mechanism; data handling commitments and their documentation requirements.
-
-[^3]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    Three compliance channels for AI tool use: SOC 2, enterprise questionnaires, EU AI Act; audit question development by certification bodies; the compliance landscape expansion rate.
-
-[^4]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Proactive vs. reactive compliance strategy; connecting governance practices to compliance documentation; regulatory monitoring documentation as a compliance artifact.
+ Governance log as compliance artifact; version control for governance documents as an audit history mechanism; data handling commitments and their documentation requirements.
 
 [^5]: Anthropic — "Security and Permissions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/security-permissions
-    CTO-level obligations for data processing review and BAA applicability assessment; regulatory monitoring trigger conditions; agentic use expansion as a data handling review trigger.
+ CTO-level obligations for data processing review and BAA applicability assessment; regulatory monitoring trigger conditions; agentic use expansion as a data handling review trigger.
 
 [^6]: Sonar (SonarSource) — "Sonar Data Reveals Critical 'Verification Gap' in AI Coding," press release, January 8, 2026. https://www.sonarsource.com/company/press-releases/sonar-data-reveals-critical-verification-gap-in-ai-coding/
-    Compliance monitoring for certification body updates; tool use disclosure vs. code attribution disclosure distinction; the six common enterprise security questionnaire questions about AI development.
+ Compliance monitoring for certification body updates; tool use disclosure vs. code attribution disclosure distinction; the six common enterprise security questionnaire questions about AI development.
 
 [^7]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Governance log content requirements: authorized tools, governing policies, policy owners, override history, incident log; the single-document compliance evidence function.
+ Governance log content requirements: authorized tools, governing policies, policy owners, override history, incident log; the single-document compliance evidence function.
 
 [^8]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    Governance log external readability requirements; the audit-ready formatting standard that makes internal governance documentation usable for external compliance purposes.
-
+ Governance log external readability requirements; the audit-ready formatting standard that makes internal governance documentation usable for external compliance purposes.
 
 [^10]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    Vendor SOC 2 attestation requirements in enterprise security reviews; the vendor documentation file and its maintenance cadence.
+ Vendor SOC 2 attestation requirements in enterprise security reviews; the vendor documentation file and its maintenance cadence.
 
 [^11]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Data processing agreement analysis for AI vendor relationships; HIPAA-adjacent context evaluation; contractual obligations and their relationship to AI session data handling.
+ Data processing agreement analysis for AI vendor relationships; HIPAA-adjacent context evaluation; contractual obligations and their relationship to AI session data handling.
 
 [^12]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Enterprise customer AI development practice questionnaires; prepared statement function in sales cycles; consistent delivery requirement across multiple customer interactions.
+ Enterprise customer AI development practice questionnaires; prepared statement function in sales cycles; consistent delivery requirement across multiple customer interactions.
 
 [^13]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    Prepared statement accuracy requirement; misrepresentation risk when governance disclosure exceeds governance practice; the compliance benefit of accurate rather than aspirational statements.
+ Prepared statement accuracy requirement; misrepresentation risk when governance disclosure exceeds governance practice; the compliance benefit of accurate rather than aspirational statements.
 
 [^14]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Regulatory monitoring as a CTO responsibility; the cost of discovering new AI requirements as audit findings vs. monitoring outputs; EU AI Act implementation pace.
+ Regulatory monitoring as a CTO responsibility; the cost of discovering new AI requirements as audit findings vs. monitoring outputs; EU AI Act implementation pace.
 
 [^15]: METR — "Autonomy Evaluation Resources," METR, February 2026. https://metr.org/autonomy-evaluation-resources/
-    AI regulatory landscape assessment for software development; sector-specific guidance development pace; the monitoring sources curated to avoid coverage gaps and information overload.
-
+ AI regulatory landscape assessment for software development; sector-specific guidance development pace; the monitoring sources curated to avoid coverage gaps and information overload.
 
 [^a]: [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md) — Data privacy compliance is a primary audit category; the ethical analysis of what enters AI sessions maps directly to the compliance documentation requirements here.
 

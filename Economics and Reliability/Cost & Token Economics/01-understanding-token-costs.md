@@ -8,7 +8,7 @@
 
 Token costs are the fundamental unit of economic accountability for Claude Code sessions. Every character the API receives as input — including CLAUDE.md contents, injected files, conversation history, and the engineer's typed prompt — is priced as an input token. Every character the model generates in response — code, explanation, plans, and error messages — is priced as an output token. The ratio of input to output tokens, the model tier selected, and the proportion of input tokens that hit the prompt cache together determine the cost of any given session.[^1]
 
-The counterintuitive fact that drives most team overspend is that the engineer's visible prompt is almost never the dominant cost driver. In a typical Claude Code feature implementation session with a standard CLAUDE.md, three injected context files, and twelve conversation turns, the engineer's own words may account for 3–8% of total input tokens. The other 92–97% is structural context — content that is sent every turn, that the engineer rarely thinks about, and that accumulates over the session as conversation history grows. Teams that understand this cost structure manage it; teams that do not assume that using AI less aggressively in their prompts will meaningfully reduce costs.[^2]
+The counterintuitive fact that drives most team overspend is that the engineer's visible prompt is almost never the dominant cost driver. In a typical Claude Code feature implementation session with a standard CLAUDE.md, three injected context files, and twelve conversation turns, the engineer's own words may account for 3–8% of total input tokens. The other 92–97% is structural context — content that is sent every turn, that the engineer rarely thinks about, and that accumulates over the session as conversation history grows. Teams that understand this cost structure manage it; teams that do not assume that using AI less aggressively in their prompts will meaningfully reduce costs.
 
 ---
 
@@ -20,7 +20,7 @@ Input and output tokens are priced differently at every model tier. Output token
 
 **Recommended Practice:**
 - When requesting code generation, prompt for code first and explanation optionally: "Implement X. If there is anything non-obvious about this implementation, add a brief comment." This pattern avoids paying output token cost for explanations on tasks whose implementation is already clear to the engineer.[^3]
-- For tasks where understanding is more important than brevity, budget for explanation output tokens explicitly. A session that produces 2,000 tokens of code and 3,000 tokens of explanation is not inefficient if the explanation substantially reduces time-to-comprehension and subsequent debugging.[^2]
+- For tasks where understanding is more important than brevity, budget for explanation output tokens explicitly. A session that produces 2,000 tokens of code and 3,000 tokens of explanation is not inefficient if the explanation substantially reduces time-to-comprehension and subsequent debugging.
 - Understand the input/output token ratio for the team's most common session patterns. If feature implementation sessions are consistently producing 5,000 tokens of output per 30,000 tokens of input, that ratio is a baseline for cost estimation. A session substantially above that output ratio is generating either unusually verbose responses or longer-than-typical conversations.[^4]
 - Review model pricing at each major Anthropic model update, as pricing changes with model releases. The relative cost ratios between tiers are more stable than absolute prices; team norms built on relative ratios remain valid across pricing updates.
 
@@ -28,13 +28,13 @@ Input and output tokens are priced differently at every model tier. Output token
 
 ## Section 2: Context Window and Conversation History Costs
 
-**Description:** The context window is the total content the model can see in a single request. In Claude Code, the context window fills from the bottom as the conversation progresses: early turns become older history, and each new turn adds to the running total of tokens that must be sent with every subsequent request. A session at turn 15 with 8,000 tokens of base context (CLAUDE.md, injected files) and 1,000 tokens of conversation per turn is sending approximately 23,000 tokens of input on turn 15 — nearly three times the initial context cost. By turn 30, the same session sends 38,000 input tokens per turn, nearly five times the starting cost.[^2]
+**Description:** The context window is the total content the model can see in a single request. In Claude Code, the context window fills from the bottom as the conversation progresses: early turns become older history, and each new turn adds to the running total of tokens that must be sent with every subsequent request. A session at turn 15 with 8,000 tokens of base context (CLAUDE.md, injected files) and 1,000 tokens of conversation per turn is sending approximately 23,000 tokens of input on turn 15 — nearly three times the initial context cost. By turn 30, the same session sends 38,000 input tokens per turn, nearly five times the starting cost.
 
 This cost curve is the primary argument for proactive context management. The `/compact` command replaces the conversation history with a summarized version, substantially reducing the per-turn input cost for the remainder of the session. Without `/compact`, the cost per turn increases monotonically with session length. With strategic `/compact` usage between session phases, the cost curve resets and the session's total cost can be reduced by 30–60% relative to the uncompacted equivalent.[^5]
 
 **Recommended Practice:**
 - Use `/compact` at natural session phase boundaries: after exploration is complete and before implementation begins, after a bug is diagnosed and before a fix is written, after a refactoring pass and before testing begins. These transitions are the points where early conversation history is least relevant to the next phase.[^5]
-- Set a soft context checkpoint: if a session exceeds 20 conversation turns without a `/compact`, pause and evaluate whether an explicit compact or a session reset is warranted. 20 turns is a heuristic, not a rule — the relevant question is whether early conversation history is still relevant to the current task.[^2]
+- Set a soft context checkpoint: if a session exceeds 20 conversation turns without a `/compact`, pause and evaluate whether an explicit compact or a session reset is warranted. 20 turns is a heuristic, not a rule — the relevant question is whether early conversation history is still relevant to the current task.
 - Avoid re-injecting already-present context. If the session has already read a file in a prior turn, the content is in conversation history — re-injecting the same file adds tokens without adding information. Use conversation history as the reference rather than re-reading files that were already read.[^5]
 - For tasks requiring deep file analysis across a large codebase, prefer a focused session that reads only the relevant files rather than a general session with broad context access. A focused 10,000-token session with the right files often produces better results than a 50,000-token session with extensive but diluted context.
 
@@ -58,11 +58,11 @@ The economics are significant at team scale. A team of 11 engineers each running
 
 **Description:** Experienced teams develop pre-session cost intuition: before starting a Claude Code session, they can estimate whether it is a low-cost (sub-$1), medium-cost ($1–5), or high-cost (>$5) session based on the context size, model tier, expected turns, and output volume. This intuition does not require exact calculation — it requires a mental model calibrated to the team's actual session patterns. Sessions that exceed a mental cost threshold should be evaluated before running: is the expected output worth the expected spend?[^4]
 
-The category of sessions with the highest cost risk are open-ended agentic sessions with broad scope, high model tier, and no defined termination criterion. These sessions are expensive not because any individual component is unusual, but because all cost drivers are simultaneously at their maximum: large context, many turns, long outputs, high model tier, and no forcing function to terminate before diminishing returns set in.[^2]
+The category of sessions with the highest cost risk are open-ended agentic sessions with broad scope, high model tier, and no defined termination criterion. These sessions are expensive not because any individual component is unusual, but because all cost drivers are simultaneously at their maximum: large context, many turns, long outputs, high model tier, and no forcing function to terminate before diminishing returns set in.
 
 **Recommended Practice:**
 - Before running any session that involves more than three files, agentic tool use, or Opus-tier model selection, do a quick cost estimate: approximate context size (CLAUDE.md + files + prior history) × expected turns × model input price, plus estimated output × model output price. This calculation takes 30 seconds and identifies sessions likely to generate $5+ spend before they run.[^4]
-- Define a session termination criterion before starting the session: "This session is complete when [specific outcome] is achieved." Sessions without termination criteria tend to overrun because there is no forcing function to stop exploring. A defined criterion also helps evaluate whether the session delivered its expected value.[^2]
+- Define a session termination criterion before starting the session: "This session is complete when [specific outcome] is achieved." Sessions without termination criteria tend to overrun because there is no forcing function to stop exploring. A defined criterion also helps evaluate whether the session delivered its expected value.
 - For exploratory research sessions, timebox rather than scope: "Spend no more than 10 turns exploring this approach; if you have not reached a conclusion by turn 10, summarize what you have found and stop." Timebox constraints are a cost proxy in the absence of scope constraints.[^3]
 - Track estimated vs. actual session cost for non-trivial sessions in the team's session log. Calibration improves with feedback; engineers who track their estimates become significantly better at cost estimation within a few months of practice.
 
@@ -80,19 +80,16 @@ The category of sessions with the highest cost risk are open-ended agentic sessi
 ---
 
 [^1]: Anthropic — "Models Overview," Anthropic API Documentation, 2026. https://docs.anthropic.com/en/docs/about-claude/models/overview
-    Token pricing per model tier; input vs. output token cost ratios; tokenization rules and practical estimation heuristics for code and English text.
-
-[^2]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Context as the dominant cost driver; conversation history accumulation curve; the cost of open-ended agentic sessions; session termination criteria as a cost control.
+ Token pricing per model tier; input vs. output token cost ratios; tokenization rules and practical estimation heuristics for code and English text.
 
 [^3]: Simon Willison — "How I Use LLMs: A Pragmatic 2026 Field Guide," simonwillison.net, February 2026. https://simonwillison.net/2026/Feb/how-i-use-llms/
-    Output token cost implications of verbose prompting patterns; code-first vs. explanation-first prompt patterns; the cost of "think step by step" on low-complexity tasks.
+ Output token cost implications of verbose prompting patterns; code-first vs. explanation-first prompt patterns; the cost of "think step by step" on low-complexity tasks.
 
 [^4]: Stephanie Hurlburt — "Tracking LLM Costs Across a Small Engineering Team," Stephanie Hurlburt's Blog, March 2026. https://stephanehurlburt.com/blog/tracking-llm-costs
-    Input/output token ratio baselines for common session types; cache hit rate monitoring; pre-session cost estimation methodology; estimated vs. actual cost calibration tracking.
+ Input/output token ratio baselines for common session types; cache hit rate monitoring; pre-session cost estimation methodology; estimated vs. actual cost calibration tracking.
 
 [^5]: Anthropic — "Managing Long Sessions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/managing-long-sessions
-    `/compact` command mechanics and per-turn cost reset; context window accumulation in long sessions; phase-boundary compaction as the recommended timing strategy.
+ `/compact` command mechanics and per-turn cost reset; context window accumulation in long sessions; phase-boundary compaction as the recommended timing strategy.
 
 [^6]: Anthropic — "Prompt Caching," Anthropic API Documentation, 2026. https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching
-    Prompt caching mechanics and economics; 90% cost reduction for cache hits; CLAUDE.md structure for cache stability; cache invalidation propagation rules.
+ Prompt caching mechanics and economics; 90% cost reduction for cache hits; CLAUDE.md structure for cache stability; cache invalidation propagation rules.

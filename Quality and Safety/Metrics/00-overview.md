@@ -52,12 +52,12 @@ Automated scanning in CI/CD (per Tooling & Configuration — Hooks and CI/CD Int
 
 ## Metric 4: Session and Context Efficiency
 
-**Description:** Claude Code session efficiency — the ratio of useful output to correction cycles and context resets within a session — is a metric that individual engineers rarely track but that provides valuable signal about team-level prompting and context health. A team where engineers consistently require four or more correction cycles per session is either prompting poorly, providing insufficient context, or working outside the task types where AI is effective. Identifying and addressing the root cause is more valuable than accepting correction cycles as a constant overhead.[^11]
+**Description:** Claude Code session efficiency — the ratio of useful output to correction cycles and context resets within a session — is a metric that individual engineers rarely track but that provides valuable signal about team-level prompting and context health. A team where engineers consistently require four or more correction cycles per session is either prompting poorly, providing insufficient context, or working outside the task types where AI is effective. Identifying and addressing the root cause is more valuable than accepting correction cycles as a constant overhead.
 
 Session efficiency also tracks whether context management practices (CLAUDE.md freshness, spec.md usage, /compact discipline) are functioning as intended. If session quality noticeably degrades in the second half of long sessions, context window saturation is a candidate cause — and the team's /compact and session-reset disciplines are the intervention.[^10]
 
 **Proposed Solution:**
-- Ask engineers to briefly log session outcomes in a shared document after non-trivial AI sessions: task type, number of correction cycles, whether the output met the standard on first pass, and any notable failures. This qualitative data is not available in any automated tracking tool and surfaces patterns invisible to code metrics alone.[^11]
+- Ask engineers to briefly log session outcomes in a shared document after non-trivial AI sessions: task type, number of correction cycles, whether the output met the standard on first pass, and any notable failures. This qualitative data is not available in any automated tracking tool and surfaces patterns invisible to code metrics alone.
 - Aggregate session logs monthly to identify which task types most frequently require multiple correction cycles. These are candidates for prompt library improvement or for reclassification as tasks better suited to human-first execution.[^5]
 - Track CLAUDE.md update frequency as a proxy for context health: a CLAUDE.md that has not been updated in over a month may be stale. If session correction cycles are rising and CLAUDE.md has not been updated, the combination is a signal that context has drifted from the codebase's current state.[^10]
 - Use unusually high correction cycle rates on specific tasks as a trigger for a prompt retrospective: convene a brief session to identify whether the prompt structure, context injection, or verification criteria can be improved before the next similar task.[^12]
@@ -106,49 +106,45 @@ The Anthropic 2026 Agentic Coding Trends Report found that organizations achievi
 ---
 
 [^1]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Velocity metrics as insufficient governance: the argument for a second measurement layer tracking rework, quality, and comprehension alongside output volume.
+ Velocity metrics as insufficient governance: the argument for a second measurement layer tracking rework, quality, and comprehension alongside output volume.
 
 [^2]: GitHub — "Octoverse 2025: The State of Open Source and AI on GitHub," GitHub, 2025. https://github.blog/news-insights/octoverse/octoverse-2025/
-    DORA metrics and AI adoption: 154% increase in PR size, 91% more review time, and 7.2% decrease in delivery stability correlated with high AI code generation rates.
+ DORA metrics and AI adoption: 154% increase in PR size, 91% more review time, and 7.2% decrease in delivery stability correlated with high AI code generation rates.
 
 [^3]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    Rework rate increase of 30–60% within six months of heavy AI adoption; the rework accumulation pattern and the compounding cost model that shows the inflection point for a 10-person team.
+ Rework rate increase of 30–60% within six months of heavy AI adoption; the rework accumulation pattern and the compounding cost model that shows the inflection point for a 10-person team.
 
 [^4]: Sonar (SonarSource) — "Sonar Data Reveals Critical 'Verification Gap' in AI Coding," press release, January 8, 2026. https://www.sonarsource.com/company/press-releases/sonar-data-reveals-critical-verification-gap-in-ai-coding/
-    42% of all committed code originating from AI; the verification gap between stated distrust and actual verification behavior; baseline data for tracking AI code percentage.
+ 42% of all committed code originating from AI; the verification gap between stated distrust and actual verification behavior; baseline data for tracking AI code percentage.
 
 [^5]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-    The 40% threshold: above 40% AI-primary code per sprint, rework rates spike materially; the sustainable ratio range and its implications for sprint planning and governance.
+ The 40% threshold: above 40% AI-primary code per sprint, rework rates spike materially; the sustainable ratio range and its implications for sprint planning and governance.
 
 [^6]: GitClear — "2025 Coding on Copilot: 2023 Data Shows Downward Pressure on Code Quality," GitClear Research, 2025. https://www.gitclear.com/coding_on_copilot_data_shows_ais_downward_pressure_on_code_quality
-    Copy-paste code rising from 8.3% to 12.3%; refactoring collapsing from 25% to under 10% of commits; longitudinal data on how AI adoption changes codebase health indicators.
+ Copy-paste code rising from 8.3% to 12.3%; refactoring collapsing from 25% to under 10% of commits; longitudinal data on how AI adoption changes codebase health indicators.
 
 [^7]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-    Structured retrospectives as the differentiating characteristic of organizations achieving consistent AI output quality improvement; the case against subsuming AI governance into general sprint retrospectives.
+ Structured retrospectives as the differentiating characteristic of organizations achieving consistent AI output quality improvement; the case against subsuming AI governance into general sprint retrospectives.
 
 [^8]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
-    Security pass rate stagnant at 55% despite model capability improvements; the argument that model upgrades do not solve the security vulnerability problem — practice changes are required.
+ Security pass rate stagnant at 55% despite model capability improvements; the argument that model upgrades do not solve the security vulnerability problem — practice changes are required.
 
 [^9]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges," October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt
-    Vulnerability category tracking: why aggregate counts obscure actionable signals; the case for tracking injection, secrets management, and API exposure trends separately.
+ Vulnerability category tracking: why aggregate counts obscure actionable signals; the case for tracking injection, secrets management, and API exposure trends separately.
 
 [^10]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md freshness tracking as a proxy for context health; using vulnerability trends to trigger CLAUDE.md updates; session hygiene metrics (/compact usage, correction cycle patterns).
-
-[^11]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Session efficiency as an undertracked metric: what qualitative session logs reveal about prompting quality and context health that no automated tool captures.
+ CLAUDE.md freshness tracking as a proxy for context health; using vulnerability trends to trigger CLAUDE.md updates; session hygiene metrics (/compact usage, correction cycle patterns).
 
 [^12]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Session correction cycles as a feedback signal for prompt improvement; the discipline of converting session failures into CLAUDE.md and prompt library updates.
+ Session correction cycles as a feedback signal for prompt improvement; the discipline of converting session failures into CLAUDE.md and prompt library updates.
 
 [^13]: Yue Liu et al. — "Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild," arXiv:2603.28592, March 30, 2026. https://arxiv.org/html/2603.28592
-    24.2% of AI-introduced code quality issues survive to the latest repo revision; the survival rate as a codebase health indicator and its interpretation for small teams.
+ 24.2% of AI-introduced code quality issues survive to the latest repo revision; the survival rate as a codebase health indicator and its interpretation for small teams.
 
 [^14]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Retrospective cadence as governance infrastructure: the organizations achieving consistent improvement share structured regular review — AI quality metrics are only as valuable as the decisions they inform.
-
+ Retrospective cadence as governance infrastructure: the organizations achieving consistent improvement share structured regular review — AI quality metrics are only as valuable as the decisions they inform.
 
 [^17]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Quality gate metrics: using hook-driven CI output as the raw data for security vulnerability trend tracking
-    - Session logs: how to structure qualitative session outcome logs for monthly aggregate analysis
-    - CLAUDE.md effectiveness testing: using session correction rates to evaluate whether context configuration is current and complete
+ - Quality gate metrics: using hook-driven CI output as the raw data for security vulnerability trend tracking
+ - Session logs: how to structure qualitative session outcome logs for monthly aggregate analysis
+ - CLAUDE.md effectiveness testing: using session correction rates to evaluate whether context configuration is current and complete

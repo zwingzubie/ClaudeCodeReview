@@ -8,7 +8,7 @@
 
 Context optimization is the discipline of sending the right content — not the maximum content — into a Claude Code session. It is the most consistently underused cost lever available to engineering teams because the failure mode it addresses is invisible until the invoice arrives: context inflation accumulates silently turn by turn, the model continues to respond, and nothing in the session UI signals that the per-turn cost has tripled since the session began. Teams that understand context accumulation and manage it proactively spend 40–60% less per session than teams running equivalent tasks with unmanaged context.[^1]
 
-The core principle is that more context is not unconditionally better. Relevant, high-density context improves output quality; irrelevant context dilutes the model's attention without improving quality, and costs the same per token as relevant context. An engineer who injects an entire module directory to answer a question about one file is paying for the content of 15 files to help with 1. An engineer who allows conversation history to accumulate across 30 turns without compacting is paying for early exploration turns that are no longer relevant to the current implementation task. Context optimization is about ensuring that every token in the context window is earning its cost.[^2]
+The core principle is that more context is not unconditionally better. Relevant, high-density context improves output quality; irrelevant context dilutes the model's attention without improving quality, and costs the same per token as relevant context. An engineer who injects an entire module directory to answer a question about one file is paying for the content of 15 files to help with 1. An engineer who allows conversation history to accumulate across 30 turns without compacting is paying for early exploration turns that are no longer relevant to the current implementation task. Context optimization is about ensuring that every token in the context window is earning its cost.
 
 ---
 
@@ -16,7 +16,7 @@ The core principle is that more context is not unconditionally better. Relevant,
 
 **Description:** The highest-leverage context optimization intervention is pre-session scoping: defining what the session will address, what files are in scope, and what the session will not attempt before the first message is sent. A session with explicit scope boundaries accumulates less irrelevant context than an open-ended session because the scope definition constrains what the model considers relevant to inject, what the engineer is tempted to ask tangentially, and how far the session's questions wander from its original purpose.[^3]
 
-Pre-session scoping also produces better output, independent of cost. A session that knows its task boundary can optimize its exploration toward that boundary rather than surveying broadly. The quality and cost improvements from scoping are correlated: the same discipline that prevents cost overrun also prevents the output dilution that comes from a session trying to address more than it can address well.[^2]
+Pre-session scoping also produces better output, independent of cost. A session that knows its task boundary can optimize its exploration toward that boundary rather than surveying broadly. The quality and cost improvements from scoping are correlated: the same discipline that prevents cost overrun also prevents the output dilution that comes from a session trying to address more than it can address well.
 
 **Recommended Practice:**
 - Before starting any non-trivial session, write a one-paragraph session brief: what specific outcome is expected, which files are directly relevant, which files may need to be referenced, and what the session will not address. This brief can be the first message of the session, creating both a session record and a scope boundary visible to the model.[^3]
@@ -28,12 +28,12 @@ Pre-session scoping also produces better output, independent of cost. A session 
 
 ## Section 2: Targeted File Injection
 
-**Description:** Claude Code can read files and directories as context injection. The cost and quality implications of injection scope differ significantly between targeted file injection (specific files relevant to the task) and directory-level injection (all files in a module or directory). For a module with 15 files averaging 300 lines each, directory injection adds approximately 45,000 tokens of context that may be largely irrelevant to a task touching one or two of those files. Targeted injection of the two relevant files adds approximately 6,000 tokens — a 7.5× context reduction for the same output quality on a focused task.[^2]
+**Description:** Claude Code can read files and directories as context injection. The cost and quality implications of injection scope differ significantly between targeted file injection (specific files relevant to the task) and directory-level injection (all files in a module or directory). For a module with 15 files averaging 300 lines each, directory injection adds approximately 45,000 tokens of context that may be largely irrelevant to a task touching one or two of those files. Targeted injection of the two relevant files adds approximately 6,000 tokens — a 7.5× context reduction for the same output quality on a focused task.
 
 The quality case for targeted injection is as important as the cost case. Irrelevant context does not just cost money — it competes for model attention with relevant context. On tasks where the correct answer depends on subtle details in specific files, diluting the context with unrelated code can reduce the model's effective attention to those details. Targeted injection is therefore both cheaper and, for focused tasks, often higher quality than broad injection.[^5]
 
 **Recommended Practice:**
-- Before injecting files, ask: which files does this session actually need to read to complete its task? Inject those files specifically rather than their containing directory. This requires 30 seconds of pre-session thought that can save 20,000–80,000 tokens of unnecessary context per session.[^2]
+- Before injecting files, ask: which files does this session actually need to read to complete its task? Inject those files specifically rather than their containing directory. This requires 30 seconds of pre-session thought that can save 20,000–80,000 tokens of unnecessary context per session.
 - For refactoring sessions that span multiple files, inject files in phases: inject the files needed for the first phase, complete that phase, compact, then inject the files needed for the second phase. This prevents the full refactoring context from accumulating in a single session window.[^1]
 - Use CLAUDE.md to document which files in the codebase are structural references — files that should almost always be included in sessions touching a given module (e.g., the module's primary interface file, its configuration schema, its test helper). These are the files worth including by default; all other files should be added only when specifically needed.[^3]
 - When a session needs to understand a pattern from an existing file without modifying it, consider asking Claude to read a relevant excerpt rather than the whole file: "Read lines 45–120 of auth_middleware.ts, which contains the token validation logic." Partial reads cost proportionally less than full file reads and are sufficient when the full file is not needed.[^5]
@@ -50,7 +50,7 @@ The `/compact` command addresses this directly by replacing the conversation his
 - Compact at task phase transitions as a discipline, not just when context feels unwieldy. The optimal time to compact is when a coherent phase of work is complete and a different phase is beginning — this timing produces the most informative compact summary while discarding the most irrelevant detail.[^6]
 - When compacting, review the compact summary Claude produces before proceeding. The summary should capture the key decisions, constraints, and outcomes from the compacted history. If the summary omits something important, add it explicitly as context for the next phase rather than relying on the compact to have captured it.[^6]
 - Consider starting a new session rather than compacting when a session has drifted significantly from its original scope. A fresh session with a clear brief and the relevant output from the prior session as starting context is often cheaper and higher quality than a heavily compacted session with accumulated context baggage.[^3]
-- For sessions with multiple distinct phases (explore → plan → implement → test), plan the compact points before the session begins. Knowing in advance that you will compact after exploration and after planning allows you to be more thorough in each phase without worrying about context accumulation — the compact resets the cost curve at the planned point.[^2]
+- For sessions with multiple distinct phases (explore → plan → implement → test), plan the compact points before the session begins. Knowing in advance that you will compact after exploration and after planning allows you to be more thorough in each phase without worrying about context accumulation — the compact resets the cost curve at the planned point.
 
 ---
 
@@ -80,22 +80,19 @@ The structure of CLAUDE.md also affects prompt caching efficiency. Content that 
 ---
 
 [^1]: Anthropic — "Managing Long Sessions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/managing-long-sessions
-    Context accumulation in long sessions; `/compact` mechanics and cost reset effect; agentic session termination criteria; phase-boundary compaction timing.
-
-[^2]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Targeted file injection vs. directory injection cost comparison; relevant context density as a quality driver; pre-session scoping as the highest-leverage optimization intervention.
+ Context accumulation in long sessions; `/compact` mechanics and cost reset effect; agentic session termination criteria; phase-boundary compaction timing.
 
 [^3]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Session scoping and brief patterns; scope expansion as a cost risk; module-specific CLAUDE.md addenda; fresh session vs. compacted session tradeoffs.
+ Session scoping and brief patterns; scope expansion as a cost risk; module-specific CLAUDE.md addenda; fresh session vs. compacted session tradeoffs.
 
 [^4]: Anthropic — "CLAUDE.md Configuration Guide," Claude Code Documentation, 2026. https://docs.anthropic.com/en/docs/claude-code/memory
-    CLAUDE.md as a persistent cost multiplier; quarterly audit cadence; content categorization for pruning decisions; module-specific vs. global context organization.
+ CLAUDE.md as a persistent cost multiplier; quarterly audit cadence; content categorization for pruning decisions; module-specific vs. global context organization.
 
 [^5]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Targeted partial file reads; attention dilution from irrelevant context; the quality argument for focused injection on tasks with subtle correctness requirements.
+ Targeted partial file reads; attention dilution from irrelevant context; the quality argument for focused injection on tasks with subtle correctness requirements.
 
 [^6]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    `/compact` command usage patterns; compact summary review as a quality gate; the cost curve reset effect measured across common session types.
+ `/compact` command usage patterns; compact summary review as a quality gate; the cost curve reset effect measured across common session types.
 
 [^7]: Anthropic — "Prompt Caching," Anthropic API Documentation, 2026. https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching
-    Cache invalidation propagation in CLAUDE.md; stable-to-variable content ordering for cache efficiency; the cost of frequent cache misses on high-frequency context documents.
+ Cache invalidation propagation in CLAUDE.md; stable-to-variable content ordering for cache efficiency; the cost of frequent cache misses on high-frequency context documents.

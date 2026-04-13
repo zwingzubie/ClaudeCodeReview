@@ -8,7 +8,7 @@
 
 Escalation — recognizing when AI iteration has reached its limit and human judgment is required — is the AI-assisted development skill that receives the least attention and causes the most damage when absent. Teams discuss how to prompt better, how to structure sessions, and how to verify output; they rarely discuss how to know when to stop using AI for a given problem and bring in human expertise instead. The result is a failure mode where engineers continue iterating with AI on a problem that AI cannot solve, generating cost and consuming time while making no progress toward resolution.[^1]
 
-The case for explicit escalation criteria is not that AI is insufficient for most engineering work — it is that AI is insufficient for a specific, identifiable subset of engineering tasks, and the cost of misidentifying a task as AI-solvable when it is not is a function of how long escalation is delayed. An hour of unsuccessful AI iteration before escalation represents both the direct cost of the session and the indirect cost of a one-hour delay in getting human expertise applied to the problem. For critical-path bugs and security issues, that delay has disproportionate impact.[^2]
+The case for explicit escalation criteria is not that AI is insufficient for most engineering work — it is that AI is insufficient for a specific, identifiable subset of engineering tasks, and the cost of misidentifying a task as AI-solvable when it is not is a function of how long escalation is delayed. An hour of unsuccessful AI iteration before escalation represents both the direct cost of the session and the indirect cost of a one-hour delay in getting human expertise applied to the problem. For critical-path bugs and security issues, that delay has disproportionate impact.
 
 Escalation is not a failure of AI adoption. It is accurate calibration of AI's current capabilities against the team's task distribution. A team that escalates appropriately uses AI for the 80% of tasks it handles well and reserves human effort for the 20% that require judgment, organizational context, or domain expertise that AI cannot provide — which is the optimal allocation of both resources.[^3]
 
@@ -23,7 +23,7 @@ Secondary escalation signals supplement the primary convergence test: the task r
 **Recommended Practice:**
 - Define explicit escalation criteria in the AI usage policy and share them with the engineering team: "Escalate to human judgment when (a) three sessions at Opus tier with complete specification and context have not produced correct output, (b) the task requires organizational context that cannot be documented, (c) the task requires live system access or real-time operational judgment, or (d) the task's correct answer depends on business trade-off priorities not codified in CLAUDE.md."[^3]
 - Apply the three-session rule consistently, not as a last resort after extended iteration. Engineers who apply the rule consistently reach escalation faster than those who override it with "just one more session" reasoning. The three-session rule's value is in converting an open-ended iteration into a decision: three sessions attempts, then escalate.[^4]
-- Do not treat escalation criteria as a checklist to game. The purpose of explicit criteria is to accelerate the escalation decision when it is correct, not to create a formal process that must be completed before a decision the engineer already knows is right. If the engineer recognizes before session three that the task requires organizational knowledge AI cannot have, escalate before session three.[^2]
+- Do not treat escalation criteria as a checklist to game. The purpose of explicit criteria is to accelerate the escalation decision when it is correct, not to create a formal process that must be completed before a decision the engineer already knows is right. If the engineer recognizes before session three that the task requires organizational knowledge AI cannot have, escalate before session three.
 - Review escalation decisions at the monthly AI practice meeting: were they made at the right time? Were there tasks where earlier escalation would have been better? Were there tasks where escalation was avoided and AI eventually succeeded — evidence that the escalation criteria should be calibrated differently? This review keeps the escalation criteria accurate rather than static.
 
 ---
@@ -46,7 +46,7 @@ Escalation should be documented in team workflow as a normal, expected step — 
 
 **Description:** Escalation does not mean abandoning AI assistance for the task — it means bringing human judgment into the loop to complement what AI can and cannot do. In many escalated tasks, the most effective resolution is a human-AI collaboration: the human provides the organizational context, business judgment, or expert domain knowledge that AI cannot access, while AI accelerates the implementation once the human has resolved the ambiguity that prevented AI from succeeding alone.[^6]
 
-This collaboration model changes the nature of escalation from "stop using AI" to "use AI differently." The human's role in the escalated task is to provide the inputs that AI needs — a clear answer to the business trade-off, the organizational context for the architectural constraint, the expert diagnosis that the AI's sessions were approximating — and then to use AI to execute the implementation once the blocking problem is resolved.[^2]
+This collaboration model changes the nature of escalation from "stop using AI" to "use AI differently." The human's role in the escalated task is to provide the inputs that AI needs — a clear answer to the business trade-off, the organizational context for the architectural constraint, the expert diagnosis that the AI's sessions were approximating — and then to use AI to execute the implementation once the blocking problem is resolved.
 
 **Recommended Practice:**
 - When escalating, identify specifically what input the human needs to provide in order to unblock AI execution. This framing converts an open-ended escalation into a targeted request: "I need the architect to decide whether we should use optimistic or pessimistic locking here — the AI correctly identified the tradeoffs but can't make the business judgment. Once we have a decision, I'll implement it with AI assistance."[^6]
@@ -82,22 +82,19 @@ There is a complementary risk: engineers who exclusively use AI for complex work
 ---
 
 [^1]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-    Escalation as accurate capability calibration rather than AI failure; the cost of delayed escalation on critical-path tasks; escalation normalization in team culture; the 80/20 AI-human task allocation model.
-
-[^2]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Primary and secondary escalation signals; the organizational knowledge gap as a non-encodable escalation trigger; human-AI collaboration after escalation resolution; the cost of continuing AI iteration past the escalation point.
+ Escalation as accurate capability calibration rather than AI failure; the cost of delayed escalation on critical-path tasks; escalation normalization in team culture; the 80/20 AI-human task allocation model.
 
 [^3]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Explicit escalation criteria in AI usage policy; escalation as a normal workflow step; encoding resolved escalations in CLAUDE.md; task taxonomy evolution as CLAUDE.md context grows.
+ Explicit escalation criteria in AI usage policy; escalation as a normal workflow step; encoding resolved escalations in CLAUDE.md; task taxonomy evolution as CLAUDE.md context grows.
 
 [^4]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    The three-session rule in practice; escalation handoff documentation; tracking escalation-to-encoding conversion rate; shared escalation logs as team knowledge infrastructure.
+ The three-session rule in practice; escalation handoff documentation; tracking escalation-to-encoding conversion rate; shared escalation logs as team knowledge infrastructure.
 
 [^5]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Escalation recipients by task category; escalation workflow integration with sprint tracking; escalation documentation for handoff quality; secondary escalation signals for organizational context gaps.
+ Escalation recipients by task category; escalation workflow integration with sprint tracking; escalation documentation for handoff quality; secondary escalation signals for organizational context gaps.
 
 [^6]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Human-AI collaboration in escalated tasks; the "unblock then execute" model; encoding human judgment decisions as standing AI instructions; escalation as a governance improvement trigger.
+ Human-AI collaboration in escalated tasks; the "unblock then execute" model; encoding human judgment decisions as standing AI instructions; escalation as a governance improvement trigger.
 
 [^7]: Issues — "Skill Atrophy," Issues/06-skill-atrophy.md
-    Human-first task designation for domain expertise preservation; the relationship between escalation quality and maintained domain expertise; skill maintenance as a prerequisite for effective AI oversight.
+ Human-first task designation for domain expertise preservation; the relationship between escalation quality and maintained domain expertise; skill maintenance as a prerequisite for effective AI oversight.

@@ -16,20 +16,20 @@ The failure modes of Claude Code sessions are recognizable if engineers know wha
 
 ```mermaid
 flowchart TD
-    A[Session Output Received] --> B{Addresses the<br/>right problem?}
-    B -- No --> C[Scope Drift<br/>Specification problem]
-    B -- Yes --> D{Respects stated<br/>constraints?}
-    D -- No --> E[Constraint Violation<br/>Context/CLAUDE.md gap]
-    D -- Yes --> F{Information is<br/>accurate & specific?}
-    F -- No --> G[False Specificity<br/>Hallucination risk]
-    F -- Yes --> H{Precision maintained<br/>vs. earlier turns?}
-    H -- No --> I[Quality Regression<br/>Context degradation]
-    H -- Yes --> J[Session Healthy<br/>Continue]
+ A[Session Output Received] --> B{Addresses the<br/>right problem?}
+ B -- No --> C[Scope Drift<br/>Specification problem]
+ B -- Yes --> D{Respects stated<br/>constraints?}
+ D -- No --> E[Constraint Violation<br/>Context/CLAUDE.md gap]
+ D -- Yes --> F{Information is<br/>accurate & specific?}
+ F -- No --> G[False Specificity<br/>Hallucination risk]
+ F -- Yes --> H{Precision maintained<br/>vs. earlier turns?}
+ H -- No --> I[Quality Regression<br/>Context degradation]
+ H -- Yes --> J[Session Healthy<br/>Continue]
 
-    C --> K[Reformulate specification]
-    E --> L[Update CLAUDE.md or compact]
-    G --> M[Independently verify,<br/>inject authoritative docs]
-    I --> N[Compact or reset session]
+ C --> K[Reformulate specification]
+ E --> L[Update CLAUDE.md or compact]
+ G --> M[Independently verify,<br/>inject authoritative docs]
+ I --> N[Compact or reset session]
 ```
 
 **Description:** Four failure signals account for the majority of Claude Code session failures that reach the engineer's attention. Each has a distinct cause and a distinct appropriate response. Learning to recognize them specifically — rather than experiencing a general sense that "the session is going badly" — reduces the time from recognition to resolution.
@@ -68,11 +68,11 @@ The cost case for the two-turn rule is compelling. A session that is failing but
 
 **Description:** Not every difficult session is a failing session. Some tasks are genuinely complex and require multiple correct-but-incomplete responses before the solution emerges. Distinguishing between session failure (something structural is wrong with the session's ability to produce correct output) and task difficulty (the task is hard and requires extended iterative refinement) determines the correct response: session failure warrants diagnosis and intervention; task difficulty warrants patience, decomposition, and possibly model escalation.[^2]
 
-The diagnostic test is whether corrections are converging or not. A genuinely difficult task produces responses that are incrementally closer to the target with each correction: the first response captures 60% of the requirement, the second captures 80%, the third 90%, and so on. A failing session produces responses that are not converging — each correction attempt addresses one issue but introduces another, or consistently misses the same constraint across multiple attempts.[^6]
+The diagnostic test is whether corrections are converging or not. A genuinely difficult task produces responses that are incrementally closer to the target with each correction: the first response captures 60% of the requirement, the second captures 80%, the third 90%, and so on. A failing session produces responses that are not converging — each correction attempt addresses one issue but introduces another, or consistently misses the same constraint across multiple attempts.
 
 **Recommended Practice:**
 - After each correction turn, evaluate convergence: is this response closer to the target than the prior one, on a consistent trajectory? If yes, continue — the session is working. If no, apply the two-turn rule diagnostic.[^2]
-- For tasks that are genuinely complex (multi-system reasoning, novel architecture, complex debugging), consider decomposing the task into smaller sub-tasks rather than asking the model to solve it as a whole. A decomposed complex task at Sonnet tier often produces better results than the same task attempted as a whole at Opus tier, because decomposition makes each sub-problem tractable rather than making each sub-problem harder by adding model capability.[^6]
+- For tasks that are genuinely complex (multi-system reasoning, novel architecture, complex debugging), consider decomposing the task into smaller sub-tasks rather than asking the model to solve it as a whole. A decomposed complex task at Sonnet tier often produces better results than the same task attempted as a whole at Opus tier, because decomposition makes each sub-problem tractable rather than making each sub-problem harder by adding model capability.
 - Use the task difficulty vs. session failure distinction to inform model escalation decisions. Escalating to Opus is appropriate for genuine task difficulty — the task is complex enough that Opus's additional reasoning capability is likely to help. Escalating to Opus for a session failure is usually not effective — if the session is failing because of a specification problem or context corruption, higher model capability does not fix those causes.[^5]
 - When a session has been running for more than 15 turns on a task that was expected to take 5–8 turns, treat that discrepancy as a diagnostic signal: pause and evaluate whether the extra turns are evidence of task difficulty (the task was harder than expected) or session failure (the session has been going in the wrong direction and has not been recognized as failing).[^1]
 
@@ -104,19 +104,17 @@ The failure pattern log is the empirical foundation for CLAUDE.md improvements, 
 ---
 
 [^1]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Early failure signal recognition as the highest-leverage debugging skill; cost differential between early and late failure recognition; the two-turn rule in practice; session log documentation habit.
+ Early failure signal recognition as the highest-leverage debugging skill; cost differential between early and late failure recognition; the two-turn rule in practice; session log documentation habit.
 
 [^2]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
-    Session failure vs. task difficulty distinction; convergence as the diagnostic test; context degradation as a failure cause distinct from task complexity; escalation calibration to failure type.
+ Session failure vs. task difficulty distinction; convergence as the diagnostic test; context degradation as a failure cause distinct from task complexity; escalation calibration to failure type.
 
 [^3]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Scope drift as a specification-quality failure; constraint violation diagnostic patterns; session brief as a failure prevention mechanism; failure pattern log as governance input.
+ Scope drift as a specification-quality failure; constraint violation diagnostic patterns; session brief as a failure prevention mechanism; failure pattern log as governance input.
 
 [^4]: Anthropic — "CLAUDE.md Configuration Guide," Claude Code Documentation, 2026. https://docs.anthropic.com/en/docs/claude-code/memory
-    Constraint violation causes: ambiguous CLAUDE.md language, constraint depth in document, context degradation; constraint repositioning as a violation mitigation; team failure log as CLAUDE.md update trigger.
+ Constraint violation causes: ambiguous CLAUDE.md language, constraint depth in document, context degradation; constraint repositioning as a violation mitigation; team failure log as CLAUDE.md update trigger.
 
 [^5]: Simon Willison — "LLM Hallucination: A Practical Framework for 2026," simonwillison.net, March 2026. https://simonwillison.net/2026/Mar/llm-hallucination-practical-framework/
-    False specificity as the most dangerous hallucination form; hallucination indistinguishable from correct output without verification; external API and library version as the highest-risk hallucination contexts.
+ False specificity as the most dangerous hallucination form; hallucination indistinguishable from correct output without verification; external API and library version as the highest-risk hallucination contexts.
 
-[^6]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Task decomposition as the appropriate response to genuine task difficulty; the comparison between decomposed-Sonnet and whole-Opus for complex tasks; the diagnostic value of turn-count discrepancy.

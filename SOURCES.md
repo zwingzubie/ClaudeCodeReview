@@ -145,7 +145,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://www.anthropic.com/safety-and-responsibility>
   *Files:* [`Ethics/00-overview.md`](Ethics/00-overview.md)
 
-
 ## Standards and Official References
 
 - **Slack — "Slack MCP Server," Slack Developer Documentation, 2025**
@@ -167,10 +166,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **Git — "git-worktree Documentation," Git Reference Manual, 2025**
   <https://git-scm.com/docs/git-worktree>
   *Files:* [`Tooling & Configuration/07-worktree-isolation.md`](Tooling%20%26%20Configuration/07-worktree-isolation.md)
-
-- **IAPP — "GDPR Enforcement and Breach Notification in 2025," International Association of Privacy Professionals, 2025**
-  <https://iapp.org/resources/article/gdpr-enforcement-trends/>
-  *Files:* [`Security/05-vulnerability-response.md`](Security/05-vulnerability-response.md)
 
 - **Linear — "Linear MCP Server," Linear Developer Documentation, 2025**
   <https://linear.app/docs/mcp>
@@ -207,7 +202,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **NIST — "Cybersecurity Framework 2.0," NIST, 2024**
   <https://www.nist.gov/cyberframework>
   *Files:* [`Security/00-overview.md`](Security/00-overview.md), [`Security/05-vulnerability-response.md`](Security/05-vulnerability-response.md)
-
 
 ## Academic Papers
 
@@ -379,7 +373,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://www.sciencedirect.com/science/article/pii/S2666827025001872>
   *Files:* [`Issues/07-prompt-fragmentation.md`](Issues/07-prompt-fragmentation.md)
 
-
 ## Research Organizations
 
 - **METR — "Autonomy Evaluation Resources," METR, February 2026**
@@ -393,7 +386,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **METR — "We Are Changing Our Developer Productivity Experiment Design," METR Research, February 2026**
   <https://www.metr.org/blog/2026-02-24-uplift-update/>
   *Files:* [`Governance/00-overview.md`](Governance/00-overview.md), [`Learning/00-overview.md`](Learning/00-overview.md), [`Learning/02-skill-maintenance.md`](Learning/02-skill-maintenance.md), [`Learning/04-ai-free-practice-protocols.md`](Learning/04-ai-free-practice-protocols.md), [`Learning/05-continuing-education.md`](Learning/05-continuing-education.md), [`Metrics/01-ai-code-quality.md`](Metrics/01-ai-code-quality.md), [`Prompting/03-prompt-antipatterns.md`](Prompting/03-prompt-antipatterns.md), [`Prompting/05-iterative-refinement.md`](Prompting/05-iterative-refinement.md), [`Workflows/01-explore-plan-implement.md`](Workflows/01-explore-plan-implement.md), [`Workflows/02-task-decomposition.md`](Workflows/02-task-decomposition.md)
-
 
 ## Industry Reports and Surveys
 
@@ -441,14 +433,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://escape.tech/blog/methodology-how-we-discovered-vulnerabilities-apps-built-with-vibe-coding/>
   *Files:* [`Issues/04-security-vulnerabilities.md`](Issues/04-security-vulnerabilities.md)
 
-- **Gartner — "AI-Generated Code Security: Governance Frameworks for Software Engineering Leaders," Gartner Research, January 2026**
-  <https://gartner.com/en/documents/ai-generated-code-security-governance>
-  *Files:* [`Metrics/04-security-vulnerability-trends.md`](Metrics/04-security-vulnerability-trends.md)
-
-- **Gartner — "Managing the Structural Health of AI-Augmented Codebases," Gartner Research, January 2026**
-  <https://gartner.com/en/documents/managing-codebase-health-ai>
-  *Files:* [`Metrics/06-codebase-health.md`](Metrics/06-codebase-health.md)
-
 - **Laura Tacho (DX) — "AI-Assisted Engineering: Q4 2025 Impact Report," November 4, 2025**
   <https://getdx.com/blog/ai-assisted-engineering-q4-impact-report-2025/>
   *Files:* [`Issues/08-velocity-governance.md`](Issues/08-velocity-governance.md)
@@ -456,10 +440,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **Justin Reock (DX) — "Advanced Prompting Guide for AI-Assisted Engineering," 2025**
   <https://getdx.com/guide/advanced-prompting-guide-for-ai-assisted-engineering/>
   *Files:* [`Issues/07-prompt-fragmentation.md`](Issues/07-prompt-fragmentation.md)
-
-- **GitClear — "2025 Coding Assistant Impact on Software Quality," 2025**
-  <https://gitclear.com/coding_assistants_2025>
-  *Files:* [`Metrics/03-rework-rate.md`](Metrics/03-rework-rate.md), [`Metrics/06-codebase-health.md`](Metrics/06-codebase-health.md)
 
 - **Cloud Security Alliance — "Vibe Coding Security Crisis: Credential Sprawl and SDLC Debt," March 31, 2026**
   <https://labs.cloudsecurityalliance.org/research/csa-research-note-ai-generated-code-security-vibe-coding-202/>
@@ -480,10 +460,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **Snyk — "The State of Open Source Security 2025," Snyk, 2025**
   <https://snyk.io/reports/open-source-security/>
   *Files:* [`Security/00-overview.md`](Security/00-overview.md), [`Security/03-dependency-security.md`](Security/03-dependency-security.md)
-
-- **Sonar — "Measuring Duplicate Code and Complexity in AI-Generated Codebases," Sonar Blog, January 8 2026**
-  <https://sonarsource.com/blog/duplicate-code-complexity-ai-codebases>
-  *Files:* [`Metrics/06-codebase-health.md`](Metrics/06-codebase-health.md)
 
 - **Phoebe Sajor (Stack Overflow) — "AI vs Gen Z: How AI Has Changed the Career Pathway for Junior Developers," December 26, 2025**
   <https://stackoverflow.blog/2025/12/26/ai-vs-gen-z/>
@@ -520,26 +496,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025**
   <https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report>
   *Files:* [`Documentation/00-overview.md`](Documentation/00-overview.md), [`Documentation/03-knowledge-transfer.md`](Documentation/03-knowledge-transfer.md), [`Documentation/04-rationale-capture.md`](Documentation/04-rationale-capture.md), [`Ethics/01-intellectual-property.md`](Ethics/01-intellectual-property.md), [`Ethics/03-security-responsibility.md`](Ethics/03-security-responsibility.md), [`Ethics/06-bias-and-representation.md`](Ethics/06-bias-and-representation.md), [`Governance/00-overview.md`](Governance/00-overview.md), [`Governance/01-review-policies.md`](Governance/01-review-policies.md), [`Governance/02-ai-usage-policy.md`](Governance/02-ai-usage-policy.md), [`Governance/06-compliance-and-audit.md`](Governance/06-compliance-and-audit.md), [`Issues/01-comprehension-debt.md`](Issues/01-comprehension-debt.md), [`Learning/02-skill-maintenance.md`](Learning/02-skill-maintenance.md), [`Learning/04-ai-free-practice-protocols.md`](Learning/04-ai-free-practice-protocols.md), [`Metrics/01-ai-code-quality.md`](Metrics/01-ai-code-quality.md), [`Security/00-overview.md`](Security/00-overview.md)
-
-- **Gartner — "AI Augmented Development: Engineering Productivity Trends," January 2026**
-  <https://www.gartner.com/en/documents/ai-augmented-development-2026>
-  *Files:* [`Learning/03-team-knowledge-sharing.md`](Learning/03-team-knowledge-sharing.md), [`Learning/04-ai-free-practice-protocols.md`](Learning/04-ai-free-practice-protocols.md), [`Learning/05-continuing-education.md`](Learning/05-continuing-education.md)
-
-- **Gartner — "Hype Cycle for AI Engineering, 2026," Gartner Research, February 2026**
-  <https://www.gartner.com/en/documents/hype-cycle-ai-engineering-2026>
-  *Files:* [`Tooling & Configuration/05-settings-and-permissions.md`](Tooling%20%26%20Configuration/05-settings-and-permissions.md)
-
-- **Gartner — "Hype Cycle for Emerging Technologies, 2026," Gartner Research, January 2026**
-  <https://www.gartner.com/en/documents/hype-cycle-emerging-technologies-2026>
-  *Files:* [`Prompting/05-iterative-refinement.md`](Prompting/05-iterative-refinement.md), [`Prompting/06-prompt-library.md`](Prompting/06-prompt-library.md)
-
-- **Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026**
-  <https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops>
-  *Files:* [`Documentation/00-overview.md`](Documentation/00-overview.md), [`Documentation/02-runbook-standards.md`](Documentation/02-runbook-standards.md), [`Documentation/03-knowledge-transfer.md`](Documentation/03-knowledge-transfer.md), [`Documentation/04-rationale-capture.md`](Documentation/04-rationale-capture.md), [`Ethics/00-overview.md`](Ethics/00-overview.md), [`Ethics/01-intellectual-property.md`](Ethics/01-intellectual-property.md), [`Ethics/03-security-responsibility.md`](Ethics/03-security-responsibility.md), [`Ethics/04-training-data-privacy.md`](Ethics/04-training-data-privacy.md), [`Ethics/05-environmental-costs.md`](Ethics/05-environmental-costs.md), [`Ethics/06-bias-and-representation.md`](Ethics/06-bias-and-representation.md), [`Governance/00-overview.md`](Governance/00-overview.md), [`Governance/02-ai-usage-policy.md`](Governance/02-ai-usage-policy.md), [`Governance/03-sprint-planning-gates.md`](Governance/03-sprint-planning-gates.md), [`Governance/04-escalation-procedures.md`](Governance/04-escalation-procedures.md), [`Governance/05-quarterly-health-review.md`](Governance/05-quarterly-health-review.md), [`Governance/06-compliance-and-audit.md`](Governance/06-compliance-and-audit.md), [`Learning/00-overview.md`](Learning/00-overview.md), [`Security/00-overview.md`](Security/00-overview.md), [`Security/02-sast-dast-integration.md`](Security/02-sast-dast-integration.md), [`Security/04-secrets-management.md`](Security/04-secrets-management.md), [`Security/05-vulnerability-response.md`](Security/05-vulnerability-response.md), [`Security/06-security-review-checklist.md`](Security/06-security-review-checklist.md)
-
-- **Gartner — "Gartner Unveils Top Predictions for IT Organizations and Users in 2026 and Beyond," October 21, 2025**
-  <https://www.gartner.com/en/newsroom/press-releases/2025-10-21-gartner-unveils-top-predictions-for-it-organizations-and-users-in-2026-and-beyond>
-  *Files:* [`Issues/06-skill-atrophy.md`](Issues/06-skill-atrophy.md)
 
 - **GitClear (William Harding) — "AI Copilot Code Quality: 2025 Data Suggests 4x Growth in Code Clones," January 2026**
   <https://www.gitclear.com/ai_assistant_code_quality_2025_research>
@@ -597,7 +553,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://www.veracode.com/blog/spring-2026-genai-code-security/>
   *Files:* [`Ethics/00-overview.md`](Ethics/00-overview.md), [`Governance/00-overview.md`](Governance/00-overview.md), [`Governance/01-review-policies.md`](Governance/01-review-policies.md), [`Governance/06-compliance-and-audit.md`](Governance/06-compliance-and-audit.md), [`Issues/00-overview.md`](Issues/00-overview.md), [`Metrics/00-overview.md`](Metrics/00-overview.md), [`Metrics/01-ai-code-quality.md`](Metrics/01-ai-code-quality.md), [`Metrics/02-health-dashboard.md`](Metrics/02-health-dashboard.md), [`Prompting/00-overview.md`](Prompting/00-overview.md), [`Prompting/02-task-prompt-patterns.md`](Prompting/02-task-prompt-patterns.md), [`QA & Testing/00-overview.md`](QA & Testing/00-overview.md), [`QA & Testing/02-ai-generated-test-coverage.md`](QA & Testing/02-ai-generated-test-coverage.md), [`Security/00-overview.md`](Security/00-overview.md), [`Security/01-threat-modeling.md`](Security/01-threat-modeling.md), [`Security/02-sast-dast-integration.md`](Security/02-sast-dast-integration.md), [`Security/05-vulnerability-response.md`](Security/05-vulnerability-response.md), [`Security/06-security-review-checklist.md`](Security/06-security-review-checklist.md), [`Tooling & Configuration/02-hooks-and-automation.md`](Tooling%20%26%20Configuration/02-hooks-and-automation.md)
 
-
 ## Industry News and Analysis
 
 - **Mohammad Hossein Jarrahi (UNC Chapel Hill) — "Skill Atrophy: Frictionless AI and Cognitive Debt," Cognitive World, March 19, 2026**
@@ -644,7 +599,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://www.itpro.com/software/development/software-developers-not-checking-ai-generated-code-verification-debt>
   *Files:* [`Issues/04-security-vulnerabilities.md`](Issues/04-security-vulnerabilities.md)
 
-
 ## GitHub
 
 - **GitHub — "Dependabot Documentation," GitHub Docs, 2026**
@@ -675,7 +629,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://octoverse.github.com/2025>
   *Files:* [`Metrics/06-codebase-health.md`](Metrics/06-codebase-health.md)
 
-
 ## Y Combinator / Creator Content
 
 - **Boris Cherny — "How Boris Uses Claude Code," January 2026**
@@ -685,7 +638,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026**
   <https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny>
   *Files:* [`Documentation/00-overview.md`](Documentation/00-overview.md), [`Documentation/01-architecture-decision-records.md`](Documentation/01-architecture-decision-records.md), [`Documentation/02-runbook-standards.md`](Documentation/02-runbook-standards.md), [`Documentation/04-rationale-capture.md`](Documentation/04-rationale-capture.md), [`Ethics/00-overview.md`](Ethics/00-overview.md), [`Ethics/01-intellectual-property.md`](Ethics/01-intellectual-property.md), [`Ethics/03-security-responsibility.md`](Ethics/03-security-responsibility.md), [`Ethics/04-training-data-privacy.md`](Ethics/04-training-data-privacy.md), [`Ethics/06-bias-and-representation.md`](Ethics/06-bias-and-representation.md), [`Governance/02-ai-usage-policy.md`](Governance/02-ai-usage-policy.md), [`Governance/03-sprint-planning-gates.md`](Governance/03-sprint-planning-gates.md), [`Governance/04-escalation-procedures.md`](Governance/04-escalation-procedures.md), [`Governance/05-quarterly-health-review.md`](Governance/05-quarterly-health-review.md), [`Learning/00-overview.md`](Learning/00-overview.md), [`Learning/02-skill-maintenance.md`](Learning/02-skill-maintenance.md), [`Learning/03-team-knowledge-sharing.md`](Learning/03-team-knowledge-sharing.md), [`Learning/04-ai-free-practice-protocols.md`](Learning/04-ai-free-practice-protocols.md), [`Learning/05-continuing-education.md`](Learning/05-continuing-education.md), [`Metrics/01-ai-code-quality.md`](Metrics/01-ai-code-quality.md), [`Prompting/00-overview.md`](Prompting/00-overview.md), [`Prompting/01-prompt-architecture.md`](Prompting/01-prompt-architecture.md), [`Prompting/02-task-prompt-patterns.md`](Prompting/02-task-prompt-patterns.md), [`Prompting/03-prompt-antipatterns.md`](Prompting/03-prompt-antipatterns.md), [`Prompting/04-context-injection.md`](Prompting/04-context-injection.md), [`Prompting/05-iterative-refinement.md`](Prompting/05-iterative-refinement.md), [`Prompting/06-prompt-library.md`](Prompting/06-prompt-library.md), [`Tooling & Configuration/01-claude-md-configuration.md`](Tooling%20%26%20Configuration/01-claude-md-configuration.md), [`Tooling & Configuration/02-hooks-and-automation.md`](Tooling%20%26%20Configuration/02-hooks-and-automation.md), [`Workflows/00-overview.md`](Workflows/00-overview.md), [`Workflows/01-explore-plan-implement.md`](Workflows/01-explore-plan-implement.md), [`Workflows/07-agentic-delegation.md`](Workflows/07-agentic-delegation.md)
-
 
 ## YouTube Videos
 
@@ -714,7 +666,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://www.youtube.com/watch?v=tNZnLkRBYA8>
   *Timestamps:* `20:00` AI dependency and skill atrophy; `1:12:45` Compute cost and AI tool responsibility; `2:34:07` Agentic session efficiency; `3:58:22` The value-add test for AI tool use; `4:18:32` Engineering culture and leadership; `5:01:16` Future of software engineering
   *Files:* [`Ethics/00-overview.md`](Ethics/00-overview.md), [`Ethics/02-developer-impact.md`](Ethics/02-developer-impact.md), [`Ethics/05-environmental-costs.md`](Ethics/05-environmental-costs.md), [`Issues/00-overview.md`](Issues/00-overview.md), [`Learning/00-overview.md`](Learning/00-overview.md), [`Learning/01-engineer-onboarding.md`](Learning/01-engineer-onboarding.md), [`Learning/02-skill-maintenance.md`](Learning/02-skill-maintenance.md), [`Learning/04-ai-free-practice-protocols.md`](Learning/04-ai-free-practice-protocols.md)
-
 
 ## Practitioner Blogs and Newsletters
 
@@ -754,18 +705,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://medium.com/@dtunai/mastering-git-worktrees-with-claude-code-for-parallel-development-workflow-41dc91e645fe>
   *Files:* [`Workflows/04-session-hygiene.md`](Workflows/04-session-hygiene.md)
 
-- **Roman Fedytskyi — "Lightweight AI Session Tracking: The Five-Field Log That Actually Gets Used," Medium, March 2026**
-  <https://medium.com/@fedytskyi/lightweight-ai-session-tracking>
-  *Files:* [`Metrics/05-session-efficiency.md`](Metrics/05-session-efficiency.md)
-
-- **Roman Fedytskyi — "Measuring the Real Cost of AI-Generated Code: Beyond Velocity Metrics," Medium, March 2026**
-  <https://medium.com/@fedytskyi/measuring-real-cost-ai-generated-code>
-  *Files:* [`Metrics/03-rework-rate.md`](Metrics/03-rework-rate.md)
-
-- **Roman Fedytskyi — "Tracking Code Bloat in AI-Heavy Development: A Practical Approach," Medium, March 2026**
-  <https://medium.com/@fedytskyi/tracking-code-bloat-ai-development>
-  *Files:* [`Metrics/06-codebase-health.md`](Metrics/06-codebase-health.md)
-
 - **Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026**
   <https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4>
   *Files:* [`Documentation/02-runbook-standards.md`](Documentation/02-runbook-standards.md), [`Ethics/00-overview.md`](Ethics/00-overview.md), [`Governance/00-overview.md`](Governance/00-overview.md), [`Governance/01-review-policies.md`](Governance/01-review-policies.md), [`Governance/02-ai-usage-policy.md`](Governance/02-ai-usage-policy.md), [`Governance/03-sprint-planning-gates.md`](Governance/03-sprint-planning-gates.md), [`Governance/04-escalation-procedures.md`](Governance/04-escalation-procedures.md), [`Governance/05-quarterly-health-review.md`](Governance/05-quarterly-health-review.md), [`Governance/06-compliance-and-audit.md`](Governance/06-compliance-and-audit.md), [`MCP Servers/00-overview.md`](MCP Servers/00-overview.md), [`MCP Servers/01-github-integration.md`](MCP Servers/01-github-integration.md), [`MCP Servers/02-slack-integration.md`](MCP Servers/02-slack-integration.md), [`MCP Servers/03-google-drive-integration.md`](MCP Servers/03-google-drive-integration.md), [`MCP Servers/04-linear-integration.md`](MCP Servers/04-linear-integration.md), [`MCP Servers/05-internal-site-integration.md`](MCP Servers/05-internal-site-integration.md), [`MCP Servers/06-configuration-security-governance.md`](MCP Servers/06-configuration-security-governance.md), [`Metrics/02-health-dashboard.md`](Metrics/02-health-dashboard.md), [`Security/00-overview.md`](Security/00-overview.md), [`Security/01-threat-modeling.md`](Security/01-threat-modeling.md), [`Security/02-sast-dast-integration.md`](Security/02-sast-dast-integration.md), [`Security/06-security-review-checklist.md`](Security/06-security-review-checklist.md), [`Tooling & Configuration/00-overview.md`](Tooling%20%26%20Configuration/00-overview.md), [`Tooling & Configuration/01-claude-md-configuration.md`](Tooling%20%26%20Configuration/01-claude-md-configuration.md), [`Tooling & Configuration/02-hooks-and-automation.md`](Tooling%20%26%20Configuration/02-hooks-and-automation.md), [`Tooling & Configuration/03-mcp-integration.md`](Tooling%20%26%20Configuration/03-mcp-integration.md), [`Workflows/01-explore-plan-implement.md`](Workflows/01-explore-plan-implement.md), [`Workflows/05-verification-driven-development.md`](Workflows/05-verification-driven-development.md), [`Workflows/06-writer-reviewer-pattern.md`](Workflows/06-writer-reviewer-pattern.md)
@@ -773,14 +712,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **Stefan van Egmond — "I Built a 2300-File Codebase with AI. Here's the Jig I Built to Prevent Architectural Drift," Medium, January 27, 2026**
   <https://medium.com/@stefanvanegmond/i-built-a-2300-file-codebase-with-ai-heres-the-jig-i-built-to-prevent-architectural-drift-56453fe2d5b4>
   *Files:* [`Issues/03-architectural-drift.md`](Issues/03-architectural-drift.md)
-
-- **The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026**
-  <https://newsletter.pragmaticengineer.com/p/ai-tooling-2026>
-  *Files:* [`Documentation/00-overview.md`](Documentation/00-overview.md), [`Documentation/01-architecture-decision-records.md`](Documentation/01-architecture-decision-records.md), [`Documentation/03-knowledge-transfer.md`](Documentation/03-knowledge-transfer.md), [`Documentation/04-rationale-capture.md`](Documentation/04-rationale-capture.md), [`Ethics/01-intellectual-property.md`](Ethics/01-intellectual-property.md), [`Ethics/02-developer-impact.md`](Ethics/02-developer-impact.md), [`Ethics/03-security-responsibility.md`](Ethics/03-security-responsibility.md), [`Ethics/04-training-data-privacy.md`](Ethics/04-training-data-privacy.md), [`Ethics/05-environmental-costs.md`](Ethics/05-environmental-costs.md), [`Ethics/06-bias-and-representation.md`](Ethics/06-bias-and-representation.md), [`Governance/00-overview.md`](Governance/00-overview.md), [`Governance/02-ai-usage-policy.md`](Governance/02-ai-usage-policy.md), [`Governance/03-sprint-planning-gates.md`](Governance/03-sprint-planning-gates.md), [`Governance/04-escalation-procedures.md`](Governance/04-escalation-procedures.md), [`Governance/05-quarterly-health-review.md`](Governance/05-quarterly-health-review.md), [`Governance/06-compliance-and-audit.md`](Governance/06-compliance-and-audit.md), [`Issues/00-overview.md`](Issues/00-overview.md), [`Learning/00-overview.md`](Learning/00-overview.md), [`Learning/01-engineer-onboarding.md`](Learning/01-engineer-onboarding.md), [`Learning/02-skill-maintenance.md`](Learning/02-skill-maintenance.md), [`Learning/03-team-knowledge-sharing.md`](Learning/03-team-knowledge-sharing.md), [`Learning/04-ai-free-practice-protocols.md`](Learning/04-ai-free-practice-protocols.md), [`Learning/05-continuing-education.md`](Learning/05-continuing-education.md), [`Metrics/00-overview.md`](Metrics/00-overview.md), [`Metrics/02-health-dashboard.md`](Metrics/02-health-dashboard.md), [`Prompting/00-overview.md`](Prompting/00-overview.md), [`QA & Testing/05-qa-engineer-workflow.md`](QA & Testing/05-qa-engineer-workflow.md)
-
-- **Sabrina Ramonov — "AI Coding Productivity at Scale," March 2026**
-  <https://sabrina.dev/blog/ai-coding-productivity-2026>
-  *Files:* [`Tooling & Configuration/04-custom-skills.md`](Tooling%20%26%20Configuration/04-custom-skills.md), [`Tooling & Configuration/06-cicd-integration.md`](Tooling%20%26%20Configuration/06-cicd-integration.md)
 
 - **Artur Markus — "The AI Productivity Measurement Crisis," December 18, 2025**
   <https://www.arturmarkus.com/the-ai-productivity-measurement-crisis-why-every-company-is-tracking-the-wrong-metrics-and-building-on-quicksand/>
@@ -801,7 +732,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **Simon Willison — "LLM Hallucination: A Practical Framework for 2026," simonwillison.net, March 2026**
   <https://simonwillison.net/2026/Mar/llm-hallucination-practical-framework/>
   *Files:* [`Debugging & Troubleshooting/00-overview.md`](Debugging%20&%20Troubleshooting/00-overview.md), [`Debugging & Troubleshooting/02-hallucination-and-confabulation.md`](Debugging%20&%20Troubleshooting/02-hallucination-and-confabulation.md), [`Debugging & Troubleshooting/01-recognizing-session-failure-patterns.md`](Debugging%20&%20Troubleshooting/01-recognizing-session-failure-patterns.md)
-
 
 ## Technical Blog Posts
 
@@ -929,10 +859,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://nimbalyst.com/blog/coding-with-ai-agents-best-practices-2026/>
   *Files:* [`Workflows/04-session-hygiene.md`](Workflows/04-session-hygiene.md)
 
-- **Edward Anderson, Geoffrey Parker, Burcu Tan — "The Hidden Costs of Coding With Generative AI," *MIT Sloan Management Review*, August 18, 2025**
-  <https://sloanreview.mit.edu/article/the-hidden-costs-of-coding-with-generative-ai/>
-  *Files:* [`Issues/02-codebase-bloat.md`](Issues/02-codebase-bloat.md)
-
 - **Steve Kinney — "Test-Driven Development with Claude Code," AI Development Course, 2026**
   <https://stevekinney.com/courses/ai-development/test-driven-development-with-claude>
   *Files:* [`Workflows/05-verification-driven-development.md`](Workflows/05-verification-driven-development.md)
@@ -968,10 +894,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **AI Tools for Developers 2026 — Cortex, 2026**
   <https://www.cortex.io/post/the-engineering-leaders-guide-to-ai-tools-for-developers-in-2026>
   *Files:* [`Workflows/06-writer-reviewer-pattern.md`](Workflows/06-writer-reviewer-pattern.md)
-
-- **Software Freedom Law Center / Electronic Frontier Foundation — "AI and Open Source: Code Generation, Licensing, and Developer Responsibility," 2026**
-  <https://www.eff.org/deeplinks/2026/02/ai-code-generation-open-source-legal-landscape>
-  *Files:* [`Ethics/00-overview.md`](Ethics/00-overview.md), [`Ethics/01-intellectual-property.md`](Ethics/01-intellectual-property.md)
 
 - **Thorben Louw et al. (Equal Experts) — "Accelerating Architectural Decision Records (ADRs) with Generative AI," October 27, 2025**
   <https://www.equalexperts.com/blog/our-thinking/accelerating-architectural-decision-records-adrs-with-generative-ai/>

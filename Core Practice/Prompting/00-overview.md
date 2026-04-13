@@ -82,7 +82,7 @@ The "vague improvement" anti-pattern is particularly prevalent under velocity pr
 
 **Description:** A team prompt library is not a collection of templates — it is a versioned, maintained artifact that encodes the team's accumulated knowledge about how to work effectively with Claude Code on their specific codebase. The distinction matters: templates can be written once and forgotten; a library requires active maintenance, review, and deprecation as the codebase and team conventions evolve.[^6]
 
-Teams without managed prompt libraries develop prompt fragmentation: eight engineers using eight different approaches for the same task type, with no shared baseline and no mechanism for collective improvement. The Pragmatic Engineer's 2026 AI tooling survey found that this fragmentation is particularly pronounced at companies with under 20 engineers — exactly our team's size — where prompt standardization is rarely treated as an engineering priority until the costs of inconsistency become visible.[^14]
+Teams without managed prompt libraries develop prompt fragmentation: eight engineers using eight different approaches for the same task type, with no shared baseline and no mechanism for collective improvement. The Pragmatic Engineer's 2026 AI tooling survey found that this fragmentation is particularly pronounced at companies with under 20 engineers — exactly our team's size — where prompt standardization is rarely treated as an engineering priority until the costs of inconsistency become visible.
 
 **Proposed Solution:**
 - Version-control the prompt library in `.claude/commands/` alongside CLAUDE.md. Include a changelog in the commands directory README explaining what changed and why for each update.[^6]
@@ -106,51 +106,48 @@ Teams without managed prompt libraries develop prompt fragmentation: eight engin
 ---
 
 [^1]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Structured prompting discipline: the argument that systematic upfront specification reduces correction cycles more than any other individual practice; team prompt libraries as shared infrastructure.
+ Structured prompting discipline: the argument that systematic upfront specification reduces correction cycles more than any other individual practice; team prompt libraries as shared infrastructure.
 
 [^2]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Prompt structure guidance, constraint specification for refactoring tasks, verification criteria requirements, and the CLAUDE.md-as-global-constraint model.
+ Prompt structure guidance, constraint specification for refactoring tasks, verification criteria requirements, and the CLAUDE.md-as-global-constraint model.
 
 [^3]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Explore-before-implement prompting discipline, `@` file reference syntax, verification step requirements in implementation prompts, and feature-level spec.md context injection.
+ Explore-before-implement prompting discipline, `@` file reference syntax, verification step requirements in implementation prompts, and feature-level spec.md context injection.
 
 [^4]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Minimum-sufficient-context discipline; CLAUDE.md as global constraint layer that prompts inherit implicitly; context scoping to avoid diluting relevant instructions with noise.
+ Minimum-sufficient-context discipline; CLAUDE.md as global constraint layer that prompts inherit implicitly; context scoping to avoid diluting relevant instructions with noise.
 
 [^5]: Phillip Carter — "How I Code With LLMs These Days," Honeycomb, March 2025. https://www.honeycomb.io/blog/how-i-code-with-llms-these-days
-    Task suitability framework: which task types benefit from AI-first prompting vs. human-first drafting; structured prompts aligned to AI strengths vs. those compensating for AI limitations.
+ Task suitability framework: which task types benefit from AI-first prompting vs. human-first drafting; structured prompts aligned to AI strengths vs. those compensating for AI limitations.
 
 [^6]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Custom command library: `.claude/commands/` structure, parameterized command creation, command lifecycle from creation to deprecation.
+ Custom command library: `.claude/commands/` structure, parameterized command creation, command lifecycle from creation to deprecation.
 
 [^7]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
-    Security prompt specificity: why generic "review for security" prompts produce low-precision results; vulnerability class enumeration and threat model reference as prompt structure requirements.
+ Security prompt specificity: why generic "review for security" prompts produce low-precision results; vulnerability class enumeration and threat model reference as prompt structure requirements.
 
 [^8]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
-    Context engineering as the primary discipline: "The real skill in working with coding agents is no longer prompt design — it's context engineering." Minimum sufficient context vs. injecting everything available.
+ Context engineering as the primary discipline: "The real skill in working with coding agents is no longer prompt design — it's context engineering." Minimum sufficient context vs. injecting everything available.
 
 [^9]: Anthropic — "Hooks Reference," Claude Code Documentation, 2026. https://code.claude.com/docs/en/hooks-reference
-    UserPromptSubmit hook for automatic context injection; removing the dependency on engineers to supply standard context manually at each session start.
+ UserPromptSubmit hook for automatic context injection; removing the dependency on engineers to supply standard context manually at each session start.
 
 [^10]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Iterative prompt improvement as a practice: updating CLAUDE.md and team commands as a response to AI mistakes; the compound value of each cycle of refinement.
+ Iterative prompt improvement as a practice: updating CLAUDE.md and team commands as a response to AI mistakes; the compound value of each cycle of refinement.
 
 [^11]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Shared context as team infrastructure: treating CLAUDE.md and command libraries as architectural artifacts that compound value over time
-    - Prompt retrospectives: structured review of what context approaches worked, what produced poor output, and how to encode improvements into shared configuration
-    - Context drift: how prompt quality degrades without active maintenance as the codebase evolves
+ - Shared context as team infrastructure: treating CLAUDE.md and command libraries as architectural artifacts that compound value over time
+ - Prompt retrospectives: structured review of what context approaches worked, what produced poor output, and how to encode improvements into shared configuration
+ - Context drift: how prompt quality degrades without active maintenance as the codebase evolves
 
 [^12]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Prompt anti-patterns and their contribution to technical debt: vague improvement prompts, missing constraints, and closed-loop review all identified as primary sources of AI-generated technical debt.
+ Prompt anti-patterns and their contribution to technical debt: vague improvement prompts, missing constraints, and closed-loop review all identified as primary sources of AI-generated technical debt.
 
 [^13]: daily.dev — "Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code
-    The velocity trap: why vague prompts feel faster in the moment but produce rework that costs more time than a structured prompt would have required.
-
-[^14]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Prompt fragmentation at small companies: why standardization is rarely treated as an engineering priority at sub-20-person teams, and the compounding cost of divergent prompting practices as AI use scales.
+ The velocity trap: why vague prompts feel faster in the moment but produce rework that costs more time than a structured prompt would have required.
 
 [^15]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Step 1 (Custom Skills): structuring slash commands with role, task, constraints, and verification components for consistent output across team members
-    - Step 2 (Prompt Library): building and maintaining a team command library in `.claude/commands/`; the lifecycle from draft to reviewed to active
-    - Step 5 (Anti-Patterns): the specific prompt constructions that reliably degrade output quality and how to replace them with structured alternatives
+ - Step 1 (Custom Skills): structuring slash commands with role, task, constraints, and verification components for consistent output across team members
+ - Step 2 (Prompt Library): building and maintaining a team command library in `.claude/commands/`; the lifecycle from draft to reviewed to active
+ - Step 5 (Anti-Patterns): the specific prompt constructions that reliably degrade output quality and how to replace them with structured alternatives
 

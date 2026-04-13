@@ -21,14 +21,14 @@ The muscle memory argument is specific and important: AI assistance does not pre
 **Recommended Practice:**
 - Frame AI-free practice explicitly as maintenance, not regression. The same way the team runs the test suite not because tests are failing but because the habit of running them is load-bearing for software quality, AI-free practice sessions are scheduled not because AI is failing but because the habit of working without AI is load-bearing for engineering capability.[^6]
 - Identify the specific AI-free capabilities the team most needs to preserve: for a team with 4 backend engineers and 3 frontend engineers, this likely includes backend debugging (race conditions, data consistency failures, database query behavior), frontend debugging (async state, rendering behavior, network failure handling), and architecture reasoning (tradeoff analysis, system design from first principles).[^1]
-- Track the team's AI-free capability through annual benchmarks (see Section 5). The goal is not a specific score but a stable baseline: if the baseline declines year over year, the team needs more AI-free practice; if it is stable, current practices are sufficient. Teams that do not measure do not notice gradual decline.[^7]
+- Track the team's AI-free capability through annual benchmarks (see Section 5). The goal is not a specific score but a stable baseline: if the baseline declines year over year, the team needs more AI-free practice; if it is stable, current practices are sufficient. Teams that do not measure do not notice gradual decline.
 - Communicate to the team why AI-free practice exists: not as a constraint on AI use but as an investment in the skills that make AI use trustworthy. Engineers who understand the fragile expert dynamic are more motivated to participate in AI-free practice than engineers who experience it as arbitrary restriction.[^2]
 
 ---
 
 ## Section 2: Monthly AI-Free Debugging Sessions
 
-**Description:** The monthly 90-minute AI-free debugging session is the primary format for maintaining the debugging intuition that AI-assisted development tends to atrophy. The format is straightforward: a real debugging challenge drawn from the production codebase (not a synthetic exercise), 90 minutes with no AI tools, followed by a 30-minute debrief. The problem selection is the most important design variable — the right problems exercise the specific diagnostic skills that matter for this codebase and these engineers.[^8]
+**Description:** The monthly 90-minute AI-free debugging session is the primary format for maintaining the debugging intuition that AI-assisted development tends to atrophy. The format is straightforward: a real debugging challenge drawn from the production codebase (not a synthetic exercise), 90 minutes with no AI tools, followed by a 30-minute debrief. The problem selection is the most important design variable — the right problems exercise the specific diagnostic skills that matter for this codebase and these engineers.
 
 Problem selection criteria: the problem should require genuine system knowledge (not solvable by general pattern matching), have a specific correct diagnosis (not an open-ended design question), be solvable within 90 minutes by an engineer who knows the system (not a problem that requires hours of investigation even with AI), and ideally be a real issue the team has previously encountered (which means there is already a known answer to compare against after the session). Problems drawn from the incident log or from historical bug reports are better sources than synthetically constructed challenges.[^3]
 
@@ -48,7 +48,7 @@ The 200-line threshold is a practical heuristic, not a precise rule: for PRs und
 
 **Recommended Practice:**
 - Document the comprehension-first review standard in the team's PR review guidelines: for PRs under 200 lines, reviewers form an independent opinion before using AI tools; for larger PRs, reviewers read enough to understand the change's intent and structure before using AI for specific analysis (edge case identification, security scanning, performance review).[^10]
-- Build the habit by making it visible: in review comments, note when a finding was made through independent reading vs. AI-assisted analysis. This is not a quality distinction (both are valid) but a practice signal that normalizes AI-free comprehension as a regular part of review rather than an exceptional act.[^8]
+- Build the habit by making it visible: in review comments, note when a finding was made through independent reading vs. AI-assisted analysis. This is not a quality distinction (both are valid) but a practice signal that normalizes AI-free comprehension as a regular part of review rather than an exceptional act.
 - Apply the comprehension-first standard with special force to AI-generated PRs. CodeRabbit's 2025 report found AI-generated PRs have 75% more logic issues than human-authored PRs — these issues are precisely the ones that an independent comprehension read is most likely to catch, because they tend to be subtle logical errors that pattern-match to correct code.[^12]
 - When a reviewer finds a significant issue through AI-free reading that AI-assisted analysis subsequently confirmed or missed, share this at the next stand-up. These stories create the social evidence that AI-free comprehension catches issues that AI-mediated review misses, which motivates the practice more effectively than policy alone.[^9]
 
@@ -58,7 +58,7 @@ The 200-line threshold is a practical heuristic, not a precise rule: for PRs und
 
 **Description:** Quarterly architecture sessions where AI tools are not consulted are the mechanism for maintaining the architectural reasoning capability that makes AI-assisted architecture work trustworthy. An architect and engineering team that never reason about system design without AI assistance develop a dependency on AI as a structural thinking partner — and when AI assistance is unavailable, incorrect, or systematically biased in a direction the team cannot detect, the team lacks the independent reasoning capacity to catch the problem.[^13]
 
-The value of AI-free architecture sessions is not the conclusions reached — those may be better with AI assistance than without. The value is the exercise of architectural reasoning: working from first principles, making tradeoff arguments without AI scaffolding, identifying constraints and failure modes through team discussion rather than AI suggestion. This is the same reasoning that is required when evaluating AI-generated architecture proposals, when making high-stakes system design decisions under incident conditions, and when reviewing AI-proposed refactors that involve significant architectural change.[^7]
+The value of AI-free architecture sessions is not the conclusions reached — those may be better with AI assistance than without. The value is the exercise of architectural reasoning: working from first principles, making tradeoff arguments without AI scaffolding, identifying constraints and failure modes through team discussion rather than AI suggestion. This is the same reasoning that is required when evaluating AI-generated architecture proposals, when making high-stakes system design decisions under incident conditions, and when reviewing AI-proposed refactors that involve significant architectural change.
 
 **Recommended Practice:**
 - The architect facilitates quarterly AI-free architecture sessions on a rotating set of topics: one session per quarter, three to four hours, focused on a real architectural question or decision facing the team. The problem should be live — not historical — so the session produces actionable output in addition to practice value.[^14]
@@ -78,7 +78,7 @@ An annual coding challenge and an architecture walkthrough test are the two most
 - The CTO schedules an annual AI-free capability assessment in Q4: a 90-minute individual debugging challenge (drawn from the session archive), followed by a 30-minute architecture walkthrough for each engineer on their assigned subsystem. The assessment is not punitive — it is a diagnostic tool whose results inform AI-free practice intensity for the following year.[^9]
 - Define success criteria before the assessment rather than after. For the debugging challenge: the engineer identifies the root cause within 90 minutes without AI assistance. For the architecture walkthrough: the engineer can explain the design decisions, the alternatives considered, and the maintenance implications of the system. Vague criteria produce vague findings.[^1]
 - If the assessment reveals a pattern of capability decline — multiple engineers unable to diagnose challenges that they would have diagnosed in previous years — the CTO should increase the frequency and intensity of AI-free practice sessions in the following quarter: two sessions per month instead of one, with a problem calibration review to ensure problems are exercising the right skills at the right difficulty level.[^4]
-- Share aggregate assessment findings with the team, not individual scores. The goal is shared awareness of team capability trends, not individual evaluation. Engineers who understand that the team's AI-free capability has declined are more motivated to invest in AI-free practice than engineers who are told "we need to do more practice" without the underlying data.[^7]
+- Share aggregate assessment findings with the team, not individual scores. The goal is shared awareness of team capability trends, not individual evaluation. Engineers who understand that the team's AI-free capability has declined are more motivated to invest in AI-free practice than engineers who are told "we need to do more practice" without the underlying data.
 
 ---
 
@@ -95,55 +95,48 @@ An annual coding challenge and an architecture walkthrough test are the two most
 ---
 
 [^1]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    AI as capability multiplier vs. substitute: why maintaining the foundational capability that AI multiplies is necessary for AI-assisted development to remain effective; the specific skills that degrade without deliberate practice.
+ AI as capability multiplier vs. substitute: why maintaining the foundational capability that AI multiplies is necessary for AI-assisted development to remain effective; the specific skills that degrade without deliberate practice.
 
 [^2]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    Fragile expert: 77% failure rate on AI-free maintenance tasks; the specific intervention (Explanation Gate / teach-back) that reduces this rate; why the fragile expert problem is invisible until it is consequential.
+ Fragile expert: 77% failure rate on AI-free maintenance tasks; the specific intervention (Explanation Gate / teach-back) that reduces this rate; why the fragile expert problem is invisible until it is consequential.
 
 [^3]: METR — "We Are Changing Our Developer Productivity Experiment Design," METR Research, February 2026. https://www.metr.org/blog/2026-02-24-uplift-update/
-    AI dependency as a measurable team pattern: the growing proportion of developers who decline tasks without AI access; the AI-free practice discipline as a countermeasure that maintains the capability floor necessary for high-stakes situations.
+ AI dependency as a measurable team pattern: the growing proportion of developers who decline tasks without AI access; the AI-free practice discipline as a countermeasure that maintains the capability floor necessary for high-stakes situations.
 
 [^4]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    Skill formation under AI assistance: the interaction patterns that preserve vs. degrade engineering skills; passive acceptance of AI output as the most damaging pattern; active hypothesis generation and verification as the most preserving pattern.
+ Skill formation under AI assistance: the interaction patterns that preserve vs. degrade engineering skills; passive acceptance of AI output as the most damaging pattern; active hypothesis generation and verification as the most preserving pattern.
 
 [^5]: George Fitzmaurice — "'We're Trading Deep Understanding for Quick Fixes': Junior Software Developers Lack Coding Skills Because of an Overreliance on AI Tools," *IT Pro*, February 24, 2025. https://www.itpro.com/software/development/junior-developer-ai-tools-coding-skills
-    Muscle memory atrophy: how exclusive AI use degrades low-level pattern recognition and fast independent implementation; the deliberate practice requirement for restoring and maintaining these skills.
+ Muscle memory atrophy: how exclusive AI use degrades low-level pattern recognition and fast independent implementation; the deliberate practice requirement for restoring and maintaining these skills.
 
 [^6]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    AI-free capability preservation in practice: the specific behaviors that distinguish engineers who maintain strong AI-free capability from those who develop contingency on AI availability; whiteboarding and independent debugging as the highest-leverage practices.
-
-[^7]: Gartner — "AI Augmented Development: Engineering Productivity Trends," January 2026. https://www.gartner.com/en/documents/ai-augmented-development-2026
-    AI-free capability measurement: how engineering organizations track whether AI adoption is preserving or eroding foundational engineering skills; the measurement cadences that detect gradual decline before it manifests in incidents.
-
-[^8]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    AI-free debugging session formats: the problem selection criteria and session structures that produce the highest skill maintenance value; how teams with strong AI-free practice disciplines structure their monthly sessions.
+ AI-free capability preservation in practice: the specific behaviors that distinguish engineers who maintain strong AI-free capability from those who develop contingency on AI availability; whiteboarding and independent debugging as the highest-leverage practices.
 
 [^9]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Scheduled vs. optional practice: how fixed practice cadences produce stronger team capability maintenance than optional sessions; the social and structural preconditions for sustained AI-free practice participation.
+ Scheduled vs. optional practice: how fixed practice cadences produce stronger team capability maintenance than optional sessions; the social and structural preconditions for sustained AI-free practice participation.
 
 [^10]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Comprehension-first code review: how pre-AI independent reading develops and maintains the code comprehension capacity that AI-mediated review tends to atrophy; the 200-line threshold as a practical calibration point.
+ Comprehension-first code review: how pre-AI independent reading develops and maintains the code comprehension capacity that AI-mediated review tends to atrophy; the 200-line threshold as a practical calibration point.
 
 [^11]: Yonatan Sason — "The Black Box Problem: Why AI-Generated Code Stops Being Maintainable," *Towards Data Science*, March 6, 2026. https://towardsdatascience.com/the-black-box-problem-why-ai-generated-code-stops-being-maintainable/
-    Code comprehension as a maintainability skill: the connection between code review comprehension practice and the ability to maintain AI-generated code over time; what engineers who skip independent comprehension in review lose over time.
+ Code comprehension as a maintainability skill: the connection between code review comprehension practice and the ability to maintain AI-generated code over time; what engineers who skip independent comprehension in review lose over time.
 
 [^12]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    AI PR logic issue prevalence: the 75% more logic issues finding; how comprehension-first independent review catches the subtle logical errors that pattern-match to correct code and are missed by AI-mediated analysis.
+ AI PR logic issue prevalence: the 75% more logic issues finding; how comprehension-first independent review catches the subtle logical errors that pattern-match to correct code and are missed by AI-mediated analysis.
 
 [^13]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Architectural reasoning independence: why AI-free architecture capability is necessary for evaluating AI-generated architectural proposals; what it means for a team to "trust" AI architecture recommendations when they cannot reason about them independently.
+ Architectural reasoning independence: why AI-free architecture capability is necessary for evaluating AI-generated architectural proposals; what it means for a team to "trust" AI architecture recommendations when they cannot reason about them independently.
 
 [^14]: Kyros — "AI-Assisted Development: Governance and Capability Risks for Engineering Teams," March 2026. https://kyros.ai/blog/ai-assisted-development-governance
-    Architecture session design: the problem selection criteria for AI-free architecture sessions that produce both practice value and actionable outputs; quarterly cadence as the sustainable frequency for high-investment working sessions.
+ Architecture session design: the problem selection criteria for AI-free architecture sessions that produce both practice value and actionable outputs; quarterly cadence as the sustainable frequency for high-investment working sessions.
 
 [^15]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Divergence between AI and human architectural reasoning: the instructive value of comparing AI-assisted and AI-free design analyses on the same problem; how divergence surfaces team assumptions and AI biases that agreement would conceal.
+ Divergence between AI and human architectural reasoning: the instructive value of comparing AI-assisted and AI-free design analyses on the same problem; how divergence surfaces team assumptions and AI biases that agreement would conceal.
 
 [^16]: Lex Fridman Podcast #461 ft. ThePrimeagen, YouTube, March 22, 2025. https://www.youtube.com/watch?v=tNZnLkRBYA8
-    - 20:00 — AI dependency and independence: the balance between using AI effectively and maintaining the independent capability that makes AI use purposeful; the specific practices that preserve independence without limiting AI effectiveness
-    - 4:18:32 — Leadership modeling of AI-free practice: how CTOs and senior engineers who demonstrate AI-free debugging and architecture reasoning establish the team norm that these capabilities are worth maintaining
-    - 5:01:16 — Future-proofing engineering capability: which skills remain high-value as AI handles more code generation, and why maintaining these skills through deliberate practice positions engineers for the highest-leverage work
-
+ - 20:00 — AI dependency and independence: the balance between using AI effectively and maintaining the independent capability that makes AI use purposeful; the specific practices that preserve independence without limiting AI effectiveness
+ - 4:18:32 — Leadership modeling of AI-free practice: how CTOs and senior engineers who demonstrate AI-free debugging and architecture reasoning establish the team norm that these capabilities are worth maintaining
+ - 5:01:16 — Future-proofing engineering capability: which skills remain high-value as AI handles more code generation, and why maintaining these skills through deliberate practice positions engineers for the highest-leverage work
 
 [^a]: [Learning: Skill Maintenance](02-skill-maintenance.md) — AI-free practice protocols are the structural mechanism for skill maintenance; the two documents define the goal and the practice.
 [^b]: [Issues: Skill Atrophy](../Issues/06-skill-atrophy.md) — AI-free practice protocols are the specific intervention designed to prevent the atrophy described there; these documents are problem statement and prescription.

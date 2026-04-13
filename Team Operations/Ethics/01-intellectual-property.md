@@ -6,7 +6,7 @@
 
 ## Overview
 
-When an engineer writes code by hand, the intellectual property provenance is clear: the code is the engineer's expression of an idea, the company owns it as work product, and if it draws on open-source libraries, those dependencies are documented through standard package management. When AI generates code, the provenance is less clear. The model was trained on a large corpus that includes code under many different licenses; when it generates an implementation, there is a meaningful probability that the output is similar to or derived from specific training data sources in ways that may have IP implications.[^1]
+When an engineer writes code by hand, the intellectual property provenance is clear: the code is the engineer's expression of an idea, the company owns it as work product, and if it draws on open-source libraries, those dependencies are documented through standard package management. When AI generates code, the provenance is less clear. The model was trained on a large corpus that includes code under many different licenses; when it generates an implementation, there is a meaningful probability that the output is similar to or derived from specific training data sources in ways that may have IP implications.
 
 This is not a hypothetical concern. The legal landscape in 2026 includes active litigation around AI training data and generated outputs. Several jurisdictions have issued preliminary guidance suggesting that AI-generated code can create license obligations when it is substantially similar to licensed training data.[^2] For a small team without legal counsel on staff, the practical question is not how to resolve these questions definitively — courts are still doing that — but how to reduce exposure through reasonable due diligence. This memo covers those practices.
 
@@ -22,19 +22,19 @@ The risk is not uniform. For implementations of widely-used algorithms, common u
 - Develop a mental model of high-vs-low IP risk AI generation contexts: high risk (standard algorithm implementations, common utility functions, well-known API patterns from major libraries), low risk (business domain logic, team-specific architectural patterns, novel combinations of standard components).[^3]
 - For high-risk contexts, run a brief similarity check before merge: GitHub Copilot provides duplicate detection inline; for non-Copilot contexts, searching for distinctive code fragments in public repositories is a manual but effective check.[^2]
 - When generating implementations of specific algorithms (sorting, compression, cryptography), prefer to reference well-known public-domain descriptions and ask Claude to implement them from the specification rather than from a code example. "Implement Dijkstra's algorithm as described in [specification]" produces a cleaner IP provenance than "implement this graph traversal function."[^4]
-- Keep a brief IP review log for any AI-generated implementation of a non-trivial algorithm or utility function: what was generated, whether a similarity check was run, the result, and the decision. This log is not legally required but provides a record of due diligence if questions arise later.[^1]
+- Keep a brief IP review log for any AI-generated implementation of a non-trivial algorithm or utility function: what was generated, whether a similarity check was run, the result, and the decision. This log is not legally required but provides a record of due diligence if questions arise later.
 
 ---
 
 ## Section 2: Open-Source License Compliance
 
-**Description:** Teams using AI-generated code in commercially licensed products need to be particularly attentive to the presence of copyleft-licensed patterns in AI output. AGPL-licensed code in particular carries strong copyleft obligations that extend to network-accessible services; inadvertent inclusion of AGPL patterns in a SaaS product could create obligations to release the entire product's source code.[^5]
+**Description:** Teams using AI-generated code in commercially licensed products need to be particularly attentive to the presence of copyleft-licensed patterns in AI output. AGPL-licensed code in particular carries strong copyleft obligations that extend to network-accessible services; inadvertent inclusion of AGPL patterns in a SaaS product could create obligations to release the entire product's source code.
 
 The practical challenge is that AI does not disclose the license status of patterns it reproduces. An engineer who directly copies code from GitHub would see the license file and evaluate it; an engineer who uses AI to generate functionally identical code receives no license disclosure. The due diligence obligation exists regardless — the mode of incorporation does not change the license status of the incorporated material.[^3]
 
 **Recommended Practice:**
 - Add a CLAUDE.md instruction for security-sensitive and algorithm-heavy code generation: "When implementing known algorithms or common utility functions, note any specific libraries or implementations you are drawing on. If the implementation closely resembles a specific open-source project, identify it." This prompts Claude to disclose the provenance of its outputs rather than treating it as implicit.[^6]
-- Configure the team's dependency scanning tool (Snyk, Dependabot, or equivalent) to flag any packages added to `package.json` or equivalent that carry copyleft licenses requiring commercial license review. AI-generated code that suggests adding new dependencies is a specific IP risk surface that automated tooling can address.[^5]
+- Configure the team's dependency scanning tool (Snyk, Dependabot, or equivalent) to flag any packages added to `package.json` or equivalent that carry copyleft licenses requiring commercial license review. AI-generated code that suggests adding new dependencies is a specific IP risk surface that automated tooling can address.
 - When a similarity check reveals close similarity to a GPL or AGPL-licensed implementation, escalate to the architect for IP review before merge. Do not proceed under time pressure — an inadvertent AGPL inclusion is a more expensive problem to unwind than a delayed feature.[^2]
 - Document the team's standard acceptable licenses in CLAUDE.md: "Dependencies and implementations should use MIT, Apache 2.0, BSD, or ISC licenses. Do not suggest GPL or AGPL-licensed alternatives." This creates a standing instruction that filters AI suggestions at the generation stage rather than the review stage.[^4]
 
@@ -42,15 +42,15 @@ The practical challenge is that AI does not disclose the license status of patte
 
 ## Section 3: Code Ownership and Attribution
 
-**Description:** AI-generated code raises a subtler ownership question beyond license compliance: who owns the code, and who is responsible for it? In most jurisdictions, work product created by employees using company tools is owned by the employer. AI-generated code produced during employment generally falls within this framework.[^7] But the question of who is *responsible* for AI-generated code — who can explain it, maintain it, and be held accountable for its quality — is less cleanly answered by employment law and more dependent on team governance practices.
+**Description:** AI-generated code raises a subtler ownership question beyond license compliance: who owns the code, and who is responsible for it? In most jurisdictions, work product created by employees using company tools is owned by the employer. AI-generated code produced during employment generally falls within this framework. But the question of who is *responsible* for AI-generated code — who can explain it, maintain it, and be held accountable for its quality — is less cleanly answered by employment law and more dependent on team governance practices.
 
 The comprehension debt problem (see Issues — Comprehension Debt) is directly connected to code ownership: code that nobody understands is code that nobody effectively owns. When a defect in AI-generated code causes a production incident, the question of who was responsible for it will focus on who reviewed and approved it, not who (or what) generated it. Review and approval are the ownership mechanisms that legal and organizational accountability frameworks recognize.[^8]
 
 **Recommended Practice:**
-- Require explicit author attribution in all PRs: the PR author is the accountable person for the AI-generated code in that PR, not the AI tool. This framing — which is legally correct — should be explicit in team culture rather than implicit.[^7]
+- Require explicit author attribution in all PRs: the PR author is the accountable person for the AI-generated code in that PR, not the AI tool. This framing — which is legally correct — should be explicit in team culture rather than implicit.
 - Apply the "can you explain it" review rule specifically as an accountability mechanism: if the PR author cannot explain the AI-generated code, they cannot own it in any meaningful sense. The rule is not punitive — it is the mechanism by which the PR author takes genuine rather than nominal ownership of what they are shipping.[^8]
 - Include a "reviewed AI-generated code" attestation in the PR merge criteria for AI-primary PRs: the PR author attests that they have read, understood, and taken ownership of the AI-generated content. This creates an explicit record of the ownership transfer that occurs at review.[^9]
-- Brief the team on the ownership framework: "Claude generates the code; we own it. That means we are responsible for understanding it, maintaining it, and being accountable for its quality." This framing matters for culture — engineers who understand they own AI-generated code approach review differently than engineers who see AI as a separate author.[^7]
+- Brief the team on the ownership framework: "Claude generates the code; we own it. That means we are responsible for understanding it, maintaining it, and being accountable for its quality." This framing matters for culture — engineers who understand they own AI-generated code approach review differently than engineers who see AI as a separate author.
 
 ---
 
@@ -77,7 +77,7 @@ The checklist is not overhead — it is the due diligence record that protects t
 **Recommended Practice:**
 - Create a two-minute IP review checklist for AI-primary PRs: (1) Does this implement a known algorithm or common utility pattern? (2) Does any generated code look familiar as a specific open-source implementation? (3) Does any generated code suggest adding new dependencies with non-permissive licenses? (4) Does this involve proprietary business logic that should not be in session data? Record the checklist responses in the PR.[^2]
 - Define escalation criteria: escalate to the architect if the answer to questions 1 or 2 is "yes and I recognize it as a specific project." Escalate to legal counsel if the architect believes the similarity is close enough to require formal IP analysis.[^3]
-- Build a brief IP case library: when an IP review finds close similarity and a decision is made, document it (what was found, what was decided, why). This case library accelerates future reviews by providing precedent for similar cases and provides evidence of due diligence for any future audit.[^1]
+- Build a brief IP case library: when an IP review finds close similarity and a decision is made, document it (what was found, what was decided, why). This case library accelerates future reviews by providing precedent for similar cases and provides evidence of due diligence for any future audit.
 - Run the IP review checklist for all new MCP server integrations as well as for code generation. MCP servers that fetch and incorporate external code, templates, or snippets into AI-generated output are a less obvious IP risk surface that the code generation checklist does not cover.[^4]
 
 ---
@@ -94,45 +94,34 @@ The checklist is not overhead — it is the due diligence record that protects t
 
 ---
 
-[^1]: Software Freedom Law Center / Electronic Frontier Foundation — "AI and Open Source: Code Generation, Licensing, and Developer Responsibility," 2026. https://www.eff.org/deeplinks/2026/02/ai-code-generation-open-source-legal-landscape
-    Current IP landscape for AI-generated code: legal cases, preliminary guidance, and practical due diligence recommendations for small teams without legal counsel.
-
 [^2]: daily.dev — "Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code
-    Similarity check as due diligence practice: how to identify AI-generated code that closely resembles specific licensed implementations before merge.
+ Similarity check as due diligence practice: how to identify AI-generated code that closely resembles specific licensed implementations before merge.
 
 [^3]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    IP risk profile by implementation type: high-risk contexts (standard algorithms, common utilities) vs. low-risk contexts (business domain logic, novel combinations).
+ IP risk profile by implementation type: high-risk contexts (standard algorithms, common utilities) vs. low-risk contexts (business domain logic, novel combinations).
 
 [^4]: Vocal/Futurism — "8 AI Code Generation Mistakes Devs Must Fix to Win 2026." https://vocal.media/futurism/8-ai-code-generation-mistakes-devs-must-fix-to-win-2026
-    Acceptable license list in CLAUDE.md: using system prompt constraints to filter AI suggestions at generation rather than review; specification-based vs. example-based algorithm implementation.
-
-[^5]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    AGPL risk in commercial products: the copyleft obligation extension to network-accessible services; dependency scanning as an automated check for license risk in AI-suggested dependencies.
+ Acceptable license list in CLAUDE.md: using system prompt constraints to filter AI suggestions at generation rather than review; specification-based vs. example-based algorithm implementation.
 
 [^6]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md IP and data governance instructions: provenance disclosure prompts, data sensitivity reminders, and session-scope constraints for proprietary material.
-
-[^7]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    Work product ownership framework for AI-generated code: employment law as the primary IP ownership framework; accountability as distinct from ownership.
+ CLAUDE.md IP and data governance instructions: provenance disclosure prompts, data sensitivity reminders, and session-scope constraints for proprietary material.
 
 [^8]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    Review and approval as ownership mechanisms: the accountability framework that makes the PR reviewer the responsible party for AI-generated code regardless of AI authorship.
+ Review and approval as ownership mechanisms: the accountability framework that makes the PR reviewer the responsible party for AI-generated code regardless of AI authorship.
 
 [^9]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    AI code review attestation: how explicit ownership statements in PR process create the accountability record that legal and organizational frameworks need.
+ AI code review attestation: how explicit ownership statements in PR process create the accountability record that legal and organizational frameworks need.
 
 [^10]: Anthropic — "Privacy and Data Handling," Claude Code Documentation, 2026. https://code.claude.com/docs/en/privacy-data-handling
-    Data use policy for Claude Code sessions: training data practices, retention terms, enterprise plan provisions, and the annual review obligation for teams with compliance requirements.
+ Data use policy for Claude Code sessions: training data practices, retention terms, enterprise plan provisions, and the annual review obligation for teams with compliance requirements.
 
 [^11]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Enterprise API plan considerations: the data governance differences between individual and enterprise plans relevant to teams working with proprietary material.
-
+ Enterprise API plan considerations: the data governance differences between individual and enterprise plans relevant to teams working with proprietary material.
 
 [^13]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - CLAUDE.md for IP governance: using the system prompt to embed IP sensitivity markers, acceptable license constraints, and data handling reminders at the session level
-    - Session data practices: how to configure sessions involving proprietary material to minimize inadvertent disclosure while maintaining AI assistance effectiveness
-    - Enterprise API configuration: the specific settings that affect data use and training data contribution for teams with IP sensitivity requirements
-
+ - CLAUDE.md for IP governance: using the system prompt to embed IP sensitivity markers, acceptable license constraints, and data handling reminders at the session level
+ - Session data practices: how to configure sessions involving proprietary material to minimize inadvertent disclosure while maintaining AI assistance effectiveness
+ - Enterprise API configuration: the specific settings that affect data use and training data contribution for teams with IP sensitivity requirements
 
 [^a]: [Governance: AI Usage Policy](../Governance/02-ai-usage-policy.md) — usage policy operationalizes the IP risk analysis here into prohibited and permitted use categories; the ethical analysis and the policy are paired.
 

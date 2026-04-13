@@ -60,7 +60,7 @@ Second, the next cohort of engineers the team hires will have been shaped by thi
 
 ### What Gartner Predicts
 
-Gartner's October 2025 predictions for IT organizations through 2026 and beyond include three directly relevant data points:[^9]
+Gartner's October 2025 predictions for IT organizations through 2026 and beyond include three directly relevant data points:
 
 - *"Through 2026, atrophy of critical-thinking skills due to GenAI use will push 50% of global organizations to require 'AI-free' skills assessments"* — recognizing that AI-assisted output is becoming indistinguishable from genuine competence.
 - *"By 2027, 75% of hiring processes will include certifications and testing for workplace AI proficiency during recruiting"*
@@ -109,43 +109,40 @@ Skill atrophy from AI over-reliance is not a problem that announces itself. It a
 ---
 
 [^1]: Michael Caosun and Sinan Aral (MIT Sloan) — "The Augmentation Trap: AI Productivity and the Cost of Cognitive Offloading," arXiv:2604.03501, April 3, 2026. https://arxiv.org/abs/2604.03501
-    Formal dynamic model showing that even decision-makers who anticipate skill erosion will rationally adopt AI when front-loaded gains outweigh long-run costs. Less experienced workers "deskill to zero" while experienced workers may maintain capability.
+ Formal dynamic model showing that even decision-makers who anticipate skill erosion will rationally adopt AI when front-loaded gains outweigh long-run costs. Less experienced workers "deskill to zero" while experienced workers may maintain capability.
 
 [^2]: Michael Gerlich (SBS Swiss Business School) — "AI Tools in Society: Impacts on Cognitive Offloading and the Future of Critical Thinking," *Societies*, Vol. 15, Article 6, January 2025. https://www.mdpi.com/2075-4698/15/1/6
-    Mixed-methods study of 666 participants. Significant negative correlation between frequent AI tool use and critical thinking performance. Younger participants: higher AI dependency, lower critical thinking scores.
+ Mixed-methods study of 666 participants. Significant negative correlation between frequent AI tool use and critical thinking performance. Younger participants: higher AI dependency, lower critical thinking scores.
 
 [^3]: Mohammad Hossein Jarrahi (UNC Chapel Hill) — "Skill Atrophy: Frictionless AI and Cognitive Debt," Cognitive World, March 19, 2026. https://cognitiveworld.com/articles/2026/3/19/skill-atrophy-frictionless-ai-and-cognitive-debt
-    Removal of "useful friction" creates a compounding cycle: reduced practice → skill decline → greater AI reliance → further reduced practice. Recommends "attempt-first defaults" and active reasoning checkpoints.
+ Removal of "useful friction" creates a compounding cycle: reduced practice → skill decline → greater AI reliance → further reduced practice. Recommends "attempt-first defaults" and active reasoning checkpoints.
 
 [^4]: Seyed Mahdi Hosseini Maasoum and Guy Lichtinger (Harvard/Stanford) — "Generative AI as Seniority-Biased Technological Change," SSRN, August 2025. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5425555
-    ~62 million workers at 285,000 U.S. firms. Junior employment in AI-adopting firms declined 7.7% relative to non-adopters within six quarters of adoption. Senior employment continued rising. Driven by slower hiring, not increased separations.
+ ~62 million workers at 285,000 U.S. firms. Junior employment in AI-adopting firms declined 7.7% relative to non-adopters within six quarters of adoption. Senior employment continued rising. Driven by slower hiring, not increased separations.
 
 [^5]: LeadDev — "The AI Impact Report 2025," August 4, 2025. https://leaddev.com/the-ai-impact-report-2025
-    880+ engineering leaders. 18% expected fewer junior hires in next 12 months; 54% believe AI will reduce junior hiring long-term. 38% say AI tools have reduced direct mentoring of junior engineers by senior engineers.
+ 880+ engineering leaders. 18% expected fewer junior hires in next 12 months; 54% believe AI will reduce junior hiring long-term. 38% say AI tools have reduced direct mentoring of junior engineers by senior engineers.
 
 [^6]: Phoebe Sajor (Stack Overflow) — "AI vs Gen Z: How AI Has Changed the Career Pathway for Junior Developers," December 26, 2025. https://stackoverflow.blog/2025/12/26/ai-vs-gen-z/
-    Entry-level tech hiring fell 25% YoY in 2024. Tech internship postings down 30% since 2023. Employment for software developers aged 22–25 declined ~20% from late-2022 peak by mid-2025. 70% of hiring managers believe AI can perform intern-level work.
+ Entry-level tech hiring fell 25% YoY in 2024. Tech internship postings down 30% since 2023. Employment for software developers aged 22–25 declined ~20% from late-2022 peak by mid-2025. 70% of hiring managers believe AI can perform intern-level work.
 
 [^7]: Erik Brynjolfsson, Bharat Chandar, Ruyu Chen (Stanford) — "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence," November 13, 2025. https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/
-    ADP payroll data, millions of workers. Early-career workers aged 22–25 in AI-exposed occupations experienced 16% relative employment decline. Software developers: youngest cohort 20% below late-2022 peak by July 2025.
+ ADP payroll data, millions of workers. Early-career workers aged 22–25 in AI-exposed occupations experienced 16% relative employment decline. Software developers: youngest cohort 20% below late-2022 peak by July 2025.
 
 [^8]: Márton Benedek and Balázs R. Sziklai (Corvinus University) — "Impact of AI Tools on Learning Outcomes: Decreasing Knowledge and Over-Reliance," arXiv:2510.16019, October 2025. https://arxiv.org/abs/2510.16019
-    Controlled experiment. Students restricted from AI outperformed those with access on core knowledge tests. Student resistance to the restriction was so intense it escalated to government officials — evidence of deep AI dependency entrenchment.
-
-[^9]: Gartner — "Gartner Unveils Top Predictions for IT Organizations and Users in 2026 and Beyond," October 21, 2025. https://www.gartner.com/en/newsroom/press-releases/2025-10-21-gartner-unveils-top-predictions-for-it-organizations-and-users-in-2026-and-beyond
-    By 2026: 50% of organizations will require AI-free skills assessments. By 2027: 75% of hiring will include AI proficiency testing. By 2030: technical skill half-life shortens to 2–5 years from 8–12.
+ Controlled experiment. Students restricted from AI outperformed those with access on core knowledge tests. Student resistance to the restriction was so intense it escalated to government officials — evidence of deep AI dependency entrenchment.
 
 [^10]: GitHub — "Training and Onboarding Developers on GitHub Copilot," whitepaper, February 28, 2025. https://github.com/resources/whitepapers/training-and-onboarding-developers-on-github-copilot
-    Structured AI onboarding sees 40% higher adoption rates. 2–4 week adaptation window with 10–15% productivity decline. Positions AI training as strategic change management, not a product tutorial.
+ Structured AI onboarding sees 40% higher adoption rates. 2–4 week adaptation window with 10–15% productivity decline. Positions AI training as strategic change management, not a product tutorial.
 
 [^11]: JetBrains — "The State of Developer Ecosystem 2025," October 2025. https://blog.jetbrains.com/research/2025/10/state-of-developer-ecosystem-2025/
-    24,534 developers across 194 countries. 85% regularly use AI tools; 61% of junior developers find the job market challenging; 68% expect AI proficiency as formal job requirement. Top concerns: "potential skill degradation" and "limited understanding of complex logic."
+ 24,534 developers across 194 countries. 85% regularly use AI tools; 61% of junior developers find the job market challenging; 68% expect AI proficiency as formal job requirement. Top concerns: "potential skill degradation" and "limited understanding of complex logic."
 
 [^12]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 2026. https://arxiv.org/abs/2601.20245
-    RCT with 52 junior developers. AI-assisted group scored 17 pp lower on comprehension/debugging tests. Skill impact entirely driven by interaction pattern: active inquiry preserved skills; passive delegation degraded them.
+ RCT with 52 junior developers. AI-assisted group scored 17 pp lower on comprehension/debugging tests. Skill impact entirely driven by interaction pattern: active inquiry preserved skills; passive delegation degraded them.
 
 [^13]: Joel Becker et al. (METR) — "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity," arXiv:2507.09089, July 2025. https://arxiv.org/abs/2507.09089
-    RCT with 16 experienced developers. AI tools produced 19% slowdown. Even after experiencing the slowdown, developers still believed AI had helped them go faster — evidence that over-reliance can suppress existing judgment and mental models.
+ RCT with 16 experienced developers. AI tools produced 19% slowdown. Even after experiencing the slowdown, developers still believed AI had helped them go faster — evidence that over-reliance can suppress existing judgment and mental models.
 
 [^a]: [Learning: Skill Maintenance](../Learning/02-skill-maintenance.md) — skill maintenance is the direct countermeasure to skill atrophy; the practices defined there are designed to preserve exactly the capabilities this document identifies as at risk.
 

@@ -24,7 +24,7 @@ This creates a specific category of comprehension debt called session knowledge:
 - Name and track comprehension debt explicitly as a team metric, separate from technical debt. The comprehension debt indicator is not derived from code analysis tools — it is derived from the team's ability to answer specific questions about the codebase: "Why is this structured this way?" "What would break if we changed this?" "What were the alternatives that were rejected?" Track the frequency with which these questions go unanswered during code reviews and incident retrospectives.[^3]
 - Conduct a quarterly comprehension audit on the components that received the most AI-generated modifications in the previous quarter: can any team member explain the key decisions in each component? If not, that component has comprehension debt that should be addressed before the next significant modification.[^5]
 - Brief the team on the mechanism of session knowledge debt — not as a criticism of AI-assisted practices, but as a structural challenge that requires specific practices to manage. Engineers who understand why comprehension debt forms are more likely to apply the prevention practices than engineers who are simply told to "document more."[^2]
-- Include comprehension debt in the quarterly engineering health review as a distinct category from technical debt: what is the current comprehension debt level, in which components is it highest, and what is the trend? This visibility at the leadership level ensures that comprehension debt is treated as a strategic risk rather than a documentation backlog.[^6]
+- Include comprehension debt in the quarterly engineering health review as a distinct category from technical debt: what is the current comprehension debt level, in which components is it highest, and what is the trend? This visibility at the leadership level ensures that comprehension debt is treated as a strategic risk rather than a documentation backlog.
 
 ---
 
@@ -58,15 +58,15 @@ The onboarding failure mode in AI-assisted codebases is subtle: the new engineer
 
 ## Section 4: Knowledge Transfer Practices That Counteract Comprehension Debt
 
-**Description:** Beyond the merge gate and the onboarding process, the team needs ongoing practices that prevent comprehension debt from accumulating silently between incidents. These practices share a common structure: they create regular occasions for engineers to articulate their understanding of the codebase, surfacing gaps while they can be addressed through conversation rather than discovering them under production pressure.[^13]
+**Description:** Beyond the merge gate and the onboarding process, the team needs ongoing practices that prevent comprehension debt from accumulating silently between incidents. These practices share a common structure: they create regular occasions for engineers to articulate their understanding of the codebase, surfacing gaps while they can be addressed through conversation rather than discovering them under production pressure.
 
 The most effective ongoing practice is the comprehension check built into standard team rituals — not as an added burden but as a reframing of existing activities. Code review that includes an explanation step, sprint retrospective that includes a "what did we learn about the codebase this sprint" component, and architecture discussions that begin with "what do we currently understand to be true about this component" are all existing activities that can surface comprehension debt without adding significant overhead.[^5]
 
 **Recommended Practice:**
-- Incorporate a weekly "codebase question" into the team's engineering sync: one engineer poses a question about any part of the codebase ("Why is the session management service stateless?", "What would break if we changed the event schema format?") and the team attempts to answer it from memory before looking at documentation or code. Questions that go unanswered identify comprehension debt; questions whose answers diverge among engineers identify inconsistent understanding that may reflect contested or undocumented decisions.[^13]
+- Incorporate a weekly "codebase question" into the team's engineering sync: one engineer poses a question about any part of the codebase ("Why is the session management service stateless?", "What would break if we changed the event schema format?") and the team attempts to answer it from memory before looking at documentation or code. Questions that go unanswered identify comprehension debt; questions whose answers diverge among engineers identify inconsistent understanding that may reflect contested or undocumented decisions.
 - Conduct quarterly "component walkthroughs" where the engineer who owns a recently AI-modified component explains it to the team: what it does, why it is structured as it is, and what the known risks are. These sessions surface comprehension debt that the comprehension summary at merge time may have understated, and they distribute understanding of critical components across more than one engineer.[^5]
 - Define a comprehension debt repayment practice for components that the quarterly audit identifies as high-debt: the architect and the component owner spend 90 minutes together, reading the code and reconstructing the rationale from any available sources (session transcripts, PR comments, commit messages, ADRs), producing a rationale document that captures what they can reconstruct. Acknowledge explicitly what cannot be reconstructed — "we don't know why this is structured this way, and we should document that uncertainty so future sessions don't silently inherit an unexplained convention."[^4]
-- Track the Questions Without Answers metric as a standing team health indicator: at each engineering sync, log any questions about the codebase that no engineer could answer. The trend in this metric — improving, stable, or worsening — is a direct measure of the team's comprehension debt trajectory. Share this metric with the CTO at the quarterly health review alongside velocity and quality metrics.[^6]
+- Track the Questions Without Answers metric as a standing team health indicator: at each engineering sync, log any questions about the codebase that no engineer could answer. The trend in this metric — improving, stable, or worsening — is a direct measure of the team's comprehension debt trajectory. Share this metric with the CTO at the quarterly health review alongside velocity and quality metrics.
 
 ---
 
@@ -84,43 +84,37 @@ The most effective ongoing practice is the comprehension check built into standa
 ---
 
 [^1]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Knowledge transfer mechanisms in AI-assisted vs. human-authored codebases: how the natural knowledge transfer mechanism of human authorship breaks down when AI generates significant codebase portions.
+ Knowledge transfer mechanisms in AI-assisted vs. human-authored codebases: how the natural knowledge transfer mechanism of human authorship breaks down when AI generates significant codebase portions.
 
 [^2]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    Session knowledge as a category of epistemic debt: the mechanism by which AI session interactions produce knowledge that exists only in the session context and cannot be reconstructed from the code itself.
+ Session knowledge as a category of epistemic debt: the mechanism by which AI session interactions produce knowledge that exists only in the session context and cannot be reconstructed from the code itself.
 
 [^3]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    Comprehension debt in AI-assisted development: the distinction between code that engineers can verify as functional and code they can explain and maintain; the mechanism by which comprehension gaps compound across sessions.
+ Comprehension debt in AI-assisted development: the distinction between code that engineers can verify as functional and code they can explain and maintain; the mechanism by which comprehension gaps compound across sessions.
 
 [^4]: Yue Liu et al. — "Debt Behind the AI Boom: A Large-Scale Empirical Study of AI-Generated Code in the Wild," arXiv:2603.28592, March 30, 2026. https://arxiv.org/html/2603.28592
-    Session knowledge debt as the invisible category of AI-assisted technical debt; the compounding mechanism; the inability to reconstruct rationale from code alone.
+ Session knowledge debt as the invisible category of AI-assisted technical debt; the compounding mechanism; the inability to reconstruct rationale from code alone.
 
 [^5]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Quarterly comprehension audit practices; component walkthrough as a team knowledge transfer practice; the comprehension debt indicator as a leading signal for maintenance risk.
-
-[^6]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    Comprehension debt at the leadership level: how knowledge transfer failures manifest as strategic risk rather than individual capability gaps; reporting to CTO via quarterly health review.
+ Quarterly comprehension audit practices; component walkthrough as a team knowledge transfer practice; the comprehension debt indicator as a leading signal for maintenance risk.
 
 [^7]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Comprehension summary as a merge gate: how requiring explanation before merge forces engagement with AI-generated code as a reader rather than a submitter; the review value of author-generated rationale.
+ Comprehension summary as a merge gate: how requiring explanation before merge forces engagement with AI-generated code as a reader rather than a submitter; the review value of author-generated rationale.
 
 [^8]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    The comprehension summary standard: what it must cover to be useful for future maintainers; the three-question framework; how session discipline produces the documentation that merge-time summaries require.
+ The comprehension summary standard: what it must cover to be useful for future maintainers; the three-question framework; how session discipline produces the documentation that merge-time summaries require.
 
 [^9]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    Comprehension summary as architectural review input: using the author's explanation to set review expectations; the finding class that emerges from mismatched explanations and code structure.
+ Comprehension summary as architectural review input: using the author's explanation to set review expectations; the finding class that emerges from mismatched explanations and code structure.
 
 [^10]: George Fitzmaurice — "'We're Trading Deep Understanding for Quick Fixes': Junior Software Developers Lack Coding Skills Because of an Overreliance on AI Tools," *IT Pro*, February 24, 2025. https://www.itpro.com/software/development/junior-developer-ai-tools-coding-skills
-    Onboarding failure modes in AI-heavy codebases: why code-first reading produces surface familiarity without genuine understanding; the structural reason that standard onboarding metrics miss comprehension deficits.
+ Onboarding failure modes in AI-heavy codebases: why code-first reading produces surface familiarity without genuine understanding; the structural reason that standard onboarding metrics miss comprehension deficits.
 
 [^11]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025
-    Onboarding success metrics and their blindness to comprehension deficits; the 30-day comprehension checkpoint as an early detection mechanism for the onboarding failure mode in AI-assisted codebases.
+ Onboarding success metrics and their blindness to comprehension deficits; the 30-day comprehension checkpoint as an early detection mechanism for the onboarding failure mode in AI-assisted codebases.
 
 [^12]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Component onboarding briefs and CLAUDE.md as onboarding resources: how the team's AI session discipline creates the documentation artifacts that new engineer onboarding relies on.
-
-[^13]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Ongoing comprehension practices embedded in existing team rituals: the weekly codebase question and its role in surfacing silent comprehension debt before it manifests as incidents.
+ Component onboarding briefs and CLAUDE.md as onboarding resources: how the team's AI session discipline creates the documentation artifacts that new engineer onboarding relies on.
 
 [^a]: [Learning: Engineer Onboarding](../Learning/01-engineer-onboarding.md) — knowledge transfer practices are the upstream input to onboarding; what the team documents is what new engineers receive.
 [^b]: [Learning: Team Knowledge Sharing](../Learning/03-team-knowledge-sharing.md) — team knowledge sharing is the ongoing form of the same discipline; these two documents cover the ramp and the steady state.

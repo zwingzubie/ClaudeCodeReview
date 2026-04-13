@@ -16,11 +16,11 @@ This is not an argument against AI tool adoption — the productivity benefits a
 
 **Description:** Large language model inference is energy-intensive relative to traditional software compute operations. The energy cost per token varies by model size and inference infrastructure, but published estimates place the energy cost of a single high-quality AI coding response at roughly 10-100x the energy cost of a typical web API call. At team-level usage volumes — multiple engineers running multiple sessions daily — the aggregate energy consumption of AI tool usage becomes a meaningful contributor to the team's compute-related carbon footprint, even before accounting for the energy cost of the training process that produced the model.
 
-Carbon accounting for AI tools is complicated by the fact that the compute infrastructure is Anthropic's, not the team's — the energy consumption does not appear in the team's direct infrastructure costs or in its Scope 1 or Scope 2 emissions. It is, analytically, a Scope 3 emission: an indirect emission from the team's use of a purchased service. Most small engineering teams do not track Scope 3 emissions, which means AI tool energy consumption is invisible in their carbon accounting even as it grows with AI adoption.[^4]
+Carbon accounting for AI tools is complicated by the fact that the compute infrastructure is Anthropic's, not the team's — the energy consumption does not appear in the team's direct infrastructure costs or in its Scope 1 or Scope 2 emissions. It is, analytically, a Scope 3 emission: an indirect emission from the team's use of a purchased service. Most small engineering teams do not track Scope 3 emissions, which means AI tool energy consumption is invisible in their carbon accounting even as it grows with AI adoption.
 
 **Recommended Practice:**
 - Develop a rough order-of-magnitude estimate of the team's AI tool energy consumption: number of engineers, average sessions per day, average session token volume, and an energy-per-token estimate from published sources. This estimate does not need to be precise — it needs to be accurate enough to be visible as a real number rather than an assumed zero.
-- Include AI tool energy consumption in the team's infrastructure cost and environmental footprint review, even as an approximate Scope 3 line item. Visibility is the prerequisite for management; what is not measured is not improved.[^5]
+- Include AI tool energy consumption in the team's infrastructure cost and environmental footprint review, even as an approximate Scope 3 line item. Visibility is the prerequisite for management; what is not measured is not improved.
 - Review Anthropic's published information about its inference infrastructure's energy sources and carbon offset practices. Understanding whether the inference infrastructure runs on renewable energy affects the carbon intensity of the team's AI tool usage.[^1]
 - Brief the team on the energy footprint of AI tool usage as part of deliberate use culture. Engineers who understand that their AI sessions consume real energy — not as a guilt mechanism but as a professional awareness — apply the deliberate use principle more consistently than engineers for whom AI sessions are cost-free.[^6]
 
@@ -35,7 +35,7 @@ This alignment between good prompting practice and lower environmental cost is a
 **Recommended Practice:**
 - Frame context engineering training explicitly as having three benefits: better output quality, faster results, and lower environmental footprint. This framing makes environmental responsibility visible as a byproduct of skill development rather than a competing priority.[^7]
 - Add prompt efficiency as a criterion in CLAUDE.md guidance for the team: encourage engineers to scope prompts precisely, provide necessary context without exhaustive context, and iterate from targeted follow-ups rather than full re-prompts. These practices reduce token consumption at the point of prompt composition.[^9]
-- Track token consumption per session at the team level where Anthropic's usage reporting makes it visible. Token consumption trends reveal whether the team's prompting practice is becoming more efficient over time or whether usage is growing without corresponding output quality improvement.[^5]
+- Track token consumption per session at the team level where Anthropic's usage reporting makes it visible. Token consumption trends reveal whether the team's prompting practice is becoming more efficient over time or whether usage is growing without corresponding output quality improvement.
 - When prompting for code generation, provide targeted specification rather than broad requests: "Generate a function that validates email format against RFC 5321, returning a boolean" consumes fewer tokens and produces more useful output than "Write me an email validation function." Specificity is both a quality practice and an efficiency practice.
 
 ---
@@ -50,7 +50,7 @@ The governance case for appropriate task selection before agentic delegation —
 - Add agentic task selection criteria to the team's AI workflow documentation: agentic sessions are appropriate for tasks with multiple interdependent steps, unclear intermediate states, or file-system operations across multiple modules; they are not appropriate for tasks answerable by a single well-scoped prompt. This guidance reduces unnecessary agentic delegation on both quality and efficiency grounds.[^12]
 - Include energy intensity as a stated reason for agentic task selection criteria — not the only reason, but one of the stated reasons. Teams that understand environmental cost as a real factor in their tool use decisions apply selection criteria more consistently than those who only understand the quality argument.[^10]
 - For long-running agentic tasks, checkpoint progress and evaluate whether the session is converging on a useful outcome before it consumes its full token budget. An agentic session that is clearly not converging should be terminated and re-scoped rather than allowed to run to completion.[^8]
-- The architect should review the team's agentic session usage patterns periodically: are agentic sessions being used for tasks where they are clearly warranted, or are they becoming the default delegation mechanism for all non-trivial tasks? The pattern is visible in session length and tool call count data from Anthropic's usage reporting.[^5]
+- The architect should review the team's agentic session usage patterns periodically: are agentic sessions being used for tasks where they are clearly warranted, or are they becoming the default delegation mechanism for all non-trivial tasks? The pattern is visible in session length and tool call count data from Anthropic's usage reporting.
 
 ---
 
@@ -58,7 +58,7 @@ The governance case for appropriate task selection before agentic delegation —
 
 **Description:** As AI tools become a standard part of the engineering workflow, their energy consumption becomes a non-trivial component of the organization's overall compute carbon footprint. For organizations that have made carbon commitments — net zero targets, reduction pledges, customer or investor disclosures — AI tool energy consumption is a growing and currently largely untracked component of those commitments. The gap between stated carbon commitments and actual AI tool accounting is a disclosure risk as reporting standards evolve.
 
-The relevant reporting framework question is whether Anthropic's compute carbon should appear in the company's Scope 3 emissions. Under GHG Protocol Category 1 (purchased goods and services), the energy consumed by a vendor providing a software service is attributable as Scope 3 to the purchasing organization. As regulatory guidance on AI tool carbon accounting develops in 2026, organizations that have not established a Scope 3 accounting position for their AI tool usage will need to develop one under increasing external pressure.[^4]
+The relevant reporting framework question is whether Anthropic's compute carbon should appear in the company's Scope 3 emissions. Under GHG Protocol Category 1 (purchased goods and services), the energy consumed by a vendor providing a software service is attributable as Scope 3 to the purchasing organization. As regulatory guidance on AI tool carbon accounting develops in 2026, organizations that have not established a Scope 3 accounting position for their AI tool usage will need to develop one under increasing external pressure.
 
 **Recommended Practice:**
 - The CTO should establish the organization's current position on AI tool carbon accounting: are AI tool compute emissions included in Scope 3 reporting? If not, what is the rationale? This position should be documented and available to respond to any customer, investor, or regulatory inquiry.
@@ -95,47 +95,38 @@ Proportionate use also serves the team's skill development goals (see Developer 
 ---
 
 [^1]: Anthropic — "Environmental and Sustainability Reporting," Anthropic Documentation, 2026. https://www.anthropic.com/company/sustainability
-    Carbon intensity of Claude inference infrastructure: energy source mix, offset practices, and renewable energy procurement relevant to customer Scope 3 accounting.
-
-
-[^4]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    AI tool compute as Scope 3 emission: GHG Protocol Category 1 classification for purchased AI services; evolving regulatory environment for AI tool carbon disclosure.
-
-[^5]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Token consumption tracking and usage efficiency: how engineering teams use Anthropic's usage reporting to monitor AI consumption patterns and identify efficiency improvement opportunities.
+ Carbon intensity of Claude inference infrastructure: energy source mix, offset practices, and renewable energy procurement relevant to customer Scope 3 accounting.
 
 [^6]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Deliberate use culture in AI-heavy teams: what organizational signals distinguish teams that use AI tools for genuine value from those that use them reflexively.
+ Deliberate use culture in AI-heavy teams: what organizational signals distinguish teams that use AI tools for genuine value from those that use them reflexively.
 
 [^7]: Kyros — "Responsible AI Disclosure: What Engineering Teams Need to Know," March 2026. https://kyros.ai/blog/responsible-ai-disclosure
-    Context engineering as environmental practice: the token efficiency argument for good prompt engineering and its environmental implications at team usage scale.
+ Context engineering as environmental practice: the token efficiency argument for good prompt engineering and its environmental implications at team usage scale.
 
 [^8]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Proportionate AI use in development teams: how deliberate task selection for AI assistance aligns with code quality outcomes and reduced unnecessary compute consumption.
+ Proportionate AI use in development teams: how deliberate task selection for AI assistance aligns with code quality outcomes and reduced unnecessary compute consumption.
 
 [^9]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md efficiency guidance: configuring session scope, context precision, and follow-up structure to reduce token consumption without reducing output quality.
+ CLAUDE.md efficiency guidance: configuring session scope, context precision, and follow-up structure to reduce token consumption without reducing output quality.
 
 [^10]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Agentic session compute intensity: the tool call multiplication effect on token consumption; energy implications of multi-step agentic task execution.
+ Agentic session compute intensity: the tool call multiplication effect on token consumption; energy implications of multi-step agentic task execution.
 
 [^11]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Agentic task selection governance: organizational criteria for when agentic delegation is warranted; the quality and efficiency implications of inappropriate agentic task assignment.
+ Agentic task selection governance: organizational criteria for when agentic delegation is warranted; the quality and efficiency implications of inappropriate agentic task assignment.
 
 [^12]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
-    - Agentic session scope and energy efficiency: the relationship between session scope control and token consumption in multi-step agentic tasks
-    - Task selection for agentic delegation: practical decision criteria for choosing between agentic and direct prompt approaches based on task structure
-    - Context engineering efficiency: how CLAUDE.md configuration reduces unnecessary context expansion in agentic sessions
-
+ - Agentic session scope and energy efficiency: the relationship between session scope control and token consumption in multi-step agentic tasks
+ - Task selection for agentic delegation: practical decision criteria for choosing between agentic and direct prompt approaches based on task structure
+ - Context engineering efficiency: how CLAUDE.md configuration reduces unnecessary context expansion in agentic sessions
 
 [^14]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    Reflexive vs. deliberate AI use: the skill development and quality implications of using AI for all tasks regardless of fit; the alignment between deliberate use and multiple team goals.
-
+ Reflexive vs. deliberate AI use: the skill development and quality implications of using AI for all tasks regardless of fit; the alignment between deliberate use and multiple team goals.
 
 [^17]: Lex Fridman Podcast #461 ft. ThePrimeagen, YouTube, March 22, 2025. https://www.youtube.com/watch?v=tNZnLkRBYA8
-    - 1:12:45 — Compute cost and AI tool responsibility: the environmental and professional arguments for deliberate use of AI tools rather than reflexive delegation
-    - 2:34:07 — Agentic session efficiency: how multi-step agentic tasks multiply compute consumption and why task selection matters for both quality and efficiency
-    - 3:58:22 — The value-add test for AI tool use: how experienced engineers decide when AI assistance genuinely accelerates outcomes vs. when it adds process overhead
+ - 1:12:45 — Compute cost and AI tool responsibility: the environmental and professional arguments for deliberate use of AI tools rather than reflexive delegation
+ - 2:34:07 — Agentic session efficiency: how multi-step agentic tasks multiply compute consumption and why task selection matters for both quality and efficiency
+ - 3:58:22 — The value-add test for AI tool use: how experienced engineers decide when AI assistance genuinely accelerates outcomes vs. when it adds process overhead
 
 [^a]: [Metrics: Session Efficiency](../Metrics/05-session-efficiency.md) — session efficiency metrics measure the output-per-compute ratio; efficient sessions reduce the environmental cost that this document analyzes.
 

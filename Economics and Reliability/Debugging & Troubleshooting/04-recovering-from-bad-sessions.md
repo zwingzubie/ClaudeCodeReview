@@ -16,31 +16,31 @@ The economic case for structured recovery is straightforward. An unstructured re
 
 ```mermaid
 flowchart TD
-    A[Session Failing] --> B[Pre-Reset Diagnostic<br/>5 min max]
-    B --> C{Which failure signal?}
-    C --> D[Scope Drift]
-    C --> E[Constraint Violation]
-    C --> F[False Specificity]
-    C --> G[Quality Regression]
+ A[Session Failing] --> B[Pre-Reset Diagnostic<br/>5 min max]
+ B --> C{Which failure signal?}
+ C --> D[Scope Drift]
+ C --> E[Constraint Violation]
+ C --> F[False Specificity]
+ C --> G[Quality Regression]
 
-    B --> H{Root cause?}
-    H --> I[Underspecification]
-    H --> J[Missing context]
-    H --> K[Context degradation]
-    H --> L[Wrong model tier]
+ B --> H{Root cause?}
+ H --> I[Underspecification]
+ H --> J[Missing context]
+ H --> K[Context degradation]
+ H --> L[Wrong model tier]
 
-    B --> M[Extract salvageable output]
-    M --> N{Partial output correct?}
-    N -- Yes --> O[git stash correct portion<br/>carry forward as fact]
-    N -- No --> P[Extract failure description<br/>as context for recovery]
+ B --> M[Extract salvageable output]
+ M --> N{Partial output correct?}
+ N -- Yes --> O[git stash correct portion<br/>carry forward as fact]
+ N -- No --> P[Extract failure description<br/>as context for recovery]
 
-    O --> Q[Write recovery session brief]
-    P --> Q
-    Q --> R[Address root cause explicitly]
-    R --> S[Recovery Session]
-    S --> T[Confirm prevention works]
-    T --> U[Implement prevention action<br/>CLAUDE.md / prompt library]
-    U --> V[Share with team]
+ O --> Q[Write recovery session brief]
+ P --> Q
+ Q --> R[Address root cause explicitly]
+ R --> S[Recovery Session]
+ S --> T[Confirm prevention works]
+ T --> U[Implement prevention action<br/>CLAUDE.md / prompt library]
+ U --> V[Share with team]
 ```
 
 **Description:** Before resetting a failing session, five minutes of structured diagnosis converts an isolated failure into a team learning. The diagnostic answers four questions: what went wrong (which failure signal was present), why it went wrong (specification problem, hallucination, context degradation, or wrong model tier), what from the session is salvageable, and what change to the next session will prevent the same failure. Without this diagnostic, the next session starts with the same conditions that caused the current one to fail.[^3]
@@ -57,12 +57,12 @@ The diagnostic is not a lengthy post-mortem — it is a brief structured reflect
 
 ## Section 2: Extracting Salvageable Output
 
-**Description:** A bad session is rarely entirely wrong. A session that went significantly off course architecturally may still have produced correct diagnostic observations, accurate error analysis, or useful partial implementations. A session that hallucinated a library API may have correctly designed the surrounding code structure. Extracting what is correct before resetting prevents the waste of re-deriving correct output in the recovery session that could have been carried forward.[^5]
+**Description:** A bad session is rarely entirely wrong. A session that went significantly off course architecturally may still have produced correct diagnostic observations, accurate error analysis, or useful partial implementations. A session that hallucinated a library API may have correctly designed the surrounding code structure. Extracting what is correct before resetting prevents the waste of re-deriving correct output in the recovery session that could have been carried forward.
 
 The extraction step requires reading the session output with the diagnostic in mind: knowing why the session failed makes it possible to identify which parts of the output were produced before the failure point and are unaffected by its cause. A session that failed due to context degradation in the last five turns may have produced 10 turns of high-quality output before degradation set in — all of which is salvageable.
 
 **Recommended Practice:**
-- Before closing a failed session, scan the conversation for content that should be extracted: correct analysis, design decisions that were sound even if the implementation went wrong, confirmed hypotheses from debugging, and partial implementations whose logic is correct even if their integration is not. Copy or document this content before the session is closed.[^5]
+- Before closing a failed session, scan the conversation for content that should be extracted: correct analysis, design decisions that were sound even if the implementation went wrong, confirmed hypotheses from debugging, and partial implementations whose logic is correct even if their integration is not. Copy or document this content before the session is closed.
 - Express salvageable output as explicit starting context for the recovery session, not as a summary of what the failed session produced. Instead of "the previous session determined X," write "the current implementation has [specific problem]: [description]" — phrasing the recovered insight as a direct fact rather than a reference to a prior session.[^2]
 - For salvageable partial implementations, use git stash to isolate the correct portion before stashing the incorrect changes. A session that correctly implemented part of a feature but incorrectly implemented another part should be partially committed (the correct part) and partially stashed (the incorrect part) rather than fully rolled back.[^3]
 - When the entire session's output is incorrect, extract the failure mode description rather than the output itself. A clear description of what the session attempted, why it failed, and what approach produced the failure is valuable starting context for the recovery session — it prevents the recovery session from re-attempting the same failed approach.
@@ -109,16 +109,14 @@ The prevention action should be identified in the pre-reset diagnostic (the four
 ---
 
 [^1]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Structured recovery approach vs. extended correction iteration; five-minute diagnostic habit; prevention as the value-capture step in session failure recovery; the recovery brief format and its role in avoiding repeated failure.
+ Structured recovery approach vs. extended correction iteration; five-minute diagnostic habit; prevention as the value-capture step in session failure recovery; the recovery brief format and its role in avoiding repeated failure.
 
 [^2]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Recovery session as a fresh-start workflow; salvageable output as direct-fact context rather than prior-session references; model tier selection for recovery sessions; recovery brief specification standards.
+ Recovery session as a fresh-start workflow; salvageable output as direct-fact context rather than prior-session references; model tier selection for recovery sessions; recovery brief specification standards.
 
 [^3]: Anthropic — "Managing Long Sessions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/managing-long-sessions
-    Pre-reset session state assessment; git stash pattern for partial rollback; recovery session brief incorporating diagnostic outputs; scope revision for scope-drift failure recovery.
+ Pre-reset session state assessment; git stash pattern for partial rollback; recovery session brief incorporating diagnostic outputs; scope revision for scope-drift failure recovery.
 
 [^4]: Anthropic — "CLAUDE.md Configuration Guide," Claude Code Documentation, 2026. https://docs.anthropic.com/en/docs/claude-code/memory
-    Prevention action taxonomy matched to failure cause; CLAUDE.md constraint implementation and testing; prompt library updates as prevention for specification failures; immediate vs. deferred prevention implementation.
+ Prevention action taxonomy matched to failure cause; CLAUDE.md constraint implementation and testing; prompt library updates as prevention for specification failures; immediate vs. deferred prevention implementation.
 
-[^5]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Salvageable output extraction methodology; the cost comparison between structured recovery and extended unstructured correction; carrying correct output forward rather than re-deriving it in the recovery session.

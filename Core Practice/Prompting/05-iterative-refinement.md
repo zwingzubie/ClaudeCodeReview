@@ -58,7 +58,7 @@ The restart vs. correction decision is the second most important judgment in ite
 
 **Description:** Iterative refinement converges when successive outputs change less in each round. The practical signal for convergence is that a correction prompt produces an output where only the specific targeted issue changed — nothing else shifted. Divergence, the dangerous opposite, occurs when each correction produces new unexpected changes alongside the targeted fix: code that was correct in round two is different in round three, not because it was corrected but because the correction round reorganized the implementation in ways that were not requested. Divergence is a signal that the implementation approach needs to be reset, not refined further.[^11]
 
-The "good enough" determination is not a quality judgment alone — it is a quality-versus-cost judgment. The question is not whether further iteration would improve the output but whether the improvement from further iteration is worth the cost of producing it. For code that will be heavily reviewed by a senior engineer before merge, a third iteration that catches a pattern inconsistency is worth less than for code that will receive minimal review. Knowing when iteration is delivering diminishing returns requires calibrating the cost of remaining defects against the cost of additional iteration rounds.[^12]
+The "good enough" determination is not a quality judgment alone — it is a quality-versus-cost judgment. The question is not whether further iteration would improve the output but whether the improvement from further iteration is worth the cost of producing it. For code that will be heavily reviewed by a senior engineer before merge, a third iteration that catches a pattern inconsistency is worth less than for code that will receive minimal review. Knowing when iteration is delivering diminishing returns requires calibrating the cost of remaining defects against the cost of additional iteration rounds.
 
 **Recommended Practice:**
 - Define a convergence criterion before beginning iteration on a task: what specific quality bar must the output meet for iteration to stop? "All existing tests pass, the new endpoint returns the expected response structure in manual testing, and no new patterns inconsistent with the codebase are introduced." Undefined convergence criteria produce indefinite refinement.[^9]
@@ -95,52 +95,48 @@ Iteration templates accumulate from real sessions. Every time a session finds an
 ---
 
 [^1]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    Iterative refinement as the correct process for complex tasks: why complete upfront specification fails structurally; using first outputs as diagnostic signal rather than final answers.
+ Iterative refinement as the correct process for complex tasks: why complete upfront specification fails structurally; using first outputs as diagnostic signal rather than final answers.
 
 [^2]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
-    Specification gap tracking across sessions; recurring clarification questions as CLAUDE.md candidates; iteration count as a task-type quality signal.
+ Specification gap tracking across sessions; recurring clarification questions as CLAUDE.md candidates; iteration count as a task-type quality signal.
 
 [^3]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Single-shot vs. iterative task classification; why complex tasks require iteration structurally; the cost of treating single-shot output from a complex task as review-ready.
+ Single-shot vs. iterative task classification; why complex tasks require iteration structurally; the cost of treating single-shot output from a complex task as review-ready.
 
 [^4]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Single-shot output defect rates on complex tasks: empirical evidence that iteratively refined outputs have lower defect rates than single-shot outputs at equivalent specification levels.
+ Single-shot output defect rates on complex tasks: empirical evidence that iteratively refined outputs have lower defect rates than single-shot outputs at equivalent specification levels.
 
 [^5]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Task classification for single-shot vs. iteration; hand-off to human review when remaining issues require judgment; agentic session design for tasks with low iteration requirements.
+ Task classification for single-shot vs. iteration; hand-off to human review when remaining issues require judgment; agentic session design for tasks with low iteration requirements.
 
 [^6]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Clarification loop mechanics; pre-implementation question prompts; the Explore-Plan-Code workflow as the canonical iterative interaction pattern.
+ Clarification loop mechanics; pre-implementation question prompts; the Explore-Plan-Code workflow as the canonical iterative interaction pattern.
 
 [^7]: Judy Shen and Alex Tamkin — "How Instruction Following Affects Context Use in Large Language Models," Anthropic / arXiv:2601.20245, January 2026. https://arxiv.org/abs/2601.20245
-    Constrained clarification prompts: how question-count constraints improve the relevance and priority-ordering of clarification questions; unconstrained clarification request failure modes.
+ Constrained clarification prompts: how question-count constraints improve the relevance and priority-ordering of clarification questions; unconstrained clarification request failure modes.
 
 [^8]: Ravikanth Konda — "Patterns for Effective AI-Assisted Software Development," International Journal of AI in Business, Data and Cloud Management Systems, February 2026. https://ijaibdcms.org
-    Iteration template design: structured prompt sequences for recurring task types; the five-step template structure for feature implementation; template libraries as team knowledge artifacts.
+ Iteration template design: structured prompt sequences for recurring task types; the five-step template structure for feature implementation; template libraries as team knowledge artifacts.
 
 [^9]: Sreecharan Sankaranarayanan — "Towards Reliable AI Code Agents: A Framework for Evaluating Context Window Management," arXiv:2602.20206, February 2026. https://arxiv.org/abs/2602.20206
-    Correction prompt precision: how the specificity of a correction prompt determines the precision of its output; the structural requirements of an effective correction vs. a re-try.
+ Correction prompt precision: how the specificity of a correction prompt determines the precision of its output; the structural requirements of an effective correction vs. a re-try.
 
 [^10]: METR — "We Are Changing Our Developer Productivity Experiment Design," METR Research, February 2026. https://www.metr.org/blog/2026-02-24-uplift-update/
-    Restart vs. correction decision: the productivity cost of persisting with corrections when the direction is wrong; the direction test applied to three-round correction sequences.
+ Restart vs. correction decision: the productivity cost of persisting with corrections when the direction is wrong; the direction test applied to three-round correction sequences.
 
 [^11]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt
-    Convergence vs. divergence patterns: the delta test for assessing convergence; how diverging corrections produce surface-correct but architecturally-wrong implementations.
-
-[^12]: Gartner — "Hype Cycle for Emerging Technologies, 2026," Gartner Research, January 2026. https://www.gartner.com/en/documents/hype-cycle-emerging-technologies-2026
-    Quality-cost calibration for iteration: the diminishing-returns curve in iterative refinement and how to calibrate stopping criteria against review rigor downstream.
+ Convergence vs. divergence patterns: the delta test for assessing convergence; how diverging corrections produce surface-correct but architecturally-wrong implementations.
 
 [^13]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Iteration templates as technical debt mitigation: how pre-designed iteration sequences for recurring tasks prevent the ad-hoc prompting patterns that produce inconsistent-quality outputs.
+ Iteration templates as technical debt mitigation: how pre-designed iteration sequences for recurring tasks prevent the ad-hoc prompting patterns that produce inconsistent-quality outputs.
 
 [^14]: daily.dev — "The Developer's Guide to Prompt Engineering in 2026," daily.dev, March 2026. https://daily.dev/blog/the-developers-guide-to-prompt-engineering-in-2026
-    Template library accumulation from real sessions: how to extract iteration templates from retrospective session review; template maturation patterns over time.
-
+ Template library accumulation from real sessions: how to extract iteration templates from retrospective session review; template maturation patterns over time.
 
 [^17]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
-    - Iteration planning: how to classify a task as single-shot vs. iteration-required at the start of a session and the different session designs for each
-    - Preserve-what-is-good pattern: demonstration of correction prompts that explicitly scope the correction to avoid unintended changes to correct prior-round output
-    - Iteration templates in the prompt library: how templates are stored, referenced, and updated based on new session learnings
+ - Iteration planning: how to classify a task as single-shot vs. iteration-required at the start of a session and the different session designs for each
+ - Preserve-what-is-good pattern: demonstration of correction prompts that explicitly scope the correction to avoid unintended changes to correct prior-round output
+ - Iteration templates in the prompt library: how templates are stored, referenced, and updated based on new session learnings
 
 [^a]: [Workflows: Verification-Driven Development](../Workflows/05-verification-driven-development.md) — verification-driven development structures the feedback loop that iterative refinement depends on; the ability to verify output is what makes structured refinement possible.
 [^b]: [Metrics: Rework Rate](../Metrics/03-rework-rate.md) — iterative refinement within a session reduces post-merge rework; the metric captures whether refinement is happening at the session level or the post-merge level.

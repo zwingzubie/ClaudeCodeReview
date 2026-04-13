@@ -46,7 +46,7 @@ This pattern creates a structural barrier to career progression: the tasks that 
 
 **Description:** Senior engineers set the cultural norms that junior engineers internalize. In an AI-assisted team, the senior engineers' relationship to AI — how they use it, when they use it independently vs. collaboratively, how they explain their AI-assisted work to junior colleagues, and how they model independent competence — determines what junior engineers aspire to and what they believe is acceptable. A senior engineering culture that treats AI as a replacement for understanding produces a junior engineering cohort that inherits that posture.[^10]
 
-The ethical dimension is not about senior engineers being bad actors — it is about the unintended cultural transmission that occurs when AI-intensive workflows are not accompanied by explicit cultural modeling of independent competence. Lex Fridman and ThePrimeagen, discussing this directly in their March 2025 podcast, named the leadership responsibility: "Senior engineers must actively model deep technical understanding rather than velocity-first behavior, not because the model is the goal but because the team's juniors are watching and internalizing what they see."[^11]
+The ethical dimension is not about senior engineers being bad actors — it is about the unintended cultural transmission that occurs when AI-intensive workflows are not accompanied by explicit cultural modeling of independent competence. Lex Fridman and ThePrimeagen, discussing this directly in their March 2025 podcast, named the leadership responsibility: "Senior engineers must actively model deep technical understanding rather than velocity-first behavior, not because the model is the goal but because the team's juniors are watching and internalizing what they see."
 
 **Recommended Practice:**
 - Senior engineers should regularly demonstrate independent competence in team-visible contexts: debugging postmortems explained without AI mediation, architecture decisions explained from first principles, code review comments that require deep module understanding. These demonstrations are not performances — they are cultural signals.[^10]
@@ -98,51 +98,47 @@ This is not a macro problem that individual teams are powerless about. It is a c
 ---
 
 [^1]: Addy Osmani — "Comprehension Debt — The Hidden Cost of AI-Generated Code," addyosmani.com, March 14, 2026. https://addyosmani.com/blog/comprehension-debt/
-    Senior-junior capability gap under AI adoption: why AI multiplies existing capability rather than distributing it equally; the mechanism through which AI adoption widens rather than narrows skill equity gaps.
+ Senior-junior capability gap under AI adoption: why AI multiplies existing capability rather than distributing it equally; the mechanism through which AI adoption widens rather than narrows skill equity gaps.
 
 [^2]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025
-    Employer hesitance for early-career AI-dependent developers; the market signal that independent capability is increasingly a threshold requirement rather than a differentiator.
+ Employer hesitance for early-career AI-dependent developers; the market signal that independent capability is increasingly a threshold requirement rather than a differentiator.
 
 [^3]: George Fitzmaurice — "'We're Trading Deep Understanding for Quick Fixes': Junior Software Developers Lack Coding Skills Because of an Overreliance on AI Tools," *IT Pro*, February 24, 2025. https://www.itpro.com/software/development/junior-developer-ai-tools-coding-skills
-    Discovery phase elimination: the specific mechanism by which AI assistance interrupts the foundational skill development process that apprenticeship models depend on.
+ Discovery phase elimination: the specific mechanism by which AI assistance interrupts the foundational skill development process that apprenticeship models depend on.
 
 [^4]: Yonatan Sason — "The Black Box Problem: Why AI-Generated Code Stops Being Maintainable," *Towards Data Science*, March 6, 2026. https://towardsdatascience.com/the-black-box-problem-why-ai-generated-code-stops-being-maintainable/
-    Speed masking absence of comprehension: the pattern through which high AI-assisted velocity in junior engineers masks the comprehension gaps that only become visible months later.
+ Speed masking absence of comprehension: the pattern through which high AI-assisted velocity in junior engineers masks the comprehension gaps that only become visible months later.
 
 [^5]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    Active vs. passive AI engagement: the three interaction patterns that preserve learning (explanation requests, hypothesis generation, verification) vs. three that degrade it; the decisive variable in whether AI adoption helps or harms junior development.
+ Active vs. passive AI engagement: the three interaction patterns that preserve learning (explanation requests, hypothesis generation, verification) vs. three that degrade it; the decisive variable in whether AI adoption helps or harms junior development.
 
 [^6]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    Fragile expert at 77%: the specific empirical finding that grounds the concern about AI-dependent junior engineers; the Explanation Gate as the intervention with the strongest evidence base.
+ Fragile expert at 77%: the specific empirical finding that grounds the concern about AI-dependent junior engineers; the Explanation Gate as the intervention with the strongest evidence base.
 
 [^7]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
-    Skill concentration in senior engineering under AI adoption: how architectural judgment tasks concentrate at the senior level as AI handles implementation; the pipeline implications for junior engineers.
+ Skill concentration in senior engineering under AI adoption: how architectural judgment tasks concentrate at the senior level as AI handles implementation; the pipeline implications for junior engineers.
 
 [^8]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Stretch task allocation as knowledge transfer mechanism: how deliberate boundary-of-capability assignments develop the skills that routine AI-assisted work does not.
+ Stretch task allocation as knowledge transfer mechanism: how deliberate boundary-of-capability assignments develop the skills that routine AI-assisted work does not.
 
 [^9]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
-    Junior engineer review participation: how including junior engineers as reviewers of AI-generated code develops evaluative judgment that authoring AI-assisted code alone does not.
+ Junior engineer review participation: how including junior engineers as reviewers of AI-generated code develops evaluative judgment that authoring AI-assisted code alone does not.
 
 [^10]: Lex Fridman Podcast #461 ft. ThePrimeagen, YouTube, March 22, 2025. https://www.youtube.com/watch?v=tNZnLkRBYA8
-    - 4:18:32 — Senior engineer cultural modeling: how the senior engineering team's relationship to independent competence determines what junior engineers internalize as the professional standard
-    - 20:00 — AI dependency transmission: how organizational cultures develop around AI tools and what senior engineers can do to shape that development deliberately
-    - 5:01:16 — Future-proofing through skill maintenance: which capabilities distinguish engineers in AI-heavy environments and the senior responsibility to model and cultivate them
-
-[^11]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Cultural transmission in AI-assisted teams: the specific leadership behaviors that shape junior engineer AI practices more than any policy document; velocity-first vs. comprehension-first cultural signals.
+ - 4:18:32 — Senior engineer cultural modeling: how the senior engineering team's relationship to independent competence determines what junior engineers internalize as the professional standard
+ - 20:00 — AI dependency transmission: how organizational cultures develop around AI tools and what senior engineers can do to shape that development deliberately
+ - 5:01:16 — Future-proofing through skill maintenance: which capabilities distinguish engineers in AI-heavy environments and the senior responsibility to model and cultivate them
 
 [^12]: Stack Overflow — "Developers Remain Willing but Reluctant to Use AI: The 2025 Developer Survey Results," December 29, 2025. https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here/
-    Technical interview expectations: the gap between AI-assisted development productivity and the independent capability technical interviews assess; maintaining interview readiness as a skill maintenance discipline.
+ Technical interview expectations: the gap between AI-assisted development productivity and the independent capability technical interviews assess; maintaining interview readiness as a skill maintenance discipline.
 
 [^13]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Profession-level implications of team-level AI practices: the collective outcome argument for individual teams maintaining deliberate junior development practices rather than treating this as others' responsibility.
+ Profession-level implications of team-level AI practices: the collective outcome argument for individual teams maintaining deliberate junior development practices rather than treating this as others' responsibility.
 
 [^14]: ThePrimeagen (The PrimeTime) — "Jr Devs - 'I Can't Code Anymore'," YouTube, February 21, 2025. https://www.youtube.com/watch?v=1Se2zTlXDwY
-    - First-person junior developer perspective: the experience of discovering skill atrophy and the career trajectory implications of AI-dependent development
-    - Portfolio strategy for AI-assisted developers: how to build external evidence of independent capability alongside AI-assisted productivity
-    - Practical recovery: what the path from fragile expert to genuine expert looks like for a junior engineer who has recognized the pattern early enough to address it
-
+ - First-person junior developer perspective: the experience of discovering skill atrophy and the career trajectory implications of AI-dependent development
+ - Portfolio strategy for AI-assisted developers: how to build external evidence of independent capability alongside AI-assisted productivity
+ - Practical recovery: what the path from fragile expert to genuine expert looks like for a junior engineer who has recognized the pattern early enough to address it
 
 [^a]: [Issues: Skill Atrophy](../Issues/06-skill-atrophy.md) — skill atrophy is the operational manifestation of the career impact described here; the ethical concern and the operational risk are two framings of the same phenomenon.
 

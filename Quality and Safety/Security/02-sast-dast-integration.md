@@ -46,41 +46,41 @@ For a team of 11 without a dedicated security engineer, tool selection should pr
 
 ```mermaid
 flowchart TD
-    A[Engineer runs<br/>Claude Code session] --> B[Claude generates<br/>or edits files]
-    B --> C[Stop event hook fires<br/>Semgrep on modified files]
-    C --> D{Critical findings?}
-    D -- Yes --> E[Block: engineer must<br/>fix before continuing]
-    D -- No --> F[Medium/low warnings<br/>shown, session continues]
+ A[Engineer runs<br/>Claude Code session] --> B[Claude generates<br/>or edits files]
+ B --> C[Stop event hook fires<br/>Semgrep on modified files]
+ C --> D{Critical findings?}
+ D -- Yes --> E[Block: engineer must<br/>fix before continuing]
+ D -- No --> F[Medium/low warnings<br/>shown, session continues]
 
-    E --> G[Engineer fixes issue]
-    G --> B
+ E --> G[Engineer fixes issue]
+ G --> B
 
-    F --> H[Engineer stages changes<br/>git add]
-    H --> I[Pre-commit hook<br/>detect-secrets / trufflehog]
-    I --> J{Secrets detected?}
-    J -- Yes --> K[Commit blocked<br/>Rotate credential]
-    J -- No --> L[git commit]
+ F --> H[Engineer stages changes<br/>git add]
+ H --> I[Pre-commit hook<br/>detect-secrets / trufflehog]
+ I --> J{Secrets detected?}
+ J -- Yes --> K[Commit blocked<br/>Rotate credential]
+ J -- No --> L[git commit]
 
-    L --> M[PR opened]
-    M --> N[CI pipeline]
-    N --> O[Semgrep SAST<br/>before tests]
-    O --> P{High/critical<br/>findings?}
-    P -- Yes --> Q[PR merge blocked]
-    P -- No --> R[Run test suite]
-    R --> S[CodeQL weekly scan<br/>on main branch]
-    S --> T[DAST: OWASP ZAP<br/>vs. staging on deploy]
-    T --> U{DAST findings?}
-    U -- Yes --> V[Add custom SAST rule<br/>to catch pattern statically]
-    U -- No --> W[Promote to production]
+ L --> M[PR opened]
+ M --> N[CI pipeline]
+ N --> O[Semgrep SAST<br/>before tests]
+ O --> P{High/critical<br/>findings?}
+ P -- Yes --> Q[PR merge blocked]
+ P -- No --> R[Run test suite]
+ R --> S[CodeQL weekly scan<br/>on main branch]
+ S --> T[DAST: OWASP ZAP<br/>vs. staging on deploy]
+ T --> U{DAST findings?}
+ U -- Yes --> V[Add custom SAST rule<br/>to catch pattern statically]
+ U -- No --> W[Promote to production]
 ```
 
 **Description:** Claude Code's hook system allows the team to insert scanning steps at defined points in the AI development workflow. The Stop event hook — which runs after Claude Code completes a task and before control returns to the engineer — is the appropriate insertion point for pre-commit SAST on AI-generated code. This hook runs scanning before the engineer even stages the generated code for commit, providing a feedback layer that is earlier and faster than the CI pipeline scan. For the category of findings that would fail CI anyway, catching them in the hook eliminates the round-trip of commit, push, CI failure, fix, re-commit, re-push.[^6]
 
-The hook architecture also addresses a behavioral gap: some engineers will not run a SAST scan manually before staging AI-generated code, but will act on findings that appear automatically in the terminal immediately after generation. The hook makes the right behavior the default behavior rather than the effortful behavior. This is a workflow design principle that applies beyond SAST — the most reliably followed security practices are the ones that happen automatically, not the ones that depend on individual discipline under time pressure.[^7]
+The hook architecture also addresses a behavioral gap: some engineers will not run a SAST scan manually before staging AI-generated code, but will act on findings that appear automatically in the terminal immediately after generation. The hook makes the right behavior the default behavior rather than the effortful behavior. This is a workflow design principle that applies beyond SAST — the most reliably followed security practices are the ones that happen automatically, not the ones that depend on individual discipline under time pressure.
 
 **Recommended Practice:**
 - Configure a Stop event hook in `.claude/settings.json` that runs `semgrep --config p/security-audit` on the files Claude Code modified in the session. Restrict the scan to modified files rather than the full repository to keep hook execution time under 30 seconds.[^6]
-- Have the hook report findings in a format engineers can act on immediately — not just a pass/fail signal but the specific file, line, rule, and a brief remediation note. Engineers are more likely to fix a finding when the finding tells them what to do than when it tells them only that something is wrong.[^7]
+- Have the hook report findings in a format engineers can act on immediately — not just a pass/fail signal but the specific file, line, rule, and a brief remediation note. Engineers are more likely to fix a finding when the finding tells them what to do than when it tells them only that something is wrong.
 - Configure the hook to block Claude Code from proceeding to the next task if critical findings are present. Non-blocking warnings are appropriate for medium and low findings; critical findings should require resolution or explicit acknowledgment before the session continues.[^6]
 - Document the hook configuration in CLAUDE.md so that engineers setting up new local environments install it as part of onboarding: `## Required Hooks: Run 'claude code setup hooks' before your first session to install the team's standard SAST hooks.`
 
@@ -112,25 +112,22 @@ DAST tooling for a small team has a different configuration profile than enterpr
 ---
 
 [^1]: Sonar — "The AI Code Quality Report," Sonar, 2026. https://www.sonarsource.com/resources/ai-code-quality-report/
-    2.74× vulnerability rate for AI-generated code; the calibration argument for adjusting SAST configurations to the actual risk profile of AI output; 42% AI code penetration in adopting repositories.
+ 2.74× vulnerability rate for AI-generated code; the calibration argument for adjusting SAST configurations to the actual risk profile of AI output; 42% AI code penetration in adopting repositories.
 
 [^2]: Dark Reading — "AI-Assisted Development: The Security Risks Nobody Is Managing," October 2025. https://www.darkreading.com/application-security/ai-assisted-development-security-risks
-    Velocity-driven review dilution; the plausibility problem for AI-generated vulnerable code; why human code review is insufficient as the sole security gate for AI-generated output.
+ Velocity-driven review dilution; the plausibility problem for AI-generated vulnerable code; why human code review is insufficient as the sole security gate for AI-generated output.
 
 [^3]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
-    45% security test failure rate; the structural nature of AI vulnerability generation; DAST for authorization logic gaps in AI-generated API endpoints.
+ 45% security test failure rate; the structural nature of AI vulnerability generation; DAST for authorization logic gaps in AI-generated API endpoints.
 
 [^4]: Semgrep — "Semgrep Supply Chain and SAST Documentation," Semgrep, 2026. https://semgrep.dev/docs/
-    Semgrep rule set configuration; `p/security-audit`, `p/owasp-top-ten`, and `p/secrets` rule sets; custom rule authoring for team-specific vulnerability patterns.
+ Semgrep rule set configuration; `p/security-audit`, `p/owasp-top-ten`, and `p/secrets` rule sets; custom rule authoring for team-specific vulnerability patterns.
 
 [^5]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    CI pipeline architecture for AI-generated code security: the argument for SAST before test execution; staging promotion gates and DAST integration patterns.
+ CI pipeline architecture for AI-generated code security: the argument for SAST before test execution; staging promotion gates and DAST integration patterns.
 
 [^6]: Anthropic — "Claude Code Hooks Reference," Claude Code Documentation, 2026. https://code.claude.com/docs/en/hooks
-    Stop event hook configuration; `.claude/settings.json` syntax; hook blocking behavior for critical findings; modified-file scope restriction for scan performance.
-
-[^7]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    Default behavior design for security practices; the reliability gap between automatic and effortful security controls; developer experience requirements for security tooling adoption.
+ Stop event hook configuration; `.claude/settings.json` syntax; hook blocking behavior for critical findings; modified-file scope restriction for scan performance.
 
 [^a]: [Issues: Security Vulnerabilities](../Issues/04-security-vulnerabilities.md) — SAST/DAST integration is the primary automated detection mechanism for the vulnerability classes described there; scanning converts the qualitative risk into a detectable signal.
 

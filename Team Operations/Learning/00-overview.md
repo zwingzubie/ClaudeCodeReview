@@ -2,7 +2,7 @@
 
 As our team of 11 — including 4 backend engineers, 3 frontend engineers, 1 architect, 1 QA engineer, and 2 product managers — deepens its reliance on Claude Code, a question that tends not to appear on sprint boards becomes increasingly important: are the engineers on this team becoming better at their craft, or are they becoming dependent on a tool they do not fully control? The two outcomes are not symmetric. A team that uses AI to accelerate genuine understanding compounds its capability over time. A team that uses AI as a replacement for understanding gradually hollows out its ability to debug, architect, and make sound tradeoffs — and will not notice until the AI is unavailable or incorrect in a high-stakes situation.
 
-The research is direct: a January 2026 controlled experiment found that AI-assisted developers scored 17 percentage points lower on comprehension tests than peers who solved the same problems without AI help — not because they produced worse code, but because they internalized less while producing it.[^1] Gartner projects that 80% of software engineers will need to upskill in AI-assisted development by 2027.[^2] HackerRank's 2025 Developer Skills Report identifies growing employer concern about early-career developers who cannot demonstrate capability without AI assistance.[^3] These are not signals to use AI less. They are signals to build learning structures deliberately alongside AI adoption — so that AI use becomes a multiplier on skill rather than a substitute for it.
+The research is direct: a January 2026 controlled experiment found that AI-assisted developers scored 17 percentage points lower on comprehension tests than peers who solved the same problems without AI help — not because they produced worse code, but because they internalized less while producing it.[^1] Gartner projects that 80% of software engineers will need to upskill in AI-assisted development by 2027. HackerRank's 2025 Developer Skills Report identifies growing employer concern about early-career developers who cannot demonstrate capability without AI assistance.[^3] These are not signals to use AI less. They are signals to build learning structures deliberately alongside AI adoption — so that AI use becomes a multiplier on skill rather than a substitute for it.
 
 Five practices are documented below. They address onboarding, ongoing skill maintenance, team knowledge sharing, deliberate practice without AI assistance, and external education pathways.
 
@@ -66,13 +66,13 @@ Theo Browne (t3.gg), writing in February 2025, named this dynamic explicitly: "T
 
 ## Practice 5: Continuing Education and External Resources
 
-**Description:** The landscape of AI-assisted development is evolving faster than any team's internal documentation can track. Practices that were considered advanced in early 2025 — multi-agent workflows, MCP integrations, parallel session management — are baseline expectations in mid-2026. Engineers who do not actively track this evolution risk being outpaced by their tools: using AI in patterns that are already obsolete while better approaches exist but are unknown to them.[^15]
+**Description:** The landscape of AI-assisted development is evolving faster than any team's internal documentation can track. Practices that were considered advanced in early 2025 — multi-agent workflows, MCP integrations, parallel session management — are baseline expectations in mid-2026. Engineers who do not actively track this evolution risk being outpaced by their tools: using AI in patterns that are already obsolete while better approaches exist but are unknown to them.
 
 External education also serves a function internal practices cannot: exposure to approaches being used at other companies, on different codebases, by engineers with different architectural contexts. The most effective teams combine internal standardization (the practices documented across this repository) with deliberate external learning that challenges and extends those standards.[^6]
 
 **Proposed Solution:**
-- Allocate a shared engineering education budget and make the expectation explicit: each engineer should invest time in external learning about AI-assisted development each quarter. This is not optional professional development — it is a job requirement as AI becomes a core part of the engineering role.[^2]
-- Designate one engineer per quarter to monitor and summarize relevant developments in AI coding tools — new Claude Code features, research findings, practitioner write-ups from engineers at comparable teams — and share findings in a brief team update. Rotate this responsibility so the knowledge-building is distributed.[^15]
+- Allocate a shared engineering education budget and make the expectation explicit: each engineer should invest time in external learning about AI-assisted development each quarter. This is not optional professional development — it is a job requirement as AI becomes a core part of the engineering role.
+- Designate one engineer per quarter to monitor and summarize relevant developments in AI coding tools — new Claude Code features, research findings, practitioner write-ups from engineers at comparable teams — and share findings in a brief team update. Rotate this responsibility so the knowledge-building is distributed.
 - Subscribe to the practitioner resources that track this space seriously: The Pragmatic Engineer, Addy Osmani's blog, and Anthropic's own documentation updates. These are primary sources rather than secondhand summaries.[^16]
 - Consider periodic invitations to engineers from other teams or companies to share their AI workflow practices. Hearing how a comparable team approaches a shared challenge is often more immediately actionable than formal conference content.[^13]
 
@@ -91,53 +91,47 @@ External education also serves a function internal practices cannot: exposure to
 ---
 
 [^1]: Judy Hanwen Shen and Alex Tamkin (Anthropic) — "How AI Assistance Impacts the Formation of Coding Skills," arXiv:2601.20245, January 28, 2026. https://arxiv.org/abs/2601.20245
-    Randomized controlled study of 52 developers: AI-assisted participants scored 17% lower on comprehension tests. Six interaction patterns identified; only active engagement patterns preserved learning outcomes.
-
-[^2]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    80% of software engineers will need to upskill in AI-assisted development by 2027; the engineering skill baseline is rising, not falling, as AI takes over mechanical execution.
+ Randomized controlled study of 52 developers: AI-assisted participants scored 17% lower on comprehension tests. Six interaction patterns identified; only active engagement patterns preserved learning outcomes.
 
 [^3]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025
-    Employer hesitance hiring early-career developers who cannot demonstrate capability without AI assistance; growing demand for engineers who can evaluate, correct, and architect around AI output rather than just accept it.
+ Employer hesitance hiring early-career developers who cannot demonstrate capability without AI assistance; growing demand for engineers who can evaluate, correct, and architect around AI output rather than just accept it.
 
 [^4]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
-    Prompt fragmentation as a structural onboarding failure: new engineers default to prior-role habits absent explicit workflow transfer, accelerating architectural divergence from day one.
+ Prompt fragmentation as a structural onboarding failure: new engineers default to prior-role habits absent explicit workflow transfer, accelerating architectural divergence from day one.
 
 [^5]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
-    AI workflow as a transferable practice: the case for explicit onboarding to team AI conventions, not just codebase architecture; spec.md and CLAUDE.md as onboarding artifacts.
+ AI workflow as a transferable practice: the case for explicit onboarding to team AI conventions, not just codebase architecture; spec.md and CLAUDE.md as onboarding artifacts.
 
 [^6]: Artur Less — "Spec-Driven Development with Claude Code," Level Up Coding / Medium, March 2026. https://levelup.gitconnected.com/spec-driven-development-with-claude-code-1b08184965e3
-    Bounded, well-specified first tasks as an onboarding pattern: how starting with high-precedent, well-tested features shapes AI session habits before they become entrenched.
+ Bounded, well-specified first tasks as an onboarding pattern: how starting with high-precedent, well-tested features shapes AI session habits before they become entrenched.
 
 [^7]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
-    The "fragile expert" concept: 77% failure rate on AI-free maintenance tasks for developers without structured comprehension checkpoints vs. 39% for those with mandatory teach-back requirements.
+ The "fragile expert" concept: 77% failure rate on AI-free maintenance tasks for developers without structured comprehension checkpoints vs. 39% for those with mandatory teach-back requirements.
 
 [^8]: Stack Overflow — "Developers Remain Willing but Reluctant to Use AI: The 2025 Developer Survey Results," December 29, 2025. https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here/
-    66% of ~100,000 surveyed developers report spending more time debugging AI code than expected; trust in AI accuracy fell from 40% to 29% year-over-year.
+ 66% of ~100,000 surveyed developers report spending more time debugging AI code than expected; trust in AI accuracy fell from 40% to 29% year-over-year.
 
 [^9]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Skill maintenance framing: using AI to accelerate genuine understanding vs. as a substitute for it; the verification loop as a mechanism for maintaining active comprehension during AI-assisted sessions.
+ Skill maintenance framing: using AI to accelerate genuine understanding vs. as a substitute for it; the verification loop as a mechanism for maintaining active comprehension during AI-assisted sessions.
 
 [^10]: METR — "We Are Changing Our Developer Productivity Experiment Design," METR Research, February 2026. https://www.metr.org/blog/2026-02-24-uplift-update/
-    Growing developer dependency: significant proportion of developers declining tasks without AI access. AI-free exercises as a countermeasure to dependency that degrades independent judgment under pressure.
+ Growing developer dependency: significant proportion of developers declining tasks without AI access. AI-free exercises as a countermeasure to dependency that degrades independent judgment under pressure.
 
 [^11]: Lex Fridman Podcast #461 ft. ThePrimeagen, YouTube, March 22, 2025. https://www.youtube.com/watch?v=tNZnLkRBYA8
-    - 4:18:32 — Engineering culture and leadership: how CTOs and senior engineers must actively model deep technical understanding rather than velocity-first behavior
-    - 20:00 — AI dependency and skill atrophy: how over-reliance degrades the ability to reason independently about code under pressure
-    - 5:01:16 — Which skills will differentiate engineers as AI-generated code becomes the norm: judgment, architectural reasoning, and debugging under uncertainty
+ - 4:18:32 — Engineering culture and leadership: how CTOs and senior engineers must actively model deep technical understanding rather than velocity-first behavior
+ - 20:00 — AI dependency and skill atrophy: how over-reliance degrades the ability to reason independently about code under pressure
+ - 5:01:16 — Which skills will differentiate engineers as AI-generated code becomes the norm: judgment, architectural reasoning, and debugging under uncertainty
 
 [^12]: Yonatan Sason — "The Black Box Problem: Why AI-Generated Code Stops Being Maintainable," *Towards Data Science*, March 6, 2026. https://towardsdatascience.com/the-black-box-problem-why-ai-generated-code-stops-being-maintainable/
-    Knowledge distribution problem in AI-assisted teams: how AI-generated implementations concentrate understanding in the authoring engineer while distributing opaque code to the whole team.
+ Knowledge distribution problem in AI-assisted teams: how AI-generated implementations concentrate understanding in the authoring engineer while distributing opaque code to the whole team.
 
 [^13]: Ravikanth Konda — "Human-AI Collaboration in Software Teams: Evaluating Productivity, Quality, and Knowledge Transfer with Agentic and LLM-Based Tools," *International Journal of AI, BigData, Computational and Management Studies*, February 17, 2026. https://ijaibdcms.org/index.php/ijaibdcms/article/view/418
-    Structured rationale capture and peer-to-peer explainability as the distinguishing factor between teams that built genuine organizational knowledge and those that accumulated surface-level proficiency.
+ Structured rationale capture and peer-to-peer explainability as the distinguishing factor between teams that built genuine organizational knowledge and those that accumulated surface-level proficiency.
 
 [^14]: ThePrimeagen (The PrimeTime) — "Jr Devs - 'I Can't Code Anymore'," YouTube, February 21, 2025. https://www.youtube.com/watch?v=1Se2zTlXDwY
-    - Muscle memory erosion: how exclusive AI reliance degrades the low-level pattern recognition required for fast independent debugging
-    - Intentional AI-free practice: why engineers need deliberate practice periods to maintain the baseline fluency required to catch what AI gets wrong
-    - Side project recommendation: keeping at least one project AI-free to preserve the exploratory learning process
-
-[^15]: The Pragmatic Engineer — "AI Tooling for Software Engineers in 2026," March 2026. https://newsletter.pragmaticengineer.com/p/ai-tooling-2026
-    Pace of change in AI tooling: practices considered advanced in early 2025 are baseline expectations by mid-2026; the cost of not tracking evolution is using obsolete patterns while better approaches exist.
+ - Muscle memory erosion: how exclusive AI reliance degrades the low-level pattern recognition required for fast independent debugging
+ - Intentional AI-free practice: why engineers need deliberate practice periods to maintain the baseline fluency required to catch what AI gets wrong
+ - Side project recommendation: keeping at least one project AI-free to preserve the exploratory learning process
 
 [^16]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
-    Staying current with tooling evolution: how Anthropic's internal teams track their own tool's development and incorporate new capabilities into workflow standards; the argument for treating tool education as a job responsibility.
+ Staying current with tooling evolution: how Anthropic's internal teams track their own tool's development and incorporate new capabilities into workflow standards; the argument for treating tool education as a job responsibility.

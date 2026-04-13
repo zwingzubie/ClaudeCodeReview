@@ -2,7 +2,7 @@
 
 Security guidance for AI-assisted development is currently scattered across five sections of this repository — Ethics documents the accountability structure for AI-generated vulnerabilities, Governance documents the policy requirements for security review, Issues documents comprehension debt and the risks of unreviewed AI output, Tooling & Configuration documents Claude Code hooks and permission management, and Metrics documents vulnerability trends as a health signal. That distribution made sense as each section was built, but it creates a navigation problem: an engineer responding to a security incident, a QA engineer setting up scanning, or an architect designing a security review process has to synthesize guidance from five separate locations. This section consolidates that guidance into a single coherent reference.[^1]
 
-The security case for a unified treatment is not organizational tidiness. AI-assisted development changes the team's security posture in ways that require coordinated response across threat modeling, tooling, dependency management, secrets handling, vulnerability response, and review process. Each of these areas is individually addressable; the security benefit comes from addressing them as a system. A team that runs SAST but does not model the threat surface of AI sessions, that has good secrets hygiene but no vulnerability response procedure, or that has a review checklist but no DAST integration is partially protected — and partial protection in security often means that the unaddressed area becomes the attack vector.[^2]
+The security case for a unified treatment is not organizational tidiness. AI-assisted development changes the team's security posture in ways that require coordinated response across threat modeling, tooling, dependency management, secrets handling, vulnerability response, and review process. Each of these areas is individually addressable; the security benefit comes from addressing them as a system. A team that runs SAST but does not model the threat surface of AI sessions, that has good secrets hygiene but no vulnerability response procedure, or that has a review checklist but no DAST integration is partially protected — and partial protection in security often means that the unaddressed area becomes the attack vector.
 
 Sonar's 2026 research found that AI now writes 42% of code in repositories that have adopted AI tools, and that AI-generated code contains security vulnerabilities at 2.74 times the rate of human-written code.[^3] For a team of 11 producing AI-assisted output at that penetration rate, the expected volume of AI-introduced security issues is not marginal — it is a primary security concern that warrants the same deliberate engineering the team applies to functional correctness. The six areas documented below are the structural response to that concern.
 
@@ -70,7 +70,7 @@ Sonar's 2026 research found that AI now writes 42% of code in repositories that 
 
 ## Security Area 6: Security Review Checklist
 
-**Description:** Ad-hoc security review produces inconsistent results — not because reviewers are careless, but because security review requires systematic attention to a category list that is too long to reliably reconstruct from memory under the time pressure of PR review. A standardized checklist ensures that every review covers the same categories and that no category is skipped because the reviewer was focused on a different issue. For AI-generated code, where the vulnerability patterns are less predictable than for human-written code, the systematic coverage a checklist provides is especially valuable.[^2]
+**Description:** Ad-hoc security review produces inconsistent results — not because reviewers are careless, but because security review requires systematic attention to a category list that is too long to reliably reconstruct from memory under the time pressure of PR review. A standardized checklist ensures that every review covers the same categories and that no category is skipped because the reviewer was focused on a different issue. For AI-generated code, where the vulnerability patterns are less predictable than for human-written code, the systematic coverage a checklist provides is especially valuable.
 
 **Proposed Solution:**
 - Define a security review checklist organized by category: input validation and sanitization, authentication and session management, authorization and access control, cryptographic operations, injection sinks (SQL, command, path traversal), dependency additions, and secrets and credential handling. Each category should have 3–5 specific checks.[^17]
@@ -94,48 +94,43 @@ Sonar's 2026 research found that AI now writes 42% of code in repositories that 
 ---
 
 [^1]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    CLAUDE.md as the central mechanism for encoding security constraints; session configuration as the operational enforcement layer for security policy.
-
-[^2]: Gartner — "Predicts 2026: Software Engineering and DevSecOps," Gartner Research, January 2026. https://www.gartner.com/en/documents/predicts-2026-software-engineering-devsecops
-    The security governance gap in AI-assisted development; why partial security coverage under AI adoption creates higher risk than pre-AI baselines; the case for systematic rather than ad-hoc security treatment.
+ CLAUDE.md as the central mechanism for encoding security constraints; session configuration as the operational enforcement layer for security policy.
 
 [^3]: Sonar — "The AI Code Quality Report," Sonar, 2026. https://www.sonarsource.com/resources/ai-code-quality-report/
-    AI writes 42% of code in AI-adopting repositories; AI-generated code has a 2.74× higher vulnerability rate than human-written code; the calibration argument for adjusted security tooling.
-
+ AI writes 42% of code in AI-adopting repositories; AI-generated code has a 2.74× higher vulnerability rate than human-written code; the calibration argument for adjusted security tooling.
 
 [^5]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
-    STRIDE applied to AI development sessions; prompt injection as a spoofing vector; the architecture of a CI pattern that accounts for AI-specific threat categories.
+ STRIDE applied to AI development sessions; prompt injection as a spoofing vector; the architecture of a CI pattern that accounts for AI-specific threat categories.
 
 [^6]: Anthropic — "Claude Code: Settings and Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/settings
-    CLAUDE.md constraint syntax; `.claudeignore` configuration; Stop event hook configuration for pre-commit scanning integration.
+ CLAUDE.md constraint syntax; `.claudeignore` configuration; Stop event hook configuration for pre-commit scanning integration.
 
 [^7]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
-    45% failure rate on security tests for AI-generated code; the argument for SAST with blocking thresholds calibrated to AI output risk profiles.
+ 45% failure rate on security tests for AI-generated code; the argument for SAST with blocking thresholds calibrated to AI output risk profiles.
 
 [^8]: Anthropic — "Claude Code Hooks Reference," Claude Code Documentation, 2026. https://code.claude.com/docs/en/hooks
-    Stop event hook configuration for pre-commit SAST; slash command implementation; `.claudeignore` file format and precedence rules.
-
+ Stop event hook configuration for pre-commit SAST; slash command implementation; `.claudeignore` file format and precedence rules.
 
 [^10]: GitHub — "Octoverse 2025: The State of AI in Software Development," GitHub Octoverse 2025. https://github.blog/news-insights/research/the-state-of-open-source-and-ai/
-    AI dependency suggestion patterns; supply chain security risks in AI-suggested packages; the training data cutoff problem for dependency security evaluation.
+ AI dependency suggestion patterns; supply chain security risks in AI-suggested packages; the training data cutoff problem for dependency security evaluation.
 
 [^11]: Snyk — "The State of Open Source Security 2025," Snyk, 2025. https://snyk.io/reports/open-source-security/
-    Automated dependency scanning effectiveness; lockfile discipline as a supply chain security practice; CVE remediation timelines for open-source dependencies.
+ Automated dependency scanning effectiveness; lockfile discipline as a supply chain security practice; CVE remediation timelines for open-source dependencies.
 
 [^12]: Anthropic — "Privacy and Data Handling," Claude Code Documentation, 2026. https://code.claude.com/docs/en/privacy-data-handling
-    Session context and secrets exposure risk; data retention policies for session inputs; guidance on credential handling in AI-assisted workflows.
+ Session context and secrets exposure risk; data retention policies for session inputs; guidance on credential handling in AI-assisted workflows.
 
 [^13]: GitGuardian — "State of Secrets Sprawl 2025," GitGuardian, 2025. https://www.gitguardian.com/state-of-secrets-sprawl
-    Secrets in version control: detection rates, remediation rates, and the time-to-exploitation distribution for publicly exposed credentials; pre-commit scanning as the highest-leverage intervention.
+ Secrets in version control: detection rates, remediation rates, and the time-to-exploitation distribution for publicly exposed credentials; pre-commit scanning as the highest-leverage intervention.
 
 [^14]: Dark Reading — "AI-Assisted Development: The Security Risks Nobody Is Managing," October 2025. https://www.darkreading.com/application-security/ai-assisted-development-security-risks
-    Vulnerability response challenges unique to AI-generated code; the retrospective analysis gap; velocity pressure as a contributing factor in AI-related security incidents.
+ Vulnerability response challenges unique to AI-generated code; the retrospective analysis gap; velocity pressure as a contributing factor in AI-related security incidents.
 
 [^15]: NIST — "Cybersecurity Framework 2.0," NIST, 2024. https://www.nist.gov/cyberframework
-    Severity classification frameworks for vulnerability response; response timeline standards; the Respond function of the NIST CSF as the organizing structure for team vulnerability procedures.
+ Severity classification frameworks for vulnerability response; response timeline standards; the Respond function of the NIST CSF as the organizing structure for team vulnerability procedures.
 
 [^16]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
-    Security finding rate comparison between AI-generated and human-written code; vulnerability logging as a data source for security health metrics and trend analysis.
+ Security finding rate comparison between AI-generated and human-written code; vulnerability logging as a data source for security health metrics and trend analysis.
 
 [^17]: OWASP — "OWASP Top 10 2021," OWASP Foundation. https://owasp.org/Top10/
-    Security review category taxonomy: input validation, authentication, authorization, cryptography, injection, and the OWASP Top 10 as the canonical checklist foundation for application security review.
+ Security review category taxonomy: input validation, authentication, authorization, cryptography, injection, and the OWASP Top 10 as the canonical checklist foundation for application security review.
