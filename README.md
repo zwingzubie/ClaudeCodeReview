@@ -15,7 +15,7 @@ If you are new to this repository, start here:
 1. **[Quality and Safety/Issues/](Quality%20and%20Safety/Issues/)** — Understand the failure modes before adopting AI-assisted development at scale
 2. **[Core Practice/Workflows/](Core%20Practice/Workflows/)** — Learn the session patterns that produce reliable output
 3. **[Core Practice/Tooling & Configuration/](Core%20Practice/Tooling%20%26%20Configuration/)** — Configure all Claude Code configuration surfaces: CLAUDE.md, settings, hooks, MCP, skills, agents, rules, and memory
-4. **[Reference Artifacts/Templates/](Reference%20Artifacts/Templates/)** — Copy the actual configuration artifacts into your project
+4. **[Reference Artifacts/](Reference%20Artifacts/)** — Copy the actual configuration artifacts into your project
 
 ---
 
@@ -59,7 +59,7 @@ If you are new to this repository, start here:
 
 | Folder | What it covers |
 |---|---|
-| [Templates/](Reference%20Artifacts/Templates/) | Ready-to-use CLAUDE.md, .mcp.json, settings.json, spec.md, PR template, and slash command examples |
+| [Reference Artifacts/](Reference%20Artifacts/) | Ready-to-use CLAUDE.md, .mcp.json, settings.json, spec.md, PR template, and slash command examples |
 
 ---
 
