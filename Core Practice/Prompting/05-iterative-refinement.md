@@ -130,7 +130,7 @@ Iteration templates accumulate from real sessions. Every time a session finds an
 [^13]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
  Iteration templates as technical debt mitigation: how pre-designed iteration sequences for recurring tasks prevent the ad-hoc prompting patterns that produce inconsistent-quality outputs.
 
-[^14]: daily.dev — "The Developer's Guide to Prompt Engineering in 2026," daily.dev, March 2026. https://daily.dev/blog/the-developers-guide-to-prompt-engineering-in-2026
+[^14]: Lakera — "The Ultimate Guide to Prompt Engineering in 2026," Lakera Blog, 2026. https://www.lakera.ai/blog/prompt-engineering-guide
  Template library accumulation from real sessions: how to extract iteration templates from retrospective session review; template maturation patterns over time.
 
 [^17]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ

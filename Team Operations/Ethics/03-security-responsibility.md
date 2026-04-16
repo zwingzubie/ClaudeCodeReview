@@ -112,7 +112,7 @@ The security lead's responsibility under AI adoption is to ensure that security 
 [^8]: Dark Reading — "AI-Assisted Development: The Security Risks Nobody Is Managing," October 2025. https://www.darkreading.com/application-security/ai-assisted-development-security-risks
  Velocity pressure as the primary AI-related security risk factor: analysis of late 2025 AI-related incidents; the specific mechanism by which increased PR volume decreases review depth.
 
-[^10]: Kyros — "Responsible AI Disclosure: What Engineering Teams Need to Know," March 2026. https://kyros.ai/blog/responsible-ai-disclosure
+[^10]: Allen D. Householder et al. (CMU SEI) — "Protecting AI from the Outside In: The Case for Coordinated Vulnerability Disclosure," SEI Blog, 2025. https://www.sei.cmu.edu/blog/protecting-ai-from-the-outside-in-the-case-for-coordinated-vulnerability-disclosure/
  Responsible disclosure timelines for AI-generated vulnerabilities: internal notification, engineering response, customer notification, and public disclosure; why AI origin does not modify these timelines.
 
 [^11]: GitHub — "Octoverse 2025: The State of AI in Software Development," GitHub Octoverse 2025. https://github.blog/news-insights/research/the-state-of-open-source-and-ai/

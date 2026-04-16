@@ -109,7 +109,7 @@ The quarterly audit is the structural mechanism for detecting staleness at scale
 [^5]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
  Library scope definition; context injection documentation in prompt entries; CLAUDE.md cross-reference accuracy maintenance.
 
-[^6]: daily.dev — "The Developer's Guide to Prompt Engineering in 2026," daily.dev, March 2026. https://daily.dev/blog/the-developers-guide-to-prompt-engineering-in-2026
+[^6]: Lakera — "The Ultimate Guide to Prompt Engineering in 2026," Lakera Blog, 2026. https://www.lakera.ai/blog/prompt-engineering-guide
  Library directory structure and naming conventions; findability as the primary organizational constraint; version control commit history as a staleness proxy.
 
 [^7]: Ravikanth Konda — "Patterns for Effective AI-Assisted Software Development," International Journal of AI in Business, Data and Cloud Management Systems, February 2026. https://ijaibdcms.org

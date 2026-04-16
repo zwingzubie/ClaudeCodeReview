@@ -121,7 +121,7 @@ Whether session efficiency varies by engineer or by task type is a diagnostic qu
 [^4]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
  Empirical study of output quality as a function of session length and context density; documents the context exhaustion mechanism and its effect on code consistency.
 
-[^9]: Kyros — "CLAUDE.md as a Context Efficiency Tool: Reducing Per-Session Overhead," Kyros Engineering Blog, March 2026. https://kyros.ai/blog/claudemd-context-efficiency
+[^9]: Shrivu Shankar — "How I Use Every Claude Code Feature," sshh.io, 2025. https://blog.sshh.io/p/how-i-use-every-claude-code-feature
  Case study of how CLAUDE.md maintenance reduced average context loading time per session by 40% and improved output consistency in targeted modules.
 
 [^a]: [Issues: Skill Atrophy](../Issues/06-skill-atrophy.md) — declining session efficiency without AI assistance is a leading indicator of skill atrophy; the metric distinguishes AI-assisted from AI-dependent output.

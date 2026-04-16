@@ -122,7 +122,7 @@ The most direct improvement loop is CLAUDE.md updates triggered by rework root c
 [^9]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
  Empirical study classifying AI code failures into defect, architectural, and comprehension categories; provides frequency distributions and governance recommendations for each.
 
-[^10]: Kyros — "CLAUDE.md as Architecture Documentation: Preventing AI Architectural Drift," Kyros Engineering Blog, March 2026. https://kyros.ai/blog/claudemd-architecture-documentation
+[^10]: Anthropic — "Using CLAUDE.md Files: Customizing Claude Code for Your Codebase," Anthropic, 2026. https://claude.com/blog/using-claude-md-files
  Case study of how CLAUDE.md updates targeting architectural patterns reduced architectural rework in a backend API layer by 48% over two sprints.
 
 [^a]: [Issues: Comprehension Debt](../Issues/01-comprehension-debt.md) — rework rate is the primary metric for detecting comprehension debt in production; high rework on AI-generated code indicates that engineers accepted output they did not fully understand.

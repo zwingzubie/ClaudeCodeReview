@@ -85,7 +85,7 @@ The category of sessions with the highest cost risk are open-ended agentic sessi
 [^3]: Simon Willison — "How I Use LLMs: A Pragmatic 2026 Field Guide," simonwillison.net, February 2026. https://simonwillison.net/2026/Feb/how-i-use-llms/
  Output token cost implications of verbose prompting patterns; code-first vs. explanation-first prompt patterns; the cost of "think step by step" on low-complexity tasks.
 
-[^4]: Stephanie Hurlburt — "Tracking LLM Costs Across a Small Engineering Team," Stephanie Hurlburt's Blog, March 2026. https://stephanehurlburt.com/blog/tracking-llm-costs
+[^4]: Nir Gazit (Traceloop) — "From Bills to Budgets: How to Track LLM Token Usage and Cost Per User," Traceloop Blog, 2025. https://www.traceloop.com/blog/from-bills-to-budgets-how-to-track-llm-token-usage-and-cost-per-user
  Input/output token ratio baselines for common session types; cache hit rate monitoring; pre-session cost estimation methodology; estimated vs. actual cost calibration tracking.
 
 [^5]: Anthropic — "Context Window Management," Claude Code Documentation, 2026. https://code.claude.com/docs/en/context-window

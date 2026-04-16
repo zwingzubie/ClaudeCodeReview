@@ -100,7 +100,7 @@ Proportionate use also serves the team's skill development goals (see Developer 
 [^6]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
  Deliberate use culture in AI-heavy teams: what organizational signals distinguish teams that use AI tools for genuine value from those that use them reflexively.
 
-[^7]: Kyros — "Responsible AI Disclosure: What Engineering Teams Need to Know," March 2026. https://kyros.ai/blog/responsible-ai-disclosure
+[^7]: Allen D. Householder et al. (CMU SEI) — "Protecting AI from the Outside In: The Case for Coordinated Vulnerability Disclosure," SEI Blog, 2025. https://www.sei.cmu.edu/blog/protecting-ai-from-the-outside-in-the-case-for-coordinated-vulnerability-disclosure/
  Context engineering as environmental practice: the token efficiency argument for good prompt engineering and its environmental implications at team usage scale.
 
 [^8]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339

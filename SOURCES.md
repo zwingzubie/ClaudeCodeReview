@@ -3,7 +3,7 @@
 Comprehensive bibliography of all external citations used across this repository.
 Organized by category. Each entry includes full bibliographic information and a list of files in this repo that reference it.
 
-**Total unique sources: 231**
+**Total unique sources: 230**
 
 ---
 
@@ -775,12 +775,12 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://collinwilkins.com/articles/ai-code-review-best-practices-approaches-tools.html>
   *Files:* [`Core Practice/Workflows/06-writer-reviewer-pattern.md`](Core%20Practice/Workflows/06-writer-reviewer-pattern.md)
 
-- **daily.dev — "What's Actually Working in AI-Assisted Development: Patterns from Engineering Teams," April 2026**
-  <https://daily.dev/blog/ai-assisted-development-patterns>
+- **Justin Reock (DX) — "AI-Assisted Engineering: Q1 2026 Impact Report," DX Newsletter, 2026**
+  <https://newsletter.getdx.com/p/ai-assisted-engineering-q1-2026-impact>
   *Files:* [`Team Operations/Learning/03-team-knowledge-sharing.md`](Team%20Operations/Learning/03-team-knowledge-sharing.md), [`Team Operations/Learning/05-continuing-education.md`](Team%20Operations/Learning/05-continuing-education.md)
 
-- **daily.dev — "The Developer's Guide to Prompt Engineering in 2026," daily.dev, March 2026**
-  <https://daily.dev/blog/the-developers-guide-to-prompt-engineering-in-2026>
+- **Lakera — "The Ultimate Guide to Prompt Engineering in 2026," Lakera Blog, 2026**
+  <https://www.lakera.ai/blog/prompt-engineering-guide>
   *Files:* [`Core Practice/Prompting/05-iterative-refinement.md`](Core%20Practice/Prompting/05-iterative-refinement.md), [`Core Practice/Prompting/06-prompt-library.md`](Core%20Practice/Prompting/06-prompt-library.md)
 
 - **daily.dev — "Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code," April 2026**
@@ -819,32 +819,32 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://incident.io/blog/shipping-faster-with-claude-code-and-git-worktrees>
   *Files:* [`Core Practice/Tooling & Configuration/07-worktree-isolation.md`](Core%20Practice/Tooling%20%26%20Configuration/07-worktree-isolation.md), [`Core Practice/Workflows/04-session-hygiene.md`](Core%20Practice/Workflows/04-session-hygiene.md), [`Core Practice/Workflows/07-agentic-delegation.md`](Core%20Practice/Workflows/07-agentic-delegation.md), [`Core Practice/Workflows/08-parallel-agent-coordination.md`](Core%20Practice/Workflows/08-parallel-agent-coordination.md)
 
-- **Kyros — "AI-Assisted Development: Governance and Capability Risks for Engineering Teams," March 2026**
-  <https://kyros.ai/blog/ai-assisted-development-governance>
+- **Dave Holliday et al. — "Where Architects Sit in the Era of AI," InfoQ, 2025**
+  <https://www.infoq.com/articles/architects-ai-era/>
   *Files:* [`Team Operations/Learning/04-ai-free-practice-protocols.md`](Team%20Operations/Learning/04-ai-free-practice-protocols.md), [`Team Operations/Learning/05-continuing-education.md`](Team%20Operations/Learning/05-continuing-education.md)
 
-- **Kyros — "Architectural Consistency in AI-Generated Code: Metrics and Governance," Kyros Engineering Blog, March 2026**
-  <https://kyros.ai/blog/architectural-consistency-ai-code>
-  *Files:* [`Quality and Safety/Metrics/06-codebase-health.md`](Quality%20and%20Safety/Metrics/06-codebase-health.md)
+- **Kyle Howard et al. — "Architectural Governance at AI Speed," InfoQ, 2025**
+  <https://www.infoq.com/articles/architectural-governance-ai-speed/>
+  *Files:* [`Quality and Safety/Issues/03-architectural-drift.md`](Quality%20and%20Safety/Issues/03-architectural-drift.md), [`Quality and Safety/Metrics/06-codebase-health.md`](Quality%20and%20Safety/Metrics/06-codebase-health.md)
 
-- **Kyros — "CLAUDE.md as Architecture Documentation: Preventing AI Architectural Drift," Kyros Engineering Blog, March 2026**
-  <https://kyros.ai/blog/claudemd-architecture-documentation>
+- **Anthropic — "Using CLAUDE.md Files: Customizing Claude Code for Your Codebase," Anthropic, 2026**
+  <https://claude.com/blog/using-claude-md-files>
   *Files:* [`Quality and Safety/Metrics/03-rework-rate.md`](Quality%20and%20Safety/Metrics/03-rework-rate.md)
 
-- **Kyros — "CLAUDE.md as a Context Efficiency Tool: Reducing Per-Session Overhead," Kyros Engineering Blog, March 2026**
-  <https://kyros.ai/blog/claudemd-context-efficiency>
+- **Shrivu Shankar — "How I Use Every Claude Code Feature," sshh.io, 2025**
+  <https://blog.sshh.io/p/how-i-use-every-claude-code-feature>
   *Files:* [`Quality and Safety/Metrics/05-session-efficiency.md`](Quality%20and%20Safety/Metrics/05-session-efficiency.md)
 
-- **Kyros — "Responsible AI Disclosure: What Engineering Teams Need to Know," March 2026**
-  <https://kyros.ai/blog/responsible-ai-disclosure>
+- **Allen D. Householder et al. (CMU SEI) — "Protecting AI from the Outside In: The Case for Coordinated Vulnerability Disclosure," SEI Blog, 2025**
+  <https://www.sei.cmu.edu/blog/protecting-ai-from-the-outside-in-the-case-for-coordinated-vulnerability-disclosure/>
   *Files:* [`Team Operations/Ethics/03-security-responsibility.md`](Team%20Operations/Ethics/03-security-responsibility.md), [`Team Operations/Ethics/05-environmental-costs.md`](Team%20Operations/Ethics/05-environmental-costs.md)
 
-- **Kyros — "Security Threshold Governance for AI-Generated Code: From Yellow to Red," Kyros Engineering Blog, March 2026**
-  <https://kyros.ai/blog/security-threshold-governance>
+- **OWASP — "AI Agent Security Cheat Sheet," OWASP Cheat Sheet Series, 2025**
+  <https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html>
   *Files:* [`Quality and Safety/Metrics/04-security-vulnerability-trends.md`](Quality%20and%20Safety/Metrics/04-security-vulnerability-trends.md)
 
-- **Kyros — "Audit Requirements for AI-Assisted Software Development," Kyros Research, 2026**
-  <https://kyros.ai/research/audit-requirements-ai-assisted-development-2026>
+- **Matt Doughty (Prefactor) — "Audit Trails in CI/CD: Best Practices for AI Agents," Prefactor Blog, 2025**
+  <https://prefactor.tech/blog/audit-trails-in-ci-cd-best-practices-for-ai-agents>
   *Files:* [`Core Practice/Tooling & Configuration/06-cicd-integration.md`](Core%20Practice/Tooling%20%26%20Configuration/06-cicd-integration.md)
 
 - **Laurent Kempé — "From 3 Worktrees to N: How AI Agents Changed My Parallel Development Workflow on Windows," March 2026**
@@ -919,10 +919,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://www.index.dev/blog/developer-productivity-statistics-with-ai-tools>
   *Files:* [`Core Practice/Workflows/02-task-decomposition.md`](Core%20Practice/Workflows/02-task-decomposition.md)
 
-- **Kyle Howard et al. — "Architectural Governance at AI Speed," InfoQ, March 26, 2026**
-  <https://www.infoq.com/articles/architectural-governance-ai-speed/>
-  *Files:* [`Quality and Safety/Issues/03-architectural-drift.md`](Quality%20and%20Safety/Issues/03-architectural-drift.md)
-
 - **Leigh Griffin and Ray Carroll — "Spec Driven Development: When Architecture Becomes Executable," InfoQ, January 12, 2026**
   <https://www.infoq.com/articles/spec-driven-development/>
   *Files:* [`Quality and Safety/Issues/03-architectural-drift.md`](Quality%20and%20Safety/Issues/03-architectural-drift.md)
@@ -959,12 +955,12 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://www.vibesparking.com/en/blog/ai/vibe-coding/2026-03-03-verified-spec-driven-development/>
   *Files:* [`Core Practice/Workflows/05-verification-driven-development.md`](Core%20Practice/Workflows/05-verification-driven-development.md)
 
-- **WorkOS — "AI Development Costs in 2026: What Engineering Teams Are Actually Spending," WorkOS Blog, January 2026**
-  <https://workos.com/blog/ai-development-costs-2026>
+- **Laura Tacho (DX) — "How Are Engineering Leaders Approaching 2026 AI Tooling Budgets?" DX Blog, 2026**
+  <https://getdx.com/blog/how-are-engineering-leaders-approaching-2026-ai-tooling-budget/>
   *Files:* [`Economics and Reliability/Cost & Token Economics/00-overview.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/00-overview.md), [`Economics and Reliability/Cost & Token Economics/02-model-selection-strategy.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/02-model-selection-strategy.md), [`Economics and Reliability/Cost & Token Economics/04-budget-governance.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/04-budget-governance.md), [`Economics and Reliability/Cost & Token Economics/05-cost-monitoring-and-alerting.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/05-cost-monitoring-and-alerting.md)
 
-- **Stephanie Hurlburt — "Tracking LLM Costs Across a Small Engineering Team," Stephanie Hurlburt's Blog, March 2026**
-  <https://stephanehurlburt.com/blog/tracking-llm-costs>
+- **Nir Gazit (Traceloop) — "From Bills to Budgets: How to Track LLM Token Usage and Cost Per User," Traceloop Blog, 2025**
+  <https://www.traceloop.com/blog/from-bills-to-budgets-how-to-track-llm-token-usage-and-cost-per-user>
   *Files:* [`Economics and Reliability/Cost & Token Economics/00-overview.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/00-overview.md), [`Economics and Reliability/Cost & Token Economics/01-understanding-token-costs.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/01-understanding-token-costs.md), [`Economics and Reliability/Cost & Token Economics/04-budget-governance.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/04-budget-governance.md), [`Economics and Reliability/Cost & Token Economics/05-cost-monitoring-and-alerting.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/05-cost-monitoring-and-alerting.md)
 
 - **TrueFoundry — "Claude Code Governance: Building an Enterprise Usage Policy from Scratch," March 2026**

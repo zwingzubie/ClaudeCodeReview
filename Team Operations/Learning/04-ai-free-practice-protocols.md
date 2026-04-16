@@ -127,7 +127,7 @@ An annual coding challenge and an architecture walkthrough test are the two most
 [^13]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
  Architectural reasoning independence: why AI-free architecture capability is necessary for evaluating AI-generated architectural proposals; what it means for a team to "trust" AI architecture recommendations when they cannot reason about them independently.
 
-[^14]: Kyros — "AI-Assisted Development: Governance and Capability Risks for Engineering Teams," March 2026. https://kyros.ai/blog/ai-assisted-development-governance
+[^14]: Dave Holliday et al. — "Where Architects Sit in the Era of AI," InfoQ, 2025. https://www.infoq.com/articles/architects-ai-era/
  Architecture session design: the problem selection criteria for AI-free architecture sessions that produce both practice value and actionable outputs; quarterly cadence as the sustainable frequency for high-investment working sessions.
 
 [^15]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6

@@ -108,10 +108,10 @@ The monitoring infrastructure for Claude Code spend is available through the Ant
 [^7]: Anthropic — "Context Window Management," Claude Code Documentation, 2026. https://code.claude.com/docs/en/context-window
  `/compact` command mechanics and timing; context accumulation as a cost driver in long sessions; the quality-cost tradeoff of unmanaged context growth; session scope definition as a cost control.
 
-[^8]: WorkOS — "AI Development Costs in 2026: What Engineering Teams Are Actually Spending," WorkOS Blog, January 2026. https://workos.com/blog/ai-development-costs-2026
+[^8]: Laura Tacho (DX) — "How Are Engineering Leaders Approaching 2026 AI Tooling Budgets?" DX Blog, 2026. https://getdx.com/blog/how-are-engineering-leaders-approaching-2026-ai-tooling-budget/
  Sprint-level budget allocation patterns; cost-per-feature-delivered as the governance metric; three-tier budget structure for normal, high-AI, and incident-response sprints; the spend-visibility gap in teams without budget governance.
 
-[^9]: Stephanie Hurlburt — "Tracking LLM Costs Across a Small Engineering Team," Stephanie Hurlburt's Blog, March 2026. https://stephanehurlburt.com/blog/tracking-llm-costs
+[^9]: Nir Gazit (Traceloop) — "From Bills to Budgets: How to Track LLM Token Usage and Cost Per User," Traceloop Blog, 2025. https://www.traceloop.com/blog/from-bills-to-budgets-how-to-track-llm-token-usage-and-cost-per-user
  Per-session cost attribution via hook instrumentation; dashboard configuration for daily spend tracking; anomaly detection patterns for agentic session cost spikes; quarterly recalibration of alert thresholds.
 
 [^10]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ

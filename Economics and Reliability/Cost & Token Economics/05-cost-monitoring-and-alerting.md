@@ -82,7 +82,7 @@ The quarterly review does not require extensive data analysis — a well-maintai
 [^1]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
     API key organization for spend attribution; session logging disciplines; budget governance as a continuous monitoring practice rather than a monthly accounting exercise.
 
-[^2]: WorkOS — "AI Development Costs in 2026: What Engineering Teams Are Actually Spending," WorkOS Blog, January 2026. https://workos.com/blog/ai-development-costs-2026
+[^2]: Laura Tacho (DX) — "How Are Engineering Leaders Approaching 2026 AI Tooling Budgets?" DX Blog, 2026. https://getdx.com/blog/how-are-engineering-leaders-approaching-2026-ai-tooling-budget/
     Alert threshold configuration for team-level budget governance; planning vs. restrict alert response procedures; quarterly cost review reporting format; Slack integration for daily spend visibility.
 
 [^3]: Anthropic — "Models Overview," Anthropic API Documentation, 2026. https://docs.anthropic.com/en/docs/about-claude/models/overview
@@ -91,7 +91,7 @@ The quarterly review does not require extensive data analysis — a well-maintai
 [^4]: Anthropic — "Claude Code Hooks Reference," Claude Code Documentation, 2026. https://code.claude.com/docs/en/hooks
     Stop event hook configuration for session completion logging; session metadata available to hook scripts; hook output formats and log file integration patterns.
 
-[^5]: Stephanie Hurlburt — "Tracking LLM Costs Across a Small Engineering Team," Stephanie Hurlburt's Blog, March 2026. https://stephanehurlburt.com/blog/tracking-llm-costs
+[^5]: Nir Gazit (Traceloop) — "From Bills to Budgets: How to Track LLM Token Usage and Cost Per User," Traceloop Blog, 2025. https://www.traceloop.com/blog/from-bills-to-budgets-how-to-track-llm-token-usage-and-cost-per-user
     Hook-driven session cost log schema; weekly session log review for per-session cost outliers; monthly aggregate analysis by task type; transparency as a team cost calibration mechanism.
 
 [^6]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html

@@ -102,7 +102,7 @@ The most reliable escalation criterion is task failure: if a task has failed two
 [^1]: Anthropic — "Models Overview," Anthropic API Documentation, 2026. https://docs.anthropic.com/en/docs/about-claude/models/overview
     Model capability and cost comparison across the Claude family; the 20× cost differential between Haiku and Opus; model selection by task type; the case for Sonnet as the general engineering default.
 
-[^2]: WorkOS — "AI Development Costs in 2026: What Engineering Teams Are Actually Spending," WorkOS Blog, January 2026. https://workos.com/blog/ai-development-costs-2026
+[^2]: Laura Tacho (DX) — "How Are Engineering Leaders Approaching 2026 AI Tooling Budgets?" DX Blog, 2026. https://getdx.com/blog/how-are-engineering-leaders-approaching-2026-ai-tooling-budget/
     Monthly token volume estimates for teams of 10–15; cost difference between Opus-default and tiered-selection teams; model selection as the primary lever for cost management at team scale.
 
 [^3]: Simon Willison — "How I Use LLMs: A Pragmatic 2026 Field Guide," simonwillison.net, February 2026. https://simonwillison.net/2026/Feb/how-i-use-llms/

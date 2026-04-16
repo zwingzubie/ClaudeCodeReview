@@ -127,7 +127,7 @@ Automated metrics for architectural consistency include import graph consistency
 [^12]: Stack Overflow — "Developer Survey 2025: AI Tools and Code Quality," Stack Overflow, December 2025. https://stackoverflow.com/research/2025-developer-survey
  Survey data on developer confidence in AI-generated tests; documents the recognition gap between coverage metrics and actual test quality.
 
-[^13]: Kyros — "Architectural Consistency in AI-Generated Code: Metrics and Governance," Kyros Engineering Blog, March 2026. https://kyros.ai/blog/architectural-consistency-ai-code
+[^13]: Kyle Howard et al. — "Architectural Governance at AI Speed," InfoQ, 2025. https://www.infoq.com/articles/architectural-governance-ai-speed/
  Case study of import graph consistency analysis as an early warning system for architectural drift; documents the CLAUDE.md update cycle triggered by consistency metric violations.
 
 [^a]: [Issues: Codebase Bloat](../Issues/02-codebase-bloat.md) — codebase health indicators operationalize the bloat risk described there; the metrics make the surface area expansion visible as a measurable signal.

@@ -110,13 +110,13 @@ The value side of the equation does not require precise measurement. A rough cat
 [^1]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
     API key management and spend accountability; session logging for cost attribution; budget governance as a prerequisite for sustainable AI adoption; cost-per-value analysis framework.
 
-[^2]: WorkOS — "AI Development Costs in 2026: What Engineering Teams Are Actually Spending," WorkOS Blog, January 2026. https://workos.com/blog/ai-development-costs-2026
+[^2]: Laura Tacho (DX) — "How Are Engineering Leaders Approaching 2026 AI Tooling Budgets?" DX Blog, 2026. https://getdx.com/blog/how-are-engineering-leaders-approaching-2026-ai-tooling-budget/
     Sprint-type budget tiers; high-cost activity categories and pre-authorization rationale; agentic session cost risk without human oversight; team-size calibration for governance frameworks.
 
 [^3]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
     Pre-session cost estimation practices in high-adopting teams; approval workflow patterns for agentic sessions; the correlation between deliberate spend planning and AI output quality.
 
-[^4]: Stephanie Hurlburt — "Tracking LLM Costs Across a Small Engineering Team," Stephanie Hurlburt's Blog, March 2026. https://stephanehurlburt.com/blog/tracking-llm-costs
+[^4]: Nir Gazit (Traceloop) — "From Bills to Budgets: How to Track LLM Token Usage and Cost Per User," Traceloop Blog, 2025. https://www.traceloop.com/blog/from-bills-to-budgets-how-to-track-llm-token-usage-and-cost-per-user
     Per-engineer API key configuration; spend visibility as a feedback mechanism rather than surveillance; monthly spend summary formats that support team calibration without creating ranking pressure.
 
 [^5]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6

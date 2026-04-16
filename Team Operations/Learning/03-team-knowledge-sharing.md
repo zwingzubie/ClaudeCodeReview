@@ -121,7 +121,7 @@ The "first week AI tour" is a half-day structured introduction to the team's acc
 [^10]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
  Workflow knowledge sharing as a debt prevention mechanism: how teams that invest in structured knowledge transfer avoid the compounding cost of undocumented AI practice divergence across engineers; lightweight formats as a prerequisite for sustainable adoption.
 
-[^11]: daily.dev — "What's Actually Working in AI-Assisted Development: Patterns from Engineering Teams," April 2026. https://daily.dev/blog/ai-assisted-development-patterns
+[^11]: Justin Reock (DX) — "AI-Assisted Engineering: Q1 2026 Impact Report," DX Newsletter, 2026. https://newsletter.getdx.com/p/ai-assisted-engineering-q1-2026-impact
  Stand-up format analysis: the time constraints that make AI workflow stand-ups sustainable; why ten-minute sessions maintained over quarters generate more cumulative knowledge than monthly hour-long sessions that are frequently skipped.
 
 [^12]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025

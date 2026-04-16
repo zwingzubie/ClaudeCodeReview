@@ -121,7 +121,7 @@ The risk of AI-only education budget is a team whose AI tool proficiency increas
 [^10]: Sreecharan Sankaranarayanan — "Mitigating 'Epistemic Debt' in Generative AI-Scaffolded Novice Programming using Metacognitive Scripts," arXiv:2602.20206, February 22, 2026. https://arxiv.org/abs/2602.20206
  Continuing education and comprehension debt: how staying current on best practices for AI comprehension management (teach-back, explanation gates) directly reduces the team's risk of accumulating epistemic debt.
 
-[^11]: daily.dev — "What's Actually Working in AI-Assisted Development: Patterns from Engineering Teams," April 2026. https://daily.dev/blog/ai-assisted-development-patterns
+[^11]: Justin Reock (DX) — "AI-Assisted Engineering: Q1 2026 Impact Report," DX Newsletter, 2026. https://newsletter.getdx.com/p/ai-assisted-engineering-q1-2026-impact
  Monitoring list maintenance: how engineering teams keep their source monitoring relevant as the AI tooling landscape evolves; the criteria for adding and removing sources from a team monitoring commitment.
 
 [^12]: CIO — "Managing AI-Augmented Engineering Teams: What Leaders Need to Know," April 2026. https://www.cio.com/article/ai-augmented-engineering-teams-leadership
@@ -130,7 +130,7 @@ The risk of AI-only education budget is a team whose AI tool proficiency increas
 [^14]: Stack Overflow — "Developer Survey Results," December 2025. https://stackoverflow.blog/2025/12/developer-survey
  Learning brief archiving: how archived learning briefs reveal patterns in external development that inform monitoring source curation and practice evaluation calibration over time.
 
-[^15]: Kyros — "AI-Assisted Development: Governance and Capability Risks for Engineering Teams," March 2026. https://kyros.ai/blog/ai-assisted-development-governance
+[^15]: Dave Holliday et al. — "Where Architects Sit in the Era of AI," InfoQ, 2025. https://www.infoq.com/articles/architects-ai-era/
  Conference learning integration: the governance risk of adopting externally observed practices without deliberate evaluation; the debrief format as a structured gate that preserves the value of conference exposure without the risk of pattern-chasing.
 
 [^16]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025

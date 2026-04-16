@@ -138,7 +138,7 @@ Tracking suppressed findings is as important as tracking acted-upon findings. If
 [^9]: Dark Reading — "AI-Assisted Security Code Review: Findings from 200 Enterprise Deployments," Dark Reading, March 2026. https://www.darkreading.com/ai-assisted-security-code-review-enterprise-2026
  Security gate threshold configuration: the operational consequences of miscalibrated thresholds; monthly governance reporting as a signal for recalibration; act-on vs. suppression rates as pipeline quality metrics.
 
-[^13]: Kyros — "Audit Requirements for AI-Assisted Software Development," Kyros Research, 2026. https://kyros.ai/research/audit-requirements-ai-assisted-development-2026
+[^13]: Matt Doughty (Prefactor) — "Audit Trails in CI/CD: Best Practices for AI Agents," Prefactor Blog, 2025. https://prefactor.tech/blog/audit-trails-in-ci-cd-best-practices-for-ai-agents
  Pipeline audit log requirements: what a compliance-grade CI Claude Code run record must include; the governance value of logging skill version and CLAUDE.md version hash alongside findings.
 
 [^a]: [QA & Testing: AI-Generated Test Coverage](../QA%20%26%20Testing/02-ai-generated-test-coverage.md) — CI/CD pipelines run coverage analysis on every merge; the integration document describes the pipeline and the QA document defines what the coverage gates require.
