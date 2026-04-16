@@ -164,7 +164,7 @@ Regulatory monitoring is not a full-time responsibility for an 11-person team �
 [^14]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
  Regulatory monitoring as a CTO responsibility; the cost of discovering new AI requirements as audit findings vs. monitoring outputs; EU AI Act implementation pace.
 
-[^15]: METR — "Autonomy Evaluation Resources," METR, February 2026. https://metr.org/autonomy-evaluation-resources/
+[^15]: METR — "Autonomy Evaluation Resources," METR, February 2026. https://metr.org/measuring-autonomous-ai-capabilities//
  AI regulatory landscape assessment for software development; sector-specific guidance development pace; the monitoring sources curated to avoid coverage gaps and information overload.
 
 [^a]: [Ethics: Training Data and Privacy](../Ethics/04-training-data-privacy.md) — Data privacy compliance is a primary audit category; the ethical analysis of what enters AI sessions maps directly to the compliance documentation requirements here.

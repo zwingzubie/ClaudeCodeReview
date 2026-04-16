@@ -138,7 +138,7 @@ The most operationally relevant form of this bias for a software team is archite
 [^12]: Anthropic — "Data Usage and Privacy," Claude Code Documentation, 2026. https://code.claude.com/docs/en/data-usage
  Data processing terms, session data retention policies, and guidance on what categories of data should not be included in Claude Code sessions.
 
-[^14]: Anthropic — "Anthropic's Approach to AI Safety and Environmental Responsibility," Anthropic, 2026. https://www.anthropic.com/safety-and-responsibility
+[^14]: Anthropic — "Anthropic's Approach to AI Safety and Environmental Responsibility," Anthropic, 2026. https://www.anthropic.com/news/core-views-on-ai-safety
  Anthropic's energy usage reporting and sustainability commitments; guidance for organizations including AI compute in ESG accounting.
 
 [^16]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny

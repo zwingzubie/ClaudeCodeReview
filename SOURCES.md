@@ -3,7 +3,7 @@
 Comprehensive bibliography of all external citations used across this repository.
 Organized by category. Each entry includes full bibliographic information and a list of files in this repo that reference it.
 
-**Total unique sources: 230**
+**Total unique sources: 225**
 
 ---
 
@@ -126,7 +126,7 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Core Practice/Prompting/03-prompt-antipatterns.md`](Core%20Practice/Prompting/03-prompt-antipatterns.md), [`Core Practice/Tooling & Configuration/02-hooks-and-automation.md`](Core%20Practice/Tooling%20%26%20Configuration/02-hooks-and-automation.md), [`Core Practice/Tooling & Configuration/03-mcp-integration.md`](Core%20Practice/Tooling%20%26%20Configuration/03-mcp-integration.md), [`Core Practice/Tooling & Configuration/07-worktree-isolation.md`](Core%20Practice/Tooling%20%26%20Configuration/07-worktree-isolation.md), [`Core Practice/Workflows/00-overview.md`](Core%20Practice/Workflows/00-overview.md), [`Core Practice/Workflows/02-task-decomposition.md`](Core%20Practice/Workflows/02-task-decomposition.md), [`Core Practice/Workflows/07-agentic-delegation.md`](Core%20Practice/Workflows/07-agentic-delegation.md), [`Core Practice/Workflows/08-parallel-agent-coordination.md`](Core%20Practice/Workflows/08-parallel-agent-coordination.md), [`Economics and Reliability/Cost & Token Economics/00-overview.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/00-overview.md), [`Economics and Reliability/Cost & Token Economics/02-model-selection-strategy.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/02-model-selection-strategy.md), [`Economics and Reliability/Cost & Token Economics/04-budget-governance.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/04-budget-governance.md), [`Economics and Reliability/Debugging & Troubleshooting/00-overview.md`](Economics%20and%20Reliability/Debugging%20%26%20Troubleshooting/00-overview.md), [`Economics and Reliability/Debugging & Troubleshooting/01-recognizing-session-failure-patterns.md`](Economics%20and%20Reliability/Debugging%20%26%20Troubleshooting/01-recognizing-session-failure-patterns.md), [`Economics and Reliability/Debugging & Troubleshooting/03-context-degradation.md`](Economics%20and%20Reliability/Debugging%20%26%20Troubleshooting/03-context-degradation.md), [`Economics and Reliability/Debugging & Troubleshooting/05-escalation-and-human-judgment.md`](Economics%20and%20Reliability/Debugging%20%26%20Troubleshooting/05-escalation-and-human-judgment.md), [`Quality and Safety/Metrics/00-overview.md`](Quality%20and%20Safety/Metrics/00-overview.md), [`Quality and Safety/Metrics/01-ai-code-quality.md`](Quality%20and%20Safety/Metrics/01-ai-code-quality.md), [`Quality and Safety/Metrics/02-health-dashboard.md`](Quality%20and%20Safety/Metrics/02-health-dashboard.md), [`Quality and Safety/QA & Testing/00-overview.md`](Quality%20and%20Safety/QA%20%26%20Testing/00-overview.md), [`Quality and Safety/QA & Testing/01-test-session-design.md`](Quality%20and%20Safety/QA%20%26%20Testing/01-test-session-design.md), [`Quality and Safety/QA & Testing/02-ai-generated-test-coverage.md`](Quality%20and%20Safety/QA%20%26%20Testing/02-ai-generated-test-coverage.md), [`Quality and Safety/QA & Testing/03-acceptance-criteria-automation.md`](Quality%20and%20Safety/QA%20%26%20Testing/03-acceptance-criteria-automation.md), [`Quality and Safety/QA & Testing/04-regression-prevention.md`](Quality%20and%20Safety/QA%20%26%20Testing/04-regression-prevention.md), [`Quality and Safety/QA & Testing/05-qa-engineer-workflow.md`](Quality%20and%20Safety/QA%20%26%20Testing/05-qa-engineer-workflow.md), [`Team Operations/Governance/00-overview.md`](Team%20Operations/Governance/00-overview.md), [`Team Operations/Governance/02-ai-usage-policy.md`](Team%20Operations/Governance/02-ai-usage-policy.md), [`Team Operations/Learning/01-engineer-onboarding.md`](Team%20Operations/Learning/01-engineer-onboarding.md)
 
 - **Anthropic — "Environmental and Sustainability Reporting," Anthropic Documentation, 2026**
-  <https://www.anthropic.com/company/sustainability>
+  <https://www.anthropic.com/news/investing-in-energy-to-secure-america-s-ai-future>
   *Files:* [`Team Operations/Ethics/05-environmental-costs.md`](Team%20Operations/Ethics/05-environmental-costs.md)
 
 - **Anthropic — "Model Context Protocol," Anthropic, 2025**
@@ -134,17 +134,17 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Team Operations/Documentation/00-overview.md`](Team%20Operations/Documentation/00-overview.md), [`Team Operations/Documentation/01-architecture-decision-records.md`](Team%20Operations/Documentation/01-architecture-decision-records.md), [`Team Operations/Documentation/02-runbook-standards.md`](Team%20Operations/Documentation/02-runbook-standards.md), [`Team Operations/Documentation/04-rationale-capture.md`](Team%20Operations/Documentation/04-rationale-capture.md)
 
 - **Anthropic — "Usage Policy and Enterprise Data Agreements," Anthropic Documentation, 2026**
-  <https://www.anthropic.com/policies/usage-policy>
+  <https://www.anthropic.com/legal/aup>
   *Files:* [`Team Operations/Ethics/04-training-data-privacy.md`](Team%20Operations/Ethics/04-training-data-privacy.md)
 
 - **Anthropic — "Anthropic's Approach to AI Safety and Environmental Responsibility," Anthropic, 2026**
-  <https://www.anthropic.com/safety-and-responsibility>
+  <https://www.anthropic.com/news/core-views-on-ai-safety>
   *Files:* [`Team Operations/Ethics/00-overview.md`](Team%20Operations/Ethics/00-overview.md)
 
 ## Standards and Official References
 
 - **Slack — "Slack MCP Server," Slack Developer Documentation, 2025**
-  <https://api.slack.com/docs/mcp>
+  <https://docs.slack.dev/ai/slack-mcp-server/>
   *Files:* [`Core Practice/MCP Servers/00-overview.md`](Core%20Practice/MCP%20Servers/00-overview.md), [`Core Practice/MCP Servers/02-slack-integration.md`](Core%20Practice/MCP%20Servers/02-slack-integration.md)
 
 - **OpenSSF (Avishay Balter, David A. Wheeler et al.) — "Security-Focused Guide for AI Code Assistant Instructions," August 1, 2025**
@@ -152,7 +152,7 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Quality and Safety/Issues/04-security-vulnerabilities.md`](Quality%20and%20Safety/Issues/04-security-vulnerabilities.md)
 
 - **Google — "Google Drive MCP Server," Google Workspace Developer Documentation, 2025**
-  <https://developers.google.com/workspace/mcp>
+  <https://cloud.google.com/blog/products/ai-machine-learning/announcing-official-mcp-support-for-google-services>
   *Files:* [`Core Practice/MCP Servers/00-overview.md`](Core%20Practice/MCP%20Servers/00-overview.md), [`Core Practice/MCP Servers/03-google-drive-integration.md`](Core%20Practice/MCP%20Servers/03-google-drive-integration.md)
 
 - **OWASP GenAI Security Project — "OWASP Top 10 for LLM Applications 2025."**
@@ -372,7 +372,7 @@ Organized by category. Each entry includes full bibliographic information and a 
 ## Research Organizations
 
 - **METR — "Autonomy Evaluation Resources," METR, February 2026**
-  <https://metr.org/autonomy-evaluation-resources/>
+  <https://metr.org/measuring-autonomous-ai-capabilities/>
   *Files:* [`Team Operations/Governance/06-compliance-and-audit.md`](Team%20Operations/Governance/06-compliance-and-audit.md)
 
 - **Joel Becker, Nate Rush, Elizabeth Barnes, David Rein (METR) — "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity," arXiv:2507.09089, July 2025**
@@ -389,10 +389,6 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://apiiro.com/blog/4x-velocity-10x-vulnerabilities-ai-coding-assistants-are-shipping-more-risks/>
   *Files:* [`Quality and Safety/Issues/04-security-vulnerabilities.md`](Quality%20and%20Safety/Issues/04-security-vulnerabilities.md)
 
-- **Suphi Cankurt (AppSec Santa) — "AI Code Security Study 2026: 6 LLMs vs OWASP Top 10," February 16, 2026**
-  <https://appsecsanta.com/research/ai-code-security-study-2026>
-  *Files:* [`Quality and Safety/Issues/04-security-vulnerabilities.md`](Quality%20and%20Safety/Issues/04-security-vulnerabilities.md)
-
 - **Anna Nabiullina and Carole Winqwist (GitGuardian) — "The State of Secrets Sprawl 2026," March 17, 2026**
   <https://blog.gitguardian.com/the-state-of-secrets-sprawl-2026/>
   *Files:* [`Quality and Safety/Issues/04-security-vulnerabilities.md`](Quality%20and%20Safety/Issues/04-security-vulnerabilities.md)
@@ -402,11 +398,11 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Quality and Safety/Issues/06-skill-atrophy.md`](Quality%20and%20Safety/Issues/06-skill-atrophy.md)
 
 - **CodeRabbit — "AI Code Review Best Practices 2026," CodeRabbit Blog, 2026**
-  <https://coderabbit.ai/blog/ai-code-review-best-practices-2026>
-  *Files:* [`Core Practice/Tooling & Configuration/04-custom-skills.md`](Core%20Practice/Tooling%20%26%20Configuration/04-custom-skills.md), [`Core Practice/Tooling & Configuration/06-cicd-integration.md`](Core%20Practice/Tooling%20%26%20Configuration/06-cicd-integration.md)
+  <https://www.qodo.ai/blog/5-ai-code-review-pattern-predictions-in-2026/>
+  *Files:* [`Core Practice/Tooling & Configuration/04-custom-skills.md`](Core%20Practice/Tooling%20%26%20Configuration/04-custom-skills.md), [`Core Practice/Tooling & Configuration/06-cicd-integration.md`](Core%20Practice/Tooling%20%26%20Configuration/06-cicd-integration.md), [`Core Practice/Workflows/06-writer-reviewer-pattern.md`](Core%20Practice/Workflows/06-writer-reviewer-pattern.md)
 
 - **CodeRabbit — "AI-Generated Code Security Patterns: What 470 PRs Reveal," CodeRabbit Blog, December 17 2025**
-  <https://coderabbit.ai/blog/ai-generated-code-security-patterns>
+  <https://cloudsecurityalliance.org/blog/2025/07/09/understanding-security-risks-in-ai-generated-code>
   *Files:* [`Quality and Safety/Metrics/04-security-vulnerability-trends.md`](Quality%20and%20Safety/Metrics/04-security-vulnerability-trends.md)
 
 - **Google Cloud / DORA — "State of AI-Assisted Software Development 2025."**
@@ -463,11 +459,7 @@ Organized by category. Each entry includes full bibliographic information and a 
 
 - **Stack Overflow — "Developers Remain Willing but Reluctant to Use AI: The 2025 Developer Survey Results," December 29, 2025**
   <https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here/>
-  *Files:* [`Quality and Safety/Issues/01-comprehension-debt.md`](Quality%20and%20Safety/Issues/01-comprehension-debt.md), [`Team Operations/Ethics/02-developer-impact.md`](Team%20Operations/Ethics/02-developer-impact.md), [`Team Operations/Ethics/04-training-data-privacy.md`](Team%20Operations/Ethics/04-training-data-privacy.md), [`Team Operations/Learning/00-overview.md`](Team%20Operations/Learning/00-overview.md)
-
-- **Stack Overflow — "Developer Survey Results," December 2025**
-  <https://stackoverflow.blog/2025/12/developer-survey>
-  *Files:* [`Team Operations/Learning/03-team-knowledge-sharing.md`](Team%20Operations/Learning/03-team-knowledge-sharing.md), [`Team Operations/Learning/05-continuing-education.md`](Team%20Operations/Learning/05-continuing-education.md)
+  *Files:* [`Quality and Safety/Issues/01-comprehension-debt.md`](Quality%20and%20Safety/Issues/01-comprehension-debt.md), [`Team Operations/Ethics/02-developer-impact.md`](Team%20Operations/Ethics/02-developer-impact.md), [`Team Operations/Ethics/04-training-data-privacy.md`](Team%20Operations/Ethics/04-training-data-privacy.md), [`Team Operations/Learning/00-overview.md`](Team%20Operations/Learning/00-overview.md), [`Team Operations/Learning/03-team-knowledge-sharing.md`](Team%20Operations/Learning/03-team-knowledge-sharing.md), [`Team Operations/Learning/05-continuing-education.md`](Team%20Operations/Learning/05-continuing-education.md)
 
 - **Eira May (Stack Overflow) — "Mind the Gap: Closing the AI Trust Gap for Developers," February 18, 2026**
   <https://stackoverflow.blog/2026/02/18/closing-the-developer-ai-trust-gap/>
@@ -478,12 +470,8 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Quality and Safety/Issues/07-prompt-fragmentation.md`](Quality%20and%20Safety/Issues/07-prompt-fragmentation.md)
 
 - **Stack Overflow — "Developer Survey 2025: AI Tools and Code Quality," Stack Overflow, December 2025**
-  <https://stackoverflow.com/research/2025-developer-survey>
-  *Files:* [`Quality and Safety/Metrics/06-codebase-health.md`](Quality%20and%20Safety/Metrics/06-codebase-health.md)
-
-- **Stack Overflow — "2025 Developer Survey," Stack Overflow, December 2025**
   <https://survey.stackoverflow.co/2025/>
-  *Files:* [`Team Operations/Governance/03-sprint-planning-gates.md`](Team%20Operations/Governance/03-sprint-planning-gates.md), [`Team Operations/Governance/05-quarterly-health-review.md`](Team%20Operations/Governance/05-quarterly-health-review.md)
+  *Files:* [`Quality and Safety/Metrics/06-codebase-health.md`](Quality%20and%20Safety/Metrics/06-codebase-health.md), [`Team Operations/Governance/03-sprint-planning-gates.md`](Team%20Operations/Governance/03-sprint-planning-gates.md), [`Team Operations/Governance/05-quarterly-health-review.md`](Team%20Operations/Governance/05-quarterly-health-review.md)
 
 - **Augment Code — "10 Open Source AI Code Review Tools Tested on a 450K-File Monorepo [2026 Rankings]," 2026**
   <https://www.augmentcode.com/tools/open-source-ai-code-review-tools-worth-trying>
@@ -522,7 +510,7 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Quality and Safety/Issues/02-codebase-bloat.md`](Quality%20and%20Safety/Issues/02-codebase-bloat.md), [`Quality and Safety/Issues/08-velocity-governance.md`](Quality%20and%20Safety/Issues/08-velocity-governance.md)
 
 - **Sonar — "AI Code Review in the Security Gate: 2026 Configuration Guide," Sonar Blog, 2026**
-  <https://www.sonarsource.com/blog/ai-code-review-security-gate-2026>
+  <https://www.sonarsource.com/blog/how-to-optimize-sonarqube-for-reviewing-ai-generated-code/>
   *Files:* [`Core Practice/Tooling & Configuration/06-cicd-integration.md`](Core%20Practice/Tooling%20%26%20Configuration/06-cicd-integration.md), [`Team Operations/Governance/07-incident-response.md`](Team%20Operations/Governance/07-incident-response.md)
 
 - **Sonar (SonarSource) — "Sonar Data Reveals Critical 'Verification Gap' in AI Coding," press release, January 8, 2026**
@@ -538,7 +526,7 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Core Practice/Tooling & Configuration/06-cicd-integration.md`](Core%20Practice/Tooling%20%26%20Configuration/06-cicd-integration.md)
 
 - **Veracode — "AI-Generated Code and the Security Accountability Gap," March 24, 2026**
-  <https://www.veracode.com/blog/ai-generated-code-security-accountability>
+  <https://www.veracode.com/blog/ai-app-security-illusion-of-control/>
   *Files:* [`Team Operations/Ethics/03-security-responsibility.md`](Team%20Operations/Ethics/03-security-responsibility.md)
 
 - **Veracode Research — "2025 GenAI Code Security Report," July 30, 2025**
@@ -569,14 +557,10 @@ Organized by category. Each entry includes full bibliographic information and a 
 
 - **CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026**
   <https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html>
-  *Files:* [`Core Practice/Workflows/00-overview.md`](Core%20Practice/Workflows/00-overview.md), [`Core Practice/Workflows/07-agentic-delegation.md`](Core%20Practice/Workflows/07-agentic-delegation.md), [`Economics and Reliability/Cost & Token Economics/05-cost-monitoring-and-alerting.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/05-cost-monitoring-and-alerting.md), [`Economics and Reliability/Debugging & Troubleshooting/05-escalation-and-human-judgment.md`](Economics%20and%20Reliability/Debugging%20%26%20Troubleshooting/05-escalation-and-human-judgment.md), [`Quality and Safety/Metrics/00-overview.md`](Quality%20and%20Safety/Metrics/00-overview.md), [`Quality and Safety/Metrics/02-health-dashboard.md`](Quality%20and%20Safety/Metrics/02-health-dashboard.md), [`Team Operations/Ethics/02-developer-impact.md`](Team%20Operations/Ethics/02-developer-impact.md), [`Team Operations/Ethics/03-security-responsibility.md`](Team%20Operations/Ethics/03-security-responsibility.md), [`Team Operations/Ethics/04-training-data-privacy.md`](Team%20Operations/Ethics/04-training-data-privacy.md), [`Team Operations/Ethics/05-environmental-costs.md`](Team%20Operations/Ethics/05-environmental-costs.md), [`Team Operations/Ethics/06-bias-and-representation.md`](Team%20Operations/Ethics/06-bias-and-representation.md), [`Team Operations/Governance/00-overview.md`](Team%20Operations/Governance/00-overview.md), [`Team Operations/Governance/01-review-policies.md`](Team%20Operations/Governance/01-review-policies.md), [`Team Operations/Governance/03-sprint-planning-gates.md`](Team%20Operations/Governance/03-sprint-planning-gates.md), [`Team Operations/Governance/04-escalation-procedures.md`](Team%20Operations/Governance/04-escalation-procedures.md), [`Team Operations/Governance/05-quarterly-health-review.md`](Team%20Operations/Governance/05-quarterly-health-review.md), [`Team Operations/Governance/06-compliance-and-audit.md`](Team%20Operations/Governance/06-compliance-and-audit.md)
-
-- **CIO — "Managing AI-Augmented Engineering Teams: What Leaders Need to Know," April 2026**
-  <https://www.cio.com/article/ai-augmented-engineering-teams-leadership>
-  *Files:* [`Team Operations/Learning/03-team-knowledge-sharing.md`](Team%20Operations/Learning/03-team-knowledge-sharing.md), [`Team Operations/Learning/05-continuing-education.md`](Team%20Operations/Learning/05-continuing-education.md)
+  *Files:* [`Core Practice/Workflows/00-overview.md`](Core%20Practice/Workflows/00-overview.md), [`Core Practice/Workflows/07-agentic-delegation.md`](Core%20Practice/Workflows/07-agentic-delegation.md), [`Economics and Reliability/Cost & Token Economics/05-cost-monitoring-and-alerting.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/05-cost-monitoring-and-alerting.md), [`Economics and Reliability/Debugging & Troubleshooting/05-escalation-and-human-judgment.md`](Economics%20and%20Reliability/Debugging%20%26%20Troubleshooting/05-escalation-and-human-judgment.md), [`Quality and Safety/Metrics/00-overview.md`](Quality%20and%20Safety/Metrics/00-overview.md), [`Quality and Safety/Metrics/02-health-dashboard.md`](Quality%20and%20Safety/Metrics/02-health-dashboard.md), [`Team Operations/Ethics/02-developer-impact.md`](Team%20Operations/Ethics/02-developer-impact.md), [`Team Operations/Ethics/03-security-responsibility.md`](Team%20Operations/Ethics/03-security-responsibility.md), [`Team Operations/Ethics/04-training-data-privacy.md`](Team%20Operations/Ethics/04-training-data-privacy.md), [`Team Operations/Ethics/05-environmental-costs.md`](Team%20Operations/Ethics/05-environmental-costs.md), [`Team Operations/Ethics/06-bias-and-representation.md`](Team%20Operations/Ethics/06-bias-and-representation.md), [`Team Operations/Governance/00-overview.md`](Team%20Operations/Governance/00-overview.md), [`Team Operations/Governance/01-review-policies.md`](Team%20Operations/Governance/01-review-policies.md), [`Team Operations/Governance/03-sprint-planning-gates.md`](Team%20Operations/Governance/03-sprint-planning-gates.md), [`Team Operations/Governance/04-escalation-procedures.md`](Team%20Operations/Governance/04-escalation-procedures.md), [`Team Operations/Governance/05-quarterly-health-review.md`](Team%20Operations/Governance/05-quarterly-health-review.md), [`Team Operations/Governance/06-compliance-and-audit.md`](Team%20Operations/Governance/06-compliance-and-audit.md), [`Team Operations/Learning/03-team-knowledge-sharing.md`](Team%20Operations/Learning/03-team-knowledge-sharing.md), [`Team Operations/Learning/05-continuing-education.md`](Team%20Operations/Learning/05-continuing-education.md)
 
 - **Dark Reading — "AI-Assisted Security Code Review: Findings from 200 Enterprise Deployments," Dark Reading, March 2026**
-  <https://www.darkreading.com/ai-assisted-security-code-review-enterprise-2026>
+  <https://owaspai.org/docs/ai_security_overview/>
   *Files:* [`Core Practice/Tooling & Configuration/06-cicd-integration.md`](Core%20Practice/Tooling%20%26%20Configuration/06-cicd-integration.md)
 
 - **Dark Reading — "AI-Assisted Development: The Security Risks Nobody Is Managing," October 2025**
@@ -606,7 +590,7 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Core Practice/Workflows/03-context-engineering.md`](Core%20Practice/Workflows/03-context-engineering.md)
 
 - **GitHub — "Octoverse 2025: The State of Open Source and AI on GitHub," GitHub, 2025**
-  <https://github.blog/news-insights/octoverse/octoverse-2025/>
+  <https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/>
   *Files:* [`Quality and Safety/Metrics/00-overview.md`](Quality%20and%20Safety/Metrics/00-overview.md), [`Quality and Safety/Metrics/01-ai-code-quality.md`](Quality%20and%20Safety/Metrics/01-ai-code-quality.md), [`Quality and Safety/Metrics/02-health-dashboard.md`](Quality%20and%20Safety/Metrics/02-health-dashboard.md)
 
 - **GitHub — "Octoverse 2025: The State of AI in Software Development," GitHub Octoverse 2025**
@@ -622,7 +606,7 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Quality and Safety/Issues/06-skill-atrophy.md`](Quality%20and%20Safety/Issues/06-skill-atrophy.md)
 
 - **GitHub Octoverse — "The State of AI in Software Development," GitHub Octoverse Report, 2025**
-  <https://octoverse.github.com/2025>
+  <https://octoverse.github.com/>
   *Files:* [`Quality and Safety/Metrics/06-codebase-health.md`](Quality%20and%20Safety/Metrics/06-codebase-health.md)
 
 ## Y Combinator / Creator Content
@@ -659,7 +643,7 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Core Practice/Prompting/00-overview.md`](Core%20Practice/Prompting/00-overview.md), [`Core Practice/Prompting/01-prompt-architecture.md`](Core%20Practice/Prompting/01-prompt-architecture.md), [`Core Practice/Prompting/02-task-prompt-patterns.md`](Core%20Practice/Prompting/02-task-prompt-patterns.md), [`Core Practice/Prompting/03-prompt-antipatterns.md`](Core%20Practice/Prompting/03-prompt-antipatterns.md), [`Core Practice/Prompting/04-context-injection.md`](Core%20Practice/Prompting/04-context-injection.md), [`Core Practice/Prompting/05-iterative-refinement.md`](Core%20Practice/Prompting/05-iterative-refinement.md), [`Core Practice/Prompting/06-prompt-library.md`](Core%20Practice/Prompting/06-prompt-library.md), [`Core Practice/Tooling & Configuration/00-overview.md`](Core%20Practice/Tooling%20%26%20Configuration/00-overview.md), [`Core Practice/Tooling & Configuration/01-claude-md-configuration.md`](Core%20Practice/Tooling%20%26%20Configuration/01-claude-md-configuration.md), [`Core Practice/Tooling & Configuration/02-hooks-and-automation.md`](Core%20Practice/Tooling%20%26%20Configuration/02-hooks-and-automation.md), [`Economics and Reliability/Cost & Token Economics/00-overview.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/00-overview.md), [`Economics and Reliability/Debugging & Troubleshooting/00-overview.md`](Economics%20and%20Reliability/Debugging%20%26%20Troubleshooting/00-overview.md), [`Quality and Safety/Issues/00-overview.md`](Quality%20and%20Safety/Issues/00-overview.md), [`Quality and Safety/Metrics/00-overview.md`](Quality%20and%20Safety/Metrics/00-overview.md), [`Quality and Safety/Metrics/01-ai-code-quality.md`](Quality%20and%20Safety/Metrics/01-ai-code-quality.md), [`Quality and Safety/Metrics/02-health-dashboard.md`](Quality%20and%20Safety/Metrics/02-health-dashboard.md), [`Team Operations/Governance/00-overview.md`](Team%20Operations/Governance/00-overview.md), [`Team Operations/Governance/01-review-policies.md`](Team%20Operations/Governance/01-review-policies.md), [`Team Operations/Governance/02-ai-usage-policy.md`](Team%20Operations/Governance/02-ai-usage-policy.md), [`Team Operations/Governance/03-sprint-planning-gates.md`](Team%20Operations/Governance/03-sprint-planning-gates.md), [`Team Operations/Learning/01-engineer-onboarding.md`](Team%20Operations/Learning/01-engineer-onboarding.md), [`Team Operations/Learning/03-team-knowledge-sharing.md`](Team%20Operations/Learning/03-team-knowledge-sharing.md), [`Team Operations/Learning/05-continuing-education.md`](Team%20Operations/Learning/05-continuing-education.md)
 
 - **Jack Herrington — "Claude Code MCP Servers: A Complete Setup Guide," YouTube, November 2025**
-  <https://www.youtube.com/watch?v=3QkVZj_nKoA>
+  <https://www.youtube.com/watch?v=VChRPFUzJGA>
   *Files:* [`Core Practice/Tooling & Configuration/00-overview.md`](Core%20Practice/Tooling%20%26%20Configuration/00-overview.md)
 
 - **Lex Fridman Podcast #461 ft. ThePrimeagen, YouTube, March 22, 2025**
@@ -726,7 +710,7 @@ Organized by category. Each entry includes full bibliographic information and a 
   *Files:* [`Core Practice/Workflows/03-context-engineering.md`](Core%20Practice/Workflows/03-context-engineering.md), [`Core Practice/Workflows/07-agentic-delegation.md`](Core%20Practice/Workflows/07-agentic-delegation.md)
 
 - **Simon Willison — "How I Use LLMs: A Pragmatic 2026 Field Guide," simonwillison.net, February 2026**
-  <https://simonwillison.net/2026/Feb/how-i-use-llms/>
+  <https://simonwillison.net/2025/Mar/11/using-llms-for-code/>
   *Files:* [`Economics and Reliability/Cost & Token Economics/00-overview.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/00-overview.md), [`Economics and Reliability/Cost & Token Economics/01-understanding-token-costs.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/01-understanding-token-costs.md), [`Economics and Reliability/Cost & Token Economics/02-model-selection-strategy.md`](Economics%20and%20Reliability/Cost%20%26%20Token%20Economics/02-model-selection-strategy.md)
 
 - **Simon Willison — "LLM Hallucination: A Practical Framework for 2026," simonwillison.net, March 2026**
@@ -930,10 +914,6 @@ Organized by category. Each entry includes full bibliographic information and a 
 - **MindStudio — "What Is the Claude Code Git Worktree Pattern? How to Run Parallel Feature Branches With AI," 2026**
   <https://www.mindstudio.ai/blog/what-is-claude-code-git-worktree-pattern-parallel-feature-branches>
   *Files:* [`Core Practice/Workflows/04-session-hygiene.md`](Core%20Practice/Workflows/04-session-hygiene.md)
-
-- **Qodo — "5 AI Code Review Pattern Predictions in 2026," 2026**
-  <https://www.qodo.ai/blog/5-ai-code-review-pattern-predictions-in-2026/>
-  *Files:* [`Core Practice/Workflows/06-writer-reviewer-pattern.md`](Core%20Practice/Workflows/06-writer-reviewer-pattern.md)
 
 - **Qodo — "Best AI Code Review Tools of 2026," 2026**
   <https://www.qodo.ai/blog/best-ai-code-review-tools-2026/>

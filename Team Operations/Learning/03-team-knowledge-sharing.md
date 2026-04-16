@@ -127,10 +127,10 @@ The "first week AI tour" is a half-day structured introduction to the team's acc
 [^12]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025
  Team-level AI workflow adoption patterns: the correlation between structured knowledge sharing practices and team-wide AI proficiency gains; how teams that document and share AI workflow findings develop more consistent and more advanced practices over time.
 
-[^14]: Stack Overflow — "Developer Survey Results," December 2025. https://stackoverflow.blog/2025/12/developer-survey
+[^14]: Stack Overflow — "Developer Survey Results," December 2025. https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here/
  Consensus-building in AI workflow governance: how engineering teams balance individual workflow preference with team standardization; the dynamics of rule adoption when engineers have divergent AI usage patterns.
 
-[^15]: CIO — "Managing AI-Augmented Engineering Teams: What Leaders Need to Know," April 2026. https://www.cio.com/article/ai-augmented-engineering-teams-leadership
+[^15]: CIO — "Managing AI-Augmented Engineering Teams: What Leaders Need to Know," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
  Onboarding challenges in AI-assisted teams: the compounding divergence that results when new engineers default to prior-role AI habits; what structured knowledge transfer reduces vs. what it cannot address without pairing and mentorship.
 
 [^17]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ

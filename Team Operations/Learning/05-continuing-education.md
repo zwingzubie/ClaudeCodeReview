@@ -124,10 +124,10 @@ The risk of AI-only education budget is a team whose AI tool proficiency increas
 [^11]: Justin Reock (DX) — "AI-Assisted Engineering: Q1 2026 Impact Report," DX Newsletter, 2026. https://newsletter.getdx.com/p/ai-assisted-engineering-q1-2026-impact
  Monitoring list maintenance: how engineering teams keep their source monitoring relevant as the AI tooling landscape evolves; the criteria for adding and removing sources from a team monitoring commitment.
 
-[^12]: CIO — "Managing AI-Augmented Engineering Teams: What Leaders Need to Know," April 2026. https://www.cio.com/article/ai-augmented-engineering-teams-leadership
+[^12]: CIO — "Managing AI-Augmented Engineering Teams: What Leaders Need to Know," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
  Quarterly learning brief format: how engineering leadership structures external learning synthesis to produce actionable practice recommendations rather than general awareness; the integration of learning briefs into practice review cycles.
 
-[^14]: Stack Overflow — "Developer Survey Results," December 2025. https://stackoverflow.blog/2025/12/developer-survey
+[^14]: Stack Overflow — "Developer Survey Results," December 2025. https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here/
  Learning brief archiving: how archived learning briefs reveal patterns in external development that inform monitoring source curation and practice evaluation calibration over time.
 
 [^15]: Dave Holliday et al. — "Where Architects Sit in the Era of AI," InfoQ, 2025. https://www.infoq.com/articles/architects-ai-era/

@@ -94,7 +94,7 @@ Proportionate use also serves the team's skill development goals (see Developer 
 
 ---
 
-[^1]: Anthropic — "Environmental and Sustainability Reporting," Anthropic Documentation, 2026. https://www.anthropic.com/company/sustainability
+[^1]: Anthropic — "Environmental and Sustainability Reporting," Anthropic Documentation, 2026. https://www.anthropic.com/news/investing-in-energy-to-secure-america-s-ai-future
  Carbon intensity of Claude inference infrastructure: energy source mix, offset practices, and renewable energy procurement relevant to customer Scope 3 accounting.
 
 [^6]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6

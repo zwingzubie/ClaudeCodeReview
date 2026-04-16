@@ -135,10 +135,10 @@ Anthropic's guidance on MCP security identifies three primary risk areas: prompt
 [^5]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
     Audit logging patterns for external service integrations, quarterly review practices for permission scoping, and the argument for treating AI tool access with the same governance applied to other service dependencies.
 
-[^6]: Slack — "Slack MCP Server," Slack Developer Documentation, 2025. https://api.slack.com/docs/mcp
+[^6]: Slack — "Slack MCP Server Overview," Slack Developer Documentation, 2025. https://docs.slack.dev/ai/slack-mcp-server/
     Official Slack MCP server capabilities: message search, channel history, thread retrieval, and write operations including message posting and canvas creation. Permission scope definitions and workspace access controls.
 
-[^8]: Google — "Google Drive MCP Server," Google Workspace Developer Documentation, 2025. https://developers.google.com/workspace/mcp
+[^8]: Google — "Google Drive MCP Server," Google Workspace Developer Documentation, 2025. https://cloud.google.com/blog/products/ai-machine-learning/announcing-official-mcp-support-for-google-services
     Official Google Drive MCP server: file and folder access, document content retrieval, search by content, and permission scoping to specific Drive folders. Authentication via OAuth and service account configuration.
 
 [^9]: Linear — "Linear MCP Server," Linear Developer Documentation, 2025. https://linear.app/docs/mcp

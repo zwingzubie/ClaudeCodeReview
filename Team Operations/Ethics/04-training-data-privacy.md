@@ -100,7 +100,7 @@ CLAUDE.md session scope reminders are the primary operational tool for maintaini
 [^2]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
  Session data awareness in practice: how engineers who understand the data lifecycle of their sessions compose prompts differently; the gap between assumed and actual session data handling.
 
-[^3]: Anthropic — "Usage Policy and Enterprise Data Agreements," Anthropic Documentation, 2026. https://www.anthropic.com/policies/usage-policy
+[^3]: Anthropic — "Usage Policy and Enterprise Data Agreements," Anthropic Documentation, 2026. https://www.anthropic.com/legal/aup
  Enterprise vs. standard plan data handling: training opt-out, retention, and data residency provisions; the policy update cycle and the obligation to review current terms rather than cached assumptions.
 
 [^4]: Stack Overflow — "Developers Remain Willing but Reluctant to Use AI: The 2025 Developer Survey Results," December 29, 2025. https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here/

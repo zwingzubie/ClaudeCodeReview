@@ -118,7 +118,7 @@ Incident retrospectives for AI governance follow a different question framework 
 [^9]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
  Practice review meeting structure and documentation: the 30-minute agenda breakdown; written decision requests for CTO-level governance changes; review log as accountability infrastructure.
 
-[^11]: GitHub — "Octoverse 2025: The State of Open Source and AI on GitHub," GitHub, 2025. https://github.blog/news-insights/octoverse/octoverse-2025/
+[^11]: GitHub — "Octoverse 2025: The State of Open Source and AI on GitHub," GitHub, 2025. https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1//
  DORA 2026 data: 7.2% delivery stability decrease correlated with AI adoption; aggregate signals visible in quarterly trend analysis but invisible in monthly operational data.
 
 [^12]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4

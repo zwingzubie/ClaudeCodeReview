@@ -104,7 +104,7 @@ This is not a hypothetical concern. A team member who asks a sensitive question 
 
 ---
 
-[^1]: Slack — "Slack MCP Server," Slack Developer Documentation, 2025. https://api.slack.com/docs/mcp
+[^1]: Slack — "Slack MCP Server Overview," Slack Developer Documentation, 2025. https://docs.slack.dev/ai/slack-mcp-server/
     Official Slack MCP server capabilities: message search, channel history, thread retrieval, write operations. OAuth scope definitions, workspace access controls, and channel permission model.
 
 [^2]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a

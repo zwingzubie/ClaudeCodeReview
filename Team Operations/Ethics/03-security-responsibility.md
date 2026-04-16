@@ -94,7 +94,7 @@ The security lead's responsibility under AI adoption is to ensure that security 
 
 ---
 
-[^1]: Veracode — "AI-Generated Code and the Security Accountability Gap," March 24, 2026. https://www.veracode.com/blog/ai-generated-code-security-accountability
+[^1]: Veracode — "AI-Generated Code and the Security Accountability Gap," March 24, 2026. https://www.veracode.com/blog/ai-app-security-illusion-of-control/
  The accountability framework for AI-generated security vulnerabilities: why PR authorship transfers ownership regardless of generation method; what incident post-mortem processes look for.
 
 [^2]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report

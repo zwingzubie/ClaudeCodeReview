@@ -137,7 +137,7 @@ The MCP permission model mirrors the settings permission model: servers are gran
 [^24]: Anthropic — "Claude Code Security," Claude Code Documentation, 2026. https://code.claude.com/docs/en/security
  Credential handling for MCP server connections; environment variable reference syntax in `.mcp.json`; separation of team configuration from machine-specific secrets.
 
-[^25]: Jack Herrington — "Claude Code MCP Servers: A Complete Setup Guide," YouTube, November 2025. https://www.youtube.com/watch?v=3QkVZj_nKoA
+[^25]: Jack Herrington — "Model Context Protocol (MCP): The Key To Agentic AI," YouTube, November 2025. https://www.youtube.com/watch?v=VChRPFUzJGA
  - MCP server architecture: the connection between Claude Code and external services and the read vs. write permission boundary
  - Building a custom Postgres MCP server for live schema inspection and parameterized query execution
  - Security considerations: credential management, OAuth scoping, and audit log configuration for MCP operations

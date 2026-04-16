@@ -103,7 +103,7 @@ Complexity and duplication metrics require tooling to measure automatically — 
 [^3]: daily.dev — "Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code
     1.7× defect rate differential for AI-generated code as the industry baseline; team-specific rate as a function of governance practice quality.
 
-[^4]: GitHub — "Octoverse 2025: The State of Open Source and AI on GitHub," GitHub, 2025. https://github.blog/news-insights/octoverse/octoverse-2025/
+[^4]: GitHub — "Octoverse 2025: The State of Open Source and AI on GitHub," GitHub, 2025. https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1//
     Commit tagging patterns for defect attribution; PR metadata as the foundation for origin-based quality analysis.
 
 [^5]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf

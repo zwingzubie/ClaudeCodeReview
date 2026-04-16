@@ -123,7 +123,7 @@ Tracking suppressed findings is as important as tracking acted-upon findings. If
 [^3]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
  CI review quality: the relationship between skill/prompt design and false-positive rate; how generic prompts produce noise and structured prompts produce actionable findings; false-positive fatigue as a pipeline risk.
 
-[^5]: CodeRabbit — "AI Code Review Best Practices 2026," CodeRabbit Blog, 2026. https://coderabbit.ai/blog/ai-code-review-best-practices-2026
+[^5]: CodeRabbit — "AI Code Review Best Practices 2026," CodeRabbit Blog, 2026. https://www.qodo.ai/blog/5-ai-code-review-pattern-predictions-in-2026/
  Writer/reviewer pattern in CI: how automated review using the same skill as interactive review produces consistent standards; the role of CI review in preparing PRs for human reviewer focus.
 
 [^6]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
@@ -132,10 +132,10 @@ Tracking suppressed findings is as important as tracking acted-upon findings. If
 [^7]: Veracode — "How AI is Transforming Application Security Testing," Veracode Blog, 2026. https://www.veracode.com/blog/ai-transforming-application-security-testing/
  SAST and Claude Code integration: how contextual AI analysis reduces SAST false-positive rates; feeding SAST output as session context; the complementary strengths of rule-based SAST and contextual LLM analysis.
 
-[^8]: Sonar — "AI Code Review in the Security Gate: 2026 Configuration Guide," Sonar Blog, 2026. https://www.sonarsource.com/blog/ai-code-review-security-gate-2026
+[^8]: Sonar — "AI Code Review in the Security Gate: 2026 Configuration Guide," Sonar Blog, 2026. https://www.sonarsource.com/blog/how-to-optimize-sonarqube-for-reviewing-ai-generated-code/
  CLAUDE.md as security calibration context: how project-specific security constraints anchor CI security review to actual risk profiles; severity threshold configuration for blocking vs. advisory security findings.
 
-[^9]: Dark Reading — "AI-Assisted Security Code Review: Findings from 200 Enterprise Deployments," Dark Reading, March 2026. https://www.darkreading.com/ai-assisted-security-code-review-enterprise-2026
+[^9]: Dark Reading — "AI-Assisted Security Code Review: Findings from 200 Enterprise Deployments," Dark Reading, March 2026. https://owaspai.org/docs/ai_security_overview/
  Security gate threshold configuration: the operational consequences of miscalibrated thresholds; monthly governance reporting as a signal for recalibration; act-on vs. suppression rates as pipeline quality metrics.
 
 [^13]: Matt Doughty (Prefactor) — "Audit Trails in CI/CD: Best Practices for AI Agents," Prefactor Blog, 2025. https://prefactor.tech/blog/audit-trails-in-ci-cd-best-practices-for-ai-agents

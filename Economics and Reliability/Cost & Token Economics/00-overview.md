@@ -99,7 +99,7 @@ The monitoring infrastructure for Claude Code spend is available through the Ant
 [^3]: Anthropic — "Models Overview," Anthropic API Documentation, 2026. https://docs.anthropic.com/en/docs/about-claude/models/overview
  Token pricing by model tier; input vs. output token cost ratios; the practical token mental model for engineering teams; model capability and cost comparison across the Claude family.
 
-[^5]: Simon Willison — "How I Use LLMs: A Pragmatic 2026 Field Guide," simonwillison.net, February 2026. https://simonwillison.net/2026/Feb/how-i-use-llms/
+[^5]: Simon Willison — "How I Use LLMs: A Pragmatic 2026 Field Guide," simonwillison.net, February 2026. https://simonwillison.net/2025/Mar/11/using-llms-for-code//
  Three-tier task classification for model selection; the 20× cost differential between Haiku and Opus; calibrating model selection to task complexity rather than defaulting to maximum capability.
 
 [^6]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf

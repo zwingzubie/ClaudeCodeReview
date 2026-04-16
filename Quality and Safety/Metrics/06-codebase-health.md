@@ -118,13 +118,13 @@ Automated metrics for architectural consistency include import graph consistency
 [^9]: Boris Cherny — "How Boris Uses Claude Code," howborisusesclaudecode.com, January 2026. https://howborisusesclaudecode.com
  Documents CLAUDE.md configuration patterns for reducing duplication and maintaining architectural consistency; includes deduplication guidance examples.
 
-[^10]: GitHub Octoverse — "The State of AI in Software Development," GitHub Octoverse Report, 2025. https://octoverse.github.com/2025
+[^10]: GitHub Octoverse — "The State of AI in Software Development," GitHub Octoverse Report, 2025. https://octoverse.github.com/
  Includes analysis of test coverage patterns in AI-assisted repositories; documents the implementation-following test bias in same-session test generation.
 
 [^11]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
  Empirical study of behavioral coverage quality in AI-generated test suites; quantifies the gap between line coverage percentage and behavioral coverage completeness.
 
-[^12]: Stack Overflow — "Developer Survey 2025: AI Tools and Code Quality," Stack Overflow, December 2025. https://stackoverflow.com/research/2025-developer-survey
+[^12]: Stack Overflow — "Developer Survey 2025: AI Tools and Code Quality," Stack Overflow, December 2025. https://survey.stackoverflow.co/2025/
  Survey data on developer confidence in AI-generated tests; documents the recognition gap between coverage metrics and actual test quality.
 
 [^13]: Kyle Howard et al. — "Architectural Governance at AI Speed," InfoQ, 2025. https://www.infoq.com/articles/architectural-governance-ai-speed/

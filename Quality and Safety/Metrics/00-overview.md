@@ -108,7 +108,7 @@ The Anthropic 2026 Agentic Coding Trends Report found that organizations achievi
 [^1]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
  Velocity metrics as insufficient governance: the argument for a second measurement layer tracking rework, quality, and comprehension alongside output volume.
 
-[^2]: GitHub — "Octoverse 2025: The State of Open Source and AI on GitHub," GitHub, 2025. https://github.blog/news-insights/octoverse/octoverse-2025/
+[^2]: GitHub — "Octoverse 2025: The State of Open Source and AI on GitHub," GitHub, 2025. https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1//
  DORA metrics and AI adoption: 154% increase in PR size, 91% more review time, and 7.2% decrease in delivery stability correlated with high AI code generation rates.
 
 [^3]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt

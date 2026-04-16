@@ -82,7 +82,7 @@ The category of sessions with the highest cost risk are open-ended agentic sessi
 [^1]: Anthropic — "Models Overview," Anthropic API Documentation, 2026. https://docs.anthropic.com/en/docs/about-claude/models/overview
  Token pricing per model tier; input vs. output token cost ratios; tokenization rules and practical estimation heuristics for code and English text.
 
-[^3]: Simon Willison — "How I Use LLMs: A Pragmatic 2026 Field Guide," simonwillison.net, February 2026. https://simonwillison.net/2026/Feb/how-i-use-llms/
+[^3]: Simon Willison — "How I Use LLMs: A Pragmatic 2026 Field Guide," simonwillison.net, February 2026. https://simonwillison.net/2025/Mar/11/using-llms-for-code//
  Output token cost implications of verbose prompting patterns; code-first vs. explanation-first prompt patterns; the cost of "think step by step" on low-complexity tasks.
 
 [^4]: Nir Gazit (Traceloop) — "From Bills to Budgets: How to Track LLM Token Usage and Cost Per User," Traceloop Blog, 2025. https://www.traceloop.com/blog/from-bills-to-budgets-how-to-track-llm-token-usage-and-cost-per-user

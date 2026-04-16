@@ -125,7 +125,7 @@ This pattern does require that the referenced Drive documents are well-organized
 
 ---
 
-[^1]: Google — "Google Drive MCP Server," Google Workspace Developer Documentation, 2025. https://developers.google.com/workspace/mcp
+[^1]: Google — "Google Drive MCP Server," Google Workspace Developer Documentation, 2025. https://cloud.google.com/blog/products/ai-machine-learning/announcing-official-mcp-support-for-google-services
     Official Google Drive MCP server: file and folder access, document content retrieval, content search, permission scoping to specific folders. Authentication via OAuth and service account configuration.
 
 [^2]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows

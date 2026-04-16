@@ -128,7 +128,7 @@ A quarterly audit of the skill library is the minimum maintenance cadence. The a
 [^9]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
  Structured review skills: how explicitly encoding review dimensions (correctness, coverage, security, naming) in a skill produces more consistent and actionable findings than unstructured review requests.
 
-[^10]: CodeRabbit — "AI Code Review Best Practices 2026," CodeRabbit Blog, 2026. https://coderabbit.ai/blog/ai-code-review-best-practices-2026
+[^10]: CodeRabbit — "AI Code Review Best Practices 2026," CodeRabbit Blog, 2026. https://www.qodo.ai/blog/5-ai-code-review-pattern-predictions-in-2026/
  Security review skills: calibrating audit skills to team-specific vulnerability categories rather than generic lists; the role of CLAUDE.md security constraints in security review skill design.
 
 [^a]: [Prompting: Prompt Library Management](../Prompting/06-prompt-library.md) — the prompt library is the source repository from which skills are extracted; high-value, stable prompts become skills, making the prompt library the upstream dependency.

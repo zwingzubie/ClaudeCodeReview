@@ -143,7 +143,7 @@ The PR template update addresses review process failures. If the incident reveal
 [^1]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
     Comprehension debt as a structural risk in AI-assisted development; session transcript preservation as a governance artifact; CLAUDE.md update cycle following AI-generated failures; the review process calibration required for AI-primary code.
 
-[^2]: Sonar — "AI Code Review in the Security Gate: 2026 Configuration Guide," Sonar Blog, 2026. https://www.sonarsource.com/blog/ai-code-review-security-gate-2026
+[^2]: Sonar — "AI Code Review in the Security Gate: 2026 Configuration Guide," Sonar Blog, 2026. https://www.sonarsource.com/blog/how-to-optimize-sonarqube-for-reviewing-ai-generated-code/
     60% of developers shipping code they do not fully understand; 40% reporting AI-introduced security vulnerabilities undetected in review; structural risk accumulation proportional to AI output velocity.
 
 [^3]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
