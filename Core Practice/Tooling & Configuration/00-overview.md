@@ -56,14 +56,14 @@ A documented failure mode requires active management: when the file grows too lo
 
 **Description:** `settings.json` is the primary machine-readable configuration artifact for Claude Code. Where CLAUDE.md provides natural-language instructions, `settings.json` provides structured behavioral rules: which tools Claude can use without confirmation, which shell commands are permitted, how environment variables are injected, and what hooks execute at each session event. It is checked into git at `.claude/settings.json`, making it a shared team artifact with the same review properties as production code.[^8]
 
-The settings resolution order — from lowest to highest precedence — is: enterprise managed settings, user settings (`~/.claude/settings.json`), project settings (`.claude/settings.json`), and local overrides (`.claude/settings.local.json`). The local override file is gitignored by convention, giving individual engineers a way to configure machine-specific behavior — a different editor path, a local model endpoint, personal notification preferences — without polluting the team configuration.[^9] Enterprise deployments can inject a `managed-settings.json` at the system level that cannot be overridden by any user or project setting, providing a hard policy floor for regulated environments.[^10]
+The settings resolution order — from lowest to highest precedence — is: enterprise managed settings, user settings (`~/.claude/settings.json`), project settings (`.claude/settings.json`), and local overrides (`.claude/settings.local.json`). The local override file is gitignored by convention, giving individual engineers a way to configure machine-specific behavior — a different editor path, a local model endpoint, personal notification preferences — without polluting the team configuration.[^6] Enterprise deployments can inject a `managed-settings.json` at the system level that cannot be overridden by any user or project setting, providing a hard policy floor for regulated environments.[^10]
 
 Key settings surfaces include: `permissions.allow` and `permissions.deny` arrays for tool access control; `env` for session environment variable injection; `hooks` for event-driven automation; and `model` for default model selection. The permission model creates appropriate friction for high-risk operations — requiring explicit approval before shell command execution, write operations outside defined paths, or access to sensitive tools. A 2026 Sonar survey found that 52% of developers who state they distrust AI-generated code accept it without verification.[^11] Explicit permissions are one of the few interventions that force active review of AI-proposed actions before they execute.
 
 **Proposed Solution:**
 - Define team-standard permissions in `.claude/settings.json` checked into git: require explicit approval for bash command execution in production-adjacent sessions, and use `permissions.deny` to hard-block operations that should never occur in a given project context.[^8]
-- Establish work-context permission profiles: a frontend profile restricting writes to `src/components/` and `src/styles/`; a migration profile permitting database tool access; a read-only profile for exploration and planning sessions.[^9]
-- Use `.claude/settings.local.json` (gitignored) for engineer-specific overrides — machine paths, personal MCP server instances, local model routing — so individual configurations do not create git noise.[^9]
+- Establish work-context permission profiles: a frontend profile restricting writes to `src/components/` and `src/styles/`; a migration profile permitting database tool access; a read-only profile for exploration and planning sessions.[^6]
+- Use `.claude/settings.local.json` (gitignored) for engineer-specific overrides — machine paths, personal MCP server instances, local model routing — so individual configurations do not create git noise.[^6]
 - For regulated environments, define enterprise-level constraints in `managed-settings.json` to create a non-overridable policy floor for data handling, network access, and tool permissions.[^10]
 - Review permission grant logs quarterly: identify sessions granted permissions outside their expected scope and investigate causes.[^12]
 
@@ -71,9 +71,6 @@ Key settings surfaces include: `permissions.allow` and `permissions.deny` arrays
 
 [^8]: Anthropic — "Security and Permissions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/security-permissions
  Permission profile configuration, `--allowedTools` flag semantics, and the rationale for work-context-specific permission scoping in production-adjacent sessions.
-
-[^9]: Anthropic — "Claude Code: Settings and Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/settings
- Settings resolution order (managed → user → project → local); `settings.local.json` gitignore convention; environment variable injection and model selection configuration.
 
 [^10]: Anthropic — "Enterprise Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/enterprise-configuration
  `managed-settings.json` and `managed-mcp.json` as non-overridable policy floors; deployment patterns for organization-wide Claude Code configuration; drop-in fragment support via `managed-settings.d/`.
@@ -95,7 +92,7 @@ Key settings surfaces include: `permissions.allow` and `permissions.deny` arrays
 
 **Description:** Claude Code supports event hooks — shell commands that fire automatically at defined points in every session. Five hook events are available: `PreToolUse` (fires before any tool call), `PostToolUse` (fires after any tool call), `UserPromptSubmit` (fires before the model processes a user message), `Stop` (fires when a session ends), and `Notification` (fires when Claude generates an alert).[^15]
 
-Hooks are the mechanism by which a team enforces quality standards without relying on engineer discipline in the moment. A `PostToolUse` hook on file write operations can automatically run linting and type-checking; a `Stop` hook can run a final SAST scan before a session concludes; a `UserPromptSubmit` hook can inject current sprint context and the current date into every session without requiring engineers to type it manually. The value of hooks is proportional to how consistently they are deployed — a team where every engineer has the same hooks via a shared `.claude/settings.json` enforces the same quality gates uniformly.[^16]
+Hooks are the mechanism by which a team enforces quality standards without relying on engineer discipline in the moment. A `PostToolUse` hook on file write operations can automatically run linting and type-checking; a `Stop` hook can run a final SAST scan before a session concludes; a `UserPromptSubmit` hook can inject current sprint context and the current date into every session without requiring engineers to type it manually. The value of hooks is proportional to how consistently they are deployed — a team where every engineer has the same hooks via a shared `.claude/settings.json` enforces the same quality gates uniformly.[^3]
 
 Hooks are configured in `settings.json` under the `hooks` key. Each hook specifies the event, an optional matcher (to fire only for specific tool names), the shell command to run, and whether the hook blocks execution (a blocking hook that exits non-zero can prevent a tool call from proceeding). This blocking capability makes hooks the enforcement mechanism for pre-conditions that CLAUDE.md instructions alone cannot enforce — a hook can prevent a write to a protected path in a way that a CLAUDE.md instruction cannot.[^15]
 
@@ -103,7 +100,7 @@ Given that AI-generated code introduces security vulnerabilities at higher rates
 
 **Proposed Solution:**
 - Define team-standard hooks in `.claude/settings.json` covering: `PostToolUse` linting on write operations, `PostToolUse` test execution on source file changes, and a `Stop`-event SAST scan.[^15]
-- Use the `UserPromptSubmit` hook to inject current date and sprint context into every session — removing the dependency on individual engineers to supply this context manually.[^16]
+- Use the `UserPromptSubmit` hook to inject current date and sprint context into every session — removing the dependency on individual engineers to supply this context manually.[^3]
 - Configure a `Notification` hook to dispatch system notifications when long-running sessions complete, enabling true parallel session management without active monitoring.[^17]
 - Use blocking `PreToolUse` hooks to enforce hard write-path restrictions that supplement permission profiles — preventing writes to configuration files, migration directories, or secret paths during scoped sessions.[^15]
 - Audit hook configuration quarterly: verify team-standard hooks are in effect on all developer machines, identify frequently-firing hooks, and investigate any hooks being bypassed or overridden in `settings.local.json`.[^1]
@@ -113,22 +110,8 @@ Given that AI-generated code introduces security vulnerabilities at higher rates
 [^15]: Anthropic — "Hooks Reference," Claude Code Documentation, 2026. https://code.claude.com/docs/en/hooks-reference
  Complete hooks API: event types (PreToolUse, PostToolUse, UserPromptSubmit, Stop, Notification), shell command configuration, blocking semantics, and tool-name matchers.
 
-[^16]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
- Hook configuration patterns for automated quality gates; `UserPromptSubmit` for context injection; hooks as enforcement for quality standards that CLAUDE.md cannot enforce alone.
-
 [^17]: Anthropic — "Claude Code Hooks Reference," Claude Code Documentation, 2026. https://code.claude.com/docs/en/hooks
  Notification event configuration; system notification dispatch patterns for parallel session management; hook ordering when multiple hooks target the same event.
-
-[^18]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
- Hooks as the automation layer that converts CLAUDE.md intentions into enforced behavior; the argument that manual quality gate discipline fails at team scale.
-
-[^19]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
- SAST hook integration at session stop; how automated scanning at the hook level provides a security floor independent of engineer attentiveness.
-
-[^20]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
- - PostToolUse hook setup: running linting and tests automatically on every file write without manual invocation
- - Stop event hooks: SAST scanning at session completion and system notification dispatch for parallel session management
- - UserPromptSubmit injection: inserting sprint context and current date into every session start
 
 ---
 
@@ -136,12 +119,12 @@ Given that AI-generated code introduces security vulnerabilities at higher rates
 
 **Description:** The Model Context Protocol (MCP) is an open standard that allows Claude Code to interact with external tools, services, and data sources through a standardized interface. MCP server configurations are defined in `.mcp.json` at the project root — a shared, checked-in artifact that gives every team member's sessions access to the same external context without individual setup overhead.[^21]
 
-MCP fundamentally changes what Claude can do in a session. Rather than copying a database schema into a prompt, Claude can query it directly via a Postgres MCP server. Rather than manually cross-referencing open tickets, Claude can read the ticket and write the implementation in the same session via a Linear MCP server. Rather than navigating GitHub's web interface, Claude can interact with issues, PRs, and branch operations via a GitHub MCP server. The coordination savings from these integrations compound with session volume — each session that avoids manual context-gathering is a session with lower overhead cost and a higher proportion of time spent on productive work.[^22]
+MCP fundamentally changes what Claude can do in a session. Rather than copying a database schema into a prompt, Claude can query it directly via a Postgres MCP server. Rather than manually cross-referencing open tickets, Claude can read the ticket and write the implementation in the same session via a Linear MCP server. Rather than navigating GitHub's web interface, Claude can interact with issues, PRs, and branch operations via a GitHub MCP server. The coordination savings from these integrations compound with session volume — each session that avoids manual context-gathering is a session with lower overhead cost and a higher proportion of time spent on productive work.[^5]
 
 The MCP permission model mirrors the settings permission model: servers are granted specific capability scopes (read-only, read-write, specific operation types), and write-access operations can be configured to require explicit confirmation. The correct adoption sequence is read-only servers first — database schema access, documentation lookup, issue reading — before expanding into write-access operations. Confidence in each integration should be established before expanding its permissions.[^21]
 
 **Proposed Solution:**
-- Define team-standard MCP server configurations in `.mcp.json` at the project root, checked into git, so all engineers' Claude Code instances have consistent access to the same tools and connection settings.[^23]
+- Define team-standard MCP server configurations in `.mcp.json` at the project root, checked into git, so all engineers' Claude Code instances have consistent access to the same tools and connection settings.[^3]
 - Start with read-only MCP servers before introducing write-access servers. Establish confidence in each integration before expanding permissions into write operations.[^21]
 - For write-access MCP servers, require explicit confirmation prompts for all operations that modify external state — even when those operations fall within the session's declared scope.[^21]
 - Configure server-specific `env` entries in `.mcp.json` to reference environment variables rather than embedding credentials in the file. Use `.claude/settings.local.json` for any machine-specific MCP connection overrides.[^24]
@@ -151,12 +134,6 @@ The MCP permission model mirrors the settings permission model: servers are gran
 
 [^21]: Anthropic — "Model Context Protocol Introduction," Claude Code Documentation, 2026. https://code.claude.com/docs/en/mcp-introduction
  MCP open standard architecture; server permission model; minimum-permission configuration guidance; the progression from read-only to write-access integrations.
-
-[^22]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
- MCP's role in reducing manual coordination overhead; how AI-tool integration shifts engineering workflows from local-only to service-aware sessions.
-
-[^23]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
- `.mcp.json` as a shared, checked-in team artifact; per-project MCP server configuration patterns; relationship between `.mcp.json` and `settings.json` for MCP credential handling.
 
 [^24]: Anthropic — "MCP Configuration Security," Claude Code Documentation, 2026. https://code.claude.com/docs/en/mcp-security
  Credential handling for MCP server connections; environment variable reference syntax in `.mcp.json`; separation of team configuration from machine-specific secrets.
@@ -170,109 +147,58 @@ The MCP permission model mirrors the settings permission model: servers are gran
 
 ## Configuration 5:.claude/commands/ and.claude/skills/ — Custom Skills and Commands
 
-**Description:** Claude Code supports two complementary mechanisms for packaging reusable workflows: slash commands in `.claude/commands/` and skills in `.claude/skills/`. Slash commands are markdown files invoked with `/command-name` during a session — parameterized templates that encode the best prompt structure for a specific recurring task: feature scaffolding, refactoring passes, security review, test generation, or PR description creation. Skills extend this with supporting files and structured metadata, enabling more complex multi-artifact workflows.[^26]
+**Description:** Claude Code supports two complementary mechanisms for packaging reusable workflows: slash commands in `.claude/commands/` and skills in `.claude/skills/`. Slash commands are markdown files invoked with `/command-name` during a session — parameterized templates that encode the best prompt structure for a specific recurring task: feature scaffolding, refactoring passes, security review, test generation, or PR description creation. Skills extend this with supporting files and structured metadata, enabling more complex multi-artifact workflows.[^3]
 
 These mechanisms are how a team builds a shared prompt library. The return on investment is asymmetric: the engineer who writes a well-crafted `/security-review` command invests fifteen minutes; every subsequent use by every team member benefits from that investment at no additional cost. Teams with shared command libraries report significantly higher output consistency than those relying on individual engineers' improvised prompts — because the command encodes not just the task but the architectural context, the expected output format, and the codebase-specific constraints that an engineer improvising a prompt would omit.[^1]
 
-Both commands and skills are checked into git in their respective directories, making them versioned team artifacts with the same review properties as production code. An engineer who proposes a poorly structured command via PR is introducing tooling debt — a command that produces inconsistent output is a source of divergence at scale.[^27]
+Both commands and skills are checked into git in their respective directories, making them versioned team artifacts with the same review properties as production code. An engineer who proposes a poorly structured command via PR is introducing tooling debt — a command that produces inconsistent output is a source of divergence at scale.[^2]
 
 **Proposed Solution:**
-- Establish a team command library as a required project artifact: at minimum, commands for feature scaffolding, refactoring, security review, test generation, and PR description creation. Check these into `.claude/commands/` alongside CLAUDE.md.[^26]
+- Establish a team command library as a required project artifact: at minimum, commands for feature scaffolding, refactoring, security review, test generation, and PR description creation. Check these into `.claude/commands/` alongside CLAUDE.md.[^3]
 - Include project-specific architectural context in each command that would not be obvious to an engineer improvising a prompt: constraints, output format expectations, anti-patterns specific to the codebase, and quality criteria for that task type.[^1]
-- Use `.claude/skills/` for complex workflows that require supporting files — a skill that runs a database migration, for example, can reference schema templates and rollback procedures as attached files.[^27]
+- Use `.claude/skills/` for complex workflows that require supporting files — a skill that runs a database migration, for example, can reference schema templates and rollback procedures as attached files.[^2]
 - Allow engineers to propose new commands via PR, applying the same review process as production code changes. Define a quality criterion: a command is acceptable when it produces consistent, correct output across five distinct invocations by different engineers.[^3]
 - Review and update commands quarterly: identify which produce consistently good output, which need updating due to codebase changes, and which common tasks lack a command and should have one.[^1]
 
 ---
 
-[^26]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
- `.claude/commands/` setup and file format; slash command parameterization; relationship between commands and CLAUDE.md context inheritance.
-
-[^27]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
- Skills vs. commands: when to use each; `.claude/skills/` structure with supporting files; team ownership and PR review process for shared prompt artifacts.
-
-[^28]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
- Shared prompt libraries as consistency infrastructure across mixed-experience teams; how well-designed reusable commands close the prompt-engineering skill gap between senior and junior engineers.
-
-[^29]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
- The five foundational command types every team should maintain; command update cadence as a team practice.
-
-[^30]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
- - Custom command file format: writing parameterized markdown commands and placing them in `.claude/commands/`
- - The five foundational command library entries: scaffolding, refactoring, security review, test generation, and PR description
- - Skills vs. commands: when supporting files justify using `.claude/skills/` over a single command file
-
 ---
 
 ## Configuration 6:.claude/agents/ — Subagent Definitions
 
-**Description:** Claude Code supports subagent delegation — spawning independent Claude instances with their own context windows to perform parallel or scoped tasks. Subagent behavior can be configured through definition files in `.claude/agents/`, which specify the model to use, the tools available to the subagent, its instructions, and the scope of its access. This allows a team to define reusable delegation targets: a specialized code-review agent, a documentation-generation agent, a security-audit agent — each with pre-configured scopes and instructions.[^31]
+**Description:** Claude Code supports subagent delegation — spawning independent Claude instances with their own context windows to perform parallel or scoped tasks. Subagent behavior can be configured through definition files in `.claude/agents/`, which specify the model to use, the tools available to the subagent, its instructions, and the scope of its access. This allows a team to define reusable delegation targets: a specialized code-review agent, a documentation-generation agent, a security-audit agent — each with pre-configured scopes and instructions.[^2]
 
-Subagents are the mechanism by which long tasks that would exhaust a single context window are decomposed into parallel workstreams. An architect-level session orchestrates by dispatching scoped agents: one agent explores the codebase, another generates a plan, a third implements, and a fourth reviews — each in its own context, none polluting the others. The orchestrating session coordinates without holding all context simultaneously.[^32]
+Subagents are the mechanism by which long tasks that would exhaust a single context window are decomposed into parallel workstreams. An architect-level session orchestrates by dispatching scoped agents: one agent explores the codebase, another generates a plan, a third implements, and a fourth reviews — each in its own context, none polluting the others. The orchestrating session coordinates without holding all context simultaneously.[^3]
 
-Agent definitions in `.claude/agents/` are checked into git as team artifacts. A well-defined agent definition encodes the appropriate scope, model, and tool access for a recurring delegation pattern — ensuring that when any engineer delegates a security audit, the delegated agent operates with the same constraints rather than inheriting whatever the calling session happens to have permitted.[^31]
+Agent definitions in `.claude/agents/` are checked into git as team artifacts. A well-defined agent definition encodes the appropriate scope, model, and tool access for a recurring delegation pattern — ensuring that when any engineer delegates a security audit, the delegated agent operates with the same constraints rather than inheriting whatever the calling session happens to have permitted.[^2]
 
 **Proposed Solution:**
-- Define team-standard agents for recurring delegation patterns: a `code-reviewer` agent (read-only, security-focused), a `doc-generator` agent (write-access to docs/ only), and a `test-generator` agent (write-access to test directories only).[^32]
-- Scope each agent's tool access to the minimum required for its task — agent definitions are the primary mechanism for preventing delegated tasks from acquiring permissions beyond their mandate.[^31]
-- Store agent definitions in `.claude/agents/` checked into git, subject to the same PR review process as commands and skills.[^33]
-- Document the expected inputs, outputs, and failure modes for each agent definition — a delegation target without documented behavior becomes a black box that engineers use inconsistently.[^34]
+- Define team-standard agents for recurring delegation patterns: a `code-reviewer` agent (read-only, security-focused), a `doc-generator` agent (write-access to docs/ only), and a `test-generator` agent (write-access to test directories only).[^3]
+- Scope each agent's tool access to the minimum required for its task — agent definitions are the primary mechanism for preventing delegated tasks from acquiring permissions beyond their mandate.[^2]
+- Store agent definitions in `.claude/agents/` checked into git, subject to the same PR review process as commands and skills.[^5]
+- Document the expected inputs, outputs, and failure modes for each agent definition — a delegation target without documented behavior becomes a black box that engineers use inconsistently.[^1]
 - Review agent definitions quarterly: assess whether agent scope has drifted, whether new delegation patterns have emerged that warrant a new definition, and whether any definitions are unused.[^1]
 
 ---
-
-[^31]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
- `.claude/agents/` file format and supported fields; agent scope and tool access configuration; team-owned agent definitions as checked-in artifacts.
-
-[^32]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
- Subagent delegation patterns; orchestrator-worker decomposition for context-window management; agent definitions as reusable delegation targets.
-
-[^33]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
- How multi-agent orchestration patterns are becoming standard practice for complex software tasks; the operational shift from single-session to coordinated-agent workflows.
-
-[^34]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
- Agent definition as documentation: why encoding expected inputs, outputs, and failure modes is part of the engineering contract for a delegation target.
-
-[^35]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
- - Agent definition structure: model selection, tool access scoping, and instruction inheritance from CLAUDE.md
- - Orchestrator-worker decomposition: how to split a complex task across three agents without exhausting the orchestrating session's context window
- - Permission isolation: how agent-level tool restrictions prevent delegated sessions from acquiring parent-session permissions
 
 ---
 
 ## Configuration 7:.claude/rules/ — Scoped Instruction Overrides
 
-**Description:** The `.claude/rules/` directory allows teams to define instruction files that apply only when Claude is working within specific file path patterns. Where CLAUDE.md applies globally to every session, a rules file can target a subtree — applying additional constraints, conventions, or context only when the file being operated on matches the rule's path gate. This enables differentiated behavior for different parts of the codebase without burdening every session with context that only applies to a fraction of work.[^36]
+**Description:** The `.claude/rules/` directory allows teams to define instruction files that apply only when Claude is working within specific file path patterns. Where CLAUDE.md applies globally to every session, a rules file can target a subtree — applying additional constraints, conventions, or context only when the file being operated on matches the rule's path gate. This enables differentiated behavior for different parts of the codebase without burdening every session with context that only applies to a fraction of work.[^6]
 
-Common use patterns: a rules file scoped to `src/migrations/` that injects database-specific constraints and rollback requirements; a rules file scoped to `src/api/` that enforces REST convention and authentication annotation requirements; a rules file scoped to `tests/` that injects test quality criteria not relevant to production code sessions. Each rules file activates only when relevant, keeping the effective instruction context lean for any given task.[^36]
+Common use patterns: a rules file scoped to `src/migrations/` that injects database-specific constraints and rollback requirements; a rules file scoped to `src/api/` that enforces REST convention and authentication annotation requirements; a rules file scoped to `tests/` that injects test quality criteria not relevant to production code sessions. Each rules file activates only when relevant, keeping the effective instruction context lean for any given task.[^6]
 
-Rules files complement rather than replace CLAUDE.md: the global file establishes team-wide constraints while rules files add targeted detail for specialized contexts. Engineers working across both frontend and backend contexts benefit from rules that automatically inject the appropriate conventions without requiring manual context management per session.[^37]
+Rules files complement rather than replace CLAUDE.md: the global file establishes team-wide constraints while rules files add targeted detail for specialized contexts. Engineers working across both frontend and backend contexts benefit from rules that automatically inject the appropriate conventions without requiring manual context management per session.[^2]
 
 **Proposed Solution:**
-- Create rules files for high-specificity code areas: database migration directory, public API surface, authentication module, and test directories — each injecting the conventions and constraints that apply only in that context.[^36]
-- Keep rules files short and specific. A rules file that sprawls into general conventions duplicates CLAUDE.md and creates a maintenance burden when conventions change.[^37]
+- Create rules files for high-specificity code areas: database migration directory, public API surface, authentication module, and test directories — each injecting the conventions and constraints that apply only in that context.[^6]
+- Keep rules files short and specific. A rules file that sprawls into general conventions duplicates CLAUDE.md and creates a maintenance burden when conventions change.[^2]
 - Version rules files in git alongside the code they govern. When a subsystem's conventions change, the corresponding rules file update should be part of the same PR.[^3]
-- Document which rules files exist and what paths they cover in CLAUDE.md — engineers should know that migration rules exist before working in that directory, not discover them by accident.[^36]
+- Document which rules files exist and what paths they cover in CLAUDE.md — engineers should know that migration rules exist before working in that directory, not discover them by accident.[^6]
 - Audit rules file effectiveness in the same cycle as CLAUDE.md: verify that scoped instructions are producing the intended output, and prune any rules that Claude already follows correctly without them.[^1]
 
 ---
-
-[^36]: Anthropic — "Claude Code: Settings and Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/settings
- `.claude/rules/` directory structure; path gate syntax; how rules files interact with global CLAUDE.md context at session time.
-
-[^37]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
- Rules files as a complement to CLAUDE.md; scoped instruction design patterns; the principle of keeping effective context lean for any given task.
-
-[^38]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
- Rules files for high-specificity contexts: the argument for automatic context injection over engineer-managed per-session prompting.
-
-[^39]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
- Modular context design: how layered instruction files reduce cognitive overhead for engineers working across multiple code contexts in a single sprint.
-
-[^40]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
- - Rules file path gate syntax: matching subtrees, file extensions, and named directories
- - CLAUDE.md + rules file interaction: how global and scoped instructions compose at session initialization
- - Maintenance discipline: updating rules files alongside the code they govern to prevent instruction drift
 
 ---
 
@@ -282,12 +208,12 @@ Rules files complement rather than replace CLAUDE.md: the global file establishe
 
 Memory is categorized into four types: *user* memories (the engineer's role, preferences, and knowledge level), *feedback* memories (corrections and validated approaches), *project* memories (ongoing work context, decisions, and deadlines), and *reference* memories (pointers to external resources). The distinction matters operationally: project memories decay as work evolves and must be pruned; feedback memories are durable and compound over time; user memories personalize responses without requiring engineers to re-introduce themselves each session.[^41]
 
-Memory is distinct from CLAUDE.md: CLAUDE.md encodes team-level, codebase-specific instructions that apply to every engineer; memory encodes session-accumulated knowledge specific to a model instance's interaction with a particular engineer on a particular project. Memory supplements CLAUDE.md rather than replacing it — a correction added to memory prevents recurrence in future sessions for one engineer; a correction added to CLAUDE.md prevents recurrence for all engineers.[^42]
+Memory is distinct from CLAUDE.md: CLAUDE.md encodes team-level, codebase-specific instructions that apply to every engineer; memory encodes session-accumulated knowledge specific to a model instance's interaction with a particular engineer on a particular project. Memory supplements CLAUDE.md rather than replacing it — a correction added to memory prevents recurrence in future sessions for one engineer; a correction added to CLAUDE.md prevents recurrence for all engineers.[^2]
 
 **Proposed Solution:**
 - Treat memory as a complement to CLAUDE.md: use memory for session-specific learning and personal interaction preferences; escalate any correction that should apply team-wide into CLAUDE.md.[^41]
 - Periodically review `~/.claude/projects/<project>/memory/MEMORY.md` to prune stale project memories (completed work, resolved incidents) and verify that feedback memories still reflect current practice.[^41]
-- Use explicit memory instructions for high-value corrections: "remember that we never mock the database in integration tests" is a durable feedback memory that prevents a recurring AI error; preserve these deliberately rather than relying on implicit accumulation.[^42]
+- Use explicit memory instructions for high-value corrections: "remember that we never mock the database in integration tests" is a durable feedback memory that prevents a recurring AI error; preserve these deliberately rather than relying on implicit accumulation.[^2]
 - Be aware that memory files can contain outdated information if not maintained. Before acting on a recalled memory that names specific files, functions, or architectural decisions, verify the current state of the codebase rather than treating the memory as authoritative.[^41]
 
 ---
@@ -295,54 +221,23 @@ Memory is distinct from CLAUDE.md: CLAUDE.md encodes team-level, codebase-specif
 [^41]: Anthropic — "Claude Code Memory," Claude Code Documentation, 2026. https://code.claude.com/docs/en/memory
  Memory system architecture: `MEMORY.md` index structure, topic file conventions, memory type categories, and the distinction between session memory and CLAUDE.md instructions.
 
-[^42]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
- Memory vs. CLAUDE.md: when to use each; feedback memory as a correction mechanism; memory pruning discipline for project memories that decay as work evolves.
-
-[^43]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
- The memory-to-CLAUDE.md escalation pattern: when a correction recurs across multiple sessions, it belongs in the shared team configuration rather than individual memory.
-
-[^44]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
- Persistent memory as a mechanism for accumulating institutional knowledge in AI sessions; how memory systems shift AI tooling from stateless to stateful collaboration.
-
-[^45]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
- - Memory file structure: `MEMORY.md` as an index with topic files for different memory categories
- - Session memory vs. CLAUDE.md: when accumulated knowledge belongs in personal memory vs. team configuration
- - Memory pruning: identifying and removing stale project memories that no longer reflect current work state
-
 ---
 
 ## Configuration 9: ~/.claude/keybindings.json and ~/.claude.json — Local Experience Configuration
 
-**Description:** Two files configure the local Claude Code experience at the machine level. `~/.claude/keybindings.json` stores custom keyboard shortcuts, allowing engineers to remap or extend the default key bindings — binding session-start sequences, command invocations, or mode toggles to preferred key combinations. `~/.claude.json` is a managed state file that stores OAuth credentials, theme preferences, per-project trust decisions, MCP server connection caches, and session state. Both files are personal and machine-local; neither is checked into git.[^46]
+**Description:** Two files configure the local Claude Code experience at the machine level. `~/.claude/keybindings.json` stores custom keyboard shortcuts, allowing engineers to remap or extend the default key bindings — binding session-start sequences, command invocations, or mode toggles to preferred key combinations. `~/.claude.json` is a managed state file that stores OAuth credentials, theme preferences, per-project trust decisions, MCP server connection caches, and session state. Both files are personal and machine-local; neither is checked into git.[^6]
 
-`~/.claude.json` is written and read by Claude Code itself rather than edited manually, but understanding its role is operationally relevant: it is where per-project trust decisions persist (whether Claude is trusted to run shell commands in a given project without prompting), and where OAuth tokens for MCP servers are cached. When onboarding a new machine or debugging unexpected trust behaviors, `~/.claude.json` is the artifact to inspect.[^46]
+`~/.claude.json` is written and read by Claude Code itself rather than edited manually, but understanding its role is operationally relevant: it is where per-project trust decisions persist (whether Claude is trusted to run shell commands in a given project without prompting), and where OAuth tokens for MCP servers are cached. When onboarding a new machine or debugging unexpected trust behaviors, `~/.claude.json` is the artifact to inspect.[^6]
 
-`~/.claude/keybindings.json` is directly user-editable. Engineers who run multiple parallel sessions or regularly invoke the same slash commands benefit from binding these actions to short key sequences rather than typing them. The file supports chord bindings (multi-key sequences), enabling a dense shortcut vocabulary without key conflicts.[^47]
+`~/.claude/keybindings.json` is directly user-editable. Engineers who run multiple parallel sessions or regularly invoke the same slash commands benefit from binding these actions to short key sequences rather than typing them. The file supports chord bindings (multi-key sequences), enabling a dense shortcut vocabulary without key conflicts.[^2]
 
 **Proposed Solution:**
-- Document team-recommended keybindings in onboarding materials — not as required configuration, but as a menu of high-value shortcuts that engineers can adopt. Common high-value bindings: session-new, approve-tool, and the most frequently used slash commands.[^47]
-- Instruct engineers to inspect `~/.claude.json` when debugging unexpected permission or trust behaviors — per-project trust decisions stored there can cause inconsistent behavior when moving between machines.[^46]
-- Treat both files as personal configuration, not team artifacts. Never check them into git. For configuration that should be consistent across the team, use `.claude/settings.json` instead.[^9]
+- Document team-recommended keybindings in onboarding materials — not as required configuration, but as a menu of high-value shortcuts that engineers can adopt. Common high-value bindings: session-new, approve-tool, and the most frequently used slash commands.[^2]
+- Instruct engineers to inspect `~/.claude.json` when debugging unexpected permission or trust behaviors — per-project trust decisions stored there can cause inconsistent behavior when moving between machines.[^6]
+- Treat both files as personal configuration, not team artifacts. Never check them into git. For configuration that should be consistent across the team, use `.claude/settings.json` instead.[^6]
 - When onboarding new team members, include a guided `~/.claude/keybindings.json` setup step. Engineers who configure shortcuts in the first week adopt them permanently; engineers who skip this step typically never revisit it.[^1]
 
 ---
-
-[^46]: Anthropic — "Claude Code: Settings and Configuration," Claude Code Documentation, 2026. https://code.claude.com/docs/en/settings
- `~/.claude.json` as a managed state file; per-project trust decision persistence; OAuth token caching for MCP server connections; the distinction between personal and team configuration artifacts.
-
-[^47]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
- `~/.claude/keybindings.json` format; chord binding syntax; onboarding recommendations for keybinding setup; high-value shortcuts for parallel session workflows.
-
-[^48]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
- Onboarding friction reduction: why keybinding setup in the first week is a high-ROI investment for long-term workflow efficiency.
-
-[^49]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
- Personal configuration discipline: distinguishing between machine-local settings and team artifacts; the case for minimal personal override surface area.
-
-[^50]: Sabrina Ramonov — "CLAUDE CODE FULL COURSE," YouTube, February 17, 2025. https://www.youtube.com/watch?v=fYX6hHC9FhQ
- - `~/.claude/keybindings.json` setup: file structure, chord binding syntax, and recommended bindings for parallel session workflows
- - `.claude.json` state file: what it contains, when to inspect it, and how per-project trust decisions affect session behavior
- - Personal vs. team configuration: the boundary between machine-local files and checked-in team artifacts
 
 ---
 
@@ -350,35 +245,21 @@ Memory is distinct from CLAUDE.md: CLAUDE.md encodes team-level, codebase-specif
 
 **Description:** Claude Code runs in headless mode (`claude -p`) as a pipeline actor — enabling automated code review, documentation generation, migration execution, and test suite creation without human session management. The `--permission-mode plan` flag supports read-only analysis pipelines — architecture summaries, dependency audits, test coverage analysis — that run safely against every PR without risk of automated modification.[^51]
 
-A CI pipeline that runs a standardized reviewer session on every PR — using a shared reviewer prompt against the team's CLAUDE.md — adds a consistent AI review layer that catches the same class of issues across all PRs regardless of which engineer authored them. This is more consistent than relying on individual engineers to run reviewer sessions manually before requesting review. For a small team where review bandwidth is limited, automated preprocessing that identifies the issues most likely to require attention focuses human review effort where it has the most value.[^52]
+A CI pipeline that runs a standardized reviewer session on every PR — using a shared reviewer prompt against the team's CLAUDE.md — adds a consistent AI review layer that catches the same class of issues across all PRs regardless of which engineer authored them. This is more consistent than relying on individual engineers to run reviewer sessions manually before requesting review. For a small team where review bandwidth is limited, automated preprocessing that identifies the issues most likely to require attention focuses human review effort where it has the most value.[^12]
 
-All team configuration artifacts — CLAUDE.md, `settings.json`, `.mcp.json`, hooks, commands — apply in headless sessions, making the CI environment behaviorally consistent with local sessions for the same project. The `.worktreeinclude` file at the project root defines gitignored files that should be copied into worktree environments for CI runs — ensuring that CI sessions have the same local configuration artifacts (environment files, local overrides) as developer machines without those files being tracked in git.[^53]
+All team configuration artifacts — CLAUDE.md, `settings.json`, `.mcp.json`, hooks, commands — apply in headless sessions, making the CI environment behaviorally consistent with local sessions for the same project. The `.worktreeinclude` file at the project root defines gitignored files that should be copied into worktree environments for CI runs — ensuring that CI sessions have the same local configuration artifacts (environment files, local overrides) as developer machines without those files being tracked in git.[^3]
 
 **Proposed Solution:**
-- Integrate a focused PR review step in CI using `claude -p` with the team's reviewer prompt and CLAUDE.md context. Scope the review to security vulnerabilities, logic errors, and architectural pattern violations — not style issues, which static analysis already handles.[^52]
+- Integrate a focused PR review step in CI using `claude -p` with the team's reviewer prompt and CLAUDE.md context. Scope the review to security vulnerabilities, logic errors, and architectural pattern violations — not style issues, which static analysis already handles.[^12]
 - Use plan-mode CI pipelines (`--permission-mode plan`) to generate structured architecture summaries for PRs touching critical modules — giving human reviewers a prepared description of what changed before they read the diff.[^51]
-- Configure the CI review step to post findings as PR comments with explicit severity classifications (blocking, advisory, informational) so engineers can triage findings without reading the full review output.[^52]
+- Configure the CI review step to post findings as PR comments with explicit severity classifications (blocking, advisory, informational) so engineers can triage findings without reading the full review output.[^12]
 - Run CI pipeline sessions under a dedicated service account with read-only repository permissions. Treat AI pipeline failures as blocking: investigate before merging, the same as failing tests.[^12]
-- Define `.worktreeinclude` to ensure CI worktree environments receive any gitignored configuration files required for complete session behavior — without this, CI sessions may behave differently from local sessions in ways that are difficult to diagnose.[^53]
+- Define `.worktreeinclude` to ensure CI worktree environments receive any gitignored configuration files required for complete session behavior — without this, CI sessions may behave differently from local sessions in ways that are difficult to diagnose.[^3]
 
 ---
 
 [^51]: Anthropic — "Claude Code in CI/CD Pipelines," Claude Code Documentation, 2026. https://code.claude.com/docs/en/cicd
  Headless CI mode patterns; `--permission-mode plan` flag for read-only analysis; how team configuration artifacts apply in pipeline sessions.
-
-[^52]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
- PR review step design; plan-mode analysis pipeline for architecture summaries; PR comment severity classification; treating AI pipeline failures as blocking rather than advisory.
-
-[^53]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
- `.worktreeinclude` for copying gitignored files into worktree CI environments; worktree isolation patterns for parallel pipeline sessions.
-
-[^54]: Anthropic — "Security and Permissions," Claude Code Documentation, 2026. https://code.claude.com/docs/en/security-permissions
- Service account permission model for pipeline sessions; `--allowedTools` scoping for headless sessions; audit logging configuration for CI permission grants.
-
-[^55]: Jack Herrington — "Claude Code MCP Servers: A Complete Setup Guide," YouTube, November 2025. https://www.youtube.com/watch?v=3QkVZj_nKoA
- - Headless session configuration: how `.mcp.json` and CLAUDE.md apply in CI environments without interactive session management
- - Service account scoping: configuring read-only permissions for pipeline Claude instances
- - Worktree patterns for parallel CI sessions: isolating concurrent pipeline runs without configuration conflicts
 
 ---
 

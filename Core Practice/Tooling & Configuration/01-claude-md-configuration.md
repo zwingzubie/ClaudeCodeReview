@@ -122,7 +122,7 @@ Length is the most common silent failure mode. Anthropic's documentation and emp
 - For positive validation, give Claude an underspecified implementation task in a fresh session — no task prompt beyond the feature description — and evaluate whether the output reflects team conventions without prompting. If Claude produces the right patterns without being asked, the CLAUDE.md is working. If it produces training data defaults, the relevant instructions need revision or repositioning.[^3]
 - If an instruction fails validation (Claude does not follow it), diagnose before rewriting. Common causes: the instruction is buried too far into a long file, it conflicts with another instruction, or it is phrased as a preference rather than a prohibition. Move the instruction earlier in the file, resolve the conflict, or restate it as a hard prohibition. Address the root cause rather than restating the instruction more forcefully in the same position.[^2]
 - Apply the length budget actively: keep the main CLAUDE.md under 500 tokens. Use the token count displayed in a fresh session (ask Claude to report the CLAUDE.md token count at session start) as the enforcement mechanism. When the file exceeds the budget, the next pruning session is not optional — it is load-bearing for the effectiveness of every subsequent session.[^11]
-- Use the verbose mode (Ctrl+O during a session) to inspect Claude's internal reasoning when it executes a task. Visible reasoning often reveals whether specific CLAUDE.md instructions were consulted during the task — a direct window into whether the configuration is actively shaping behavior.[^8]
+- Use the verbose mode (Ctrl+O during a session) to inspect Claude's internal reasoning when it executes a task. Visible reasoning often reveals whether specific CLAUDE.md instructions were consulted during the task — a direct window into whether the configuration is actively shaping behavior.[^3]
 - After any significant rework PR (a PR that required multiple correction cycles to pass review), review the CLAUDE.md to determine whether a new instruction would have prevented the issue. If yes, add it. If no, diagnose whether the root cause was a prompting problem (scope for Prompting sub-topics) or a task type problem (scope for Governance — Sprint Planning).[^6]
 
 ---
@@ -159,9 +159,6 @@ Length is the most common silent failure mode. Anthropic's documentation and emp
 
 [^7]: Vocal/Futurism — "8 AI Code Generation Mistakes Devs Must Fix to Win 2026." https://vocal.media/futurism/8-ai-code-generation-mistakes-devs-must-fix-to-win-2026
     The Constraint Persona Problem: AI defaults to training data patterns when not given explicit architectural constraints; CLAUDE.md as the mechanism for providing those constraints consistently across all team sessions.
-
-[^8]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
-    Verbose mode (Ctrl+O): how to inspect Claude's reasoning during sessions to verify that CLAUDE.md instructions are being actively consulted vs. ignored in the session's internal reasoning chain.
 
 [^9]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
     CLAUDE.md in CI contexts: how the same configuration file governs both interactive developer sessions and automated pipeline sessions, ensuring consistent behavior across all Claude-mediated operations.

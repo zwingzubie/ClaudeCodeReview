@@ -63,12 +63,12 @@ The most common structural error is context duplication: prompts that re-explain
 
 ## Section 3: Prompt Patterns for Planning vs. Implementation
 
-**Description:** Planning prompts and implementation prompts have structurally different requirements. A planning prompt should produce a plan that the engineer can evaluate, edit, and approve before any code is written. The most important quality of a planning prompt is that it surfaces architectural decisions explicitly rather than embedding them in code. An implementation prompt, by contrast, should produce runnable code that passes verification — the architectural decisions are already resolved and the task is execution.[^9]
+**Description:** Planning prompts and implementation prompts have structurally different requirements. A planning prompt should produce a plan that the engineer can evaluate, edit, and approve before any code is written. The most important quality of a planning prompt is that it surfaces architectural decisions explicitly rather than embedding them in code. An implementation prompt, by contrast, should produce runnable code that passes verification — the architectural decisions are already resolved and the task is execution.[^2]
 
 Mixing planning and implementation into a single prompt is one of the most common structural failures in AI-assisted development. Asking Claude to "implement an authentication system" conflates a planning question (what authentication pattern should we use?) with an implementation task (write the specific code). The result is implementation that encodes planning decisions Claude made silently, without the engineer having reviewed or approved them.[^2]
 
 **Recommended Practice:**
-- Structure multi-step tasks as explicit two-phase interactions: a planning prompt that produces an implementation plan for review, followed by an implementation prompt that executes against the approved plan. Never combine these into a single "implement everything" prompt for non-trivial work.[^9]
+- Structure multi-step tasks as explicit two-phase interactions: a planning prompt that produces an implementation plan for review, followed by an implementation prompt that executes against the approved plan. Never combine these into a single "implement everything" prompt for non-trivial work.[^2]
 - Planning prompts should end with: "Do not write any code. Produce a numbered implementation plan that I will review before you begin." This prevents Claude from starting implementation in the same response as the plan — a common pattern when the planning prompt does not explicitly prevent it.[^2]
 - Implementation prompts should begin with the approved plan: "Implement the plan we agreed on. Start with step 1." This anchors the implementation to the reviewed plan rather than to Claude's current (potentially modified) interpretation of the original requirement.[^5]
 - When a session deviates from the approved plan mid-implementation, stop and audit rather than continuing: "You've diverged from the plan at step 3. Explain the deviation before continuing." Unreviewed plan deviations are the source of most mid-session architectural drift.[^2]
@@ -139,9 +139,6 @@ Calibrating for length requires distinguishing between structural components (al
 [^8]: Dave Patten — "The State of AI Coding Agents (2026): From Pair Programming to Autonomous AI Teams," Medium, March 2026. https://medium.com/@dave-patten/the-state-of-ai-coding-agents-2026-from-pair-programming-to-autonomous-ai-teams-b11f2b39232a
     Spec.md as pre-work for session prompts: how upfront specification reduces session-level prompt length and improves implementation precision.
 
-[^9]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
-    Planning vs. implementation separation: the Explore-Plan-Implement loop as the canonical separation; the failure mode of combining planning and implementation into a single prompt.
-
 [^10]: Anthropic — "Hooks Reference," Claude Code Documentation, 2026. https://code.claude.com/docs/en/hooks-reference
     Blocking verification via hooks: how PostToolUse and Stop hooks create automated verification gates that complement prompt-level verification instructions.
 
@@ -157,7 +154,6 @@ Calibrating for length requires distinguishing between structural components (al
     - Context hierarchy in practice: how CLAUDE.md, spec.md, and session prompts interact and how to keep each layer responsible for the right content
     - Minimum sufficient context: empirical demonstration of how prompt length affects Claude's attention to specific constraints in the presence of surrounding noise
     - Prompt calibration: the 30-second reading test applied to real prompts; trimming explanatory prose to constraint-focused language
-
 
 [^a]: [Issues: Prompt Fragmentation](../Issues/07-prompt-fragmentation.md) — prompt architecture is the discipline that prevents fragmentation; structured, reusable prompt patterns are the countermeasure to the ad-hoc variation described there.
 [^b]: [Workflows: Context Engineering](../Workflows/03-context-engineering.md) — prompt architecture operates within the context engineering framework; the two disciplines are nested — context engineering sets the session foundation, prompt architecture governs individual requests.

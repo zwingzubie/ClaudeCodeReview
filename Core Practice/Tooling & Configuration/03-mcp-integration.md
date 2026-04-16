@@ -98,13 +98,13 @@ The permission model for write-access servers requires more deliberate configura
 
 ## Section 4: Custom MCP Server Development
 
-**Description:** When no existing MCP server covers a team-specific integration need, custom servers can be built using Anthropic's MCP SDK. Custom servers are most valuable for proprietary internal tools — internal deployment systems, custom monitoring dashboards, company-specific APIs — where no community server exists and the coordination overhead of manually providing context from these tools is high. A custom server exposing the team's specific internal monitoring data or deployment pipeline status can eliminate daily manual context lookups that would not be served by any off-the-shelf server.[^8]
+**Description:** When no existing MCP server covers a team-specific integration need, custom servers can be built using Anthropic's MCP SDK. Custom servers are most valuable for proprietary internal tools — internal deployment systems, custom monitoring dashboards, company-specific APIs — where no community server exists and the coordination overhead of manually providing context from these tools is high. A custom server exposing the team's specific internal monitoring data or deployment pipeline status can eliminate daily manual context lookups that would not be served by any off-the-shelf server.[^2]
 
 Custom server development is an engineering investment: it requires initial development, testing, security review, and ongoing maintenance. The threshold for justified custom development is when the coordination overhead the server would eliminate exceeds the development cost by a meaningful margin — typically when the manual context lookup takes more than two minutes and happens multiple times per day across the team.[^3]
 
 **Recommended Practice:**
 - Before building a custom server, confirm that no existing community server covers the need. The MCP ecosystem is growing rapidly; a server that did not exist three months ago may exist now.[^2]
-- Build custom servers using Anthropic's official MCP SDK rather than implementing the protocol from scratch. The SDK handles transport, JSON serialization, and error handling — focusing custom development on the domain logic specific to the integration.[^8]
+- Build custom servers using Anthropic's official MCP SDK rather than implementing the protocol from scratch. The SDK handles transport, JSON serialization, and error handling — focusing custom development on the domain logic specific to the integration.[^2]
 - Treat custom MCP servers as production code: version control, code review, automated tests, and documented API surfaces. A server that breaks silently (returning empty results or incorrect data) degrades session quality without producing an error that engineers can diagnose.[^7]
 - For internal tools with sensitive data, configure custom servers with authentication middleware and audit logging before any team-wide deployment. The same data governance considerations that apply to direct database access apply to data exposed through MCP servers.[^4]
 
@@ -157,21 +157,16 @@ Prompt injection via MCP is an emerging risk category: if Claude fetches content
 [^7]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
     MCP access log analysis as an agentic governance practice: how teams that audit MCP tool usage identify scope creep and unintended operations before they become incidents.
 
-[^8]: Anthropic — "Model Context Protocol Introduction," Claude Code Documentation, 2026. https://code.claude.com/docs/en/mcp-introduction
-    Custom MCP server development: Anthropic's official MCP SDK, server type templates, and the threshold criteria for custom development vs. community server adoption.
-
 [^9]: DEV Community — "AI Is Creating a New Kind of Tech Debt — And Nobody Is Talking About It," March 2026. https://dev.to/harsh2644/ai-is-creating-a-new-kind-of-tech-debt-and-nobody-is-talking-about-it-3pm6
     Prompt injection via MCP as an emerging attack vector: how malicious content in external data sources can influence AI session behavior and the mitigations available in 2026.
 
 [^10]: Boris Cherny — "How Boris Uses Claude Code," January 2026. https://howborisusesclaudecode.com
     MCP as session context extension: how external tool integrations reduce the manual context-gathering burden that precedes effective AI sessions; integration sequencing from read-only to write-access.
 
-
 [^12]: Dex Horthy (YC Root Access) — "Advanced Context Engineering for Agents," YouTube, August 2025. https://www.youtube.com/watch?v=IS_y40zY-hc
     - MCP integration strategy: how to evaluate integration candidates against coordination overhead frequency and severity
     - Shared `.mcp.json` configuration: how team-level server configuration ensures consistent access without per-engineer setup
     - Prompt injection risk: practical examples of how external data fetched via MCP can contain embedded instructions and how to configure Claude to treat fetched content as data-only
-
 
 [^a]: [Documentation: Architecture Decision Records](../Documentation/01-architecture-decision-records.md) — MCP servers make ADRs stored in Google Drive or Confluence queryable within sessions; ADR accessibility depends on MCP configuration for teams using external documentation stores.
 

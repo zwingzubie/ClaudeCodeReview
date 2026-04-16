@@ -68,10 +68,10 @@ The privacy risk is not hypothetical. A 2025 survey of enterprise AI deployments
 
 **Description:** AI inference at scale has a measurable environmental footprint. Training and running large language models consumes significant energy and water for cooling, and the per-query cost, while individually small, aggregates to a material figure at team scale and across the industry. A team of 8 engineers each running multiple Claude Code sessions per day generates a consumption pattern that warrants at least acknowledgment — particularly for teams with stated commitments to environmental sustainability or serving customers who track their vendors' environmental practices.[^14]
 
-This is not a call to restrict AI use for environmental reasons — the productivity benefits are real and the individual engineer's session is a small fraction of the industry's total impact. It is a call for proportionality: using AI for tasks where its contribution is meaningful, and being deliberate about session practices (clear context when it is no longer needed, use targeted subagent sessions for investigation rather than open-ended broad sessions) that avoid unnecessary consumption.[^15]
+This is not a call to restrict AI use for environmental reasons — the productivity benefits are real and the individual engineer's session is a small fraction of the industry's total impact. It is a call for proportionality: using AI for tasks where its contribution is meaningful, and being deliberate about session practices (clear context when it is no longer needed, use targeted subagent sessions for investigation rather than open-ended broad sessions) that avoid unnecessary consumption.[^5]
 
 **Proposed Solution:**
-- Apply good session hygiene (see Workflows — Session Hygiene) not only for output quality but as a compute efficiency practice: sessions that don't clear context accumulate unnecessary token processing that generates costs without quality benefits. `/clear` between unrelated tasks is both a quality and an efficiency practice.[^15]
+- Apply good session hygiene (see Workflows — Session Hygiene) not only for output quality but as a compute efficiency practice: sessions that don't clear context accumulate unnecessary token processing that generates costs without quality benefits. `/clear` between unrelated tasks is both a quality and an efficiency practice.[^5]
 - When choosing between model tiers for a given task, consider whether the heaviest model is warranted. Sonnet 4.6 is appropriate for most implementation and review tasks; reserving Opus 4.6 for planning phases on complex architectural decisions is a compute proportionality practice as well as a cost practice.[^16]
 - Include compute costs as a line item in the quarterly engineering health review — not as a governance emergency but as a visible metric that enables proportional decisions. Teams that track their AI compute spend tend to make more deliberate decisions about session design than those that don't see the cost.[^14]
 - If the company has sustainability commitments or ESG reporting obligations, include AI compute in the relevant accounting. Anthropic reports on its own energy usage and sustainability practices; reference those reports when preparing company-level disclosures.[^14]
@@ -140,9 +140,6 @@ The most operationally relevant form of this bias for a software team is archite
 
 [^14]: Anthropic — "Anthropic's Approach to AI Safety and Environmental Responsibility," Anthropic, 2026. https://www.anthropic.com/safety-and-responsibility
  Anthropic's energy usage reporting and sustainability commitments; guidance for organizations including AI compute in ESG accounting.
-
-[^15]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
- Session hygiene as a compute efficiency practice alongside a quality practice; model tier selection guidelines and the proportionality principle for Opus vs. Sonnet selection.
 
 [^16]: Boris Cherny at Y Combinator — "Inside Claude Code With Its Creator Boris Cherny," February 17, 2026. https://www.ycombinator.com/library/NJ-inside-claude-code-with-its-creator-boris-cherny
  Model tier selection rationale: when to use Opus 4.6 vs. Sonnet 4.6 for different session types; compute proportionality as a deliberate practice rather than a default behavior.

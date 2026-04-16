@@ -27,7 +27,7 @@ The dynamic is self-reinforcing. AI optimizes for "code that works" — it gener
 
 **Proposed Solution:**
 - Establish a **monthly "codebase health review"** — one hour, architect-led — focused specifically on identifying duplication, orphaned modules, and patterns that have diverged.[^5]
-- Add a **pre-PR checklist item**: "Did you ask the AI to refactor before finalizing?" Prompt engineering for efficiency is not automatic — engineers must explicitly request it.[^7]
+- Add a **pre-PR checklist item**: "Did you ask the AI to refactor before finalizing?" Prompt engineering for efficiency is not automatic — engineers must explicitly request it.[^5]
 - Potentially add a command for this to make refactoring consistent across developers.[^16]
 - Track codebase size as a first-class engineering metric alongside feature velocity.[^6]
 - Assign the architect explicit authority — and calendar time — to conduct **deprecation sprints**: focused efforts to remove or consolidate code, not add features. These should appear on the product roadmap as first-class items. As Kyros's March 2026 analysis documents, vibe-coded technical debt does not accumulate linearly — it compounds.[^6] By the time it becomes visible (incident acceleration, velocity collapse), the cost of unwinding it often exceeds the value of the features built during the high-velocity phase. For a 10-person team, that inflection point comes faster than it would at scale.
@@ -55,7 +55,7 @@ For our team, this is especially dangerous because we lack a dedicated security 
 
 **Proposed Solution:**
 - Integrate **automated SAST scanning** (e.g., Snyk Code or equivalent) directly into CI/CD pipelines so every PR is scanned before review, not after.[^9][^16]
-- Adopt the "vibe engineering" practice of explicitly prompting the AI to review its own output for vulnerabilities: "What are the potential security vulnerabilities in this feature? How would you rewrite it?"[^10]
+- Adopt the "vibe engineering" practice of explicitly prompting the AI to review its own output for vulnerabilities: "What are the potential security vulnerabilities in this feature? How would you rewrite it?"[^5]
 - Assign backend engineers ownership of a security review rotation — one engineer per sprint specifically reviews AI-generated authentication, data access, and external API code.[^9]
 
 ---
@@ -64,7 +64,7 @@ For our team, this is especially dangerous because we lack a dedicated security 
 
 **Description:** As PRs grow larger and more AI-generated, engineers stop reading them carefully — partly because there is too much to review, and partly because the code "came from Claude." Reviews become rubber stamps. This defeats the purpose of code review and removes the last human checkpoint before code enters the codebase.
 
-This is not a hypothetical: a 2026 analysis found that 63% of developers report spending more time debugging AI-generated code than they would have spent writing it manually.[^11] The debugging happens post-merge precisely because the review was superficial. On a small team with a team lead closely tracking velocity, there is also implicit pressure not to flag issues that might slow delivery.
+This is not a hypothetical: a 2026 analysis found that 63% of developers report spending more time debugging AI-generated code than they would have spent writing it manually.[^1] The debugging happens post-merge precisely because the review was superficial. On a small team with a team lead closely tracking velocity, there is also implicit pressure not to flag issues that might slow delivery.
 
 **Proposed Solution:**
 - Enforce a **PR size limit** for AI-generated code: no more than 300–400 lines per PR. Larger AI outputs must be split.[^1][^19]
@@ -136,11 +136,8 @@ The danger on a small CTO-led team is that no one is structurally positioned to 
 [^4]: Prof. Hung-Yi Chen — "The Dark Side of Vibe Coding: The AI Code Quality Crisis and the Technical Debt Tsunami," January 2026. https://www.hungyichen.com/en/insights/vibe-coding-software-engineering-crisis 
 [^5]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges," October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt 
 [^6]: Kyros — "The Vibe Coding Crisis: How AI-Generated Technical Debt Is Costing Companies Millions," March 2026. https://usekyros.ai/blog/vibe-coding-crisis-ai-technical-debt 
-[^7]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges" (DigitalOcean quote on explicit security prompting), October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt 
 [^8]: Vocal/Futurism — "8 AI Code Generation Mistakes Devs Must Fix to Win 2026." https://vocal.media/futurism/8-ai-code-generation-mistakes-devs-must-fix-to-win-2026 
 [^9]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/ 
-[^10]: Dark Reading — "AI-Generated Code Poses Security, Bloat Challenges" (DigitalOcean on "vibe engineering"), October 2025. https://www.darkreading.com/application-security/ai-generated-code-leading-expanded-technical-security-debt 
-[^11]: daily.dev — "Vibe Coding in 2026," April 2026. https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code 
 [^12]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025 
 
 [^14]: Fireship — "The 'vibe coding' mind virus explained in 100 seconds," YouTube, March 26, 2025. https://www.youtube.com/watch?v=Tw18-4U7mts

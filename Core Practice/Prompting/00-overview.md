@@ -29,7 +29,7 @@ The role and constraint components are where architectural context lives. A prom
 Phillip Carter at Honeycomb documented this distinction as the "task suitability framework" — the recognition that AI tools perform materially better on some task types than others, and that structuring prompts to align with those strengths multiplies the quality of results. Tasks that are well-represented in training data (REST endpoints, CRUD operations, unit tests for pure functions) need less constraint in prompts; novel tasks (custom business logic, organization-specific patterns) need explicit context that Claude cannot infer.[^5]
 
 **Proposed Solution:**
-- Maintain separate prompt templates for the five core task types: feature scaffolding, refactoring, test generation, security review, and documentation. Store these as named commands in `.claude/commands/` rather than requiring engineers to construct them from memory.[^6]
+- Maintain separate prompt templates for the five core task types: feature scaffolding, refactoring, test generation, security review, and documentation. Store these as named commands in `.claude/commands/` rather than requiring engineers to construct them from memory.[^3]
 - For feature scaffolding prompts, begin with an Explore phase before any generation: "Read `[relevant files]` to understand the patterns used, then generate a scaffolding plan for `[feature]`." Do not skip the Explore step under time pressure — it is the step that aligns AI output with actual codebase architecture.[^3]
 - For security review prompts, specify the vulnerability classes explicitly: "Review for injection vulnerabilities, hardcoded credentials, authentication bypass paths, and unauthorized data access. Reference our threat model at `docs/security-model.md`." Generic "review for security issues" prompts produce generic, low-precision results.[^7]
 - For refactoring prompts, specify both what should change and what should not: "Refactor `[function]` to eliminate the nested conditionals. Do not change the function signature or the return type. Run the existing tests to verify behavior is unchanged." Omitting the preservation constraint often causes Claude to also change interfaces it was not asked to change.[^2]
@@ -59,7 +59,7 @@ The CLAUDE.md update discipline that Boris Cherny describes — adding a correct
 **Proposed Solution:**
 - After any session that required more than two correction cycles, identify whether a better initial prompt would have prevented the corrections. If yes, update the relevant team command with the improvement and document why in the command file.[^10]
 - Hold a brief "prompt retrospective" as part of the quarterly AI practice review: which commands produced consistently good output, which required frequent manual correction, and what changes would address the failure modes.[^11]
-- Treat prompt improvement as a codebase contribution: improvements to team commands should go through PR review with a description of what the old prompt produced, why it was insufficient, and what the revised prompt addresses.[^6]
+- Treat prompt improvement as a codebase contribution: improvements to team commands should go through PR review with a description of what the old prompt produced, why it was insufficient, and what the revised prompt addresses.[^3]
 - Encourage engineers to share effective ad-hoc prompts that haven't yet been codified as commands — the retrospective is the venue for converting these into official team commands rather than leaving them in individual engineers' memories.[^11]
 
 ---
@@ -80,14 +80,14 @@ The "vague improvement" anti-pattern is particularly prevalent under velocity pr
 
 ## Pattern 6: Prompt Library Management
 
-**Description:** A team prompt library is not a collection of templates — it is a versioned, maintained artifact that encodes the team's accumulated knowledge about how to work effectively with Claude Code on their specific codebase. The distinction matters: templates can be written once and forgotten; a library requires active maintenance, review, and deprecation as the codebase and team conventions evolve.[^6]
+**Description:** A team prompt library is not a collection of templates — it is a versioned, maintained artifact that encodes the team's accumulated knowledge about how to work effectively with Claude Code on their specific codebase. The distinction matters: templates can be written once and forgotten; a library requires active maintenance, review, and deprecation as the codebase and team conventions evolve.[^3]
 
 Teams without managed prompt libraries develop prompt fragmentation: eight engineers using eight different approaches for the same task type, with no shared baseline and no mechanism for collective improvement. The Pragmatic Engineer's 2026 AI tooling survey found that this fragmentation is particularly pronounced at companies with under 20 engineers — exactly our team's size — where prompt standardization is rarely treated as an engineering priority until the costs of inconsistency become visible.
 
 **Proposed Solution:**
-- Version-control the prompt library in `.claude/commands/` alongside CLAUDE.md. Include a changelog in the commands directory README explaining what changed and why for each update.[^6]
+- Version-control the prompt library in `.claude/commands/` alongside CLAUDE.md. Include a changelog in the commands directory README explaining what changed and why for each update.[^3]
 - Define clear ownership: the architect maintains the CLAUDE.md and core command library; individual engineers maintain task-type commands in their area (backend engineers own API commands, frontend engineers own component commands). All changes go through architect review.[^10]
-- Establish a command lifecycle: proposed → reviewed → active → deprecated. Commands that produce poor output consistently should be deprecated and replaced rather than silently overridden with individual workarounds.[^6]
+- Establish a command lifecycle: proposed → reviewed → active → deprecated. Commands that produce poor output consistently should be deprecated and replaced rather than silently overridden with individual workarounds.[^3]
 - Make the prompt library discoverable: at onboarding, new engineers receive a walkthrough of available commands and an explanation of why each is structured as it is. This makes the library usable from day one and creates the feedback mechanism for new engineers to identify gaps.[^11]
 
 ---
@@ -119,9 +119,6 @@ Teams without managed prompt libraries develop prompt fragmentation: eight engin
 
 [^5]: Phillip Carter — "How I Code With LLMs These Days," Honeycomb, March 2025. https://www.honeycomb.io/blog/how-i-code-with-llms-these-days
  Task suitability framework: which task types benefit from AI-first prompting vs. human-first drafting; structured prompts aligned to AI strengths vs. those compensating for AI limitations.
-
-[^6]: Anthropic — "Common Workflows," Claude Code Documentation, 2026. https://code.claude.com/docs/en/common-workflows
- Custom command library: `.claude/commands/` structure, parameterized command creation, command lifecycle from creation to deprecation.
 
 [^7]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
  Security prompt specificity: why generic "review for security" prompts produce low-precision results; vulnerability class enumeration and threat model reference as prompt structure requirements.

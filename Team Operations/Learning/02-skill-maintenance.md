@@ -62,7 +62,7 @@ This does not mean engineers should never use AI tools during review — for lar
 
 **Recommended Practice:**
 - Establish a team norm: for PRs under 200 lines, reviewers should form an independent opinion before using any AI tools. For larger PRs, the reviewer reads enough to understand the change's intent before using AI to assist with specific aspects (security scanning, edge case identification). Document this in the team's PR review guidelines.[^11]
-- When reviewing AI-generated PRs specifically, actively resist the inference that "Claude generated it, therefore it is probably correct." This assumption is contradicted by the data (AI PRs have 75% more logic issues than human-authored PRs[^12]) and by the team's own verification gap data. Each AI-generated PR requires independent evaluation, not a calibration to assumed AI quality.[^8]
+- When reviewing AI-generated PRs specifically, actively resist the inference that "Claude generated it, therefore it is probably correct." This assumption is contradicted by the data (AI PRs have 75% more logic issues than human-authored PRs[^8]) and by the team's own verification gap data. Each AI-generated PR requires independent evaluation, not a calibration to assumed AI quality.[^8]
 - After complex reviews, brief the team on what was found and how it was identified: "I caught this race condition by tracing the execution path manually, not by running tests." These briefs model the comprehension-first review approach and create the learning event that the review would otherwise only provide to the reviewer.[^9]
 - Designate one review per sprint as a "teaching review": a PR reviewed by the architect with the review process narrated (either live or as written comments explaining what was evaluated and why). Teaching reviews are disproportionately valuable for junior engineers who have not yet developed independent review judgment.[^7]
 
@@ -126,9 +126,6 @@ The highest-signal sources for an 11-person team are: Anthropic's own documentat
 
 [^11]: Fannar Steinn Aðalsteinsson et al. — "Rethinking Code Review Workflows with LLM Assistance: An Empirical Study," arXiv:2505.16339, May 22, 2025. https://arxiv.org/abs/2505.16339
  Code review as skill maintenance: how comprehension-first review develops and exercises the understanding capacity that AI-first review tends to atrophy; reviewer independence and its value for catching AI-specific failure modes.
-
-[^12]: CodeRabbit — "State of AI Code Generation: AI vs. Human Code Report," December 17, 2025. https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report
- AI PR logic issue prevalence: the 75% more logic issues finding as the data point that motivates independence rather than deference in reviewing AI-generated code.
 
 [^14]: HackerRank — "2025 Developer Skills Report." https://www.hackerrank.com/reports/developer-skills-report-2025
  Education budget allocation: why investment in foundational engineering skills (algorithms, systems, security) produces higher returns for AI-assisted teams than investment solely in AI tool proficiency.

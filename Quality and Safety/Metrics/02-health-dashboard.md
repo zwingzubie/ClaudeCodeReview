@@ -56,12 +56,12 @@ A well-run 30-minute practice review covers: notable metric changes from the pri
 
 ## Section 4: The Quarterly Engineering Health Review
 
-**Description:** The quarterly engineering health review presents the dashboard's findings to the CTO in the context of business outcomes. Where the monthly practice review is operational (are our practices working?), the quarterly review is strategic (is our AI adoption trajectory sustainable?). The architect presents six-month trend data, interprets it in terms of delivery health and technical debt trajectory, and makes governance recommendations that require CTO decision authority — resource allocation, policy changes, sprint planning modifications.[^10]
+**Description:** The quarterly engineering health review presents the dashboard's findings to the CTO in the context of business outcomes. Where the monthly practice review is operational (are our practices working?), the quarterly review is strategic (is our AI adoption trajectory sustainable?). The architect presents six-month trend data, interprets it in terms of delivery health and technical debt trajectory, and makes governance recommendations that require CTO decision authority — resource allocation, policy changes, sprint planning modifications.[^3]
 
 Google's DORA 2026 data documenting a 7.2% decrease in delivery stability correlated with AI adoption[^11] is the kind of signal that is invisible in monthly operational data but becomes legible in quarterly trend analysis. The quarterly review is the cadence at which this kind of aggregate signal — the slow-moving trend that no single month's data captures — can be seen and acted on before it produces an incident.
 
 **Recommended Practice:**
-- Structure the quarterly presentation as a thirty-slide equivalent document (not a live presentation, but a written summary the CTO can review independently): executive summary (one page), metric trends with six-month charts (one page per metric cluster), interpretation and risk assessment (one page), and governance recommendations (one page).[^10]
+- Structure the quarterly presentation as a thirty-slide equivalent document (not a live presentation, but a written summary the CTO can review independently): executive summary (one page), metric trends with six-month charts (one page per metric cluster), interpretation and risk assessment (one page), and governance recommendations (one page).[^3]
 - Frame metric interpretations in terms of delivery risk, not just technical quality. "Our rework rate has increased from 12% to 19% over this quarter, which we project will consume an additional 0.5 engineer-week per sprint in Q3 if the trend continues" is a business-relevant interpretation. "Our rework rate is up" is not.[^1]
 - Include a "governance effectiveness" section: did the changes made in last quarter's review produce the intended metric improvements? This accountability loop ensures that the quarterly review drives real change rather than producing recommendations that are filed and forgotten.
 - Prepare a written decision request for any governance change requiring CTO authorization: sprint AI percentage cap changes, new SAST tool acquisition, engineering health sprint resource allocation. Written requests with specific cost and benefit analysis produce faster decisions than verbal discussions at the review meeting.[^9]
@@ -117,9 +117,6 @@ Incident retrospectives for AI governance follow a different question framework 
 
 [^9]: CIO — "How Agentic AI Will Reshape Engineering Workflows in 2026," April 2026. https://www.cio.com/article/4134741/how-agentic-ai-will-reshape-engineering-workflows-in-2026.html
  Practice review meeting structure and documentation: the 30-minute agenda breakdown; written decision requests for CTO-level governance changes; review log as accountability infrastructure.
-
-[^10]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
- Quarterly strategic review vs. monthly operational review: the different questions each answers; framing metric interpretations in terms of delivery risk rather than technical quality.
 
 [^11]: GitHub — "Octoverse 2025: The State of Open Source and AI on GitHub," GitHub, 2025. https://github.blog/news-insights/octoverse/octoverse-2025/
  DORA 2026 data: 7.2% delivery stability decrease correlated with AI adoption; aggregate signals visible in quarterly trend analysis but invisible in monthly operational data.

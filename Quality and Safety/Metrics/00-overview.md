@@ -32,7 +32,7 @@ GitClear's analysis of GitHub commit patterns from 2022 to 2025 found that as AI
 - Define rework explicitly in the team's tracking system: a commit is rework if it modifies code merged in the prior 30 days to fix a defect, revert an architectural choice, or rewrite for comprehension reasons. Distinguish rework from planned iteration — not all post-merge changes are rework.[^3]
 - Track rework rate by PR type (AI-primary vs. human-authored) and by module. If rework is concentrated in AI-primary PRs in a specific module, that is a signal that the CLAUDE.md context for that module is insufficient or that verification standards are not being applied there.[^6]
 - Present rework rate to the CTO monthly alongside velocity metrics. A CTO who sees only velocity metrics has an incomplete picture of delivery health; the rework rate makes the quality dimension visible in a form relevant to leadership review.[^1]
-- Set an alert threshold at 20% rework rate for AI-primary PRs per sprint. This is the level identified in the Anthropic Agentic Trends research at which rework costs begin to exceed the velocity gains from AI generation.[^7]
+- Set an alert threshold at 20% rework rate for AI-primary PRs per sprint. This is the level identified in the Anthropic Agentic Trends research at which rework costs begin to exceed the velocity gains from AI generation.[^5]
 
 ---
 
@@ -82,12 +82,12 @@ A 2026 analysis of 304,362 AI-authored commits found that 24.2% of AI-introduced
 
 **Description:** Metrics are only as valuable as the decisions they inform. A team that collects AI governance metrics but does not review them in a structured retrospective context is collecting data for its own sake. The retrospective cadence — when data is reviewed, by whom, in what format, and what decisions it drives — determines whether metrics produce governance or just records.[^14]
 
-The Anthropic 2026 Agentic Coding Trends Report found that organizations achieving the most consistent improvement in AI output quality shared a common characteristic: structured, regular retrospectives specifically focused on AI workflow quality rather than subsuming AI discussion into general sprint retrospectives.[^7] General retrospectives allocate time proportional to urgency; AI quality concerns are rarely urgent until they compound into an incident. A dedicated AI retrospective creates deliberate space for the proactive governance that general retrospectives tend to defer.
+The Anthropic 2026 Agentic Coding Trends Report found that organizations achieving the most consistent improvement in AI output quality shared a common characteristic: structured, regular retrospectives specifically focused on AI workflow quality rather than subsuming AI discussion into general sprint retrospectives.[^5] General retrospectives allocate time proportional to urgency; AI quality concerns are rarely urgent until they compound into an incident. A dedicated AI retrospective creates deliberate space for the proactive governance that general retrospectives tend to defer.
 
 **Proposed Solution:**
 - Hold a dedicated monthly AI practice review (30 minutes, architect-led): cover AI code percentage, rework rate, security vulnerability trend, and any session efficiency signals from engineer logs. This is separate from the general sprint retrospective.[^1]
 - Hold a quarterly engineering health review (60 minutes, architect presents to CTO): cover codebase health indicators, CLAUDE.md currency, prompt library effectiveness, and year-on-year trend in all AI governance metrics. This is the session where governance decisions are made at the leadership level.[^14]
-- After any incident or high-rework sprint, conduct a targeted retrospective focused specifically on whether AI governance practices contributed to the problem: was the CLAUDE.md context insufficient? Were verification standards skipped? Did a task category outside the delegable 20% get AI-primary treatment?[^7]
+- After any incident or high-rework sprint, conduct a targeted retrospective focused specifically on whether AI governance practices contributed to the problem: was the CLAUDE.md context insufficient? Were verification standards skipped? Did a task category outside the delegable 20% get AI-primary treatment?[^5]
 - Track retrospective action items to completion: a retrospective that generates recommendations but no closed action items is theater. Assign each action item an owner and a due date, and verify completion at the following session.[^12]
 
 ---
@@ -122,9 +122,6 @@ The Anthropic 2026 Agentic Coding Trends Report found that organizations achievi
 
 [^6]: GitClear — "2025 Coding on Copilot: 2023 Data Shows Downward Pressure on Code Quality," GitClear Research, 2025. https://www.gitclear.com/coding_on_copilot_data_shows_ais_downward_pressure_on_code_quality
  Copy-paste code rising from 8.3% to 12.3%; refactoring collapsing from 25% to under 10% of commits; longitudinal data on how AI adoption changes codebase health indicators.
-
-[^7]: Anthropic — "2026 Agentic Coding Trends Report," Anthropic, 2026. https://resources.anthropic.com/hubfs/2026%20Agentic%20Coding%20Trends%20Report.pdf
- Structured retrospectives as the differentiating characteristic of organizations achieving consistent AI output quality improvement; the case against subsuming AI governance into general sprint retrospectives.
 
 [^8]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/
  Security pass rate stagnant at 55% despite model capability improvements; the argument that model upgrades do not solve the security vulnerability problem — practice changes are required.
