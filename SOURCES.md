@@ -529,12 +529,12 @@ Organized by category. Each entry includes full bibliographic information and a 
   <https://www.sonarsource.com/company/press-releases/sonar-data-reveals-critical-verification-gap-in-ai-coding/>
   *Files:* [`Core Practice/Prompting/03-prompt-antipatterns.md`](Core%20Practice/Prompting/03-prompt-antipatterns.md), [`Core Practice/Tooling & Configuration/00-overview.md`](Core%20Practice/Tooling%20%26%20Configuration/00-overview.md), [`Core Practice/Tooling & Configuration/02-hooks-and-automation.md`](Core%20Practice/Tooling%20%26%20Configuration/02-hooks-and-automation.md), [`Economics and Reliability/Debugging & Troubleshooting/00-overview.md`](Economics%20and%20Reliability/Debugging%20%26%20Troubleshooting/00-overview.md), [`Economics and Reliability/Debugging & Troubleshooting/02-hallucination-and-confabulation.md`](Economics%20and%20Reliability/Debugging%20%26%20Troubleshooting/02-hallucination-and-confabulation.md), [`Quality and Safety/Issues/01-comprehension-debt.md`](Quality%20and%20Safety/Issues/01-comprehension-debt.md), [`Quality and Safety/Metrics/00-overview.md`](Quality%20and%20Safety/Metrics/00-overview.md), [`Quality and Safety/Metrics/01-ai-code-quality.md`](Quality%20and%20Safety/Metrics/01-ai-code-quality.md), [`Quality and Safety/Metrics/02-health-dashboard.md`](Quality%20and%20Safety/Metrics/02-health-dashboard.md), [`Team Operations/Governance/01-review-policies.md`](Team%20Operations/Governance/01-review-policies.md), [`Team Operations/Governance/06-compliance-and-audit.md`](Team%20Operations/Governance/06-compliance-and-audit.md)
 
-- **Sonar — "The AI Code Quality Report," Sonar, 2026**
-  <https://www.sonarsource.com/resources/ai-code-quality-report/>
+- **Sonar — "State of Code Developer Survey Report: The Current Reality of AI Coding," SonarSource Blog, 2026**
+  <https://www.sonarsource.com/blog/state-of-code-developer-survey-report-the-current-reality-of-ai-coding>
   *Files:* [`Quality and Safety/Security/00-overview.md`](Quality%20and%20Safety/Security/00-overview.md), [`Quality and Safety/Security/01-threat-modeling.md`](Quality%20and%20Safety/Security/01-threat-modeling.md), [`Quality and Safety/Security/02-sast-dast-integration.md`](Quality%20and%20Safety/Security/02-sast-dast-integration.md), [`Quality and Safety/Security/03-dependency-security.md`](Quality%20and%20Safety/Security/03-dependency-security.md)
 
-- **Veracode — "Integrating AI-Assisted Code Review with SAST Pipelines," Veracode Blog, 2026**
-  <https://www.veracode.com/blog/ai-assisted-code-review-sast-integration-2026>
+- **Veracode — "How AI is Transforming Application Security Testing," Veracode Blog, 2026**
+  <https://www.veracode.com/blog/ai-transforming-application-security-testing/>
   *Files:* [`Core Practice/Tooling & Configuration/06-cicd-integration.md`](Core%20Practice/Tooling%20%26%20Configuration/06-cicd-integration.md)
 
 - **Veracode — "AI-Generated Code and the Security Accountability Gap," March 24, 2026**

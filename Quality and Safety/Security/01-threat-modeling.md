@@ -106,7 +106,7 @@ The mapping is direct: every threat model mitigation that takes the form "Claude
 [^3]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
     STRIDE applied to agentic code review workflows; privilege escalation in CI-integrated AI sessions; the minimum permission profile argument for agentic development.
 
-[^4]: Sonar — "The AI Code Quality Report," Sonar, 2026. https://www.sonarsource.com/resources/ai-code-quality-report/
+[^4]: Sonar — "State of Code Developer Survey Report: The Current Reality of AI Coding," SonarSource Blog, 2026. https://www.sonarsource.com/blog/state-of-code-developer-survey-report-the-current-reality-of-ai-coding
     2.74× vulnerability rate for AI-generated code; vulnerability concentration in authentication, input handling, and cryptographic implementation; the training data mechanism for inherited vulnerabilities.
 
 [^5]: Veracode — "Spring 2026 GenAI Code Security Update: Despite Claims, AI Models Are Still Failing Security," March 24, 2026. https://www.veracode.com/blog/spring-2026-genai-code-security/

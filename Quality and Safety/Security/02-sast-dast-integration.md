@@ -111,7 +111,7 @@ DAST tooling for a small team has a different configuration profile than enterpr
 
 ---
 
-[^1]: Sonar — "The AI Code Quality Report," Sonar, 2026. https://www.sonarsource.com/resources/ai-code-quality-report/
+[^1]: Sonar — "State of Code Developer Survey Report: The Current Reality of AI Coding," SonarSource Blog, 2026. https://www.sonarsource.com/blog/state-of-code-developer-survey-report-the-current-reality-of-ai-coding
  2.74× vulnerability rate for AI-generated code; the calibration argument for adjusting SAST configurations to the actual risk profile of AI output; 42% AI code penetration in adopting repositories.
 
 [^2]: Dark Reading — "AI-Assisted Development: The Security Risks Nobody Is Managing," October 2025. https://www.darkreading.com/application-security/ai-assisted-development-security-risks

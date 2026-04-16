@@ -114,7 +114,7 @@ The four-criteria framework (maintainer credibility, recent activity, CVE histor
 [^2]: Snyk — "The State of Open Source Security 2025," Snyk, 2025. https://snyk.io/reports/open-source-security/
     Supply chain attack surface; transitive dependency risk; lockfile discipline as a visibility mechanism; the SolarWinds and Log4Shell precedents for dependency chain compromise.
 
-[^3]: Sonar — "The AI Code Quality Report," Sonar, 2026. https://www.sonarsource.com/resources/ai-code-quality-report/
+[^3]: Sonar — "State of Code Developer Survey Report: The Current Reality of AI Coding," SonarSource Blog, 2026. https://www.sonarsource.com/blog/state-of-code-developer-survey-report-the-current-reality-of-ai-coding
     AI training data cutoff as a mechanism for outdated dependency suggestions; the frequency-based selection mechanism that favors popular but potentially unmaintained packages.
 
 [^4]: OWASP — "OWASP Dependency-Check," OWASP Foundation. https://owasp.org/www-project-dependency-check/

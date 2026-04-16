@@ -129,7 +129,7 @@ Tracking suppressed findings is as important as tracking acted-upon findings. If
 [^6]: Addy Osmani — "My LLM Coding Workflow Going Into 2026," April 2026. https://addyosmani.com/blog/ai-coding-workflow/
  Finding format and actionability: why line-specific review comments are more actionable than general summaries; the engineering UX of CI finding presentation in the code review interface.
 
-[^7]: Veracode — "Integrating AI-Assisted Code Review with SAST Pipelines," Veracode Blog, 2026. https://www.veracode.com/blog/ai-assisted-code-review-sast-integration-2026
+[^7]: Veracode — "How AI is Transforming Application Security Testing," Veracode Blog, 2026. https://www.veracode.com/blog/ai-transforming-application-security-testing/
  SAST and Claude Code integration: how contextual AI analysis reduces SAST false-positive rates; feeding SAST output as session context; the complementary strengths of rule-based SAST and contextual LLM analysis.
 
 [^8]: Sonar — "AI Code Review in the Security Gate: 2026 Configuration Guide," Sonar Blog, 2026. https://www.sonarsource.com/blog/ai-code-review-security-gate-2026

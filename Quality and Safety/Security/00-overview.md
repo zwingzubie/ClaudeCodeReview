@@ -96,7 +96,7 @@ Sonar's 2026 research found that AI now writes 42% of code in repositories that 
 [^1]: Anthropic — "Best Practices for Claude Code," Claude Code Documentation, 2026. https://code.claude.com/docs/en/best-practices
  CLAUDE.md as the central mechanism for encoding security constraints; session configuration as the operational enforcement layer for security policy.
 
-[^3]: Sonar — "The AI Code Quality Report," Sonar, 2026. https://www.sonarsource.com/resources/ai-code-quality-report/
+[^3]: Sonar — "State of Code Developer Survey Report: The Current Reality of AI Coding," SonarSource Blog, 2026. https://www.sonarsource.com/blog/state-of-code-developer-survey-report-the-current-reality-of-ai-coding
  AI writes 42% of code in AI-adopting repositories; AI-generated code has a 2.74× higher vulnerability rate than human-written code; the calibration argument for adjusted security tooling.
 
 [^5]: Roman Fedytskyi — "A Safer CI Pattern for Agentic Code Review," Medium, March 2026. https://medium.com/@roman_fedyskyi/a-safer-ci-pattern-for-agentic-code-review-94a484b5e3c4
